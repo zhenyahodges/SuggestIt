@@ -14,7 +14,7 @@ Suggest<span style="color:#F79234">**It**</span> is a web application which prov
 ### <span style="color:#c2e2ee">Welcome</span>
 <br>
 
-![alt text](./readme-res/SuggestIt-Welcome-View%20(Custom).png "Welcome View")
+![alt text](./readme-res/SuggestIt-Welcome-View.png "Welcome View")
 ***
 
 ### <span style="color:#c2e2ee">Catalog</span>
