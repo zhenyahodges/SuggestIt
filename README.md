@@ -1,5 +1,5 @@
 # Suggest<span style="color:#F79234">**It**</span>
-## Project Assignment SPA with ReactJs
+## Project Assignment: SPA with ReactJs
 
 
 This is a ReactJS project assignment for completing [SoftUni](https://softuni.bg/)
@@ -36,8 +36,6 @@ Logged users can:
 * View the feedback cards they created.
 * Create new feedback cards.
 * View a list of the suggestions they made.
-
-***
 
 
 
