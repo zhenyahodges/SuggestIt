@@ -19,7 +19,7 @@ Suggest<span style="color:#F79234">**It**</span> is a web application which prov
 
 ### <span style="color:#c2e2ee">Catalog</span>
 
-Guests & Logged Users can view the Catalog of feedbacks.
+Guests & Logged Users can view the Catalog with feedback cards.
 ***
 
 ### <span style="color:#c2e2ee">Details</span>
