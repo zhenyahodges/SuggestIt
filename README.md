@@ -33,9 +33,9 @@ Logged users can:
 ### <span style="color:#c2e2ee">Profile</span>
 
 Logged users can:
-* View the feedback cards they created.
-* Create new feedback cards.
-* View a list of the suggestions they made.
+* View the feedback cards they created, edit & delete them.
+* Create new feedback cards
+* View a list of the suggestions they made, edit & delete them.
 
 
 
