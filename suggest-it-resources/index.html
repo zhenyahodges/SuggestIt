@@ -1,0 +1,3292 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>SuggestIt</title>
+        <link rel="stylesheet" href="./styles/reset.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./styles/style.css" />
+        <link rel="icon" type="image/x-icon" href="./favicon.ico.jpg" />
+    </head>
+    <body>
+        <!-- || HEADER -->
+        <header class="page header">
+            <section class="header container special-border">
+                <div class="header-wrapper">
+                    <h1 class="title-header">
+                        Suggest<span class="suggest-it">It</span>
+                    </h1>
+                    <p class="subtitle-header">
+                        Ultimate Feedback
+                        <!-- Suggestion polls for improvements -->
+                    </p>
+                    <p></p>
+                </div>
+
+                <!-- ||HEADER NAV -->
+                <nav class="nav header">
+                    <ul class="nav header list">
+                        <a
+                            href="#"
+                            class="nav header list links home"
+                            id="nav-head-home-link"
+                            >Home</a
+                        >
+                        <a
+                            href="#"
+                            class="nav header list links cat"
+                            id="nav-head-cat-link"
+                            >Catalog</a
+                        >
+                        <a
+                            href="#"
+                            class="nav header list links log"
+                            id="nav-head-log-link"
+                            >Login</a
+                        >
+                        <a
+                            href="#"
+                            class="nav header list links reg"
+                            id="nav-head-reg-link"
+                            >Register</a
+                        >
+                        <!-- <a href="/about" class="nav header list links">About</a> -->
+                        <!-- <a href="/contact" class="nav header list links">Contact</a> -->
+                    </ul>
+                </nav>
+                <div class="whos-lookin-wrapper">
+                    <p class="whos-lookin guest" id="whos-lookin-guest">
+                        Guest
+                    </p>
+                    <p
+                        class="whos-lookin logged-user"
+                        id="whos-lookin-logged-user"
+                    >
+                        user email
+                    </p>
+                </div>
+            </section>
+        </header>
+
+        <!-- || MAIN -->
+        <main class="page main">
+            <section class="page main container">
+                <!-- WELCOME -->
+                <section class="welcome window">
+                    <section class="welcome-headings">
+                        <h2 class="main-title">
+                            <!-- Ultimate Feedback -->
+                            Suggestions for Continuous Improvements
+                        </h2>
+                        <div class="sub-wrapper">
+                            <h3 class="maiin-subtitle">
+                                Do you want an easy and efficient way to get
+                                direct feedback and ideas for imrovements from
+                                your customers and employees?
+                            </h3>
+                            <p class="main-subtext">
+                                We offer a user-friendly interface for
+                                suggestions which ranks them by popularity
+                            </p>
+                        </div>
+                        <button class="btn highlight login" id="login-btn">
+                            Login
+                        </button>
+                    </section>
+
+                    <!-- SAMPLE  -->
+                    <section class="sample content">
+                        <h4 class="samples-title">Sample</h4>
+
+                        <div class="samples wrapper">
+                            <!-- CARD START -->
+                            <article class="sugg-card sample">
+                                <header
+                                    class="card-header card-brand-logo suggestit-brand"
+                                >
+                                    <h5 class="brand logo-line">
+                                        Suggest<span class="suggest-it"
+                                            >It</span
+                                        >
+                                    </h5>
+                                </header>
+
+                                <main class="card-main">
+                                    <ul class="sugg-list" role="list">
+                                        <!-- LIST items start -->
+
+                                        <!-- li start -->
+                                        <li class="sugg-item">
+                                            <div class="sugg-item-wrapper">
+                                                <p class="sugg-text">
+                                                    <span
+                                                        class="author-nickname"
+                                                    >
+                                                        Me
+                                                    </span>
+                                                    Improve this project
+                                                </p>
+
+                                                <p class="sugg-ranking">
+                                                    <span class="rank">15</span>
+                                                    <a class="sugg-like-link">
+                                                        <i
+                                                            class="like fa-solid fa-circle-up"
+                                                        ></i>
+                                                    </a>
+                                                </p>
+                                            </div>
+                                        </li>
+                                        <!-- li end-->
+
+                                        <!-- li start -->
+                                        <li class="sugg-item">
+                                            <div class="sugg-item-wrapper">
+                                                <p class="sugg-text">
+                                                    <span
+                                                        class="author-nickname"
+                                                    >
+                                                        Me
+                                                    </span>
+                                                    Add more features
+                                                </p>
+                                                <p class="sugg-ranking">
+                                                    <span class="rank">10</span
+                                                    ><a class="sugg-like-link"
+                                                        ><i
+                                                            class="like fa-solid fa-circle-up"
+                                                        ></i
+                                                    ></a>
+                                                </p>
+                                            </div>
+                                        </li>
+                                        <!-- li end-->
+
+                                        <!-- li start -->
+                                        <li class="sugg-item">
+                                            <div class="sugg-item-wrapper">
+                                                <p class="sugg-text">
+                                                    <span
+                                                        class="author-nickname"
+                                                    >
+                                                        Me
+                                                    </span>
+                                                    Add more pages
+                                                </p>
+                                                <p class="sugg-ranking">
+                                                    <span class="rank">5</span
+                                                    ><a class="sugg-like-link"
+                                                        ><i
+                                                            class="like fa-solid fa-circle-up"
+                                                        ></i
+                                                    ></a>
+                                                </p>
+                                            </div>
+                                        </li>
+                                        <!-- li end-->
+
+                                        <!--  LISTitems -->
+                                    </ul>
+                                </main>
+
+                                <footer class="card-footer suggs-card foot">
+                                    <div class="card-footer-content">
+                                        <p class="card-footer-text">
+                                            Thank you for your contributions!
+                                        </p>
+                                        <div class="card-footer-links-wrapper">
+                                            <!-- display !!?? -->
+                                            <a href="#" class="details-link"
+                                                >Details</a
+                                            >
+                                            <a href="#" class="add-sugg-link"
+                                                >Suggest</a
+                                            >
+                                        </div>
+                                    </div>
+                                </footer>
+                            </article>
+                            <!-- CARD END -->
+                        </div>
+                    </section>
+
+                    <div class="more">
+                        <button class="btn dark catalog" id="catalog-btn">
+                            Catalog
+                        </button>
+                    </div>
+                </section>
+
+                <!-- CATALOG vis for all-->
+                <section class="catalog window">
+                    <h2 class="catalog title">Catalog</h2>
+
+                    <!-- LOADER show when fetching -->
+                    <!-- <div class="loader"></div> -->
+
+                    <div class="catalog-wrapper">
+                        <!-- PUBLIC CATALOG -->
+                        <article class="sugg-card catalog all">
+                            <header
+                                class="card-header card-brand-logo suggestit-brand"
+                            >
+                                <h5 class="brand logo-line">
+                                    Suggest<span class="suggest-it">It</span>
+                                </h5>
+                            </header>
+
+                            <main class="card-main">
+                                <ul class="sugg-list" role="list">
+                                    <!-- LIST items start -->
+
+                                    <!-- li start -->
+                                    <li class="sugg-item">
+                                        <div class="sugg-item-wrapper">
+                                            <p class="sugg-text">
+                                                <span class="author-nickname">
+                                                    Me
+                                                </span>
+                                                Improve this project
+                                            </p>
+
+                                            <p class="sugg-ranking">
+                                                <span class="rank">15</span>
+                                                <a class="sugg-like-link">
+                                                    <i
+                                                        class="like fa-solid fa-circle-up"
+                                                    ></i>
+                                                </a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <!-- li end-->
+
+                                    <!-- li start -->
+                                    <li class="sugg-item">
+                                        <div class="sugg-item-wrapper">
+                                            <p class="sugg-text">
+                                                <span class="author-nickname">
+                                                    Me
+                                                </span>
+                                                Add more features
+                                            </p>
+                                            <p class="sugg-ranking">
+                                                <span class="rank">10</span
+                                                ><a class="sugg-like-link"
+                                                    ><i
+                                                        class="like fa-solid fa-circle-up"
+                                                    ></i
+                                                ></a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <!-- li end-->
+
+                                    <!-- li start -->
+                                    <li class="sugg-item">
+                                        <div class="sugg-item-wrapper">
+                                            <p class="sugg-text">
+                                                <span class="author-nickname">
+                                                    Me
+                                                </span>
+                                                Add more pages
+                                            </p>
+                                            <p class="sugg-ranking">
+                                                <span class="rank">5</span
+                                                ><a class="sugg-like-link"
+                                                    ><i
+                                                        class="like fa-solid fa-circle-up"
+                                                    ></i
+                                                ></a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <!-- li end-->
+
+                                    <!--  LISTitems -->
+                                </ul>
+                            </main>
+
+                            <footer class="card-footer suggs-card foot">
+                                <div class="card-footer-content">
+                                    <p class="card-footer-text">
+                                        Thank you for your contributions!
+                                    </p>
+                                    <div class="card-footer-links-wrapper">
+                                        <a href="#" class="details-link"
+                                            >Details</a
+                                        >
+                                        <a href="#" class="add-sugg-link"
+                                            >Suggest</a
+                                        >
+                                    </div>
+                                </div>
+                            </footer>
+                        </article>
+
+                        <article class="sugg-card catalog public">
+                            <header
+                                class="card-header card-brand-logo suggestit-brand"
+                            >
+                                <h5 class="brand logo-line">Your Brand</h5>
+                            </header>
+
+                            <main class="card-main">
+                                <ul class="sugg-list" role="list">
+                                    <!-- LIST items start -->
+
+                                    <!-- li start -->
+                                    <li class="sugg-item">
+                                        <div class="sugg-item-wrapper">
+                                            <p class="sugg-text">
+                                                <span class="author-nickname">
+                                                    Me
+                                                </span>
+                                                Suggestion for you
+                                            </p>
+
+                                            <p class="sugg-ranking">
+                                                <span class="rank">15</span>
+                                                <a class="sugg-like-link">
+                                                    <i
+                                                        class="like fa-solid fa-circle-up"
+                                                    ></i>
+                                                </a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <!-- li end-->
+
+                                    <!-- li start  -->
+                                    <li class="sugg-item">
+                                        <div class="sugg-item-wrapper">
+                                            <p class="sugg-text">
+                                                <span class="author-nickname">
+                                                    Me
+                                                </span>
+                                                Another suggestion for you
+                                            </p>
+                                            <p class="sugg-ranking">
+                                                <span class="rank">10</span
+                                                ><a class="sugg-like-link"
+                                                    ><i
+                                                        class="like fa-solid fa-circle-up"
+                                                    ></i
+                                                ></a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <!-- li end-->
+
+                                    <!-- ADDITONAL -->
+                                    <!-- li start -->
+                                    <li class="sugg-item">
+                                        <div class="sugg-item-wrapper">
+                                            <p class="sugg-text">
+                                                <span class="author-nickname">
+                                                    Me
+                                                </span>
+                                                One more suggestion for you
+                                            </p>
+                                            <p class="sugg-ranking">
+                                                <span class="rank">5</span
+                                                ><a class="sugg-like-link"
+                                                    ><i
+                                                        class="like fa-solid fa-circle-up"
+                                                    ></i
+                                                ></a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <!-- li end-->
+                                    <!-- li start -->
+                                    <li class="sugg-item">
+                                        <div class="sugg-item-wrapper">
+                                            <p class="sugg-text">
+                                                <span class="author-nickname">
+                                                    Me
+                                                </span>
+                                                One more suggestion for you
+                                            </p>
+                                            <p class="sugg-ranking">
+                                                <span class="rank">5</span
+                                                ><a class="sugg-like-link"
+                                                    ><i
+                                                        class="like fa-solid fa-circle-up"
+                                                    ></i
+                                                ></a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <!-- li end-->
+                                    <!-- li start -->
+                                    <li class="sugg-item">
+                                        <div class="sugg-item-wrapper">
+                                            <p class="sugg-text">
+                                                <span class="author-nickname">
+                                                    Me
+                                                </span>
+                                                One more suggestion for you
+                                            </p>
+                                            <p class="sugg-ranking">
+                                                <span class="rank">5</span
+                                                ><a class="sugg-like-link"
+                                                    ><i
+                                                        class="like fa-solid fa-circle-up"
+                                                    ></i
+                                                ></a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <!-- li end-->
+
+                                    <!-- li start -->
+                                    <li class="sugg-item">
+                                        <div class="sugg-item-wrapper">
+                                            <p class="sugg-text">
+                                                <span class="author-nickname">
+                                                    Me
+                                                </span>
+                                                One more suggestion for you
+                                            </p>
+                                            <p class="sugg-ranking">
+                                                <span class="rank">5</span
+                                                ><a class="sugg-like-link"
+                                                    ><i
+                                                        class="like fa-solid fa-circle-up"
+                                                    ></i
+                                                ></a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <!-- li end-->
+                                    <!-- li start -->
+                                    <li class="sugg-item">
+                                        <div class="sugg-item-wrapper">
+                                            <p class="sugg-text">
+                                                <span class="author-nickname">
+                                                    Me
+                                                </span>
+                                                One more suggestion for you
+                                            </p>
+                                            <p class="sugg-ranking">
+                                                <span class="rank">5</span
+                                                ><a class="sugg-like-link"
+                                                    ><i
+                                                        class="like fa-solid fa-circle-up"
+                                                    ></i
+                                                ></a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <!-- li end-->
+                                    <!-- li start -->
+                                    <li class="sugg-item">
+                                        <div class="sugg-item-wrapper">
+                                            <p class="sugg-text">
+                                                <span class="author-nickname">
+                                                    Me
+                                                </span>
+                                                One more suggestion for you
+                                            </p>
+                                            <p class="sugg-ranking">
+                                                <span class="rank">5</span
+                                                ><a class="sugg-like-link"
+                                                    ><i
+                                                        class="like fa-solid fa-circle-up"
+                                                    ></i
+                                                ></a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <!-- li end-->
+                                    <!-- li start -->
+                                    <li class="sugg-item">
+                                        <div class="sugg-item-wrapper">
+                                            <p class="sugg-text">
+                                                <span class="author-nickname">
+                                                    Me
+                                                </span>
+                                                One more suggestion for you
+                                            </p>
+                                            <p class="sugg-ranking">
+                                                <span class="rank">5</span
+                                                ><a class="sugg-like-link"
+                                                    ><i
+                                                        class="like fa-solid fa-circle-up"
+                                                    ></i
+                                                ></a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <!-- li end-->
+                                    <!-- li start -->
+                                    <li class="sugg-item">
+                                        <div class="sugg-item-wrapper">
+                                            <p class="sugg-text">
+                                                <span class="author-nickname">
+                                                    Me
+                                                </span>
+                                                One more suggestion for you
+                                            </p>
+                                            <p class="sugg-ranking">
+                                                <span class="rank">5</span
+                                                ><a class="sugg-like-link"
+                                                    ><i
+                                                        class="like fa-solid fa-circle-up"
+                                                    ></i
+                                                ></a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <!-- li end-->
+                                    <!-- li start -->
+                                    <li class="sugg-item">
+                                        <div class="sugg-item-wrapper">
+                                            <p class="sugg-text">
+                                                <span class="author-nickname">
+                                                    Me
+                                                </span>
+                                                One more suggestion for you
+                                            </p>
+                                            <p class="sugg-ranking">
+                                                <span class="rank">5</span
+                                                ><a class="sugg-like-link"
+                                                    ><i
+                                                        class="like fa-solid fa-circle-up"
+                                                    ></i
+                                                ></a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <!-- li end-->
+                                    <!-- li start -->
+                                    <li class="sugg-item">
+                                        <div class="sugg-item-wrapper">
+                                            <p class="sugg-text">
+                                                <span class="author-nickname">
+                                                    Me
+                                                </span>
+                                                One more suggestion for you
+                                            </p>
+                                            <p class="sugg-ranking">
+                                                <span class="rank">5</span
+                                                ><a class="sugg-like-link"
+                                                    ><i
+                                                        class="like fa-solid fa-circle-up"
+                                                    ></i
+                                                ></a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <!-- li end-->
+                                    <!-- li start -->
+                                    <li class="sugg-item">
+                                        <div class="sugg-item-wrapper">
+                                            <p class="sugg-text">
+                                                <span class="author-nickname">
+                                                    Me
+                                                </span>
+                                                One more suggestion for you
+                                            </p>
+                                            <p class="sugg-ranking">
+                                                <span class="rank">5</span
+                                                ><a class="sugg-like-link"
+                                                    ><i
+                                                        class="like fa-solid fa-circle-up"
+                                                    ></i
+                                                ></a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <!-- li end-->
+                                    <!-- li start -->
+                                    <li class="sugg-item">
+                                        <div class="sugg-item-wrapper">
+                                            <p class="sugg-text">
+                                                <span class="author-nickname">
+                                                    Me
+                                                </span>
+                                                Last suggestion
+                                            </p>
+                                            <p class="sugg-ranking">
+                                                <span class="rank">0</span
+                                                ><a class="sugg-like-link"
+                                                    ><i
+                                                        class="like fa-solid fa-circle-up"
+                                                    ></i
+                                                ></a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <!-- li end -->
+
+                                    <!--  LISTitems -->
+                                </ul>
+                            </main>
+                            <footer class="card-footer suggs-card foot">
+                                <div class="card-footer-content">
+                                    <p class="card-footer-text">
+                                        Thank you for your contributions!
+                                    </p>
+                                    <div class="card-footer-links-wrapper">
+                                        <a href="#" class="details-link"
+                                            >Details</a
+                                        >
+                                        <a href="#" class="add-sugg-link"
+                                            >Suggest</a
+                                        >
+                                    </div>
+                                </div>
+                            </footer>
+                        </article>
+
+                        <article class="sugg-card catalog public general">
+                            <header
+                                class="card-header card-brand-logo suggestit-brand"
+                            >
+                                <h5 class="brand logo-line">Topic</h5>
+                            </header>
+
+                            <main class="card-main">
+                                <ul class="sugg-list" role="list">
+                                    <!-- LIST items start -->
+
+                                    <!-- li start -->
+                                    <li class="sugg-item">
+                                        <div class="sugg-item-wrapper">
+                                            <p class="sugg-text">
+                                                <span class="author-nickname">
+                                                    Me
+                                                </span>
+                                                Suggestion in regards to this
+                                                topic
+                                            </p>
+
+                                            <p class="sugg-ranking">
+                                                <span class="rank">15</span>
+                                                <a class="sugg-like-link">
+                                                    <i
+                                                        class="like fa-solid fa-circle-up"
+                                                    ></i>
+                                                </a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <!-- li end-->
+
+                                    <!-- li start -->
+                                    <li class="sugg-item">
+                                        <div class="sugg-item-wrapper">
+                                            <p class="sugg-text">
+                                                <span class="author-nickname">
+                                                    Me
+                                                </span>
+                                                Another suggestion in regards to
+                                                this topic
+                                            </p>
+                                            <p class="sugg-ranking">
+                                                <span class="rank">10</span
+                                                ><a class="sugg-like-link"
+                                                    ><i
+                                                        class="like fa-solid fa-circle-up"
+                                                    ></i
+                                                ></a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <!-- li end-->
+
+                                    <!-- li start -->
+                                    <li class="sugg-item">
+                                        <div class="sugg-item-wrapper">
+                                            <p class="sugg-text">
+                                                <span class="author-nickname">
+                                                    Me
+                                                </span>
+                                                One more suggestion in regards
+                                                to this topic
+                                            </p>
+                                            <p class="sugg-ranking">
+                                                <span class="rank">5</span
+                                                ><a class="sugg-like-link"
+                                                    ><i
+                                                        class="like fa-solid fa-circle-up"
+                                                    ></i
+                                                ></a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <!-- li end-->
+
+                                    <!--  LISTitems -->
+                                </ul>
+                            </main>
+
+                            <footer class="card-footer suggs-card foot">
+                                <div class="card-footer-content">
+                                    <p class="card-footer-text">
+                                        Thank you for your contributions!
+                                    </p>
+                                    <div class="card-footer-links-wrapper">
+                                        <a href="#" class="details-link"
+                                            >Details</a
+                                        >
+                                        <a href="#" class="add-sugg-link"
+                                            >Suggest</a
+                                        >
+                                    </div>
+                                </div>
+                            </footer>
+                        </article>
+
+                        <!-- PRIVATE CATALOG -->
+                        <!-- <section class="catalog private"> -->
+                        <article class="sugg-card catalog private">
+                            <header
+                                class="card-header card-brand-logo suggestit-brand"
+                            >
+                                <h5 class="brand logo-line">A Brand</h5>
+                            </header>
+
+                            <main class="card-main">
+                                <ul class="sugg-list" role="list">
+                                    <!-- LIST items start -->
+
+                                    <!-- li start -->
+                                    <li class="sugg-item">
+                                        <div class="sugg-item-wrapper">
+                                            <p class="sugg-text">
+                                                <span class="author-nickname">
+                                                    Me
+                                                </span>
+                                                I have a suggestion
+                                            </p>
+
+                                            <p class="sugg-ranking">
+                                                <span class="rank">15</span>
+                                                <a class="sugg-like-link">
+                                                    <i
+                                                        class="like fa-solid fa-circle-up"
+                                                    ></i>
+                                                </a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <!-- li end-->
+
+                                    <!-- li start  -->
+                                    <li class="sugg-item">
+                                        <div class="sugg-item-wrapper">
+                                            <p class="sugg-text">
+                                                <span class="author-nickname">
+                                                    Me
+                                                </span>
+                                                Another suggestion for you
+                                            </p>
+                                            <p class="sugg-ranking">
+                                                <span class="rank">10</span
+                                                ><a class="sugg-like-link"
+                                                    ><i
+                                                        class="like fa-solid fa-circle-up"
+                                                    ></i
+                                                ></a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <!-- li end-->
+
+                                    <!-- ADDITONAL -->
+                                    <!-- li start -->
+                                    <li class="sugg-item">
+                                        <div class="sugg-item-wrapper">
+                                            <p class="sugg-text">
+                                                <span class="author-nickname">
+                                                    Me
+                                                </span>
+                                                One more suggestion for you
+                                            </p>
+                                            <p class="sugg-ranking">
+                                                <span class="rank">5</span
+                                                ><a class="sugg-like-link"
+                                                    ><i
+                                                        class="like fa-solid fa-circle-up"
+                                                    ></i
+                                                ></a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <!-- li end-->
+                                    <!-- li start -->
+                                    <li class="sugg-item">
+                                        <div class="sugg-item-wrapper">
+                                            <p class="sugg-text">
+                                                <span class="author-nickname">
+                                                    Me
+                                                </span>
+                                                One more suggestion for you
+                                            </p>
+                                            <p class="sugg-ranking">
+                                                <span class="rank">5</span
+                                                ><a class="sugg-like-link"
+                                                    ><i
+                                                        class="like fa-solid fa-circle-up"
+                                                    ></i
+                                                ></a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <!-- li end-->
+                                    <!-- li start -->
+                                    <li class="sugg-item">
+                                        <div class="sugg-item-wrapper">
+                                            <p class="sugg-text">
+                                                <span class="author-nickname">
+                                                    Me
+                                                </span>
+                                                One more suggestion for you
+                                            </p>
+                                            <p class="sugg-ranking">
+                                                <span class="rank">5</span
+                                                ><a class="sugg-like-link"
+                                                    ><i
+                                                        class="like fa-solid fa-circle-up"
+                                                    ></i
+                                                ></a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <!-- li end-->
+
+                                    <!-- li start -->
+                                    <li class="sugg-item">
+                                        <div class="sugg-item-wrapper">
+                                            <p class="sugg-text">
+                                                <span class="author-nickname">
+                                                    Me
+                                                </span>
+                                                One more suggestion for you
+                                            </p>
+                                            <p class="sugg-ranking">
+                                                <span class="rank">5</span
+                                                ><a class="sugg-like-link"
+                                                    ><i
+                                                        class="like fa-solid fa-circle-up"
+                                                    ></i
+                                                ></a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <!-- li end-->
+                                    <!-- li start -->
+                                    <li class="sugg-item">
+                                        <div class="sugg-item-wrapper">
+                                            <p class="sugg-text">
+                                                <span class="author-nickname">
+                                                    Me
+                                                </span>
+                                                One more suggestion for you
+                                            </p>
+                                            <p class="sugg-ranking">
+                                                <span class="rank">5</span
+                                                ><a class="sugg-like-link"
+                                                    ><i
+                                                        class="like fa-solid fa-circle-up"
+                                                    ></i
+                                                ></a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <!-- li end-->
+                                    <!-- li start -->
+                                    <li class="sugg-item">
+                                        <div class="sugg-item-wrapper">
+                                            <p class="sugg-text">
+                                                <span class="author-nickname">
+                                                    Me
+                                                </span>
+                                                One more suggestion for you
+                                            </p>
+                                            <p class="sugg-ranking">
+                                                <span class="rank">5</span
+                                                ><a class="sugg-like-link"
+                                                    ><i
+                                                        class="like fa-solid fa-circle-up"
+                                                    ></i
+                                                ></a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <!-- li end-->
+                                    <!-- li start -->
+                                    <li class="sugg-item">
+                                        <div class="sugg-item-wrapper">
+                                            <p class="sugg-text">
+                                                <span class="author-nickname">
+                                                    Me
+                                                </span>
+                                                One more suggestion for you
+                                            </p>
+                                            <p class="sugg-ranking">
+                                                <span class="rank">5</span
+                                                ><a class="sugg-like-link"
+                                                    ><i
+                                                        class="like fa-solid fa-circle-up"
+                                                    ></i
+                                                ></a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <!-- li end-->
+                                    <!-- li start -->
+                                    <li class="sugg-item">
+                                        <div class="sugg-item-wrapper">
+                                            <p class="sugg-text">
+                                                <span class="author-nickname">
+                                                    Me
+                                                </span>
+                                                One more suggestion for you
+                                            </p>
+                                            <p class="sugg-ranking">
+                                                <span class="rank">5</span
+                                                ><a class="sugg-like-link"
+                                                    ><i
+                                                        class="like fa-solid fa-circle-up"
+                                                    ></i
+                                                ></a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <!-- li end-->
+                                    <!-- li start -->
+                                    <li class="sugg-item">
+                                        <div class="sugg-item-wrapper">
+                                            <p class="sugg-text">
+                                                <span class="author-nickname">
+                                                    Me
+                                                </span>
+                                                One more suggestion for you
+                                            </p>
+                                            <p class="sugg-ranking">
+                                                <span class="rank">5</span
+                                                ><a class="sugg-like-link"
+                                                    ><i
+                                                        class="like fa-solid fa-circle-up"
+                                                    ></i
+                                                ></a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <!-- li end-->
+                                    <!-- li start -->
+                                    <li class="sugg-item">
+                                        <div class="sugg-item-wrapper">
+                                            <p class="sugg-text">
+                                                <span class="author-nickname">
+                                                    Me
+                                                </span>
+                                                One more suggestion for you
+                                            </p>
+                                            <p class="sugg-ranking">
+                                                <span class="rank">5</span
+                                                ><a class="sugg-like-link"
+                                                    ><i
+                                                        class="like fa-solid fa-circle-up"
+                                                    ></i
+                                                ></a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <!-- li end-->
+                                    <!-- li start -->
+                                    <li class="sugg-item">
+                                        <div class="sugg-item-wrapper">
+                                            <p class="sugg-text">
+                                                <span class="author-nickname">
+                                                    Me
+                                                </span>
+                                                One more suggestion for you
+                                            </p>
+                                            <p class="sugg-ranking">
+                                                <span class="rank">5</span
+                                                ><a class="sugg-like-link"
+                                                    ><i
+                                                        class="like fa-solid fa-circle-up"
+                                                    ></i
+                                                ></a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <!-- li end-->
+                                    <!-- li start -->
+                                    <li class="sugg-item">
+                                        <div class="sugg-item-wrapper">
+                                            <p class="sugg-text">
+                                                <span class="author-nickname">
+                                                    Me
+                                                </span>
+                                                Last suggestion
+                                            </p>
+                                            <p class="sugg-ranking">
+                                                <span class="rank">0</span
+                                                ><a class="sugg-like-link"
+                                                    ><i
+                                                        class="like fa-solid fa-circle-up"
+                                                    ></i
+                                                ></a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <!-- li end -->
+
+                                    <!--  LISTitems -->
+                                </ul>
+                            </main>
+                            <footer class="card-footer suggs-card foot">
+                                <div class="card-footer-content">
+                                    <p class="card-footer-text">
+                                        Thank you for your contributions!
+                                    </p>
+                                    <div class="card-footer-links-wrapper">
+                                        <a href="#" class="details-link"
+                                            >Details</a
+                                        >
+                                        <a href="#" class="add-sugg-link"
+                                            >Suggest</a
+                                        >
+                                    </div>
+                                </div>
+                            </footer>
+                        </article>
+
+                        <article class="sugg-card catalog private">
+                            <header
+                                class="card-header card-brand-logo suggestit-brand"
+                            >
+                                <h5 class="brand logo-line">Brand 2</h5>
+                            </header>
+
+                            <main class="card-main">
+                                <ul class="sugg-list" role="list">
+                                    <!-- LIST items start -->
+
+                                    <!-- li start -->
+                                    <li class="sugg-item">
+                                        <div class="sugg-item-wrapper">
+                                            <p class="sugg-text">
+                                                <span class="author-nickname">
+                                                    Me
+                                                </span>
+                                                Suggestion in regards to this
+                                                company's operations
+                                            </p>
+
+                                            <p class="sugg-ranking">
+                                                <span class="rank">15</span>
+                                                <a class="sugg-like-link">
+                                                    <i
+                                                        class="like fa-solid fa-circle-up"
+                                                    ></i>
+                                                </a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <!-- li end-->
+
+                                    <!-- li start -->
+                                    <li class="sugg-item">
+                                        <div class="sugg-item-wrapper">
+                                            <p class="sugg-text">
+                                                <span class="author-nickname">
+                                                    Me
+                                                </span>
+                                                Another suggestion in regards to
+                                                this company's operations
+                                            </p>
+                                            <p class="sugg-ranking">
+                                                <span class="rank">10</span
+                                                ><a class="sugg-like-link"
+                                                    ><i
+                                                        class="like fa-solid fa-circle-up"
+                                                    ></i
+                                                ></a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <!-- li end-->
+
+                                    <!-- li start -->
+                                    <li class="sugg-item">
+                                        <div class="sugg-item-wrapper">
+                                            <p class="sugg-text">
+                                                <span class="author-nickname">
+                                                    Me
+                                                </span>
+                                                One more suggestion in regards
+                                                to this company's operations
+                                            </p>
+                                            <p class="sugg-ranking">
+                                                <span class="rank">5</span
+                                                ><a class="sugg-like-link"
+                                                    ><i
+                                                        class="like fa-solid fa-circle-up"
+                                                    ></i
+                                                ></a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <!-- li end-->
+
+                                    <!--  LISTitems -->
+                                </ul>
+                            </main>
+
+                            <footer class="card-footer suggs-card foot">
+                                <div class="card-footer-content">
+                                    <p class="card-footer-text">
+                                        Thank you for your contributions!
+                                    </p>
+                                    <div class="card-footer-links-wrapper">
+                                        <a href="#" class="details-link"
+                                            >Details</a
+                                        >
+                                        <a href="#" class="add-sugg-link"
+                                            >Suggest</a
+                                        >
+                                    </div>
+                                </div>
+                            </footer>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- DETAILS vis for all-->
+                <section class="details-view container">
+                    <h2>Details</h2>
+                    
+                        <!-- LOADER show when fetching -->
+                    <!-- <div class="loader"></div> -->
+
+                    <!--CARD-DETAILS-->
+                    <article class="sugg-card details private">
+                        <header
+                            class="card-header card-brand-logo suggestit-brand"
+                        >
+                            <h5 class="brand logo-line">Your Brand</h5>
+                        </header>
+
+                        <main class="card-main">
+                            <ul class="sugg-list" role="list">
+                                <!-- LIST items start -->
+
+                                <!-- li start -->
+                                <li class="sugg-item">
+                                    <div class="sugg-item-wrapper">
+                                        <p class="sugg-text">
+                                            <span class="author-nickname">
+                                                Me
+                                            </span>
+                                            Suggestion for you Lorem, ipsum
+                                            dolor sit amet consectetur
+                                            adipisicing elit. Laboriosam, cum.
+                                            Lorem ipsum dolor sit amet
+                                            consectetur adipisicing elit.
+                                            Doloribus, est?
+
+                                            <!--IF OWNER & NOT TIMED OUT -->
+                                            <!-- <span class="user-sug-list">
+                                                <a
+                                                    href="#"
+                                                    class="edit-user-sugged link"
+                                                    >Edit</a
+                                                >
+                                                <a
+                                                    href="#"
+                                                    class="delete-user-sugged link"
+                                                    >Delete</a
+                                                >
+                                            </span> -->
+                                        </p>
+
+                                        <p class="sugg-ranking">
+                                            <span class="rank">15</span>
+
+                                            <!-- LIKE DISABLED FOR GUESTS & OWNERS -->
+                                            <!--===!? LIKE LIMITED voting!?=== -->
+                                            <a class="sugg-like-link">
+                                                <i
+                                                    class="like fa-solid fa-circle-up"
+                                                ></i>
+                                            </a>
+                                        </p>
+                                    </div>
+                                </li>
+                                <!-- li end-->
+
+                                <!-- li start  -->
+                                <li class="sugg-item">
+                                    <div class="sugg-item-wrapper">
+                                        <p class="sugg-text">
+                                            <span class="author-nickname">
+                                                Me
+                                            </span>
+                                            Another suggestion for you
+                                        </p>
+                                        <p class="sugg-ranking">
+                                            <span class="rank">10</span
+                                            ><a class="sugg-like-link"
+                                                ><i
+                                                    class="like fa-solid fa-circle-up"
+                                                ></i
+                                            ></a>
+                                        </p>
+                                    </div>
+                                </li>
+                                <!-- li end-->
+
+                                <!-- ADDITONAL -->
+                                <!-- li start -->
+                                <li class="sugg-item">
+                                    <div class="sugg-item-wrapper">
+                                        <p class="sugg-text">
+                                            <span class="author-nickname">
+                                                Me
+                                            </span>
+                                            One more suggestion for you
+                                        </p>
+                                        <p class="sugg-ranking">
+                                            <span class="rank">5</span
+                                            ><a class="sugg-like-link"
+                                                ><i
+                                                    class="like fa-solid fa-circle-up"
+                                                ></i
+                                            ></a>
+                                        </p>
+                                    </div>
+                                </li>
+                                <!-- li end-->
+                                <!-- li start -->
+                                <li class="sugg-item">
+                                    <div class="sugg-item-wrapper">
+                                        <p class="sugg-text">
+                                            <span class="author-nickname">
+                                                Me
+                                            </span>
+                                            One more suggestion for you
+                                        </p>
+                                        <p class="sugg-ranking">
+                                            <span class="rank">5</span
+                                            ><a class="sugg-like-link"
+                                                ><i
+                                                    class="like fa-solid fa-circle-up"
+                                                ></i
+                                            ></a>
+                                        </p>
+                                    </div>
+                                </li>
+                                <!-- li end-->
+                                <!-- li start -->
+                                <li class="sugg-item">
+                                    <div class="sugg-item-wrapper">
+                                        <p class="sugg-text">
+                                            <span class="author-nickname">
+                                                Me
+                                            </span>
+                                            One more suggestion for you
+                                        </p>
+                                        <p class="sugg-ranking">
+                                            <span class="rank">5</span
+                                            ><a class="sugg-like-link"
+                                                ><i
+                                                    class="like fa-solid fa-circle-up"
+                                                ></i
+                                            ></a>
+                                        </p>
+                                    </div>
+                                </li>
+                                <!-- li end-->
+
+                                <!-- li start -->
+                                <li class="sugg-item">
+                                    <div class="sugg-item-wrapper">
+                                        <p class="sugg-text">
+                                            <span class="author-nickname">
+                                                Me
+                                            </span>
+                                            One more suggestion for you
+                                        </p>
+                                        <p class="sugg-ranking">
+                                            <span class="rank">5</span
+                                            ><a class="sugg-like-link"
+                                                ><i
+                                                    class="like fa-solid fa-circle-up"
+                                                ></i
+                                            ></a>
+                                        </p>
+                                    </div>
+                                </li>
+                                <!-- li end-->
+                                <!-- li start -->
+                                <li class="sugg-item">
+                                    <div class="sugg-item-wrapper">
+                                        <p class="sugg-text">
+                                            <span class="author-nickname">
+                                                Me
+                                            </span>
+                                            One more suggestion for you
+                                        </p>
+                                        <p class="sugg-ranking">
+                                            <span class="rank">5</span
+                                            ><a class="sugg-like-link"
+                                                ><i
+                                                    class="like fa-solid fa-circle-up"
+                                                ></i
+                                            ></a>
+                                        </p>
+                                    </div>
+                                </li>
+                                <!-- li end-->
+                              
+                                <!-- li start -->
+                                <li class="sugg-item">
+                                    <div class="sugg-item-wrapper">
+                                        <p class="sugg-text">
+                                            <span class="author-nickname">
+                                                Me
+                                            </span>
+                                            One more suggestion for you
+                                        </p>
+                                        <p class="sugg-ranking">
+                                            <span class="rank">5</span
+                                            ><a class="sugg-like-link"
+                                                ><i
+                                                    class="like fa-solid fa-circle-up"
+                                                ></i
+                                            ></a>
+                                        </p>
+                                    </div>
+                                </li>
+                                <!-- li end-->                             
+                           
+                                <!-- li start -->
+                                <li class="sugg-item">
+                                    <div class="sugg-item-wrapper">
+                                        <p class="sugg-text">
+                                            <span class="author-nickname">
+                                                Me
+                                            </span>
+                                            One more suggestion for you
+                                        </p>
+                                        <p class="sugg-ranking">
+                                            <span class="rank">1</span
+                                            ><a class="sugg-like-link"
+                                                ><i
+                                                    class="like fa-solid fa-circle-up"
+                                                ></i
+                                            ></a>
+                                        </p>
+                                    </div>
+                                </li>
+                                <!-- li end-->
+                               
+                                <!-- li start -->
+                                <li class="sugg-item">
+                                    <div class="sugg-item-wrapper">
+                                        <p class="sugg-text">
+                                            <span class="author-nickname">
+                                                Me
+                                            </span>
+                                            Last suggestion
+                                        </p>
+                                        <p class="sugg-ranking">
+                                            <span class="rank">0</span
+                                            ><a class="sugg-like-link"
+                                                ><i
+                                                    class="like fa-solid fa-circle-up"
+                                                ></i
+                                            ></a>
+                                        </p>
+                                    </div>
+                                </li>
+                                <!-- li end -->
+
+                                <!--  LISTitems -->
+                            </ul>
+                        </main>
+                        <footer class="card-footer suggs-card foot">
+                            <div class="card-footer-content">
+                                <p class="card-footer-owner">Owner</p>
+                                <p class="card-footer-text">
+                                    Thank you for your contributions!
+                                </p>
+
+                                <div class="card-footer-links-wrapper">
+                                    <!-- NOT VISIBLE WHEN OPENED -->
+                                    <a href="#" class="details-link">Details</a>
+
+                                    <!-- VISIBLE FOR LOGGED NOT OWNERS -->
+                                    <a href="#" class="add-sugg-link"
+                                        >Suggest</a
+                                    >
+                                    <!-- <a href="#" class="print details">Print</a> -->
+                                    <!-- <a href="#" class="print email details"
+                                        >Email</a
+                                    > -->
+
+                                    <!-- VISIBLE FOR LOGGED OWNER ONLY -->
+                                        <!-- <p class="countdown-text"><span class="count-end">20</span> days left</p> -->
+
+                                        <!-- if POLL ENDED -->
+                                        <!-- <p class="countdown-text">Poll ended</p> -->
+
+                                    <!--VISIBLE FOR OWNER IF NOT TIMED OUT -->
+                                    <a href="#" class="card-details edit-card"
+                                        >Edit</a
+                                    >
+                                    <a href="#" class="card-details delete-card"
+                                        >Delete</a
+                                    >
+                                </div>
+                            </div>
+                        </footer>
+                    </article>
+                    <!-- </div> -->
+                </section>
+                <!-- end details -->
+
+                <!--*** ADD A SUGGESTION -->
+                <!-- ASK for poll-code auth for suggesting -->
+                <section class="poll-code form-wrapper">
+                    <form
+                        action="#"
+                        method="post"
+                        id="poll-code-form"
+                        class="poll-code form"
+                    >
+                        <h2>Enter Code</h2>
+                        <input
+                            type="text"
+                            id="poll-code"
+                            name="poll-code"
+                            minlength="6"
+                            maxlength="6"
+                            required
+                        />
+                        <p class="poll-code error-message">
+                            Sorry, this code is incorrect. Please, try again or
+                            obtain a code from your provider first.
+                        </p>
+
+                        <!-- <span class="poll-code add sugg author" id="add-sugg-author">
+                    Me
+                </span> -->
+                        <button
+                            type="submit"
+                            method="get"
+                            value="Submit"
+                            class="btn dark subm"
+                            form="poll-code-form"
+                            id="poll-code-btn-form"
+                            disabled
+                        >
+                            Submit
+                        </button>
+                    </form>
+                </section>
+
+                <!-- authorised ADD SUGGESTION form -->
+                <section class="add-sugg form-wrapper">
+                    <!-- ?with or without li? -->
+                    <form
+                        action="#"
+                        method="post"
+                        id="add-form"
+                        class="add-sugg form"
+                    >
+                        <h2>Add a Suggestion</h2>
+                        <p><label for="sugg">Your Suggestion:</label></p>
+
+                        <textarea
+                            class="sugg-text-add"
+                            id="sugg"
+                            form="add-form"
+                            name="sugg"
+                            rows="4"
+                            cols="50"
+                            maxlength="150"
+                            required
+                        >
+                        </textarea>
+                        <span class="add sugg author" id="add-sugg-author">
+                            Me
+                        </span>
+                        <button
+                            type="submit"
+                            method="post"
+                            value="Submit"
+                            class="add-sugg btn dark subm"
+                            form="add-sugg"
+                            id="btn-add-form"
+                            disabled
+                        >
+                            Submit
+                        </button>
+                    </form>
+
+                    <!-- <div class="sugg-item-wrapper">
+                        <p class="sugg-text" placeholder="Suggestion">
+                            <span class="author">
+                                Me
+                            </span>
+                            Another suggestion for you
+                        </p>
+                        <p class="sugg-ranking">
+                            <span class="rank">10</span
+                            ><a class="sugg-like-link"
+                                ><i
+                                    class="like fa-solid fa-circle-up"
+                                ></i
+                            ></a>
+                        </p>
+                    </div> -->
+                </section>
+                <!-- END ADD POST -->
+
+                <!-- REGISTER -->
+                <section class="register form-wrapper">
+                    <h2>Register</h2>
+                    <form
+                        action="#"
+                        method="post"
+                        id="reg-form"
+                        class="register form"
+                    >
+                        <div class="wrap fname">
+                            <label for="fname" class="reg lbl fname"
+                                >First Name</label
+                            >
+                            <input
+                                type="text"
+                                class="reg entry fname"
+                                name="fname"
+                                id="reg-fname"
+                                minlength="3"
+                                autocomplete="given-name"
+                                required
+                            />
+                        </div>
+                        <div class="wrap lname">
+                            <label for="lname" class="reg lbl lname"
+                                >Last Name</label
+                            >
+                            <input
+                                type="text"
+                                class="reg entry lname"
+                                name="lname"
+                                id="reg-lname"
+                                minlength="3"
+                                autocomplete="family-name"
+                                required
+                            />
+                        </div>
+                        <div class="wrap email">
+                            <label for="email" class="reg lbl email"
+                                >Email</label
+                            >
+                            <input
+                                type="email"
+                                class="reg entry email"
+                                name="email"
+                                id="reg-email"
+                                autocomplete="email"
+                                required
+                            />
+                        </div>
+                        <div class="wrap pass">
+                            <label for="pass" class="reg lbl pass"
+                                >Password</label
+                            >
+                            <input
+                                type="password"
+                                class="reg entry pass"
+                                name="pass"
+                                id="reg-pass"
+                                minlength="6"
+                                placeholder="6 characters minimum"
+                                required
+                            />
+                        </div>
+                        <div class="wrap repass">
+                            <label for="repass" class="reg lbl repass"
+                                >Confirm Password</label
+                            >
+                            <input
+                                type="password"
+                                class="reg entry repass"
+                                name="repass"
+                                id="reg-repass"
+                                required
+                            />
+                        </div>
+                        <!-- <div class="wrap code">
+                            <label for="" class="reg lbl code">Code</label>
+                            <input type="text" class="reg entry code" name="reg entry code" id="reg-entry-code" />
+                        </div> -->
+
+                        <button
+                            type="submit"
+                            method="post"
+                            value="Register"
+                            class="btn dark subm"
+                            form="reg-form"
+                            id="btn-reg-form"
+                            disabled
+                        >
+                            Register
+                        </button>
+
+                        <a href="" class="login link"
+                            >Already have an account? Login</a
+                        >
+                    </form>
+                </section>
+                <!-- END REGISTER -->
+
+                <!-- LOGIN -->
+                <section class="login form-wrapper">
+                    <h2>Login</h2>
+                    <form
+                        action="#"
+                        method="get"
+                        id="log-form"
+                        class="login form"
+                    >
+                        <div class="wrap email">
+                            <label for="email" class="log lbl email"
+                                >Email</label
+                            >
+                            <input
+                                type="email"
+                                class="log entry email"
+                                name="email"
+                                id="log-email"
+                                autocomplete="email"
+                                required
+                            />
+                        </div>
+                        <div class="wrap pass">
+                            <label for="pass" class="log lbl pass"
+                                >Password</label
+                            >
+                            <input
+                                type="password"
+                                class="log entry pass"
+                                name="pass"
+                                id="log-pass"
+                                autocomplete="current-password"
+                                required
+                            />
+                        </div>
+                        <button
+                            type="submit"
+                            method="get"
+                            value="Login"
+                            class="log btn dark subm"
+                            form="log-form"
+                            id="btn-log-form"
+                            disabled
+                        >
+                            Login
+                        </button>
+                        <a href="" class="login link"
+                            >Don't have an account? Register</a
+                        >
+                    </form>
+                </section>
+                <!-- END LOGIN -->
+
+                <!-- PROFILE -->
+                <section class="profile window container">
+                    <h2>Profile</h2>                    
+
+                    <div class="profile-wrapper">
+                        <!--||PROF INFO-->
+                        <div class="profile-form-wrap">
+                            <form
+                                action="#"
+                                method="post"
+                                id="prof-form"
+                                class="prof form"
+                            >
+                                <div class="wrap fname">
+                                    <label
+                                        for="prof-fname"
+                                        class="prof lbl fname"
+                                        >First Name</label
+                                    >
+                                    <input
+                                        type="text"
+                                        class="prof entry fname"
+                                        name="prof-fname"
+                                        id="prof-fname"
+                                        value="John"
+                                    />
+                                </div>
+                                <div class="wrap prof-lname">
+                                    <label
+                                        for="prof-lname"
+                                        class="prof lbl lname"
+                                        >Last Name</label
+                                    >
+                                    <input
+                                        type="text"
+                                        class="prof entry lname"
+                                        name="prof-lname"
+                                        id="prof-lname"
+                                        value="Johnson"
+                                    />
+                                </div>
+                                <div class="wrap email">
+                                    <label
+                                        for="prof-email"
+                                        class="prof lbl email"
+                                        >Email</label
+                                    >
+                                    <input
+                                        type="email"
+                                        class="prof entry email"
+                                        name="prof-email"
+                                        id="prof-email"
+                                        value="johnson@gmail.com"
+                                    />
+                                </div>
+
+                                <!-- <div class="wrap pass">
+                            <label for="pass" class="prof lbl pass"
+                                >Password</label
+                            >
+                            <input
+                                type="password"
+                                class="prof entry pass"
+                                name="prof-pass"
+                                id="prof-pass"
+                                minlength="6"
+                                placeholder=" 6 characters minimum"
+                                required
+                            />
+                        </div> -->
+
+                                <!-- <div class="wrap repass">
+                            <label for="repass" class="prof lbl repass"
+                                >Confirm Password</label
+                            >
+                            <input
+                                type="password"
+                                class="prof entry repass"
+                                name="prof-repass"
+                                id="prof-repass"
+                                required
+                            />
+                        </div> -->
+
+                                <!-- <button
+                            type="submit"
+                            method="post"
+                            value="Register"
+                            class="prof btn dark subm"
+                            form="prof-form"
+                            id="btn-prof-form"
+                            disabled
+                        >
+                            Register
+                        </button> -->
+                            </form>
+                            <button class="btn dark show published">
+                                Published
+                            </button>
+                            <button class="btn light show create">
+                                Create
+                            </button>
+                            <button class="btn dark show suggested">
+                                Suggested
+                            </button>
+                        </div>
+
+                        <!-- SECTION USER PROFILE INFO-CARDS -->
+                        <section class="user-profile-cards-wrapper">
+                            <!-- || sec USER-OWNER PUBLISHED polls -->
+                            <section class="user published">
+                                <h2 class="user-title">Published</h2>
+
+                                <!-- LOADER show when fetching -->
+                                <!-- <div class="loader"></div> -->
+
+                                <div class="user-article-wrapper">
+                                    <!-- 1st card -->
+                                    <article class="sugg-card catalog private">
+                                        <header
+                                            class="card-header card-brand-logo suggestit-brand"
+                                        >
+                                            <h5 class="brand logo-line">
+                                                Your Brand
+                                            </h5>
+                                        </header>
+
+                                        <main class="card-main">
+                                            <ul class="sugg-list" role="list">
+                                                <!-- LIST items start -->
+
+                                                <!-- li start -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            Suggestion for you
+                                                        </p>
+
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >15</span
+                                                            >
+                                                            <a
+                                                                class="sugg-like-link"
+                                                            >
+                                                                <i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i>
+                                                            </a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end-->
+
+                                                <!-- li start  -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            Another suggestion
+                                                            for you
+                                                        </p>
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >10</span
+                                                            ><a
+                                                                class="sugg-like-link"
+                                                                ><i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i
+                                                            ></a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end-->
+
+                                                <!-- ADDITONAL -->
+                                                <!-- li start -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            One more suggestion
+                                                            for you
+                                                        </p>
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >5</span
+                                                            ><a
+                                                                class="sugg-like-link"
+                                                                ><i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i
+                                                            ></a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end-->
+                                                <!-- li start -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            One more suggestion
+                                                            for you
+                                                        </p>
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >5</span
+                                                            ><a
+                                                                class="sugg-like-link"
+                                                                ><i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i
+                                                            ></a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end-->
+                                                <!-- li start -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            One more suggestion
+                                                            for you
+                                                        </p>
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >5</span
+                                                            ><a
+                                                                class="sugg-like-link"
+                                                                ><i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i
+                                                            ></a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end-->
+
+                                                <!-- li start -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            One more suggestion
+                                                            for you
+                                                        </p>
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >5</span
+                                                            ><a
+                                                                class="sugg-like-link"
+                                                                ><i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i
+                                                            ></a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end-->
+                                                <!-- li start -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            One more suggestion
+                                                            for you
+                                                        </p>
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >5</span
+                                                            ><a
+                                                                class="sugg-like-link"
+                                                                ><i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i
+                                                            ></a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end-->
+                                                <!-- li start -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            One more suggestion
+                                                            for you
+                                                        </p>
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >5</span
+                                                            ><a
+                                                                class="sugg-like-link"
+                                                                ><i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i
+                                                            ></a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end-->
+                                                <!-- li start -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            One more suggestion
+                                                            for you
+                                                        </p>
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >5</span
+                                                            ><a
+                                                                class="sugg-like-link"
+                                                                ><i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i
+                                                            ></a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end-->
+                                                <!-- li start -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            One more suggestion
+                                                            for you
+                                                        </p>
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >5</span
+                                                            ><a
+                                                                class="sugg-like-link"
+                                                                ><i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i
+                                                            ></a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end-->
+                                                <!-- li start -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            One more suggestion
+                                                            for you
+                                                        </p>
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >5</span
+                                                            ><a
+                                                                class="sugg-like-link"
+                                                                ><i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i
+                                                            ></a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end-->
+                                                <!-- li start -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            One more suggestion
+                                                            for you
+                                                        </p>
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >5</span
+                                                            ><a
+                                                                class="sugg-like-link"
+                                                                ><i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i
+                                                            ></a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end-->
+                                                <!-- li start -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            One more suggestion
+                                                            for you
+                                                        </p>
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >5</span
+                                                            ><a
+                                                                class="sugg-like-link"
+                                                                ><i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i
+                                                            ></a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end-->
+                                                <!-- li start -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            Last suggestion
+                                                        </p>
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >0</span
+                                                            ><a
+                                                                class="sugg-like-link"
+                                                                ><i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i
+                                                            ></a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end -->
+
+                                                <!--  LISTitems -->
+                                            </ul>
+                                        </main>
+                                        <footer
+                                            class="card-footer suggs-card foot"
+                                        >
+                                            <div class="card-footer-content">
+                                                <p class="card-footer-text">
+                                                    Thank you for your
+                                                    contributions!
+                                                </p>
+                                                <div
+                                                    class="card-footer-links-wrapper"
+                                                >
+                                                    <a
+                                                        href="#"
+                                                        class="details-link"
+                                                        >Details</a
+                                                    >
+                                                    <a
+                                                        href="#"
+                                                        class="add-sugg-link"
+                                                        >Suggest</a
+                                                    >
+                                                </div>
+                                            </div>
+                                        </footer>
+                                    </article>
+
+                                    <!-- 2nd card -->
+                                    <article class="sugg-card catalog private">
+                                        <header
+                                            class="card-header card-brand-logo suggestit-brand"
+                                        >
+                                            <h5 class="brand logo-line">
+                                                Your Brand
+                                            </h5>
+                                        </header>
+
+                                        <main class="card-main">
+                                            <ul class="sugg-list" role="list">
+                                                <!-- LIST items start -->
+
+                                                <!-- li start -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            Suggestion for you
+                                                        </p>
+
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >15</span
+                                                            >
+                                                            <a
+                                                                class="sugg-like-link"
+                                                            >
+                                                                <i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i>
+                                                            </a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end-->
+
+                                                <!-- li start  -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            Another suggestion
+                                                            for you
+                                                        </p>
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >10</span
+                                                            ><a
+                                                                class="sugg-like-link"
+                                                                ><i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i
+                                                            ></a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end-->
+
+                                                <!-- ADDITONAL -->
+                                                <!-- li start -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            One more suggestion
+                                                            for you
+                                                        </p>
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >5</span
+                                                            ><a
+                                                                class="sugg-like-link"
+                                                                ><i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i
+                                                            ></a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end-->
+                                                <!-- li start -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            One more suggestion
+                                                            for you
+                                                        </p>
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >5</span
+                                                            ><a
+                                                                class="sugg-like-link"
+                                                                ><i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i
+                                                            ></a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end-->
+                                                <!-- li start -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            One more suggestion
+                                                            for you
+                                                        </p>
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >5</span
+                                                            ><a
+                                                                class="sugg-like-link"
+                                                                ><i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i
+                                                            ></a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end-->
+
+                                                <!-- li start -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            One more suggestion
+                                                            for you
+                                                        </p>
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >5</span
+                                                            ><a
+                                                                class="sugg-like-link"
+                                                                ><i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i
+                                                            ></a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end-->
+                                                <!-- li start -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            One more suggestion
+                                                            for you
+                                                        </p>
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >5</span
+                                                            ><a
+                                                                class="sugg-like-link"
+                                                                ><i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i
+                                                            ></a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end-->
+                                                <!-- li start -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            One more suggestion
+                                                            for you
+                                                        </p>
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >5</span
+                                                            ><a
+                                                                class="sugg-like-link"
+                                                                ><i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i
+                                                            ></a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end-->
+                                                <!-- li start -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            One more suggestion
+                                                            for you
+                                                        </p>
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >5</span
+                                                            ><a
+                                                                class="sugg-like-link"
+                                                                ><i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i
+                                                            ></a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end-->
+                                                <!-- li start -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            One more suggestion
+                                                            for you
+                                                        </p>
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >5</span
+                                                            ><a
+                                                                class="sugg-like-link"
+                                                                ><i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i
+                                                            ></a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end-->
+                                                <!-- li start -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            One more suggestion
+                                                            for you
+                                                        </p>
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >5</span
+                                                            ><a
+                                                                class="sugg-like-link"
+                                                                ><i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i
+                                                            ></a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end-->
+                                                <!-- li start -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            One more suggestion
+                                                            for you
+                                                        </p>
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >5</span
+                                                            ><a
+                                                                class="sugg-like-link"
+                                                                ><i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i
+                                                            ></a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end-->
+                                                <!-- li start -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            One more suggestion
+                                                            for you
+                                                        </p>
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >5</span
+                                                            ><a
+                                                                class="sugg-like-link"
+                                                                ><i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i
+                                                            ></a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end-->
+                                                <!-- li start -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            Last suggestion
+                                                        </p>
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >0</span
+                                                            ><a
+                                                                class="sugg-like-link"
+                                                                ><i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i
+                                                            ></a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end -->
+
+                                                <!--  LISTitems -->
+                                            </ul>
+                                        </main>
+                                        <footer
+                                            class="card-footer suggs-card foot"
+                                        >
+                                            <div class="card-footer-content">
+                                                <p class="card-footer-text">
+                                                    Thank you for your
+                                                    contributions!
+                                                </p>
+                                                <div
+                                                    class="card-footer-links-wrapper"
+                                                >
+                                                    <a
+                                                        href="#"
+                                                        class="details-link"
+                                                        >Details</a
+                                                    >
+                                                    <a
+                                                        href="#"
+                                                        class="add-sugg-link"
+                                                        >Suggest</a
+                                                    >
+                                                </div>
+                                            </div>
+                                        </footer>
+                                    </article>
+
+                                    <!-- 3rd card -->
+                                    <article class="sugg-card catalog private">
+                                        <header
+                                            class="card-header card-brand-logo suggestit-brand"
+                                        >
+                                            <h5 class="brand logo-line">
+                                                Your Brand
+                                            </h5>
+                                        </header>
+
+                                        <main class="card-main">
+                                            <ul class="sugg-list" role="list">
+                                                <!-- LIST items start -->
+
+                                                <!-- li start -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            Suggestion for you
+                                                        </p>
+
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >15</span
+                                                            >
+                                                            <a
+                                                                class="sugg-like-link"
+                                                            >
+                                                                <i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i>
+                                                            </a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end-->
+
+                                                <!-- li start  -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            Another suggestion
+                                                            for you
+                                                        </p>
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >10</span
+                                                            ><a
+                                                                class="sugg-like-link"
+                                                                ><i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i
+                                                            ></a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end-->
+
+                                                <!-- ADDITONAL -->
+                                                <!-- li start -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            One more suggestion
+                                                            for you
+                                                        </p>
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >5</span
+                                                            ><a
+                                                                class="sugg-like-link"
+                                                                ><i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i
+                                                            ></a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end-->
+                                                <!-- li start -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            One more suggestion
+                                                            for you
+                                                        </p>
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >5</span
+                                                            ><a
+                                                                class="sugg-like-link"
+                                                                ><i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i
+                                                            ></a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end-->
+                                                <!-- li start -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            One more suggestion
+                                                            for you
+                                                        </p>
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >5</span
+                                                            ><a
+                                                                class="sugg-like-link"
+                                                                ><i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i
+                                                            ></a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end-->
+
+                                                <!-- li start -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            One more suggestion
+                                                            for you
+                                                        </p>
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >5</span
+                                                            ><a
+                                                                class="sugg-like-link"
+                                                                ><i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i
+                                                            ></a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end-->
+                                                <!-- li start -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            One more suggestion
+                                                            for you
+                                                        </p>
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >5</span
+                                                            ><a
+                                                                class="sugg-like-link"
+                                                                ><i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i
+                                                            ></a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end-->
+                                                <!-- li start -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            One more suggestion
+                                                            for you
+                                                        </p>
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >5</span
+                                                            ><a
+                                                                class="sugg-like-link"
+                                                                ><i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i
+                                                            ></a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end-->
+                                                <!-- li start -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            One more suggestion
+                                                            for you
+                                                        </p>
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >5</span
+                                                            ><a
+                                                                class="sugg-like-link"
+                                                                ><i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i
+                                                            ></a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end-->
+                                                <!-- li start -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            One more suggestion
+                                                            for you
+                                                        </p>
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >5</span
+                                                            ><a
+                                                                class="sugg-like-link"
+                                                                ><i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i
+                                                            ></a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end-->
+                                                <!-- li start -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            One more suggestion
+                                                            for you
+                                                        </p>
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >5</span
+                                                            ><a
+                                                                class="sugg-like-link"
+                                                                ><i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i
+                                                            ></a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end-->
+                                                <!-- li start -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            One more suggestion
+                                                            for you
+                                                        </p>
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >5</span
+                                                            ><a
+                                                                class="sugg-like-link"
+                                                                ><i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i
+                                                            ></a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end-->
+                                                <!-- li start -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            One more suggestion
+                                                            for you
+                                                        </p>
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >5</span
+                                                            ><a
+                                                                class="sugg-like-link"
+                                                                ><i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i
+                                                            ></a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end-->
+                                                <!-- li start -->
+                                                <li class="sugg-item">
+                                                    <div
+                                                        class="sugg-item-wrapper"
+                                                    >
+                                                        <p class="sugg-text">
+                                                            <span
+                                                                class="author-nickname"
+                                                            >
+                                                                Me
+                                                            </span>
+                                                            Last suggestion
+                                                        </p>
+                                                        <p class="sugg-ranking">
+                                                            <span class="rank"
+                                                                >0</span
+                                                            ><a
+                                                                class="sugg-like-link"
+                                                                ><i
+                                                                    class="like fa-solid fa-circle-up"
+                                                                ></i
+                                                            ></a>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <!-- li end -->
+
+                                                <!--  LISTitems -->
+                                            </ul>
+                                        </main>
+                                        <footer
+                                            class="card-footer suggs-card foot"
+                                        >
+                                            <div class="card-footer-content">
+                                                <p class="card-footer-text">
+                                                    Thank you for your
+                                                    contributions!
+                                                </p>
+                                                <div
+                                                    class="card-footer-links-wrapper"
+                                                >
+                                                    <a
+                                                        href="#"
+                                                        class="details-link"
+                                                        >Details</a
+                                                    >
+                                                    <a
+                                                        href="#"
+                                                        class="add-sugg-link"
+                                                        >Suggest</a
+                                                    >
+                                                </div>
+                                            </div>
+                                        </footer>
+                                    </article>
+                                </div>
+                            </section>
+
+                            <!-- || sec USER-OWNER CREATE polls -->
+                            <section class="user create">
+                                <h2 class="user-title">Create</h2>
+
+                                 <!-- LOADER show when fetching -->
+                                <!-- <div class="loader"></div> -->
+
+                                <div class="user-create-wrapper">
+                                    <form
+                                        action="#"
+                                        method="post"
+                                        id="create-card-form"
+                                        class="create-card form"
+                                    >
+                                        <div class="wrap card-title">
+                                            <label
+                                                for="card-name"
+                                                class="lbl card-name"
+                                                >Feedback Form Title</label
+                                            >
+                                            <input
+                                                type="text"
+                                                class="card-name"
+                                                name="card-name"
+                                                id="card-name"
+                                                placeholder="Enter title"
+                                                minlength="3"
+                                                maxlength="30"
+                                                required
+                                            />
+                                        </div>
+                                        <div class="wrap card-code">
+                                            <label
+                                                for="card-code"
+                                                class="lbl card-code"
+                                                >Create Code</label
+                                            >
+                                            <!-- ?!POLL-ID?! -->
+                                            <input
+                                                type="text"
+                                                class="card-code"
+                                                name="card-code"
+                                                id="card-code"
+                                                minlength="6"
+                                                maxlength="6"
+                                                placeholder="Create form code"
+                                                required
+                                            />
+                                        </div>
+                                        <!-- <div class="wrap card-timeout">
+                                            <label
+                                                for="card-timeout"
+                                                class="lbl card-timeout"
+                                                >End Date</label
+                                            >
+                                            <input
+                                                type="date"
+                                                class="card-timeout"
+                                                name="card-timeout"
+                                                id="card-timeout"
+                                                min="2023-03-20"
+                                                max="2023-06-20"
+                                                value="2023-03-01"
+                                                required
+                                            />
+                                        </div> -->
+
+                                        <button
+                                            type="submit"
+                                            method="post"
+                                            value="Create"
+                                            class="create btn dark subm"
+                                            form="create-card-form"
+                                            id="btn-create-form"
+                                            disabled
+                                        >
+                                            Submit
+                                        </button>
+                                    </form>
+                                    <!-- <article class="create sugg-card catalog private">
+                                        <header
+                                            class="card-header card-brand-logo suggestit-brand"
+                                        >
+                                            <h5 class="brand logo-line">
+                                                Your Brand
+                                            </h5>
+                                        </header>
+
+                                        <main class="card-main">
+                                            <ul class="sugg-list" role="list">
+                                               
+                                            </ul>
+                                        </main>
+                                        <footer
+                                            class="card-footer suggs-card foot"
+                                        >
+                                            <div class="card-footer-content">
+                                                <p class="card-footer-text">
+                                                    Thank you for your
+                                                    contributions!
+                                                </p>
+                                                <div
+                                                    class="card-footer-links-wrapper"
+                                                >
+                                                    <a
+                                                        href="#"
+                                                        class="details-link"
+                                                        >Details</a
+                                                    >
+                                                    <a
+                                                        href="#"
+                                                        class="add-sugg-link"
+                                                        >Suggest</a
+                                                    >
+                                                </div>
+                                            </div>
+                                        </footer>
+                                    </article> -->
+                                </div>
+                            </section>
+
+                            <!-- || USER-OWNER SUGGESTIONS -->
+                            <section class="user suggested">
+                                <h2 class="user-title">Suggested</h2>
+
+                               <!-- LOADER show when fetching -->
+                                  <!-- <div class="loader"></div> -->
+
+                                <div class="user-sugged-wrapper">
+                                    <!-- ???LIST SHOWS/ANY FUNC?! -->
+                                    <ul class="user-sugged-list" role="list">
+                                        <li class="user-sugged-li-items">
+                                            Lorem ipsum dolor sit amet
+                                            consectetur adipisicing elit.
+                                            Aliquid, ut.
+
+                                            <!-- VIS IF OWNER & NOT TIMED OUT -->
+                                            <span class="user-sug-list">
+                                                <a
+                                                    href="#"
+                                                    class="edit-user-sugged link"
+                                                    >Edit</a
+                                                >
+                                                <a
+                                                    href="#"
+                                                    class="delete-user-sugged link"
+                                                    >Delete</a
+                                                >
+                                            </span>
+                                        </li>
+                                        <li class="user-sugg-li-items">
+                                            Lorem ipsum dolor sit amet
+                                            consectetur adipisicing elit.
+                                            Aliquid, ut.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </section>
+                        </section>
+                    </div>
+                </section>
+            </section>
+            <!-- end main section -->
+        </main>
+
+        <!-- || FOOTER -->
+        <footer class="page footer">
+            <section class="page footer container special-border">
+                <p>
+                    Copyright &copy 2023 Suggest<span class="suggest-it"
+                        >It</span
+                    >
+                    All rights reserved
+                </p>
+            </section>
+        </footer>
+    </body>
+</html>

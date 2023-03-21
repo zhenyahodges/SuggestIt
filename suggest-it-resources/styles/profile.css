@@ -1,0 +1,124 @@
+.profile.window.container {
+    display: none;
+      height: auto;
+      padding: 4rem;
+    box-shadow: 5px 5px 17px 0px #688589;
+    /* background: linear-gradient(144deg, rgba(250,184,122,1) 0%, rgba(194,226,238,1) 56%, rgba(250,184,122,1) 100%); */
+    /* background: linear-gradient(144deg, rgba(250,184,122,1) 0%, rgba(255,255,255,1) 56%, rgba(250,184,122,1) 100%); */
+    
+    /* background: linear-gradient(144deg, rgba(250,184,122,0.8274160005799195) 0%, rgba(255,255,255,1) 56%, rgba(250,184,122,0.821813759683561) 100%); */
+}
+
+.profile-wrapper {
+    width: 90%;
+    /* height: auto; */
+    margin: 0% 5%;
+
+}
+
+#prof-form {
+    flex-flow: row nowrap;
+}
+
+.wrap.fname,
+.wrap.lname,
+.wrap.email {
+    justify-content: unset;
+    gap: 1rem;
+}
+
+.prof.lbl {
+    font-weight: 800;
+}
+
+
+.prof.entry {
+    border: none;
+    background-color: transparent;
+}
+
+.show {
+    margin: 2rem 1rem;
+}
+
+.user-profile-cards-wrapper {
+    margin: 0 auto;
+}
+
+.user-title {
+    font-style: italic;
+    color: var(--clr-drk-mid);
+}
+
+/* all */
+.user {
+    width: 100%;
+    /* height: 100vh; */
+}
+
+/*|| PUBLISHED */
+.user.published {
+    display: none;
+}
+
+.user-article-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+/*|| CREATE */
+.user.create {
+    display: none;
+}
+
+/* Create Form Styles*/
+.user-create-wrapper {
+    width: 70%;
+    margin: 0 auto;
+}
+
+input.card-code,
+input.card-name
+ {
+    flex: 1 0 60%;
+}
+
+.lbl.card-code,
+.lbl.card-name,
+.lbl.card-timeout
+ {
+    flex: 0 1 40%;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: left;
+}
+
+input.card-timeout{
+    flex: 0 0 18%;
+}
+
+
+/*|| SUGGESTED */
+.user.suggested {
+    display: none;
+}
+
+.user-sugged-list{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: start;
+    text-align: left;
+}
+
+.edit-user-sugged,
+.delete-user-sugged{
+    color: var(--clr-highlight);
+    padding-left: 1rem;
+    font-weight: 700;
+}
+
+.edit-user-sugged:hover,
+.delete-user-sugged:hover{
+    color: var(---clr-bgr);
+
+}

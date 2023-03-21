@@ -1,0 +1,195 @@
+@import url("https://use.fontawesome.com/releases/v6.3.0/css/all.css");
+@import url("./welcome.css");
+@import url("./card.css");
+@import url("./buttons.css");
+@import url("./catalog.css");
+@import url("./details.css");
+@import url("./forms.css");
+@import url("./mqs.css");
+/* @import url("./addForm.css"); */
+@import url("./profile.css");
+@import url("./loader.css");
+
+:root {
+    --clr-bgr: #132930;
+    --clr-highlight: #F79234;
+    --clr-drk-mid: #2a3d43;
+    --clr-mid: #52696f;
+    --clr-light: white;
+    --txt-shadow: 1px 1px 1px #132930;
+    --clr-grad: #c2e2ee;
+}
+
+/* <i class="fa-solid fa-circle-arrow-down"></i> */
+
+body {
+    background: linear-gradient(119deg, rgba(19, 41, 48, 1) 0%, rgba(202, 235, 247, 1) 49%, rgba(247, 247, 247, 1) 100%);
+    font-family: "Mulish";
+    letter-spacing: 0.6px;
+}
+
+/* icons */
+.like {
+    padding-left: 5px;
+}
+
+.like:hover {
+    color: var(--clr-highlight)
+}
+/* icons end */
+
+
+.suggestit-brand {
+    color: var(--clr-light);
+}
+
+.page.header,
+.page.main,
+.page.footer {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.container {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    height: 100%;
+    min-width: 379px;
+}
+
+.header.container,
+.footer.container {
+    background: linear-gradient(0deg, rgba(19, 41, 48, 1) 0%, rgba(46, 101, 119, 1) 73%, rgba(91, 200, 235, 1) 100%);
+    color: var(--clr-light);
+}
+
+.special-border {
+    border-radius: 5px;
+}
+
+/*****|| HEADER *****/
+.page.header {
+    height: 10vh;
+}
+
+.header.container {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+    position: relative;
+}
+
+.header-wrapper {
+    display: flex;
+    flex-flow: column;
+}
+
+.suggest-it {
+    color: var(--clr-highlight);
+}
+
+.subtitle-header {
+    font-weight: 300;
+}
+
+.title-header {
+    font-size: 1.2rem;
+}
+
+.subtitle-header {
+    font-size: 0.8rem;
+}
+
+/* header nav */
+.nav.header {
+    color: var(--clr-light);
+    padding: 0.5rem 0.7rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.nav.header.list a {
+    text-align: center;
+}
+
+.nav.header.list a:hover,
+.nav.header.list a:active {
+    background-color: var(--clr-highlight);
+    color: var(--clr-light);
+    border-radius: 5px;
+    text-shadow: 1px 1px 1px #132930;
+}
+
+/* whos lookin */
+.whos-lookin-wrapper{
+position: absolute;
+top: 70%;
+left: 91%;
+font-style: italic;
+font-size: smaller;
+color: var(--clr-highlight);
+}
+
+.whos-lookin.guest{
+    /* display: none; */
+}
+.whos-lookin.logged-user{
+    display: none;
+}
+
+
+/*** || MAIN ***/
+.page.main {
+    height: auto;
+    min-height: 85vh;
+}
+
+.main.container {
+    padding: 1rem;
+    text-align: center;
+    line-height: 2;
+}
+
+/* || EDIT */
+/* || DELETE */
+
+
+
+
+
+/* .rank.highest{
+    font-weight: 800;
+}
+.rank.lowest{
+    font-weight: 200;
+} */
+
+/* ================== */
+/* add functionality for increasing font weight and size with 
+lower likes? or bar */
+/* limit text length */
+/* add time limit for suggs */
+/* add color preferences */
+/* add limit num of suggs? -diminishing*/
+/* =========== */
+
+
+/*** || FOOTER ***/
+.page.footer {
+    height: 5%;
+}
+
+.footer.container {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    padding: 1rem 0;
+    font-weight: 200;
+    font-size: 12px;
+}
