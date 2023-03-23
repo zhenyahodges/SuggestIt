@@ -32,6 +32,8 @@ export const Login=()=>{
                         name="pass"
                         id="log-pass"
                         autocomplete="current-password"
+                        minlength="6"
+                        placeholder="6 characters minimum"
                         required
                     />
                 </div>

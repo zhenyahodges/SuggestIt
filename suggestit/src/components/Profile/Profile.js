@@ -1,4 +1,4 @@
-import { Loader } from "../Loader/Loader"
+// import { Loader } from '../Loader/Loader';
 
 export const Profile=()=>{
     return(
@@ -153,7 +153,7 @@ export const Profile=()=>{
                                                         >15</span
                                                     >
                                                     <a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                     >
                                                         <i
                                                             className="like fa-solid fa-circle-up"
@@ -182,7 +182,7 @@ export const Profile=()=>{
                                                     <span className="rank"
                                                         >10</span
                                                     ><a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                         ><i
                                                             className="like fa-solid fa-circle-up"
                                                         ></i
@@ -211,7 +211,7 @@ export const Profile=()=>{
                                                     <span className="rank"
                                                         >5</span
                                                     ><a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                         ><i
                                                             className="like fa-solid fa-circle-up"
                                                         ></i
@@ -238,7 +238,7 @@ export const Profile=()=>{
                                                     <span className="rank"
                                                         >5</span
                                                     ><a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                         ><i
                                                             className="like fa-solid fa-circle-up"
                                                         ></i
@@ -265,7 +265,7 @@ export const Profile=()=>{
                                                     <span className="rank"
                                                         >5</span
                                                     ><a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                         ><i
                                                             className="like fa-solid fa-circle-up"
                                                         ></i
@@ -293,7 +293,7 @@ export const Profile=()=>{
                                                     <span className="rank"
                                                         >5</span
                                                     ><a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                         ><i
                                                             className="like fa-solid fa-circle-up"
                                                         ></i
@@ -320,7 +320,7 @@ export const Profile=()=>{
                                                     <span className="rank"
                                                         >5</span
                                                     ><a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                         ><i
                                                             className="like fa-solid fa-circle-up"
                                                         ></i
@@ -347,7 +347,7 @@ export const Profile=()=>{
                                                     <span className="rank"
                                                         >5</span
                                                     ><a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                         ><i
                                                             className="like fa-solid fa-circle-up"
                                                         ></i
@@ -374,7 +374,7 @@ export const Profile=()=>{
                                                     <span className="rank"
                                                         >5</span
                                                     ><a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                         ><i
                                                             className="like fa-solid fa-circle-up"
                                                         ></i
@@ -401,7 +401,7 @@ export const Profile=()=>{
                                                     <span className="rank"
                                                         >5</span
                                                     ><a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                         ><i
                                                             className="like fa-solid fa-circle-up"
                                                         ></i
@@ -428,7 +428,7 @@ export const Profile=()=>{
                                                     <span className="rank"
                                                         >5</span
                                                     ><a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                         ><i
                                                             className="like fa-solid fa-circle-up"
                                                         ></i
@@ -455,7 +455,7 @@ export const Profile=()=>{
                                                     <span className="rank"
                                                         >5</span
                                                     ><a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                         ><i
                                                             className="like fa-solid fa-circle-up"
                                                         ></i
@@ -482,7 +482,7 @@ export const Profile=()=>{
                                                     <span className="rank"
                                                         >5</span
                                                     ><a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                         ><i
                                                             className="like fa-solid fa-circle-up"
                                                         ></i
@@ -508,7 +508,7 @@ export const Profile=()=>{
                                                     <span className="rank"
                                                         >0</span
                                                     ><a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                         ><i
                                                             className="like fa-solid fa-circle-up"
                                                         ></i
@@ -533,12 +533,12 @@ export const Profile=()=>{
                                             className="card-footer-links-wrapper"
                                         >
                                             <a
-                                                href="#"
+                                                href="/"
                                                 className="details-link"
                                                 >Details</a
                                             >
                                             <a
-                                                href="#"
+                                                href="/"
                                                 className="add-sugg-link"
                                                 >Suggest</a
                                             >
@@ -580,7 +580,7 @@ export const Profile=()=>{
                                                         >15</span
                                                     >
                                                     <a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                     >
                                                         <i
                                                             className="like fa-solid fa-circle-up"
@@ -609,7 +609,7 @@ export const Profile=()=>{
                                                     <span className="rank"
                                                         >10</span
                                                     ><a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                         ><i
                                                             className="like fa-solid fa-circle-up"
                                                         ></i
@@ -638,7 +638,7 @@ export const Profile=()=>{
                                                     <span className="rank"
                                                         >5</span
                                                     ><a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                         ><i
                                                             className="like fa-solid fa-circle-up"
                                                         ></i
@@ -665,7 +665,7 @@ export const Profile=()=>{
                                                     <span className="rank"
                                                         >5</span
                                                     ><a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                         ><i
                                                             className="like fa-solid fa-circle-up"
                                                         ></i
@@ -692,7 +692,7 @@ export const Profile=()=>{
                                                     <span className="rank"
                                                         >5</span
                                                     ><a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                         ><i
                                                             className="like fa-solid fa-circle-up"
                                                         ></i
@@ -720,7 +720,7 @@ export const Profile=()=>{
                                                     <span className="rank"
                                                         >5</span
                                                     ><a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                         ><i
                                                             className="like fa-solid fa-circle-up"
                                                         ></i
@@ -747,7 +747,7 @@ export const Profile=()=>{
                                                     <span className="rank"
                                                         >5</span
                                                     ><a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                         ><i
                                                             className="like fa-solid fa-circle-up"
                                                         ></i
@@ -774,7 +774,7 @@ export const Profile=()=>{
                                                     <span className="rank"
                                                         >5</span
                                                     ><a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                         ><i
                                                             className="like fa-solid fa-circle-up"
                                                         ></i
@@ -801,7 +801,7 @@ export const Profile=()=>{
                                                     <span className="rank"
                                                         >5</span
                                                     ><a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                         ><i
                                                             className="like fa-solid fa-circle-up"
                                                         ></i
@@ -828,7 +828,7 @@ export const Profile=()=>{
                                                     <span className="rank"
                                                         >5</span
                                                     ><a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                         ><i
                                                             className="like fa-solid fa-circle-up"
                                                         ></i
@@ -855,7 +855,7 @@ export const Profile=()=>{
                                                     <span className="rank"
                                                         >5</span
                                                     ><a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                         ><i
                                                             className="like fa-solid fa-circle-up"
                                                         ></i
@@ -882,7 +882,7 @@ export const Profile=()=>{
                                                     <span className="rank"
                                                         >5</span
                                                     ><a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                         ><i
                                                             className="like fa-solid fa-circle-up"
                                                         ></i
@@ -909,7 +909,7 @@ export const Profile=()=>{
                                                     <span className="rank"
                                                         >5</span
                                                     ><a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                         ><i
                                                             className="like fa-solid fa-circle-up"
                                                         ></i
@@ -935,7 +935,7 @@ export const Profile=()=>{
                                                     <span className="rank"
                                                         >0</span
                                                     ><a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                         ><i
                                                             className="like fa-solid fa-circle-up"
                                                         ></i
@@ -960,12 +960,12 @@ export const Profile=()=>{
                                             className="card-footer-links-wrapper"
                                         >
                                             <a
-                                                href="#"
+                                                href="/"
                                                 className="details-link"
                                                 >Details</a
                                             >
                                             <a
-                                                href="#"
+                                                href="/"
                                                 className="add-sugg-link"
                                                 >Suggest</a
                                             >
@@ -1007,7 +1007,7 @@ export const Profile=()=>{
                                                         >15</span
                                                     >
                                                     <a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                     >
                                                         <i
                                                             className="like fa-solid fa-circle-up"
@@ -1036,7 +1036,7 @@ export const Profile=()=>{
                                                     <span className="rank"
                                                         >10</span
                                                     ><a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                         ><i
                                                             className="like fa-solid fa-circle-up"
                                                         ></i
@@ -1065,7 +1065,7 @@ export const Profile=()=>{
                                                     <span className="rank"
                                                         >5</span
                                                     ><a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                         ><i
                                                             className="like fa-solid fa-circle-up"
                                                         ></i
@@ -1092,7 +1092,7 @@ export const Profile=()=>{
                                                     <span className="rank"
                                                         >5</span
                                                     ><a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                         ><i
                                                             className="like fa-solid fa-circle-up"
                                                         ></i
@@ -1119,7 +1119,7 @@ export const Profile=()=>{
                                                     <span className="rank"
                                                         >5</span
                                                     ><a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                         ><i
                                                             className="like fa-solid fa-circle-up"
                                                         ></i
@@ -1147,7 +1147,7 @@ export const Profile=()=>{
                                                     <span className="rank"
                                                         >5</span
                                                     ><a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                         ><i
                                                             className="like fa-solid fa-circle-up"
                                                         ></i
@@ -1174,7 +1174,7 @@ export const Profile=()=>{
                                                     <span className="rank"
                                                         >5</span
                                                     ><a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                         ><i
                                                             className="like fa-solid fa-circle-up"
                                                         ></i
@@ -1201,7 +1201,7 @@ export const Profile=()=>{
                                                     <span className="rank"
                                                         >5</span
                                                     ><a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                         ><i
                                                             className="like fa-solid fa-circle-up"
                                                         ></i
@@ -1228,7 +1228,7 @@ export const Profile=()=>{
                                                     <span className="rank"
                                                         >5</span
                                                     ><a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                         ><i
                                                             className="like fa-solid fa-circle-up"
                                                         ></i
@@ -1255,7 +1255,7 @@ export const Profile=()=>{
                                                     <span className="rank"
                                                         >5</span
                                                     ><a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                         ><i
                                                             className="like fa-solid fa-circle-up"
                                                         ></i
@@ -1282,7 +1282,7 @@ export const Profile=()=>{
                                                     <span className="rank"
                                                         >5</span
                                                     ><a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                         ><i
                                                             className="like fa-solid fa-circle-up"
                                                         ></i
@@ -1309,7 +1309,7 @@ export const Profile=()=>{
                                                     <span className="rank"
                                                         >5</span
                                                     ><a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                         ><i
                                                             className="like fa-solid fa-circle-up"
                                                         ></i
@@ -1336,7 +1336,7 @@ export const Profile=()=>{
                                                     <span className="rank"
                                                         >5</span
                                                     ><a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                         ><i
                                                             className="like fa-solid fa-circle-up"
                                                         ></i
@@ -1362,7 +1362,7 @@ export const Profile=()=>{
                                                     <span className="rank"
                                                         >0</span
                                                     ><a
-                                                        className="sugg-like-link"
+                                                        className="sugg-like-link" href="/"
                                                         ><i
                                                             className="like fa-solid fa-circle-up"
                                                         ></i
@@ -1387,12 +1387,12 @@ export const Profile=()=>{
                                             className="card-footer-links-wrapper"
                                         >
                                             <a
-                                                href="#"
+                                                href="/"
                                                 className="details-link"
                                                 >Details</a
                                             >
                                             <a
-                                                href="#"
+                                                href="/"
                                                 className="add-sugg-link"
                                                 >Suggest</a
                                             >
