@@ -12,7 +12,7 @@ function App() {
                 <section className='page main container'>
                     <Welcome />
                     <Catalog/>
-
+                    
 
 
 

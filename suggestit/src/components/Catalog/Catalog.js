@@ -1,14 +1,16 @@
+import { Loader } from "../Loader/Loader";
+
 export const Catalog=()=>{
     return(
-        // <!-- CATALOG vis for all -->
+        // CATALOG vis for all 
         <section className="catalog window">
             <h2 className="catalog title">Catalog</h2>
 
-            {/* <!-- LOADER show when fetching --> */}
-            {/* <!-- <div className="loader"></div> --> */}
+           {/* LOADER show when fetching   */}
+           {/* <Loader/> */}
 
             <div className="catalog-wrapper">
-                {/* <!-- PUBLIC CATALOG --> */}
+                {/* PUBLIC CATALOG  */}
                 <article className="sugg-card catalog all">
                     <header
                         className="card-header card-brand-logo suggestit-brand"
@@ -20,9 +22,9 @@ export const Catalog=()=>{
 
                     <main className="card-main">
                         <ul className="sugg-list" role="list">
-                            {/* <!-- LIST items start --> */}
+                            {/* LIST items start  */}
 
-                            {/* <!-- li start --> */}
+                            {/* li start  */}
                             <li className="sugg-item">
                                 <div className="sugg-item-wrapper">
                                     <p className="sugg-text">
@@ -42,9 +44,9 @@ export const Catalog=()=>{
                                     </p>
                                 </div>
                             </li>
-                            {/* <!-- li end --> */}
+                            {/* li end  */}
 
-                            {/* <!-- li start --> */}
+                            {/* li start  */}
                             <li className="sugg-item">
                                 <div className="sugg-item-wrapper">
                                     <p className="sugg-text">
@@ -63,9 +65,9 @@ export const Catalog=()=>{
                                     </p>
                                 </div>
                             </li>
-                            {/* <!-- li end --> */}
+                            {/* li end  */}
 
-                            {/* <!-- li start --> */}
+                            {/* li start  */}
                             <li className="sugg-item">
                                 <div className="sugg-item-wrapper">
                                     <p className="sugg-text">
@@ -84,9 +86,9 @@ export const Catalog=()=>{
                                     </p>
                                 </div>
                             </li>
-                            {/* <!-- li end --> */}
+                            {/* li end  */}
 
-                             {/* <!-- LISTitems --> */}
+                             {/* LISTitems  */}
                         </ul>
                     </main>
 
@@ -116,9 +118,9 @@ export const Catalog=()=>{
 
                     <main className="card-main">
                         <ul className="sugg-list" role="list">
-                            {/* <!-- LIST items start --> */}
+                            {/* LIST items start  */}
 
-                            {/* <!-- li start --> */}
+                            {/* li start  */}
                             <li className="sugg-item">
                                 <div className="sugg-item-wrapper">
                                     <p className="sugg-text">
@@ -138,9 +140,9 @@ export const Catalog=()=>{
                                     </p>
                                 </div>
                             </li>
-                            {/* <!-- li end --> */}
+                            {/* li end  */}
 
-                            {/* <!-- li start  --> */}
+                            {/* li start   */}
                             <li className="sugg-item">
                                 <div className="sugg-item-wrapper">
                                     <p className="sugg-text">
@@ -159,10 +161,10 @@ export const Catalog=()=>{
                                     </p>
                                 </div>
                             </li>
-                            {/* <!-- li end --> */}
+                            {/* li end  */}
 
-                            {/* <!-- ADDITONAL --> */}
-                            {/* <!-- li start --> */}
+                            {/* ADDITONAL  */}
+                            {/* li start  */}
                             <li className="sugg-item">
                                 <div className="sugg-item-wrapper">
                                     <p className="sugg-text">
@@ -181,8 +183,8 @@ export const Catalog=()=>{
                                     </p>
                                 </div>
                             </li>
-                            {/* <!-- li end --> */}
-                            {/* <!-- li start --> */}
+                            {/* li end  */}
+                            {/* li start  */}
                             <li className="sugg-item">
                                 <div className="sugg-item-wrapper">
                                     <p className="sugg-text">
@@ -201,8 +203,8 @@ export const Catalog=()=>{
                                     </p>
                                 </div>
                             </li>
-                            {/* <!-- li end --> */}
-                            {/* <!-- li start --> */}
+                            {/* li end  */}
+                            {/* li start  */}
                             <li className="sugg-item">
                                 <div className="sugg-item-wrapper">
                                     <p className="sugg-text">
@@ -221,9 +223,9 @@ export const Catalog=()=>{
                                     </p>
                                 </div>
                             </li>
-                            {/* <!-- li end --> */}
+                            {/* li end  */}
 
-                            {/* <!-- li start --> */}
+                            {/* li start  */}
                             <li className="sugg-item">
                                 <div className="sugg-item-wrapper">
                                     <p className="sugg-text">
@@ -242,8 +244,8 @@ export const Catalog=()=>{
                                     </p>
                                 </div>
                             </li>
-                            {/* <!-- li end --> */}
-                            {/* <!-- li start --> */}
+                            {/* li end  */}
+                            {/* li start  */}
                             <li className="sugg-item">
                                 <div className="sugg-item-wrapper">
                                     <p className="sugg-text">
@@ -262,8 +264,8 @@ export const Catalog=()=>{
                                     </p>
                                 </div>
                             </li>
-                            {/* <!-- li end --> */}
-                            {/* <!-- li start --> */}
+                            {/* li end  */}
+                            {/* li start  */}
                             <li className="sugg-item">
                                 <div className="sugg-item-wrapper">
                                     <p className="sugg-text">
@@ -282,8 +284,8 @@ export const Catalog=()=>{
                                     </p>
                                 </div>
                             </li>
-                            {/* <!-- li end --> */}
-                            {/* <!-- li start --> */}
+                            {/* li end  */}
+                            {/* li start  */}
                             <li className="sugg-item">
                                 <div className="sugg-item-wrapper">
                                     <p className="sugg-text">
@@ -302,8 +304,8 @@ export const Catalog=()=>{
                                     </p>
                                 </div>
                             </li>
-                            {/* <!-- li end --> */}
-                            {/* <!-- li start --> */}
+                            {/* li end  */}
+                            {/* li start  */}
                             <li className="sugg-item">
                                 <div className="sugg-item-wrapper">
                                     <p className="sugg-text">
@@ -322,8 +324,8 @@ export const Catalog=()=>{
                                     </p>
                                 </div>
                             </li>
-                            {/* <!-- li end --> */}
-                            {/* <!-- li start --> */}
+                            {/* li end  */}
+                            {/* li start  */}
                             <li className="sugg-item">
                                 <div className="sugg-item-wrapper">
                                     <p className="sugg-text">
@@ -342,8 +344,8 @@ export const Catalog=()=>{
                                     </p>
                                 </div>
                             </li>
-                            {/* <!-- li end --> */}
-                            {/* <!-- li start --> */}
+                            {/* li end  */}
+                            {/* li start  */}
                             <li className="sugg-item">
                                 <div className="sugg-item-wrapper">
                                     <p className="sugg-text">
@@ -362,8 +364,8 @@ export const Catalog=()=>{
                                     </p>
                                 </div>
                             </li>
-                            {/* <!-- li end --> */}
-                            {/* <!-- li start --> */}
+                            {/* li end  */}
+                            {/* li start  */}
                             <li className="sugg-item">
                                 <div className="sugg-item-wrapper">
                                     <p className="sugg-text">
@@ -382,8 +384,8 @@ export const Catalog=()=>{
                                     </p>
                                 </div>
                             </li>
-                            {/* <!-- li end --> */}
-                            {/* <!-- li start --> */}
+                            {/* li end  */}
+                            {/* li start  */}
                             <li className="sugg-item">
                                 <div className="sugg-item-wrapper">
                                     <p className="sugg-text">
@@ -402,9 +404,9 @@ export const Catalog=()=>{
                                     </p>
                                 </div>
                             </li>
-                            {/* <!-- li end --> */}
+                            {/* li end  */}
 
-                             {/* <!-- LISTitems --> */}
+                             {/* LISTitems  */}
                         </ul>
                     </main>
                     <footer className="card-footer suggs-card foot">
@@ -433,9 +435,9 @@ export const Catalog=()=>{
 
                     <main className="card-main">
                         <ul className="sugg-list" role="list">
-                            {/* <!-- LIST items start --> */}
+                            {/* LIST items start  */}
 
-                            {/* <!-- li start --> */}
+                            {/* li start  */}
                             <li className="sugg-item">
                                 <div className="sugg-item-wrapper">
                                     <p className="sugg-text">
@@ -456,9 +458,9 @@ export const Catalog=()=>{
                                     </p>
                                 </div>
                             </li>
-                            {/* <!-- li end --> */}
+                            {/* li end  */}
 
-                            {/* <!-- li start --> */}
+                            {/* li start  */}
                             <li className="sugg-item">
                                 <div className="sugg-item-wrapper">
                                     <p className="sugg-text">
@@ -478,9 +480,9 @@ export const Catalog=()=>{
                                     </p>
                                 </div>
                             </li>
-                            {/* <!-- li end --> */}
+                            {/* li end  */}
 
-                            {/* <!-- li start --> */}
+                            {/* li start  */}
                             <li className="sugg-item">
                                 <div className="sugg-item-wrapper">
                                     <p className="sugg-text">
@@ -500,9 +502,9 @@ export const Catalog=()=>{
                                     </p>
                                 </div>
                             </li>
-                            {/* <!-- li end --> */}
+                            {/* li end  */}
 
-                             {/* <!-- LISTitems --> */}
+                             {/* LISTitems  */}
                         </ul>
                     </main>
 
@@ -523,8 +525,8 @@ export const Catalog=()=>{
                     </footer>
                 </article>
 
-                {/* <!-- PRIVATE CATALOG --> */}
-                {/* <!-- <section className="catalog private"> --> */}
+                {/* PRIVATE CATALOG  */}
+                {/* <section className="catalog private">  */}
                 <article className="sugg-card catalog private">
                     <header
                         className="card-header card-brand-logo suggestit-brand"
@@ -534,9 +536,9 @@ export const Catalog=()=>{
 
                     <main className="card-main">
                         <ul className="sugg-list" role="list">
-                            {/* <!-- LIST items start --> */}
+                            {/* LIST items start  */}
 
-                            {/* <!-- li start --> */}
+                            {/* li start  */}
                             <li className="sugg-item">
                                 <div className="sugg-item-wrapper">
                                     <p className="sugg-text">
@@ -556,9 +558,9 @@ export const Catalog=()=>{
                                     </p>
                                 </div>
                             </li>
-                            {/* <!-- li end --> */}
+                            {/* li end  */}
 
-                            {/* <!-- li start  --> */}
+                            {/* li start   */}
                             <li className="sugg-item">
                                 <div className="sugg-item-wrapper">
                                     <p className="sugg-text">
@@ -577,10 +579,10 @@ export const Catalog=()=>{
                                     </p>
                                 </div>
                             </li>
-                            {/* <!-- li end --> */}
+                            {/* li end  */}
 
-                            {/* <!-- ADDITONAL --> */}
-                            {/* <!-- li start --> */}
+                            {/* ADDITONAL  */}
+                            {/* li start  */}
                             <li className="sugg-item">
                                 <div className="sugg-item-wrapper">
                                     <p className="sugg-text">
@@ -599,8 +601,8 @@ export const Catalog=()=>{
                                     </p>
                                 </div>
                             </li>
-                            {/* <!-- li end --> */}
-                            {/* <!-- li start --> */}
+                            {/* li end  */}
+                            {/* li start  */}
                             <li className="sugg-item">
                                 <div className="sugg-item-wrapper">
                                     <p className="sugg-text">
@@ -619,8 +621,8 @@ export const Catalog=()=>{
                                     </p>
                                 </div>
                             </li>
-                            {/* <!-- li end --> */}
-                            {/* <!-- li start --> */}
+                            {/* li end  */}
+                            {/* li start  */}
                             <li className="sugg-item">
                                 <div className="sugg-item-wrapper">
                                     <p className="sugg-text">
@@ -639,9 +641,9 @@ export const Catalog=()=>{
                                     </p>
                                 </div>
                             </li>
-                            {/* <!-- li end --> */}
+                            {/* li end  */}
 
-                            {/* <!-- li start --> */}
+                            {/* li start  */}
                             <li className="sugg-item">
                                 <div className="sugg-item-wrapper">
                                     <p className="sugg-text">
@@ -660,8 +662,8 @@ export const Catalog=()=>{
                                     </p>
                                 </div>
                             </li>
-                            {/* <!-- li end --> */}
-                            {/* <!-- li start --> */}
+                            {/* li end  */}
+                            {/* li start  */}
                             <li className="sugg-item">
                                 <div className="sugg-item-wrapper">
                                     <p className="sugg-text">
@@ -680,8 +682,8 @@ export const Catalog=()=>{
                                     </p>
                                 </div>
                             </li>
-                            {/* <!-- li end --> */}
-                            {/* <!-- li start --> */}
+                            {/* li end  */}
+                            {/* li start  */}
                             <li className="sugg-item">
                                 <div className="sugg-item-wrapper">
                                     <p className="sugg-text">
@@ -700,8 +702,8 @@ export const Catalog=()=>{
                                     </p>
                                 </div>
                             </li>
-                            {/* <!-- li end --> */}
-                            {/* <!-- li start --> */}
+                            {/* li end  */}
+                            {/* li start  */}
                             <li className="sugg-item">
                                 <div className="sugg-item-wrapper">
                                     <p className="sugg-text">
@@ -720,8 +722,8 @@ export const Catalog=()=>{
                                     </p>
                                 </div>
                             </li>
-                            {/* <!-- li end --> */}
-                            {/* <!-- li start --> */}
+                            {/* li end  */}
+                            {/* li start  */}
                             <li className="sugg-item">
                                 <div className="sugg-item-wrapper">
                                     <p className="sugg-text">
@@ -740,8 +742,8 @@ export const Catalog=()=>{
                                     </p>
                                 </div>
                             </li>
-                            {/* <!-- li end --> */}
-                            {/* <!-- li start --> */}
+                            {/* li end  */}
+                            {/* li start  */}
                             <li className="sugg-item">
                                 <div className="sugg-item-wrapper">
                                     <p className="sugg-text">
@@ -760,8 +762,8 @@ export const Catalog=()=>{
                                     </p>
                                 </div>
                             </li>
-                            {/* <!-- li end --> */}
-                            {/* <!-- li start --> */}
+                            {/* li end  */}
+                            {/* li start  */}
                             <li className="sugg-item">
                                 <div className="sugg-item-wrapper">
                                     <p className="sugg-text">
@@ -780,8 +782,8 @@ export const Catalog=()=>{
                                     </p>
                                 </div>
                             </li>
-                            {/* <!-- li end --> */}
-                            {/* <!-- li start --> */}
+                            {/* li end  */}
+                            {/* li start  */}
                             <li className="sugg-item">
                                 <div className="sugg-item-wrapper">
                                     <p className="sugg-text">
@@ -800,8 +802,8 @@ export const Catalog=()=>{
                                     </p>
                                 </div>
                             </li>
-                            {/* <!-- li end --> */}
-                            {/* <!-- li start --> */}
+                            {/* li end  */}
+                            {/* li start  */}
                             <li className="sugg-item">
                                 <div className="sugg-item-wrapper">
                                     <p className="sugg-text">
@@ -820,9 +822,9 @@ export const Catalog=()=>{
                                     </p>
                                 </div>
                             </li>
-                            {/* <!-- li end --> */}
+                            {/* li end  */}
 
-                             {/* <!-- LISTitems --> */}
+                             {/* LISTitems  */}
                         </ul>
                     </main>
                     <footer className="card-footer suggs-card foot">
@@ -851,9 +853,9 @@ export const Catalog=()=>{
 
                     <main className="card-main">
                         <ul className="sugg-list" role="list">
-                            {/* <!-- LIST items start --> */}
+                            {/* LIST items start  */}
 
-                            {/* <!-- li start --> */}
+                            {/* li start  */}
                             <li className="sugg-item">
                                 <div className="sugg-item-wrapper">
                                     <p className="sugg-text">
@@ -874,9 +876,9 @@ export const Catalog=()=>{
                                     </p>
                                 </div>
                             </li>
-                            {/* <!-- li end --> */}
+                            {/* li end  */}
 
-                            {/* <!-- li start --> */}
+                            {/* li start  */}
                             <li className="sugg-item">
                                 <div className="sugg-item-wrapper">
                                     <p className="sugg-text">
@@ -896,9 +898,9 @@ export const Catalog=()=>{
                                     </p>
                                 </div>
                             </li>
-                            {/* <!-- li end --> */}
+                            {/* li end  */}
 
-                            {/* <!-- li start --> */}
+                            {/* li start  */}
                             <li className="sugg-item">
                                 <div className="sugg-item-wrapper">
                                     <p className="sugg-text">
@@ -918,9 +920,9 @@ export const Catalog=()=>{
                                     </p>
                                 </div>
                             </li>
-                            {/* <!-- li end --> */}
+                            {/* li end  */}
 
-                             {/* <!-- LISTitems --> */}
+                             {/* LISTitems  */}
                         </ul>
                     </main>
 
