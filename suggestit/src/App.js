@@ -11,7 +11,7 @@ function App() {
             <main className='page main'>
                 <section className='page main container'>
                     <Welcome />
-                    <Catalog/>
+                    {/* <Catalog/> */}
                     
 
 

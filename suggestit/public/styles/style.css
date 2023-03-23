@@ -33,11 +33,12 @@ html {
 }
 
 /* icons */
-.like {
+.like.fa-solid {
     padding-left: 5px;
+    color: var(--clr-bgr);
 }
 
-.like:hover {
+.like.fa-solid:hover {
     color: var(--clr-highlight)
 }
 /* icons end */
