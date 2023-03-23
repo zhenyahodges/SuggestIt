@@ -1,5 +1,4 @@
 @import url('./reset.css');
-/* @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap'); */
 @import url("https://use.fontawesome.com/releases/v6.3.0/css/all.css");
 
 @import url("welcome.css");
@@ -9,7 +8,6 @@
 @import url("details.css");
 @import url("forms.css");
 @import url("mqs.css");
-/* @import url("./addForm.css"); */
 @import url("profile.css");
 @import url("loader.css");
 
@@ -22,6 +20,7 @@
     --clr-light: white;
     --txt-shadow: 1px 1px 1px #132930;
     --clr-grad: #c2e2ee;
+    --clr-err: rgb(194, 33, 33);
 }
 
 /* <i class="fa-solid fa-circle-arrow-down"></i> */
@@ -32,7 +31,7 @@ html {
     letter-spacing: 0.6px;
 }
 
-/* icons */
+/* icons ---*/
 .like.fa-solid {
     padding-left: 5px;
     color: var(--clr-bgr);
@@ -41,7 +40,7 @@ html {
 .like.fa-solid:hover {
     color: var(--clr-highlight)
 }
-/* icons end */
+/*--- icons end */
 
 
 .suggestit-brand {
@@ -52,7 +51,6 @@ html {
 .page.main,
 .page.footer {
     width: 100%;
-    /* height: 100%; */
     margin: 0 auto;
 }
 
@@ -159,12 +157,6 @@ html {
     text-align: center;
     line-height: 2;
 }
-
-/* || EDIT */
-/* || DELETE */
-
-
-
 
 
 /* .rank.highest{

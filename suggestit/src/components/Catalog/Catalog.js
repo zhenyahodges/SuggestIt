@@ -943,6 +943,7 @@ export const Catalog=()=>{
                     </footer>
                 </article>
             </div>
+           
         </section>
     );
 };

@@ -44,12 +44,16 @@ form button {
 /* if no poll-code*/
 .poll-code.error-message {
     display: none;
+    font-size: smaller;
+    color: var(--clr-err);
+    font-weight: 600;
+    font-style: italic;
 }
 
 /* if poll-code*/
 /* SUGGEST FORM */
 .add-sugg.form-wrapper {
-    display: none;
+    /* display: none; */
     min-height: 40vh;
 }
 

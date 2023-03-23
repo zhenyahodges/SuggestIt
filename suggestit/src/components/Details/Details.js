@@ -1,4 +1,4 @@
-import { Loader } from "../../Loader/Loader";
+import { Loader } from "../Loader/Loader";
 
 export const Details =()=>{
     return (
@@ -56,7 +56,7 @@ export const Details =()=>{
 
                                     {/*  LIKE DISABLED FOR GUESTS & OWNERS */}
                                     {/*  ===!? LIKE LIMITED voting!?=== */}
-                                    <a className="sugg-like-link">
+                                    <a href="/"  className="sugg-like-link">
                                         <i
                                             className="like fa-solid fa-circle-up"
                                         ></i>
@@ -77,7 +77,7 @@ export const Details =()=>{
                                 </p>
                                 <p className="sugg-ranking">
                                     <span className="rank">10</span
-                                    ><a className="sugg-like-link"
+                                    ><a  href="/" className="sugg-like-link"
                                         ><i
                                             className="like fa-solid fa-circle-up"
                                         ></i
@@ -99,7 +99,7 @@ export const Details =()=>{
                                 </p>
                                 <p className="sugg-ranking">
                                     <span className="rank">5</span
-                                    ><a className="sugg-like-link"
+                                    ><a href="/" className="sugg-like-link"
                                         ><i
                                             className="like fa-solid fa-circle-up"
                                         ></i
@@ -119,7 +119,7 @@ export const Details =()=>{
                                 </p>
                                 <p className="sugg-ranking">
                                     <span className="rank">5</span
-                                    ><a className="sugg-like-link"
+                                    ><a href="/" className="sugg-like-link"
                                         ><i
                                             className="like fa-solid fa-circle-up"
                                         ></i
@@ -139,7 +139,7 @@ export const Details =()=>{
                                 </p>
                                 <p className="sugg-ranking">
                                     <span className="rank">5</span
-                                    ><a className="sugg-like-link"
+                                    ><a href="/" className="sugg-like-link"
                                         ><i
                                             className="like fa-solid fa-circle-up"
                                         ></i
@@ -160,7 +160,7 @@ export const Details =()=>{
                                 </p>
                                 <p className="sugg-ranking">
                                     <span className="rank">5</span
-                                    ><a className="sugg-like-link"
+                                    ><a href="/" className="sugg-like-link"
                                         ><i
                                             className="like fa-solid fa-circle-up"
                                         ></i
@@ -180,7 +180,7 @@ export const Details =()=>{
                                 </p>
                                 <p className="sugg-ranking">
                                     <span className="rank">5</span
-                                    ><a className="sugg-like-link"
+                                    ><a href="/"  className="sugg-like-link"
                                         ><i
                                             className="like fa-solid fa-circle-up"
                                         ></i
@@ -201,7 +201,7 @@ export const Details =()=>{
                                 </p>
                                 <p className="sugg-ranking">
                                     <span className="rank">5</span
-                                    ><a className="sugg-like-link"
+                                    ><a href="/"  className="sugg-like-link"
                                         ><i
                                             className="like fa-solid fa-circle-up"
                                         ></i
@@ -222,7 +222,7 @@ export const Details =()=>{
                                 </p>
                                 <p className="sugg-ranking">
                                     <span className="rank">1</span
-                                    ><a className="sugg-like-link"
+                                    ><a href="/" className="sugg-like-link"
                                         ><i
                                             className="like fa-solid fa-circle-up"
                                         ></i
@@ -243,7 +243,7 @@ export const Details =()=>{
                                 </p>
                                 <p className="sugg-ranking">
                                     <span className="rank">0</span
-                                    ><a className="sugg-like-link"
+                                    ><a href="/" className="sugg-like-link"
                                         ><i
                                             className="like fa-solid fa-circle-up"
                                         ></i

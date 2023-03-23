@@ -80,6 +80,8 @@ export const AddSuggestion=()=>{
                 </button>
             </form>
 
+            {/* SUGG PREVIEW -display for a brief period before confirming ? timed?*/}           
+
             {/*  <div className="sugg-item-wrapper">
                 <p className="sugg-text" placeholder="Suggestion">
                     <span className="author">
