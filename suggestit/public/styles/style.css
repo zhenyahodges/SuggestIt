@@ -1,14 +1,18 @@
+@import url('./reset.css');
+/* @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap'); */
 @import url("https://use.fontawesome.com/releases/v6.3.0/css/all.css");
-@import url("./welcome.css");
-@import url("./card.css");
-@import url("./buttons.css");
-@import url("./catalog.css");
-@import url("./details.css");
-@import url("./forms.css");
-@import url("./mqs.css");
+
+@import url("welcome.css");
+@import url("card.css");
+@import url("buttons.css");
+@import url("catalog.css");
+@import url("details.css");
+@import url("forms.css");
+@import url("mqs.css");
 /* @import url("./addForm.css"); */
-@import url("./profile.css");
-@import url("./loader.css");
+@import url("profile.css");
+@import url("loader.css");
+
 
 :root {
     --clr-bgr: #132930;
@@ -22,9 +26,9 @@
 
 /* <i class="fa-solid fa-circle-arrow-down"></i> */
 
-body {
+html {
     background: linear-gradient(119deg, rgba(19, 41, 48, 1) 0%, rgba(202, 235, 247, 1) 49%, rgba(247, 247, 247, 1) 100%);
-    font-family: "Mulish";
+    font-family: "Mulish", "sans-serif";
     letter-spacing: 0.6px;
 }
 
@@ -47,7 +51,7 @@ body {
 .page.main,
 .page.footer {
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
     margin: 0 auto;
 }
 
@@ -125,19 +129,20 @@ body {
 }
 
 /* whos lookin */
-.whos-lookin-wrapper{
-position: absolute;
-top: 70%;
-left: 91%;
-font-style: italic;
-font-size: smaller;
-color: var(--clr-highlight);
+.whos-lookin-wrapper {
+    position: absolute;
+    top: 70%;
+    left: 91%;
+    font-style: italic;
+    font-size: smaller;
+    color: var(--clr-highlight);
 }
 
-.whos-lookin.guest{
+.whos-lookin.guest {
     /* display: none; */
 }
-.whos-lookin.logged-user{
+
+.whos-lookin.logged-user {
     display: none;
 }
 
@@ -192,4 +197,8 @@ lower likes? or bar */
     padding: 1rem 0;
     font-weight: 200;
     font-size: 12px;
+}
+
+.foot{
+    padding-right: 10px;
 }
