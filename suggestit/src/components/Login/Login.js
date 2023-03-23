@@ -1,0 +1,56 @@
+export const Login=()=>{
+    return(
+        // <!-- LOGIN -->
+        <section className="login form-wrapper">
+            <h2>Login</h2>
+            <form
+                action="#"
+                method="get"
+                id="log-form"
+                className="login form"
+            >
+                <div className="wrap email">
+                    <label for="email" className="log lbl email"
+                        >Email</label
+                    >
+                    <input
+                        type="email"
+                        className="log entry email"
+                        name="email"
+                        id="log-email"
+                        autocomplete="email"
+                        required
+                    />
+                </div>
+                <div className="wrap pass">
+                    <label for="pass" className="log lbl pass"
+                        >Password</label
+                    >
+                    <input
+                        type="password"
+                        className="log entry pass"
+                        name="pass"
+                        id="log-pass"
+                        autocomplete="current-password"
+                        required
+                    />
+                </div>
+                <button
+                    type="submit"
+                    method="get"
+                    value="Login"
+                    className="log btn dark subm"
+                    form="log-form"
+                    id="btn-log-form"
+                    disabled
+                >
+                    Login
+                </button>
+                <a href="/" className="login link"
+                    >Don't have an account? Register</a
+                >
+            </form>
+        {/* <!-- END LOGIN --> */}
+        </section>
+    );
+};

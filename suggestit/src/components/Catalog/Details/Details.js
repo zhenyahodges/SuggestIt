@@ -1,3 +1,5 @@
+import { Loader } from "../../Loader/Loader";
+
 export const Details =()=>{
     return (
         
@@ -6,8 +8,8 @@ export const Details =()=>{
             <h2>Details</h2>
             
                 {/*  LOADER show when fetching */}
-            {/*  <div className="loader"></div> */}
-
+                {/* <Loader/> */}
+                
             {/*  CARD-DETAILS */}
             <article className="sugg-card details private">
                 <header
@@ -293,5 +295,6 @@ export const Details =()=>{
             </article>
             {/*  </div> */}       
         </section>
+      
     );
 };
