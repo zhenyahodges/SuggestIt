@@ -1,5 +1,6 @@
 import * as request from './requester';
 
+// const baseUrl = 'http://localhost:3030/jsonstore/suggestions';
 const baseUrl = 'http://localhost:3030/data/suggestions';
 
 export const addSuggestion = async (data) => {
@@ -9,12 +10,14 @@ export const addSuggestion = async (data) => {
 
 // RELATIONS!
 export const getAllCardSuggestions = async (cardId) => {
-    const searchParams= encodeURIComponent(`cardId="${cardId}`);
-    const relQuery= encodeURIComponent(`author=_ownerId:users`);
+    const searchParams = encodeURIComponent(`cardId="${cardId}`);
+    const relQuery = encodeURIComponent('author=_ownerId:users');
 
-    const result=await request.get(`${baseUrl}?where=${searchParams}&load=${relQuery}`);
-const suggestions=Object.values(result);
-return suggestions;
+    const result = await request.get(
+        `${baseUrl}?where=${searchParams}&load=${relQuery}`
+    );
+    const suggestions = Object.values(result);
+    return suggestions;
 };
 
 export const getAllUserSuggestions = async (userId) => {
