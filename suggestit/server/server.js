@@ -76,7 +76,7 @@
             console.info(`<< ${req.method} ${req.url}`);
 
             // Redirect fix for admin panel relative paths
-            if (req.url.slice(-6) == '/admin') {
+            if (req.url.slice(-6) === '/admin') {
                 res.writeHead(302, {
                     'Location': `http://${req.headers.host}/admin/`
                 });
@@ -92,7 +92,7 @@
             let context;
 
             // NOTE: the OPTIONS method results in undefined result and also it never processes plugins - keep this in mind
-            if (method == 'OPTIONS') {
+            if (method === 'OPTIONS') {
                 Object.assign(headers, {
                     'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
                     'Access-Control-Allow-Credentials': false,
@@ -131,9 +131,9 @@
 
             async function handle(context) {
                 const { serviceName, tokens, query, body } = await parseRequest(req);
-                if (serviceName == 'admin') {
+                if (serviceName === 'admin') {
                     return ({ headers, result } = services['admin'](method, tokens, query, body));
-                } else if (serviceName == 'favicon.ico') {
+                } else if (serviceName === 'favicon.ico') {
                     return ({ headers, result } = services['favicon'](method, tokens, query, body));
                 }
 
@@ -280,12 +280,12 @@
     }
 
     function matchAndAssignParams(context, name, pattern) {
-        if (pattern == '*') {
+        if (pattern === '*') {
             return true;
-        } else if (pattern[0] == ':') {
+        } else if (pattern[0] === ':') {
             context.params[pattern.slice(1)] = name;
             return true;
-        } else if (name == pattern) {
+        } else if (name === pattern) {
             return true;
         } else {
             return false;
@@ -297,7 +297,7 @@
     function uuid() {
         return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
             let r = Math.random() * 16 | 0,
-                v = c == 'x' ? r : (r & 0x3 | 0x8);
+                v = c === 'x' ? r : (r & 0x3 | 0x8);
             return v.toString(16);
         });
     }
@@ -337,7 +337,7 @@
             // TODO handle collisions, replacement
             let responseData = data;
             for (let token of tokens) {
-                if (responseData.hasOwnProperty(token) == false) {
+                if (responseData.hasOwnProperty(token) === false) {
                     responseData[token] = {};
                 }
                 responseData = responseData[token];
@@ -383,10 +383,10 @@
 
             for (let i = 0; i < tokens.length; i++) {
                 const token = tokens[i];
-                if (responseData.hasOwnProperty(token) == false) {
+                if (responseData.hasOwnProperty(token) === false) {
                     return null;
                 }
-                if (i == tokens.length - 1) {
+                if (i === tokens.length - 1) {
                     const body = responseData[token];
                     delete responseData[token];
                     return body;
@@ -461,7 +461,7 @@
 
     function validateRequest(context, tokens, query) {
         /*
-        if (context.params.collection == undefined) {
+        if (context.params.collection === undefined) {
             throw new RequestError('Please, specify collection name');
         }
         */
@@ -476,7 +476,7 @@
             '<': (prop, value) => record => record[prop] < JSON.parse(value),
             '>=': (prop, value) => record => record[prop] >= JSON.parse(value),
             '>': (prop, value) => record => record[prop] > JSON.parse(value),
-            '=': (prop, value) => record => record[prop] == JSON.parse(value),
+            '=': (prop, value) => record => record[prop] === JSON.parse(value),
             ' like ': (prop, value) => record => record[prop].toLowerCase().includes(JSON.parse(value).toLowerCase()),
             ' in ': (prop, value) => record => JSON.parse(`[${/\((.+?)\)/.exec(value)[1]}]`).includes(record[prop]),
         };
@@ -541,7 +541,7 @@
                 for (let i = props.length - 1; i >= 0; i--) {
                     let { prop, desc } = props[i];
                     responseData.sort(({ [prop]: propA }, { [prop]: propB }) => {
-                        if (typeof propA == 'number' && typeof propB == 'number') {
+                        if (typeof propA === 'number' && typeof propB === 'number') {
                             return (propA - propB) * (desc ? -1 : 1);
                         } else {
                             return propA.localeCompare(propB) * (desc ? -1 : 1);
@@ -562,7 +562,7 @@
                 const props = query.distinct.split(',').filter(p => p != '');
                 responseData = Object.values(responseData.reduce((distinct, c) => {
                     const key = props.map(p => c[p]).join('::');
-                    if (distinct.hasOwnProperty(key) == false) {
+                    if (distinct.hasOwnProperty(key) === false) {
                         distinct[key] = c;
                     }
                     return distinct;
@@ -590,7 +590,7 @@
                     const [propName, relationTokens] = prop.split('=');
                     const [idSource, collection] = relationTokens.split(':');
                     console.log(`Loading related records from "${collection}" into "${propName}", joined on "_id"="${idSource}"`);
-                    const storageSource = collection == 'users' ? context.protectedStorage : context.storage;
+                    const storageSource = collection === 'users' ? context.protectedStorage : context.storage;
                     responseData = Array.isArray(responseData) ? responseData.map(transform) : transform(responseData);
 
                     function transform(r) {
@@ -752,10 +752,10 @@
 
     var require$$0 = "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <title>SUPS Admin Panel</title>\r\n    <style>\r\n        * {\r\n            padding: 0;\r\n            margin: 0;\r\n        }\r\n\r\n        body {\r\n            padding: 32px;\r\n            font-size: 16px;\r\n        }\r\n\r\n        .layout::after {\r\n            content: '';\r\n            clear: both;\r\n            display: table;\r\n        }\r\n\r\n        .col {\r\n            display: block;\r\n            float: left;\r\n        }\r\n\r\n        p {\r\n            padding: 8px 16px;\r\n        }\r\n\r\n        table {\r\n            border-collapse: collapse;\r\n        }\r\n\r\n        caption {\r\n            font-size: 120%;\r\n            text-align: left;\r\n            padding: 4px 8px;\r\n            font-weight: bold;\r\n            background-color: #ddd;\r\n        }\r\n\r\n        table, tr, th, td {\r\n            border: 1px solid #ddd;\r\n        }\r\n\r\n        th, td {\r\n            padding: 4px 8px;\r\n        }\r\n\r\n        ul {\r\n            list-style: none;\r\n        }\r\n\r\n        .collection-list a {\r\n            display: block;\r\n            width: 120px;\r\n            padding: 4px 8px;\r\n            text-decoration: none;\r\n            color: black;\r\n            background-color: #ccc;\r\n        }\r\n        .collection-list a:hover {\r\n            background-color: #ddd;\r\n        }\r\n        .collection-list a:visited {\r\n            color: black;\r\n        }\r\n    </style>\r\n    <script type=\"module\">\nimport { html, render } from 'https://unpkg.com/lit-html?module';\nimport { until } from 'https://unpkg.com/lit-html/directives/until?module';\n\nconst api = {\r\n    async get(url) {\r\n        return json(url);\r\n    },\r\n    async post(url, body) {\r\n        return json(url, {\r\n            method: 'POST',\r\n            headers: { 'Content-Type': 'application/json' },\r\n            body: JSON.stringify(body)\r\n        });\r\n    }\r\n};\r\n\r\nasync function json(url, options) {\r\n    return await (await fetch('/' + url, options)).json();\r\n}\r\n\r\nasync function getCollections() {\r\n    return api.get('data');\r\n}\r\n\r\nasync function getRecords(collection) {\r\n    return api.get('data/' + collection);\r\n}\r\n\r\nasync function getThrottling() {\r\n    return api.get('util/throttle');\r\n}\r\n\r\nasync function setThrottling(throttle) {\r\n    return api.post('util', { throttle });\r\n}\n\nasync function collectionList(onSelect) {\r\n    const collections = await getCollections();\r\n\r\n    return html`\r\n    <ul class=\"collection-list\">\r\n        ${collections.map(collectionLi)}\r\n    </ul>`;\r\n\r\n    function collectionLi(name) {\r\n        return html`<li><a href=\"javascript:void(0)\" @click=${(ev) => onSelect(ev, name)}>${name}</a></li>`;\r\n    }\r\n}\n\nasync function recordTable(collectionName) {\r\n    const records = await getRecords(collectionName);\r\n    const layout = getLayout(records);\r\n\r\n    return html`\r\n    <table>\r\n        <caption>${collectionName}</caption>\r\n        <thead>\r\n            <tr>${layout.map(f => html`<th>${f}</th>`)}</tr>\r\n        </thead>\r\n        <tbody>\r\n            ${records.map(r => recordRow(r, layout))}\r\n        </tbody>\r\n    </table>`;\r\n}\r\n\r\nfunction getLayout(records) {\r\n    const result = new Set(['_id']);\r\n    records.forEach(r => Object.keys(r).forEach(k => result.add(k)));\r\n\r\n    return [...result.keys()];\r\n}\r\n\r\nfunction recordRow(record, layout) {\r\n    return html`\r\n    <tr>\r\n        ${layout.map(f => html`<td>${JSON.stringify(record[f]) || html`<span>(missing)</span>`}</td>`)}\r\n    </tr>`;\r\n}\n\nasync function throttlePanel(display) {\r\n    const active = await getThrottling();\r\n\r\n    return html`\r\n    <p>\r\n        Request throttling: </span>${active}</span>\r\n        <button @click=${(ev) => set(ev, true)}>Enable</button>\r\n        <button @click=${(ev) => set(ev, false)}>Disable</button>\r\n    </p>`;\r\n\r\n    async function set(ev, state) {\r\n        ev.target.disabled = true;\r\n        await setThrottling(state);\r\n        display();\r\n    }\r\n}\n\n//import page from '//unpkg.com/page/page.mjs';\r\n\r\n\r\nfunction start() {\r\n    const main = document.querySelector('main');\r\n    editor(main);\r\n}\r\n\r\nasync function editor(main) {\r\n    let list = html`<div class=\"col\">Loading&hellip;</div>`;\r\n    let viewer = html`<div class=\"col\">\r\n    <p>Select collection to view records</p>\r\n</div>`;\r\n    display();\r\n\r\n    list = html`<div class=\"col\">${await collectionList(onSelect)}</div>`;\r\n    display();\r\n\r\n    async function display() {\r\n        render(html`\r\n        <section class=\"layout\">\r\n            ${until(throttlePanel(display), html`<p>Loading</p>`)}\r\n        </section>\r\n        <section class=\"layout\">\r\n            ${list}\r\n            ${viewer}\r\n        </section>`, main);\r\n    }\r\n\r\n    async function onSelect(ev, name) {\r\n        ev.preventDefault();\r\n        viewer = html`<div class=\"col\">${await recordTable(name)}</div>`;\r\n        display();\r\n    }\r\n}\r\n\r\nstart();\n\n</script>\r\n</head>\r\n<body>\r\n    <main>\r\n        Loading&hellip;\r\n    </main>\r\n</body>\r\n</html>";
 
-    const mode = process.argv[2] == '-dev' ? 'dev' : 'prod';
+    const mode = process.argv[2] === '-dev' ? 'dev' : 'prod';
 
     const files = {
-        index: mode == 'prod' ? require$$0 : fs__default['default'].readFileSync('./client/index.html', 'utf-8')
+        index: mode === 'prod' ? require$$0 : fs__default['default'].readFileSync('./client/index.html', 'utf-8')
     };
 
     var admin = (method, tokens, query, body) => {
@@ -765,7 +765,7 @@
         let result = '';
 
         const resource = tokens.join('/');
-        if (resource && resource.split('.').pop() == 'js') {
+        if (resource && resource.split('.').pop() === 'js') {
             headers['Content-Type'] = 'application/javascript';
 
             files[resource] = files[resource] || fs__default['default'].readFileSync('./client/' + resource, 'utf-8');
@@ -1038,7 +1038,7 @@
             '_ownerId'
         ];
         for (let key in entry) {
-            if (blacklist.includes(key) == false) {
+            if (blacklist.includes(key) === false) {
                 target[key] = deepCopy(entry[key]);
             }
         }
@@ -1052,7 +1052,7 @@
     function deepCopy(value) {
         if (Array.isArray(value)) {
             return value.map(deepCopy);
-        } else if (typeof value == 'object') {
+        } else if (typeof value === 'object') {
             return [...Object.entries(value)].reduce((p, [k, v]) => Object.assign(p, { [k]: deepCopy(v) }), {});
         } else {
             return value;
@@ -1094,8 +1094,8 @@
             function register(body) {
                 if (body.hasOwnProperty(identity) === false ||
                     body.hasOwnProperty('password') === false ||
-                    body[identity].length == 0 ||
-                    body.password.length == 0) {
+                    body[identity].length === 0 ||
+                    body.password.length === 0) {
                     throw new RequestError$2('Missing fields');
                 } else if (context.protectedStorage.query('users', { [identity]: body[identity] }).length !== 0) {
                     throw new ConflictError$1(`A user with the same ${identity} already exists`);
@@ -1116,7 +1116,7 @@
 
             function login(body) {
                 const targetUser = context.protectedStorage.query('users', { [identity]: body[identity] });
-                if (targetUser.length == 1) {
+                if (targetUser.length === 1) {
                     if (hash(body.password) === targetUser[0].hashedPassword) {
                         const result = targetUser[0];
                         delete result.hashedPassword;
@@ -1212,7 +1212,7 @@
                 return context.storage.get(collectionName, id);
             };
             const isOwner = (user, object) => {
-                return user._id == object._ownerId;
+                return user._id === object._ownerId;
             };
             context.rules = {
                 get,
@@ -1229,7 +1229,7 @@
 
                 if (Array.isArray(rule)) {
                     rule = checkRoles(rule, data);
-                } else if (typeof rule == 'string') {
+                } else if (typeof rule === 'string') {
                     rule = !!(eval(rule));
                 }
                 if (!rule && !isAdmin) {
@@ -1240,14 +1240,14 @@
 
             function applyPropRule(action, [prop, rule], user, data, newData) {
                 // NOTE: user needs to be in scope for eval to work on certain rules
-                if (typeof rule == 'string') {
+                if (typeof rule === 'string') {
                     rule = !!eval(rule);
                 }
 
-                if (rule == false) {
-                    if (action == '.create' || action == '.update') {
+                if (rule === false) {
+                    if (action === '.create' || action === '.update') {
                         delete newData[prop];
-                    } else if (action == '.read') {
+                    } else if (action === '.read') {
                         delete data[prop];
                     }
                 }
@@ -1261,7 +1261,7 @@
                 } else if (roles.includes('User')) {
                     return true;
                 } else if (context.user && roles.includes('Owner')) {
-                    return context.user._id == data._ownerId;
+                    return context.user._id === data._ownerId;
                 } else {
                     return false;
                 }
@@ -1335,35 +1335,37 @@
     var seedData = {
         games: {
             "ff436770-76c5-40e2-b231-77409eda7a61": {
-                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
-                "title": "CoverFire",
-                "category": "Action",
-                "maxLevel": "70",
-                "imageUrl": "/images/CoverFire.png",
-                "summary": "Best action shooter game, easy controls, realistic 3D graphics and fun offline missions. Get your best shooting gun and take to action!",
+                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",                
+                "brand": "Brand 1",
                 "_createdOn": 1617194128618,
             },
             "1840a313-225c-416a-817a-9954d4609f7c": {
-                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
-                "title": "MineCraft",
-                "category": "Arcade",
-                "maxLevel": "250",
-                "imageUrl": "/images/MineCraft.png",
-                "summary": "Set in a world where fantasy creatures live side by side with humans. A human cop is forced to work with an Orc to find a weapon everyone is prepared to kill for. Set in a world where fantasy creatures live side by side with humans. A human cop is forced to work with an Orc to find a weapon everyone is prepared to kill for.",
+                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",                
+                "brand": "Brand 2",
                 "_createdOn": 1617194210928,
             },
             "126777f5-3277-42ad-b874-76d043b069cb": {
-                "_ownerId": "847ec027-f659-4086-8032-5173e2f9c93a",
-                "title": "Zombie Lang",
-                "category": "Vertical Shooter",
-                "maxLevel": "100",
-                "imageUrl": "/images/ZombieLang.png",
-                "summary": "With it’s own unique story, set between the events of the first movie, Zombieland: Double Tap- Road Trip is a ridiculously fun top-down twin-stick shooter featuring local co-op multiplayer for up to four players. Play as your favorite heroes from the original — Tallahassee, Columbus, Wichita and Little Rock — as well as new unlockable characters from the upcoming sequel.  The game embraces the game-like elements seen in the film by  incorporating everything from the “Rules” to “Zombie Kill of the Week”.  Use your special abilities, an arsenal of weapons and the essential Zombieland rules for survival to stay alive against huge numbers of uniquely grotesque and dangerous undead monstrosities in Zombieland: Double Tap- Road Trip’s story-based campaign mode, wave-based horde mode, and boss battles.",
+                "_ownerId": "847ec027-f659-4086-8032-5173e2f9c93a",              
+                "brand": "Brand 3",
                 "_createdOn": 1617194295474,
             }
         },
         comments: {
-        
+            "ff436770-76c5-40e2-b231-77409eda7a61": {
+                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea7",                
+                "suggestion": "My suggestions is...",
+                "_createdOn": 1617194128618,
+            },
+            "1840a313-225c-416a-817a-9954d4609f7c": {
+                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea6",                
+                "summary": "It would be great if...",
+                "_createdOn": 1617194210928,
+            },
+            "126777f5-3277-42ad-b874-76d043b069cb": {
+                "_ownerId": "847ec027-f659-4086-8032-5173e2f9c92a",              
+                "suggestion": "How about you implement...",
+                "_createdOn": 1617194295474,
+            }
         }
     };
     var rules$1 = {
