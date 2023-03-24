@@ -103,6 +103,14 @@ html {
     font-size: 1.2rem;
 }
 
+.logo-nav{ 
+    color: inherit;
+}
+.logo-nav:active,
+.logo-nav:hover{
+    text-shadow: 4px 4px 4px #132930;
+}
+
 .subtitle-header {
     font-size: 0.8rem;
 }
@@ -115,12 +123,12 @@ html {
     font-weight: 600;
 }
 
-.nav.header.list a {
+.nav.header.list .links {
     text-align: center;
 }
 
-.nav.header.list a:hover,
-.nav.header.list a:active {
+.nav.header.list .links:hover,
+.nav.header.list .links:active {
     background-color: var(--clr-highlight);
     color: var(--clr-light);
     border-radius: 5px;
