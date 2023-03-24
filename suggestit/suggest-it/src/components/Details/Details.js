@@ -1,6 +1,28 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { Loader } from "../Loader/Loader";
 
+import * as cardService from '../../services/cardService';
+
 export const Details =()=>{
+
+    const {cardId} = useParams();
+    const [card,setCard]=useState({});
+    const [userName, setUserName]=useState('');
+    const [suggestion,setSuggestion]=useState('');
+
+    useEffect(()=>{
+        cardService
+        .getCard(cardId)
+        .then((res)=>{
+            if (!res.ok) {
+                throw new Error(`${res.status}`);
+            }
+            setCard(res);
+        });
+    },[cardId]);
+
+
     return (
         
         //  DETAILS vis for all
