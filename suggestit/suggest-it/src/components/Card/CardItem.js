@@ -219,7 +219,7 @@ export const CardItem = ({ _id, brand, createdOn, expiryDate }) => {
                             Details
                         </Link>
 
-                        {/*  VISIBLE FOR LOGGED NOT OWNERS */}
+                        {/*  VISIBLE FOR LOGGED (NOT OWNERS?) */}
                         <Link to='/addSuggestion' className='add-sugg-link'>
                             Suggest
                         </Link>
