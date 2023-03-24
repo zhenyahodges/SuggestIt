@@ -8,7 +8,7 @@ export const Catalog=()=>{
             <h2 className="catalog title">Catalog</h2>
 
            {/* LOADER show when fetching   */}
-           <Loader/>
+           {/* <Loader/> */}
 
             <div className="catalog-wrapper">
                 {/* PUBLIC CATALOG  */}
@@ -110,7 +110,7 @@ export const Catalog=()=>{
                     </footer>
                 </article>
 
-                <article className="sugg-card catalog public">
+                <article className="sugg-card catalog">
                     <header
                         className="card-header card-brand-logo suggestit-brand"
                     >
@@ -427,7 +427,7 @@ export const Catalog=()=>{
                     </footer>
                 </article>
 
-                <article className="sugg-card catalog public general">
+                <article className="sugg-card catalog general">
                     <header
                         className="card-header card-brand-logo suggestit-brand"
                     >
@@ -526,9 +526,7 @@ export const Catalog=()=>{
                     </footer>
                 </article>
 
-                {/* PRIVATE CATALOG  */}
-                {/* <section className="catalog private">  */}
-                <article className="sugg-card catalog private">
+                <article className="sugg-card catalog">
                     <header
                         className="card-header card-brand-logo suggestit-brand"
                     >
@@ -845,7 +843,7 @@ export const Catalog=()=>{
                     </footer>
                 </article>
 
-                <article className="sugg-card catalog private">
+                <article className="sugg-card catalog">
                     <header
                         className="card-header card-brand-logo suggestit-brand"
                     >

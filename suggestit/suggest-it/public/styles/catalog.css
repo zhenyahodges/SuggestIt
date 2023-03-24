@@ -35,16 +35,6 @@
     z-index: 1;
 }
 
-/* || PUBLIC CATALOG */
-.catalog.public {
-    display: none;
-}
-
-/* || PRIVATE CATALOG */
-.catalog.private {
-    /* display: none; */
-}
-
 /* details links */
 .public .details-link{
     display: none;

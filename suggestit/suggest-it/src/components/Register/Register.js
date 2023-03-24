@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 export const Register=()=>{
     return(
         // <!-- REGISTER -->
@@ -93,8 +95,8 @@ export const Register=()=>{
                     Register
                 </button>
 
-                <a href="/" className="login link"
-                    >Already have an account? Login</a
+                <Link to="/login" className="login link"
+                    >Already have an account? Login</Link
                 >
             </form>
         {/* END REGISTER  */}

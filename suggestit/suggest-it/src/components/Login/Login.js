@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 export const Login=()=>{
     return(
         // <!-- LOGIN -->
@@ -48,8 +50,8 @@ export const Login=()=>{
                 >
                     Login
                 </button>
-                <a href="/" className="login link"
-                    >Don't have an account? Register</a
+                <Link to="/register" className="login link"
+                    >Don't have an account? Register</Link
                 >
             </form>
         {/* <!-- END LOGIN --> */}
