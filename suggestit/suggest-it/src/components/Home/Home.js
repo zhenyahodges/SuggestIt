@@ -1,4 +1,4 @@
-export const Welcome =()=>{
+export const Home =()=>{
     return(
         // <!-- WELCOME -->
         <section className="welcome window">

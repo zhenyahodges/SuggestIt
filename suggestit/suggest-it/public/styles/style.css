@@ -1,7 +1,7 @@
 @import url('./reset.css');
 @import url("https://use.fontawesome.com/releases/v6.3.0/css/all.css");
 
-@import url("welcome.css");
+@import url("home.css");
 @import url("card.css");
 @import url("buttons.css");
 @import url("catalog.css");
@@ -128,7 +128,8 @@ html {
 }
 
 .nav.header.list .links:hover,
-.nav.header.list .links:active {
+.nav.header.list .links:active,
+.nav.header.list .links:focus  {
     background-color: var(--clr-highlight);
     color: var(--clr-light);
     border-radius: 5px;

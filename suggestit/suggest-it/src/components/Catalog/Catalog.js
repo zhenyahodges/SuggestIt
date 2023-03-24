@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Loader } from "../Loader/Loader";
 
 export const Catalog=()=>{
@@ -7,7 +8,7 @@ export const Catalog=()=>{
             <h2 className="catalog title">Catalog</h2>
 
            {/* LOADER show when fetching   */}
-           {/* <Loader/> */}
+           <Loader/>
 
             <div className="catalog-wrapper">
                 {/* PUBLIC CATALOG  */}
@@ -98,11 +99,11 @@ export const Catalog=()=>{
                                 Thank you for your contributions!
                             </p>
                             <div className="card-footer-links-wrapper">
-                                <a href="/" className="details-link"
-                                    >Details</a
+                                <Link to="/details" className="details-link"
+                                    >Details</Link
                                 >
-                                <a href="/" className="add-sugg-link"
-                                    >Suggest</a
+                                <Link to="/addSuggestion" className="add-sugg-link"
+                                    >Suggest</Link
                                 >
                             </div>
                         </div>

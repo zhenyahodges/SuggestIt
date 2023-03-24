@@ -21,13 +21,13 @@ export const Header = () => {
                 {/* <!-- ||HEADER NAV --> */}
                 <nav className='nav header'>
                     <ul className='nav header list'>
-                        <Link
+                        {/* <Link
                             to='/'
                             className='nav header list links home'
                             id='nav-head-home-link'
                         >
                             Home
-                        </Link>
+                        </Link> */}
                         <Link
                             to='/catalog'
                             className='nav header list links cat'
@@ -61,6 +61,13 @@ export const Header = () => {
                             id='nav-head-reg-link'
                         >
                             Register
+                        </Link>
+                        <Link
+                            to='/profile'
+                            className='nav header list links prof'
+                            id='nav-head-prof-link'
+                        >
+                            Profile
                         </Link>
                         {/* <!-- <a to="/about" className="nav header list links">About</a> --> */}
                         {/* <!-- <a to="/contact" className="nav header list links">Contact</a> --> */}
