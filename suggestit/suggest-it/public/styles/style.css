@@ -127,9 +127,7 @@ html {
     text-align: center;
 }
 
-.nav.header.list .links:hover,
-.nav.header.list .links:active,
-.nav.header.list .links:focus  {
+.nav.header.list .links:hover {
     background-color: var(--clr-highlight);
     color: var(--clr-light);
     border-radius: 5px;

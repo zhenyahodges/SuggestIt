@@ -18,14 +18,17 @@ function App() {
             <main className='page main'>
                 <section className='page main container'>
                     <Routes>
-                    <Route path='/' element={<Home/>} />                        
-                    <Route path='/catalog' element={<Catalog/>} />
-                    {/* <Route path='/catalog/:cardId' element={<Details />}/> */}
-                    <Route path='/addSuggestion' element={<AddSuggestion/>} />                   
-                    <Route path='/profile' element={<Profile/>} />                   
-                       
-                        <Route path='/login' element={<Login/>} />
-                        <Route path='/register' element={<Register/>} />
+                        <Route path='/' element={<Home />} />
+                        <Route path='/catalog' element={<Catalog />} />
+                        {/* <Route path='/catalog/:cardId' element={<Details />}/> */}
+                        <Route
+                            path='/addSuggestion'
+                            element={<AddSuggestion />}
+                        />
+                        <Route path='/profile' element={<Profile />} />
+
+                        <Route path='/login' element={<Login />} />
+                        <Route path='/register' element={<Register />} />
                     </Routes>
                 </section>
                 {/* <!-- end main section --> */}

@@ -16,7 +16,7 @@
 
 .catalog .add-sugg-link,
 .catalog .vote-sugg-link {
-    display: none;
+    /* display: none; */
 }
 
 .catalog .card-main {
