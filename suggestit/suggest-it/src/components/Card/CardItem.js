@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 export const CardItem = ({ _id, brand, createdOn, expiryDate }) => {
     return (
-        //    {/*  CARD */}
+     
         <article className='sugg-card details'>
             <header className='card-header card-brand-logo suggestit-brand'>
                 <h5 className='brand logo-line'>{brand}</h5>
@@ -10,7 +10,7 @@ export const CardItem = ({ _id, brand, createdOn, expiryDate }) => {
 
             <main className='card-main'>
                 <ul className='sugg-list' role='list'>
-                    {/*  LIST items start */}
+          
 
                     {/*  li start */}
                     <li className='sugg-item'>
@@ -39,7 +39,7 @@ export const CardItem = ({ _id, brand, createdOn, expiryDate }) => {
                                 </span>
                             </p>
 
-                            <p className='sugg-ranking'>
+                            <p className='sugg-ranking'>Votes: 
                                 {/* LIKES */}
                                 <span className='rank'>15</span>
 
@@ -70,141 +70,6 @@ export const CardItem = ({ _id, brand, createdOn, expiryDate }) => {
                     </li>
                     {/*  li end */}
 
-                    {/*  ADDITONAL */}
-                    {/*  li start */}
-                    <li className='sugg-item'>
-                        <div className='sugg-item-wrapper'>
-                            <p className='sugg-text'>
-                                <span className='author-nickname'>Me</span>
-                                One more suggestion for you
-                            </p>
-                            <p className='sugg-ranking'>
-                                <span className='rank'>5</span>
-                                <a href='/' className='sugg-like-link'>
-                                    <i className='like fa-solid fa-circle-up'></i>
-                                </a>
-                            </p>
-                        </div>
-                    </li>
-                    {/*  li end */}
-                    {/*  li start */}
-                    <li className='sugg-item'>
-                        <div className='sugg-item-wrapper'>
-                            <p className='sugg-text'>
-                                <span className='author-nickname'>Me</span>
-                                One more suggestion for you
-                            </p>
-                            <p className='sugg-ranking'>
-                                <span className='rank'>5</span>
-                                <a href='/' className='sugg-like-link'>
-                                    <i className='like fa-solid fa-circle-up'></i>
-                                </a>
-                            </p>
-                        </div>
-                    </li>
-                    {/*  li end */}
-                    {/*  li start */}
-                    <li className='sugg-item'>
-                        <div className='sugg-item-wrapper'>
-                            <p className='sugg-text'>
-                                <span className='author-nickname'>Me</span>
-                                One more suggestion for you
-                            </p>
-                            <p className='sugg-ranking'>
-                                <span className='rank'>5</span>
-                                <a href='/' className='sugg-like-link'>
-                                    <i className='like fa-solid fa-circle-up'></i>
-                                </a>
-                            </p>
-                        </div>
-                    </li>
-                    {/*  li end */}
-
-                    {/*  li start */}
-                    <li className='sugg-item'>
-                        <div className='sugg-item-wrapper'>
-                            <p className='sugg-text'>
-                                <span className='author-nickname'>Me</span>
-                                One more suggestion for you
-                            </p>
-                            <p className='sugg-ranking'>
-                                <span className='rank'>5</span>
-                                <a href='/' className='sugg-like-link'>
-                                    <i className='like fa-solid fa-circle-up'></i>
-                                </a>
-                            </p>
-                        </div>
-                    </li>
-                    {/*  li end */}
-                    {/*  li start */}
-                    <li className='sugg-item'>
-                        <div className='sugg-item-wrapper'>
-                            <p className='sugg-text'>
-                                <span className='author-nickname'>Me</span>
-                                One more suggestion for you
-                            </p>
-                            <p className='sugg-ranking'>
-                                <span className='rank'>5</span>
-                                <a href='/' className='sugg-like-link'>
-                                    <i className='like fa-solid fa-circle-up'></i>
-                                </a>
-                            </p>
-                        </div>
-                    </li>
-                    {/*  li end */}
-
-                    {/*  li start */}
-                    <li className='sugg-item'>
-                        <div className='sugg-item-wrapper'>
-                            <p className='sugg-text'>
-                                <span className='author-nickname'>Me</span>
-                                One more suggestion for you
-                            </p>
-                            <p className='sugg-ranking'>
-                                <span className='rank'>5</span>
-                                <a href='/' className='sugg-like-link'>
-                                    <i className='like fa-solid fa-circle-up'></i>
-                                </a>
-                            </p>
-                        </div>
-                    </li>
-                    {/*  li end                              */}
-
-                    {/*  li start */}
-                    <li className='sugg-item'>
-                        <div className='sugg-item-wrapper'>
-                            <p className='sugg-text'>
-                                <span className='author-nickname'>Me</span>
-                                One more suggestion for you
-                            </p>
-                            <p className='sugg-ranking'>
-                                <span className='rank'>1</span>
-                                <a href='/' className='sugg-like-link'>
-                                    <i className='like fa-solid fa-circle-up'></i>
-                                </a>
-                            </p>
-                        </div>
-                    </li>
-                    {/*  li end */}
-
-                    {/*  li start */}
-                    <li className='sugg-item'>
-                        <div className='sugg-item-wrapper'>
-                            <p className='sugg-text'>
-                                <span className='author-nickname'>Me</span>
-                                Last suggestion
-                            </p>
-                            <p className='sugg-ranking'>
-                                <span className='rank'>0</span>
-                                <a href='/' className='sugg-like-link'>
-                                    <i className='like fa-solid fa-circle-up'></i>
-                                </a>
-                            </p>
-                        </div>
-                    </li>
-                    {/*  li end */}
-
-                    {/* LISTitems */}
                 </ul>
             </main>
             <footer className='card-footer suggs-card foot'>
