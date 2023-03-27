@@ -14,24 +14,20 @@ function App() {
     return (
         <>
             <Header />
-            {/* <!-- || MAIN --> */}
-            <main className='page main'>
+              <main className='page main'>
                 <section className='page main container'>
-                    <Routes>
+                        <Routes>
                         <Route path='/' element={<Home />} />
                         <Route path='/catalog' element={<Catalog />} />
 
-                        <Route path='/catalog/:cardId' element={<Details />}/>
-                        {/* <Route
-                            path='/catalog/:cardId/:suggestionId'
-                            element={<AddSuggestion />}                        /> */}
+                        <Route path='/catalog/:cardId' element={<Details />} />
+                        <Route path='/catalog/:cardId/:suggestionId' element={<AddSuggestion />} />
                         <Route path='/profile/:userId' element={<Profile />} />
 
                         <Route path='/login' element={<Login />} />                      
                         <Route path='/register' element={<Register />} />
                     </Routes>
-                </section>
-                {/* <!-- end main section --> */}
+                </section>                
             </main>
             <Footer />
         </>

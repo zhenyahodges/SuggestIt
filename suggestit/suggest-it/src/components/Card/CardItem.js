@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { SuggestionItem } from '../Details/AddSuggestion/SuggestionItem/SuggestionItem';
 
 export const CardItem = ({ _id, brand, createdOn, expiryDate }) => {
     return (
@@ -10,65 +11,7 @@ export const CardItem = ({ _id, brand, createdOn, expiryDate }) => {
 
             <main className='card-main'>
                 <ul className='sugg-list' role='list'>
-          
-
-                    {/*  li start */}
-                    <li className='sugg-item'>
-                        <div className='sugg-item-wrapper'>
-                            <p className='sugg-text'>
-                                {/* <span className='author-nickname'>Me</span> */}
-                                {/* {suggestion} */}
-                                Suggestion for you Lorem, ipsum dolor sit amet
-                                consectetur adipisicing elit. Laboriosam, cum.
-                                Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Doloribus, est?
-                                {/*  EDIT & DELETE (BTNS )IF OWNER & NOT TIMED OUT */}
-                                <span className='user-sug-list'>
-                                    <a
-                                        href='/'
-                                        className='edit-user-sugged link'
-                                    >
-                                        Edit
-                                    </a>
-                                    <a
-                                        href='/'
-                                        className='delete-user-sugged link'
-                                    >
-                                        Delete
-                                    </a>
-                                </span>
-                            </p>
-
-                            <p className='sugg-ranking'>Votes: 
-                                {/* LIKES */}
-                                <span className='rank'>15</span>
-
-                                {/*  LIKE DISABLED FOR GUESTS & OWNERS */}
-                                {/*  ===!? LIKE LIMITED voting!?=== */}
-                                <a href='/' className='sugg-like-link'>
-                                    <i className='like fa-solid fa-circle-up'></i>
-                                </a>
-                            </p>
-                        </div>
-                    </li>
-                    {/*  li end */}
-
-                    {/*  li start  */}
-                    <li className='sugg-item'>
-                        <div className='sugg-item-wrapper'>
-                            <p className='sugg-text'>
-                                <span className='author-nickname'>Me</span>
-                                Another suggestion for you
-                            </p>
-                            <p className='sugg-ranking'>
-                                <span className='rank'>10</span>
-                                <a href='/' className='sugg-like-link'>
-                                    <i className='like fa-solid fa-circle-up'></i>
-                                </a>
-                            </p>
-                        </div>
-                    </li>
-                    {/*  li end */}
+                    <SuggestionItem/>
 
                 </ul>
             </main>
