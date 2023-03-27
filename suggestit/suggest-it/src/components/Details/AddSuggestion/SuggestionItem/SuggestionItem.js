@@ -3,7 +3,7 @@ export const SuggestionItem = ({suggestion}) => {
         <div className='sugg-item-wrapper'>
             <p className='sugg-text'>
                 {/* <span className='author-nickname'>Me</span> */}
-                {suggestion}               
+                {/* {suggestion}                */}
 
                 {/*  EDIT & DELETE (BTNS )IF OWNER & NOT TIMED OUT */}
 
@@ -18,6 +18,7 @@ export const SuggestionItem = ({suggestion}) => {
                 <span className="sm-ital">Votes:</span>
                 {/* LIKES */}
                 <span className='rank'>15</span>
+
                 {/*  LIKE DISABLED FOR GUESTS & OWNERS */}
                 {/*  ===!? LIKE LIMITED voting!?=== */}
                 {/* {(isAuthorized && !isOwner) && 

@@ -9,7 +9,7 @@ import { Header } from './components/Header/Header';
 import { Home } from './components/Home/Home';
 
 import { Route, Routes, useNavigate } from 'react-router-dom';
-import { CardItem } from './components/Card/CardItem';
+// import { CardItem } from './components/Card/CardItem';
 
 function App() {
     return (
@@ -27,7 +27,8 @@ function App() {
 
                         <Route path='/login' element={<Login />} />                      
                         <Route path='/register' element={<Register />} />
-                    </Routes>                    
+                    </Routes>
+                    
                 </section>                
             </main>
             <Footer />
