@@ -3,7 +3,7 @@ export const AddSuggestion=()=>{
         //  *** ADD A SUGGESTION 
         //  ASK for poll-code auth for suggesting 
         <>
-        <section className="poll-code form-wrapper">
+        {/* <section className="poll-code form-wrapper">
             <form
                 action="#"
                 method="post"
@@ -22,12 +22,12 @@ export const AddSuggestion=()=>{
                 <p className="poll-code error-message">
                     Sorry, this code is incorrect. Please, try again or
                     obtain a code from your provider first.
-                </p>
+                </p> */}
 
               {/* <span className="poll-code add sugg author" id="add-sugg-author"> 
             Me
         </span>  */}
-                <button
+                {/* <button
                     type="submit"
                     method="get"
                     value="Submit"
@@ -39,7 +39,7 @@ export const AddSuggestion=()=>{
                     Submit
                 </button>
             </form>
-        </section>
+        </section> */}
 
         {/* //  authorised ADD SUGGESTION form  */}
         <section className="add-sugg form-wrapper">

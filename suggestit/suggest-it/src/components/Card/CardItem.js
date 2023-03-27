@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 export const CardItem = ({ _id, brand, createdOn, expiryDate }) => {
     return (
         //    {/*  CARD */}
-        <article className='sugg-card details private'>
+        <article className='sugg-card details'>
             <header className='card-header card-brand-logo suggestit-brand'>
                 <h5 className='brand logo-line'>{brand}</h5>
             </header>
@@ -17,11 +17,12 @@ export const CardItem = ({ _id, brand, createdOn, expiryDate }) => {
                         <div className='sugg-item-wrapper'>
                             <p className='sugg-text'>
                                 {/* <span className='author-nickname'>Me</span> */}
+                                {/* {suggestion} */}
                                 Suggestion for you Lorem, ipsum dolor sit amet
                                 consectetur adipisicing elit. Laboriosam, cum.
                                 Lorem ipsum dolor sit amet consectetur
                                 adipisicing elit. Doloribus, est?
-                                {/*  IF OWNER & NOT TIMED OUT */}
+                                {/*  EDIT & DELETE (BTNS )IF OWNER & NOT TIMED OUT */}
                                 <span className='user-sug-list'>
                                     <a
                                         href='/'
