@@ -3,8 +3,8 @@ import { SuggestionItem } from '../Details/AddSuggestion/SuggestionItem/Suggesti
 
 export const CardItem = ({ _id, brand, createdOn, expiryDate }) => {
     return (
-     
-        <article className='sugg-card details'>
+
+      <article className='sugg-card details'>
             <header className='card-header card-brand-logo suggestit-brand'>
                 <h5 className='brand logo-line'>{brand}</h5>
             </header>
@@ -13,25 +13,38 @@ export const CardItem = ({ _id, brand, createdOn, expiryDate }) => {
                 <ul className='sugg-list' role='list'>
                     <SuggestionItem/>
 
+                    {/* {card.suggestions &&
+            Object.values(card.suggestions).map((x) => (
+                <li key={x._id} className='sugg-item'>
+                    <div className='sugg-item-wrapper'>
+                        <p className='sugg-text'>
+                            <span className='author-nickname'>
+                                {x.userName}
+                            </span>
+                            {/* SUGGESTION */}
+                            {/* {x.suggestion} */}
+
+
                 </ul>
             </main>
             <footer className='card-footer suggs-card foot'>
                 <div className='card-footer-content'>
-                    <p className='card-footer-owner'>Owner</p>
+                    {/* <p className='card-footer-owner'>Owner</p> */}
                     <p className='card-footer-text'>
                         Thank you for your contributions!
                     </p>
 
-                    <div className='card-footer-links-wrapper'>
-                        {/*  NOT VISIBLE WHEN OPENED */}
+                    <div className='card-footer-links-wrapper'>                        
                         <Link to={`/catalog/${_id}`} className='details-link'>
                             Details
                         </Link>
 
                         {/*  VISIBLE FOR LOGGED (NOT OWNERS?) */}
+                        {/* {(isAuthorized && !isOwner)&&
                         <Link to='/addSuggestion' className='add-sugg-link'>
-                            Suggest
-                        </Link>
+                        Suggest
+                    </Link>} */}
+
                         {/*  <a href="/" className="print details">Print</a> */}
                         {/*  <a href="/" className="print email details"
                            >Email</a
@@ -53,6 +66,6 @@ export const CardItem = ({ _id, brand, createdOn, expiryDate }) => {
                     </div>
                 </div>
             </footer>
-        </article>
+        </article>       
     );
 };

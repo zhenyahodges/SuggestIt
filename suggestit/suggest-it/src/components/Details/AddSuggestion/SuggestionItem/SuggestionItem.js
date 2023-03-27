@@ -6,7 +6,7 @@ export const SuggestionItem = ({suggestion}) => {
                 {suggestion}               
 
                 {/*  EDIT & DELETE (BTNS )IF OWNER & NOT TIMED OUT */}
-                
+
                 {/* {(isAuthorized && !isOwner) && <span className='user-sug-list'>
                     <a href='/' className='edit-user-sugged link'>Edit</a>
                     <a href='/' className='delete-user-sugged link'>Delete</a>
@@ -15,14 +15,15 @@ export const SuggestionItem = ({suggestion}) => {
             </p>
 
             <p className='sugg-ranking'>
-                Votes:
+                <span className="sm-ital">Votes:</span>
                 {/* LIKES */}
                 <span className='rank'>15</span>
                 {/*  LIKE DISABLED FOR GUESTS & OWNERS */}
                 {/*  ===!? LIKE LIMITED voting!?=== */}
+                {/* {(isAuthorized && !isOwner) && 
                 <a href='/' className='sugg-like-link'>
                     <i className='like fa-solid fa-circle-up'></i>
-                </a>
+                </a>} */}
             </p>
         </div>
     </li>;
