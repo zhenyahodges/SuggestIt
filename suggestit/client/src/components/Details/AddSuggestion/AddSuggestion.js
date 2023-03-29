@@ -61,6 +61,7 @@ export const AddSuggestion=()=>{
                     rows="4"
                     cols="50"
                     maxlength="150"
+                    placeholder="Type your suggestion here"
                     required
                 >
                 </textarea>

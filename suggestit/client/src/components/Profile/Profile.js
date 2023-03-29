@@ -1,6 +1,8 @@
 // import { Loader } from '../Loader/Loader';
 
 export const Profile=()=>{
+
+    
     return(
         
         // <!-- PROFILE -->
@@ -18,7 +20,7 @@ export const Profile=()=>{
                     >
                         <div className="wrap fname">
                             <label
-                                for="prof-fname"
+                                htmlFor="prof-fname"
                                 className="prof lbl fname"
                                 >First Name</label
                             >
@@ -32,7 +34,7 @@ export const Profile=()=>{
                         </div>
                         <div className="wrap prof-lname">
                             <label
-                                for="prof-lname"
+                                htmlFor="prof-lname"
                                 className="prof lbl lname"
                                 >Last Name</label
                             >
@@ -46,7 +48,7 @@ export const Profile=()=>{
                         </div>
                         <div className="wrap email">
                             <label
-                                for="prof-email"
+                                htmlFor="prof-email"
                                 className="prof lbl email"
                                 >Email</label
                             >
@@ -60,7 +62,7 @@ export const Profile=()=>{
                         </div>
 {/* 
                         <!-- <div className="wrap pass">
-                    <label for="pass" className="prof lbl pass"
+                    <label htmlFor="pass" className="prof lbl pass"
                         >Password</label
                     >
                     <input
@@ -75,7 +77,7 @@ export const Profile=()=>{
                 </div> --> */}
 
                         {/* <!-- <div className="wrap repass">
-                    <label for="repass" className="prof lbl repass"
+                    <label htmlFor="repass" className="prof lbl repass"
                         >Confirm Password</label
                     >
                     <input
@@ -1420,7 +1422,7 @@ export const Profile=()=>{
                             >
                                 <div className="wrap card-title">
                                     <label
-                                        for="card-name"
+                                        htmlFor="card-name"
                                         className="lbl card-name"
                                         >Feedback Form Title</label
                                     >
@@ -1437,7 +1439,7 @@ export const Profile=()=>{
                                 </div>
                                 <div className="wrap card-code">
                                     <label
-                                        for="card-code"
+                                        htmlFor="card-code"
                                         className="lbl card-code"
                                         >Create Code</label
                                     >
@@ -1455,7 +1457,7 @@ export const Profile=()=>{
                                 </div>
                                 {/* <!-- <div className="wrap card-timeout">
                                     <label
-                                        for="card-timeout"
+                                        htmlFor="card-timeout"
                                         className="lbl card-timeout"
                                         >End Date</label
                                     >
