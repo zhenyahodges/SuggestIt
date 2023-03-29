@@ -1,11 +1,11 @@
 import { useState } from 'react';
 
-export default function useForm(initValues, handleSubmit) {
+export default function useForm(initValues, onSubmit) {
     const [data, setData] = useState({
         initValues,
     });
 
-    function handleChange(e) {
+    const handleChange = (e) => {
         // console.log(e)
         const { name, value, type, checked } = e.target;
 
@@ -15,11 +15,18 @@ export default function useForm(initValues, handleSubmit) {
                 [name]: type === 'checkbox' ? checked : value,
             };
         });
-    }
+    };
 
-    function handleSubmit(e) {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        // console.log(data);
-        setData(data);
-    }
+        console.log(data);
+        // handleSubmit(data);
+        // setData(initValues);
+    };
+
+    return {
+        data,
+        handleChange,
+        onSubmit,
+    };
 }

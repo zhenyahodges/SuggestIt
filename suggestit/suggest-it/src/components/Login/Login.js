@@ -1,14 +1,14 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useForm from '../../hooks/useForm';
 
 export const Login = ({
-    onLoginSubmit
+    
 }) => {
-    const {values,handleChange,handleSubmit} = useForm ({
+    const {data,handleChange,handleSubmit} = useForm ({
         email: '',
         password: ''
-    },onLoginSubmit);
+    },);
 
 
     return (
@@ -31,8 +31,8 @@ export const Login = ({
                         className='log entry email'
                         name='email'
                         id='log-email'
-                        autocomplete='email'
-                        value={values.email}
+                        autoComplete='email'
+                        value={data.email}
                         onChange={handleChange}
                         required
                     />
@@ -46,10 +46,10 @@ export const Login = ({
                         className='log entry pass'
                         name='pass'
                         id='log-pass'
-                        autocomplete='current-password'
-                        minlength='6'
+                        autoComplete='current-password'
+                        minLength='6'
                         placeholder='6 characters minimum'
-                        value={values.password}
+                        value={data.password}
                         onChange={handleChange}
                         required
                     />

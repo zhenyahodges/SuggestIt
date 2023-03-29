@@ -2,15 +2,14 @@ import { Link } from 'react-router-dom';
 import useForm from '../../hooks/useForm';
 
 export const Register = ({
-    onRegisterSubmit
 }) => {
-    const {values,handleChange,handleSubmit} = useForm ({
+    const {data,handleChange,handleSubmit} = useForm ({
         fname: '',
         lname: '',
         email: '',
         password: '',
         repass: ''
-    },onRegisterSubmit);
+    },[]);
 
     return (
         // <!-- REGISTER -->
@@ -24,7 +23,7 @@ export const Register = ({
                 onSubmit={handleSubmit}
             >
                 <div className='wrap fname'>
-                    <label for='fname' className='reg lbl fname'>
+                    <label htmlFor='fname' className='reg lbl fname'>
                         First Name
                     </label>
                     <input
@@ -32,15 +31,15 @@ export const Register = ({
                         className='reg entry fname'
                         name='fname'
                         id='reg-fname'
-                        minlength='3'
-                        autocomplete='given-name'
-                        value={values.fname}
+                        minLength='3'
+                        autoComplete='given-name'
+                        value={data.fname}
                         onChange={handleChange}
                         required
                     />
                 </div>
                 <div className='wrap lname'>
-                    <label for='lname' className='reg lbl lname'>
+                    <label htmlFor='lname' className='reg lbl lname'>
                         Last Name
                     </label>
                     <input
@@ -48,15 +47,15 @@ export const Register = ({
                         className='reg entry lname'
                         name='lname'
                         id='reg-lname'
-                        minlength='3'
-                        autocomplete='family-name'
-                        value={values.lname}
+                        minLength='3'
+                        autoComplete='family-name'
+                        value={data.lname}
                         onChange={handleChange}
                         required
                     />
                 </div>
                 <div className='wrap email'>
-                    <label for='email' className='reg lbl email'>
+                    <label htmlFor='email' className='reg lbl email'>
                         Email
                     </label>
                     <input
@@ -64,14 +63,14 @@ export const Register = ({
                         className='reg entry email'
                         name='email'
                         id='reg-email'
-                        autocomplete='email'
-                        value={values.email}
+                        autoComplete='email'
+                        value={data.email}
                         onChange={handleChange}
                         required
                     />
                 </div>
                 <div className='wrap pass'>
-                    <label for='pass' className='reg lbl pass'>
+                    <label htmlFor='pass' className='reg lbl pass'>
                         Password
                     </label>
                     <input
@@ -79,15 +78,15 @@ export const Register = ({
                         className='reg entry pass'
                         name='pass'
                         id='reg-pass'
-                        minlength='6'
-                        placeholder='6 characters minimum'
-                        value={values.password}
+                        minLength='6'
+                        placeholder='6 characters minimum'                        
+                        value={data.password}
                         onChange={handleChange}
                         required
                     />
                 </div>
                 <div className='wrap repass'>
-                    <label for='repass' className='reg lbl repass'>
+                    <label htmlFor='repass' className='reg lbl repass'>
                         Confirm Password
                     </label>
                     <input
@@ -95,7 +94,7 @@ export const Register = ({
                         className='reg entry repass'
                         name='repass'
                         id='reg-repass'
-                        value={values.repass}
+                        value={data.repass}
                         onChange={handleChange}
                         required
                     />
@@ -108,7 +107,7 @@ export const Register = ({
                 onChange={handleChange}
                 name="isAccept"
             />
-            <label htmlFor="isAccept">By ticking this you agree 
+            <label htmlhtmlFor="isAccept">By ticking this you agree 
             to our <a className="terms">Terms and Contitions</>
             </label> */}
 

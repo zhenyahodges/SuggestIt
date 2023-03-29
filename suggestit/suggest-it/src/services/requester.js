@@ -1,4 +1,4 @@
-const request = async (method, url, data) => {
+const request = async (method, token, url, data) => {
     const options = {};
 
     if (method !== 'GET') {
@@ -6,31 +6,41 @@ const request = async (method, url, data) => {
 
         if (data) {
             options.headers = {
-                'Content-Type': 'application/json',
+                'content-type': 'application/json',
             };
+
             options.body = JSON.stringify(data);
         }
     }
 
-    const res = await fetch(url, options);
-
-    try {
-        const result = await res.json();
-
-        if (!res.ok) {
-            throw new Error(`${res.status}`);
-        }
-
-        return result;
-    } catch (err) {
-        return (            
-            console.log(`Error: ${err.message}`)
-        );
+    if (token) {
+        options.headers = {
+            ...options.headers,
+            'X-Authorization': token,
+        };
     }
+
+    const response = await fetch(url, options);
+
+    if (response.status === 204) {
+        return {};
+    }
+
+    const result = await response.json();
+
+    if (!response.ok) {
+        throw result;
+    }
+
+    return result;
 };
 
-export const get = request.bind(null, 'GET');
-export const post = request.bind(null, 'POST');
-export const put = request.bind(null, 'PUT');
-export const del = request.bind(null, 'DELETE');
-// export const patch=request.bind(null,'PATCH');
+export const requestFactory = (token) => {
+    return {
+        get: request.bind(null, 'GET', token),
+        post: request.bind(null, 'POST', token),
+        put: request.bind(null, 'PUT', token),
+        // patch: request.bind(null, 'PATCH', token),
+        delete: request.bind(null, 'DELETE', token),
+    }
+};
