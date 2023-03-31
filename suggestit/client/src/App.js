@@ -18,7 +18,7 @@ function App() {
             <Header />
               <main className='page main'>
                 <section className='page main container'>
-                        <Routes>
+                     <Routes>
                         <Route path='/' element={<Home />} />
                         <Route path='/catalog' element={<Catalog />} />
 
