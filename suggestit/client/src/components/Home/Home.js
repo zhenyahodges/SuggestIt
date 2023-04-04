@@ -1,4 +1,8 @@
+import { useNavigate } from "react-router-dom";
+
 export const Home = () => {
+    const navigate=useNavigate();
+ 
     return (
         // <!-- WELCOME -->
         <section className='welcome window'>
@@ -18,7 +22,7 @@ export const Home = () => {
                         ranks them by popularity
                     </p>
                 </div>
-                <button className='btn highlight login' id='login-btn'>
+                <button onClick={()=>navigate('/login')} className='btn highlight login' id='login-btn'>
                     Login
                 </button>
             </section>
@@ -44,20 +48,21 @@ export const Home = () => {
                                 <li className='sugg-item'>
                                     <div className='sugg-item-wrapper'>
                                         <p className='sugg-text'>
-                                            <span className='author-nickname'>
+                                            {/* <span className='author-nickname'>
                                                 Me
-                                            </span>
+                                            </span> */}
                                             Improve this project
                                         </p>
 
                                         <p className='sugg-ranking'>
                                             <span className='rank'>15</span>
-                                            <a
-                                                href='/'
+                                            <span
+                                               
                                                 className='sugg-like-link'
+                                               
                                             >
                                                 <i className='like fa-solid fa-circle-up'></i>
-                                            </a>
+                                            </span>
                                         </p>
                                     </div>
                                 </li>
@@ -74,12 +79,12 @@ export const Home = () => {
                                         </p>
                                         <p className='sugg-ranking'>
                                             <span className='rank'>10</span>
-                                            <a
-                                                href='/'
+                                            <span
+                                              
                                                 className='sugg-like-link'
                                             >
                                                 <i className='like fa-solid fa-circle-up'></i>
-                                            </a>
+                                            </span>
                                         </p>
                                     </div>
                                 </li>
@@ -96,12 +101,12 @@ export const Home = () => {
                                         </p>
                                         <p className='sugg-ranking'>
                                             <span className='rank'>5</span>
-                                            <a
+                                            <span
                                                 href='/'
                                                 className='sugg-like-link'
                                             >
                                                 <i className='like fa-solid fa-circle-up'></i>
-                                            </a>
+                                            </span>
                                         </p>
                                     </div>
                                 </li>
@@ -116,15 +121,7 @@ export const Home = () => {
                                 <p className='card-footer-text'>
                                     Thank you for your contributions!
                                 </p>
-                                <div className='card-footer-links-wrapper'>
-                                    {/* <!-- display !!?? --> */}
-                                    <a href='/' className='details-link'>
-                                        Details
-                                    </a>
-                                    <a href='/' className='add-sugg-link'>
-                                        Suggest
-                                    </a>
-                                </div>
+                                
                             </div>
                         </footer>
                     </article>
@@ -133,7 +130,7 @@ export const Home = () => {
             </section>
 
             <div className='more'>
-                <button className='btn dark catalog' id='catalog-btn'>
+                <button onClick={()=>navigate('/Catalog')} className='btn dark catalog' id='catalog-btn'>
                     Catalog
                 </button>
             </div>

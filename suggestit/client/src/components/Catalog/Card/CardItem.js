@@ -1,7 +1,13 @@
 import { Link } from 'react-router-dom';
 // import { SuggestionItem } from '../../Details/AddSuggestion/SuggestionItem/SuggestionItem';
 
-export const CardItem = ({ _id, brand, createdOn, expiryDate }) => {
+export const CardItem = ({
+    _ownerId, 
+    brand, 
+    _createdOn, 
+    _id,      
+    //  expiryDate 
+    }) => {
     return (
         // TODO:
         // !!! Hide overflow!!!from Details?! or SHOW ONLY FIRST N SUGGS
@@ -12,6 +18,7 @@ export const CardItem = ({ _id, brand, createdOn, expiryDate }) => {
             </header>
 
             <main className='card-main'>
+                <p>HERE GO THE SUGGESTIONS</p>
                 {/* <ul className='sugg-list' > */}
                 {/* TODO: MAP SUGGESTIONS */}
                 {/* {_id.suggestions.map(s=>(<SuggestionItem key={s._id} {...s}/>))}   */}
