@@ -29,8 +29,8 @@ export default function Catalog() {
                 // return {};
                 return res.json();
             })
-            // .then((data) => setCards(Object.values(data)))
-            .then((data) => console.log(Object.values(data)))
+            .then((data) => setCards(Object.values(data)))
+            // .then((data) => console.log(Object.values(data)))
             // .then((data) => setCards(data.cards))
             .catch((err) => {
                 throw new Error(err.status);
