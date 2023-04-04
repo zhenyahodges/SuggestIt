@@ -1,41 +1,52 @@
 import { Register } from './components/Register/Register';
 import { Login } from './components/Login/Login';
-import { Profile } from './components/Profile/Profile';
-import { AddSuggestion } from './components/Details/AddSuggestion/AddSuggestion';
-import { Details } from './components/Details/Details';
+import { AddSuggestion } from './components/AddSuggestion/AddSuggestion';
+import { Details } from './components/Catalog/Card/Details';
 import { Catalog } from './components/Catalog/Catalog';
-import { Footer } from './components/Footer/Footer';
-import { Header } from './components/Header/Header';
 import { Home } from './components/Home/Home';
 import { NotFound } from './components/NotFound/NotFound';
+import {
+    // BrowserRouter,
+    // Routes,
+    Route,
+    createBrowserRouter,
+    createRoutesFromElements,
+    RouterProvider,
+} from 'react-router-dom';
+import Root from './components/Root/Root';
+import ProfileLayout from './components/Profile/ProfileLayout';
+import UserCards from './components/Profile/UserCards';
+import UserSuggs from './components/Profile/UserSuggs';
+import CreateCard from './components/Profile/CreateCard';
 
-import { Route, Routes, useNavigate } from 'react-router-dom';
 // import { CardItem } from './components/Card/CardItem';
 
+const router = createBrowserRouter(
+    createRoutesFromElements(
+        <Route path='/' element={<Root />}>
+            <Route index element={<Home />} />
+            <Route path='catalog' element={<Catalog />} />
+            <Route path='catalog/:cardId' element={<Details />} />
+            <Route
+                path='catalog/:cardId/:suggestionId'
+                element={<AddSuggestion />}
+            />
+            <Route path='login' element={<Login />} />
+            <Route path='register' element={<Register />} />
+
+            {/* PROFILE */}
+            <Route path='profile/:userId' element={<ProfileLayout />}>
+                <Route index element={<UserCards />} />
+                <Route path='create' element={<UserSuggs />} />
+                <Route path='suggest' element={<CreateCard />} />
+            </Route>
+
+            <Route path='*' element={<NotFound />} />
+        </Route>
+    )
+);
 function App() {
-    return (
-        <>
-            <Header />
-              <main className='page main'>
-                <section className='page main container'>
-                     <Routes>
-                        <Route path='/' element={<Home />} />
-                        <Route path='/catalog' element={<Catalog />} />
-
-                        <Route path='/catalog/:cardId' element={<Details />} />
-                        <Route path='/catalog/:cardId/:suggestionId' element={<AddSuggestion />} />
-                        <Route path='/profile/:userId' element={<Profile />} />
-
-                        <Route path='/login' element={<Login />} />                      
-                        <Route path='/register' element={<Register />} />
-                        <Route path="*" element={<NotFound />}/>
-                    </Routes>
-                    
-                </section>                
-            </main>
-            <Footer />
-        </>
-    );
+    return <RouterProvider router={router} />;
 }
 
 export default App;

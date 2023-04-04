@@ -1,8 +1,20 @@
-import { Link } from 'react-router-dom';
-import { CardItem } from '../Card/CardItem';
-import { Loader } from '../Loader/Loader';
+// import { Link } from 'react-router-dom';
+// import { Loader } from '../Loader/Loader';
+
+import { CardItem } from './Card/CardItem';
+
+import { useEffect, useState } from 'react';
+import { getCards } from '../../utils/api';
+import { defer, useLoaderData } from 'react-router-dom';
+
+export function loader() {
+    return defer({ cards: getCards() });
+}
 
 export const Catalog = () => {
+    const cards=useLoaderData();
+    console.log(cards);
+
     return (
         <section className='catalog window'>
             <h2 className='catalog title'>Catalog</h2>
@@ -11,13 +23,7 @@ export const Catalog = () => {
             {/* <Loader/> */}
 
             <div className='catalog-wrapper'>
-
-                {/* PUBLIC CATALOG  */}
-
-                {/* TODO: MAP FEEDBACK CARDS */}
-
-                {/* <CardItem /> */}
-
+                {cards && cards.map((c) => <CardItem key={c._id} {...c} />)}
             </div>
         </section>
     );

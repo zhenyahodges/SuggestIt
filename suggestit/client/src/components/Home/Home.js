@@ -1,67 +1,62 @@
-export const Home =()=>{
-    return(
+export const Home = () => {
+    return (
         // <!-- WELCOME -->
-        <section className="welcome window">
-            <section className="welcome-headings">
-                <h2 className="main-title">
+        <section className='welcome window'>
+            <section className='welcome-headings'>
+                <h2 className='main-title'>
                     {/* <!-- Ultimate Feedback --> */}
                     Suggestions for Continuous Improvements
                 </h2>
-                <div className="sub-wrapper">
-                    <h3 className="main-subtitle">
-                        Do you want an easy and efficient way to get
-                        direct feedback and ideas for imrovements from
-                        your customers and employees?
+                <div className='sub-wrapper'>
+                    <h3 className='main-subtitle'>
+                        Do you want an easy and efficient way to get direct
+                        feedback and ideas for imrovements from your customers
+                        and employees?
                     </h3>
-                    <p className="main-subtext">
-                        We offer a user-friendly interface for
-                        suggestions which ranks them by popularity
+                    <p className='main-subtext'>
+                        We offer a user-friendly interface for suggestions which
+                        ranks them by popularity
                     </p>
                 </div>
-                <button className="btn highlight login" id="login-btn">
+                <button className='btn highlight login' id='login-btn'>
                     Login
                 </button>
             </section>
 
             {/* <!-- SAMPLE  --> */}
-            <section className="sample content">
-                <h4 className="samples-title">Sample</h4>
+            <section className='sample content'>
+                <h4 className='samples-title'>Sample</h4>
 
-                <div className="samples wrapper">
+                <div className='samples wrapper'>
                     {/* <!-- CARD START --> */}
-                    <article className="sugg-card sample">
-                        <header
-                            className="card-header card-brand-logo suggestit-brand"
-                        >
-                            <h5 className="brand logo-line">
-                                Suggest<span className="suggest-it"
-                                    >It</span
-                                >
+                    <article className='sugg-card sample'>
+                        <header className='card-header  suggestit-brand'>
+                            <h5 className='brand logo-line'>
+                                Suggest<span className='suggest-it'>It</span>
                             </h5>
                         </header>
 
-                        <main className="card-main">
-                            <ul className="sugg-list" role="list">
+                        <main className='card-main'>
+                            <ul className='sugg-list'>
                                 {/* <!-- LIST items start --> */}
 
                                 {/* <!-- li start --> */}
-                                <li className="sugg-item">
-                                    <div className="sugg-item-wrapper">
-                                        <p className="sugg-text">
-                                            <span
-                                                className="author-nickname"
-                                            >
+                                <li className='sugg-item'>
+                                    <div className='sugg-item-wrapper'>
+                                        <p className='sugg-text'>
+                                            <span className='author-nickname'>
                                                 Me
                                             </span>
                                             Improve this project
                                         </p>
 
-                                        <p className="sugg-ranking">
-                                            <span className="rank">15</span>
-                                            <a href="/" className="sugg-like-link">
-                                                <i
-                                                    className="like fa-solid fa-circle-up"
-                                                ></i>
+                                        <p className='sugg-ranking'>
+                                            <span className='rank'>15</span>
+                                            <a
+                                                href='/'
+                                                className='sugg-like-link'
+                                            >
+                                                <i className='like fa-solid fa-circle-up'></i>
                                             </a>
                                         </p>
                                     </div>
@@ -69,68 +64,66 @@ export const Home =()=>{
                                 {/* <!-- li end --> */}
 
                                 {/* <!-- li start --> */}
-                                <li className="sugg-item">
-                                    <div className="sugg-item-wrapper">
-                                        <p className="sugg-text">
-                                            <span
-                                                className="author-nickname"
-                                            >
+                                <li className='sugg-item'>
+                                    <div className='sugg-item-wrapper'>
+                                        <p className='sugg-text'>
+                                            <span className='author-nickname'>
                                                 Me
                                             </span>
                                             Add more features
                                         </p>
-                                        <p className="sugg-ranking">
-                                            <span className="rank">10</span
-                                            ><a href="/" className="sugg-like-link"
-                                                ><i
-                                                    className="like fa-solid fa-circle-up"
-                                                ></i
-                                            ></a>
+                                        <p className='sugg-ranking'>
+                                            <span className='rank'>10</span>
+                                            <a
+                                                href='/'
+                                                className='sugg-like-link'
+                                            >
+                                                <i className='like fa-solid fa-circle-up'></i>
+                                            </a>
                                         </p>
                                     </div>
                                 </li>
                                 {/* <!-- li end --> */}
 
                                 {/* <!-- li start --> */}
-                                <li className="sugg-item">
-                                    <div className="sugg-item-wrapper">
-                                        <p className="sugg-text">
-                                            <span
-                                                className="author-nickname"
-                                            >
+                                <li className='sugg-item'>
+                                    <div className='sugg-item-wrapper'>
+                                        <p className='sugg-text'>
+                                            <span className='author-nickname'>
                                                 Me
                                             </span>
                                             Add more pages
                                         </p>
-                                        <p className="sugg-ranking">
-                                            <span className="rank">5</span
-                                            ><a href="/" className="sugg-like-link"
-                                                ><i
-                                                    className="like fa-solid fa-circle-up"
-                                                ></i
-                                            ></a>
+                                        <p className='sugg-ranking'>
+                                            <span className='rank'>5</span>
+                                            <a
+                                                href='/'
+                                                className='sugg-like-link'
+                                            >
+                                                <i className='like fa-solid fa-circle-up'></i>
+                                            </a>
                                         </p>
                                     </div>
                                 </li>
                                 {/* <!-- li end --> */}
 
-                                 {/* <!-- LISTitems --> */}
+                                {/* <!-- LISTitems --> */}
                             </ul>
                         </main>
 
-                        <footer className="card-footer suggs-card foot">
-                            <div className="card-footer-content">
-                                <p className="card-footer-text">
+                        <footer className='card-footer suggs-card foot'>
+                            <div className='card-footer-content'>
+                                <p className='card-footer-text'>
                                     Thank you for your contributions!
                                 </p>
-                                <div className="card-footer-links-wrapper">
+                                <div className='card-footer-links-wrapper'>
                                     {/* <!-- display !!?? --> */}
-                                    <a href="/" className="details-link"
-                                        >Details</a
-                                    >
-                                    <a href="/" className="add-sugg-link"
-                                        >Suggest</a
-                                    >
+                                    <a href='/' className='details-link'>
+                                        Details
+                                    </a>
+                                    <a href='/' className='add-sugg-link'>
+                                        Suggest
+                                    </a>
                                 </div>
                             </div>
                         </footer>
@@ -139,12 +132,11 @@ export const Home =()=>{
                 </div>
             </section>
 
-            <div className="more">
-                <button className="btn dark catalog" id="catalog-btn">
+            <div className='more'>
+                <button className='btn dark catalog' id='catalog-btn'>
                     Catalog
                 </button>
             </div>
         </section>
-
     );
 };

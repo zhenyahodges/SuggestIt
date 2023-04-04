@@ -31,7 +31,7 @@
       width: 100%
   }
 
-  .logo-line {
+  .brand {
       font-size: 1.2rem;
       margin: 0;
       padding: 5px 0;
@@ -66,10 +66,11 @@
       text-align: left;
   }
 
-.sm-ital{
-    font-style: italic;
-    font-size: smaller;
-}
+  .sm-ital {
+      font-style: italic;
+      font-size: smaller;
+  }
+
   .sugg-ranking {
       flex: 1 1 20%;
       text-align: right;
@@ -104,33 +105,35 @@
       font-size: 0.7rem;
       flex: 1 0 50%;
   }
-  .card-footer-links-wrapper{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 10%;
-    flex: 1 0 40%;
+
+  .card-footer-links-wrapper {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 10%;
+      flex: 1 0 40%;
   }
 
   /* LINKS */
   .add-sugg-link,
   .vote-sugg-link,
-  .details-link{
-    color: var(--clr-highlight);
-   }
-   .add-sugg-link:hover,
-   /* .vote-sugg-link:hover, */
-  .details-link:hover{
-     color: var(--clr-light);
-   }
+  .details-link {
+      color: var(--clr-highlight);
+  }
 
-   /* GUESTS-DONT DISPLAY LINK */
-   /* OWNERS-DONT DISPLAY LINK */
-   /*===? LIMIT LIKES!? ====*/
-   .sugg-like-link{
-    /* display: none; */
-   }
+  .add-sugg-link:hover,
+  /* .vote-sugg-link:hover, */
+  .details-link:hover {
+      color: var(--clr-light);
+  }
 
- 
+  /* GUESTS-DONT DISPLAY LINK */
+  /* OWNERS-DONT DISPLAY LINK */
+  /*===? LIMIT LIKES!? ====*/
+  .sugg-like-link {
+      /* display: none; */
+  }
+
+
   /* ===***Card END */

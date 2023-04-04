@@ -6,12 +6,12 @@
     },
     "1840a313-225c-416a-817a-9954d4609f7c": {
         "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",                
-        "brand": "Your Brand",
+        "brand": "Brand A",
         "_createdOn": 1617194210928
     },
     "126777f5-3277-42ad-b874-76d043b069cb": {
         "_ownerId": "847ec027-f659-4086-8032-5173e2f9c93a",              
-        "brand": "Topic",
+        "brand": "BrandB",
         "_createdOn": 1617194295474
     }
 }

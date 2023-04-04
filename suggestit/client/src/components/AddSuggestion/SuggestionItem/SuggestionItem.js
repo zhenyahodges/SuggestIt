@@ -1,6 +1,7 @@
 export const SuggestionItem = ({suggestion}) => {
     <li className='sugg-item'>
         <div className='sugg-item-wrapper'>
+            
             <p className='sugg-text'>
                 {/* <span className='author-nickname'>Me</span> */}
                 {/* {suggestion}                */}

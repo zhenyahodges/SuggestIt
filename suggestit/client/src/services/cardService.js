@@ -1,6 +1,6 @@
 import * as request from './requester';
 
-const baseUrl = 'http://localhost:3030/jsonstore/cards';
+const baseUrl = 'http://localhost:3030/data/cards';
 
 export const getAllCards = async () => {
     const result = await request.get(baseUrl);

@@ -5,7 +5,7 @@ export const NotFound = () => {
         <section className='404 window'>
             <>
                 <h2 className='404 title'>Page Not Found</h2>
-                <Link to='/'>Home</Link>
+                <Link to='/'>Back to Home Page</Link>
             </>
         </section>
     );
