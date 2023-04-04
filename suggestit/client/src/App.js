@@ -1,8 +1,6 @@
 import { Register } from './components/Register/Register';
-import { Login } from './components/Login/Login';
 import { AddSuggestion } from './components/AddSuggestion/AddSuggestion';
 import { Details } from './components/Catalog/Card/Details';
-import { Catalog } from './components/Catalog/Catalog';
 import { Home } from './components/Home/Home';
 import { NotFound } from './components/NotFound/NotFound';
 import {
@@ -18,6 +16,8 @@ import ProfileLayout from './components/Profile/ProfileLayout';
 import UserCards from './components/Profile/UserCards';
 import UserSuggs from './components/Profile/UserSuggs';
 import CreateCard from './components/Profile/CreateCard';
+import Catalog from './components/Catalog/Catalog';
+import Login from './components/Login/Login';
 
 // import { CardItem } from './components/Card/CardItem';
 

@@ -1,16 +1,38 @@
+// import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+// import { SuggestionItem } from '../../AddSuggestion/SuggestionItem/SuggestionItem';
 // import { SuggestionItem } from '../../Details/AddSuggestion/SuggestionItem/SuggestionItem';
 
-export const CardItem = ({
+export default function CardItem({
     _ownerId, 
     brand, 
     _createdOn, 
     _id,      
     //  expiryDate 
-    }) => {
-    return (
-        // TODO:
-        // !!! Hide overflow!!!from Details?! or SHOW ONLY FIRST N SUGGS
+    }) {
+        // const [suggestions,setSuggestions]=useState([]);
+    
+        // useEffect((id) => {
+        //     fetch(`http://localhost:3030/jsonstore/cards/${id}`)
+        //         .then((res) => {
+        //             if (!res.ok) {
+        //                 throw new Error(`res.status`);
+        //             }
+        //             if (res.status === 204) {
+        //             console.log('empty');
+        //             // return {};
+        //             // return console.log('empty');
+        //             }                 
+        //             return res.json();
+        //         })
+        //         .then((data) => setSuggestions(Object.values(data)))
+        //         .catch((err) => {
+        //             throw new Error(err);
+        //         });    
+        // }, []);
+    
+        return (   
+        // TODO:!!! Hide overflow!!!from Details?! or SHOW ONLY FIRST N SUGGS
 
         <article className='sugg-card details'>
             <header className='card-header'>
@@ -19,8 +41,9 @@ export const CardItem = ({
 
             <main className='card-main'>
                 <p>HERE GO THE SUGGESTIONS</p>
-                {/* <ul className='sugg-list' > */}
+                <ul className='sugg-list' >
                 {/* TODO: MAP SUGGESTIONS */}
+                {/* {suggestions && suggestions.map((s) => <SuggestionItem id={s._id} key={s._id} {...s} />)} */}
                 {/* {_id.suggestions.map(s=>(<SuggestionItem key={s._id} {...s}/>))}   */}
 
                 {/* {card.suggestions &&
@@ -33,7 +56,7 @@ export const CardItem = ({
                                 </span> */}
                 {/* SUGGESTION */}
                 {/* {x.suggestion} */}
-                {/* </ul> */}
+                </ul>
             </main>
 
             <footer className='card-footer suggs-card foot'>

@@ -1,26 +1,28 @@
 // import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import useForm from '../../hooks/useForm';
+import { Form, Link,redirect,
+    useActionData,
+    useNavigation,
+    useLoaderData, } from 'react-router-dom';
+// import useForm from '../../hooks/useForm';
 
-export const Login = ({
+// export const Login = ({
     
-}) => {
-    const {data,handleChange,handleSubmit} = useForm ({
-        email: '',
-        password: ''
-    },);
-
-
+// }) => {
+//     const {data,handleChange,handleSubmit} = useForm ({
+//         email: '',
+//         password: ''
+//     },);
+export default function Login(){
+    
     return (
         // <!-- LOGIN -->
         <section className='login form-wrapper'>
             <h2>Login</h2>
-            <form
-                action='#'
+            <Form
                 method='post'
                 id='log-form'
                 className='login form'                
-                onSubmit={handleSubmit}
+                // onSubmit={handleSubmit}
             >
                 <div className='wrap email'>
                     <label htmlFor='email' className='log lbl email'>
@@ -32,8 +34,8 @@ export const Login = ({
                         name='email'
                         id='log-email'
                         autoComplete='email'
-                        value={data.email}
-                        onChange={handleChange}
+                        // value={data.email}
+                        // onChange={handleChange}
                         required
                     />
                 </div>
@@ -49,8 +51,8 @@ export const Login = ({
                         autoComplete='current-password'
                         minLength='6'
                         placeholder='6 characters minimum'
-                        value={data.password}
-                        onChange={handleChange}
+                        // value={data.password}
+                        // onChange={handleChange}
                         required
                     />
                 </div>
@@ -68,7 +70,7 @@ export const Login = ({
                 <Link to='/register' className='login link'>
                     Don't have an account? Register
                 </Link>
-            </form>
+            </Form>
             {/* <!-- END LOGIN --> */}
         </section>
     );

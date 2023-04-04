@@ -1,8 +1,8 @@
-export const SuggestionItem = ({suggestion}) => {
+export default function SuggestionItem(){
     <li className='sugg-item'>
         <div className='sugg-item-wrapper'>
             
-            <p className='sugg-text'>
+            <p id="suggestion" className='sugg-text'>
                 {/* <span className='author-nickname'>Me</span> */}
                 {/* {suggestion}                */}
 
@@ -12,20 +12,20 @@ export const SuggestionItem = ({suggestion}) => {
                     <a href='/' className='edit-user-sugged link'>Edit</a>
                     <a href='/' className='delete-user-sugged link'>Delete</a>
                 </span>} */}
-                
+                This is the text in the SuggestionItem File
             </p>
 
             <p className='sugg-ranking'>
                 <span className="sm-ital">Votes:</span>
                 {/* LIKES */}
-                <span className='rank'>15</span>
+                <span id="likes" className='rank'>15</span>
 
                 {/*  LIKE DISABLED FOR GUESTS & OWNERS */}
                 {/*  ===!? LIKE LIMITED voting!?=== */}
-                {/* {(isAuthorized && !isOwner) && 
+                {/* {(isAuthorized && !isOwner) && } */}
                 <a href='/' className='sugg-like-link'>
                     <i className='like fa-solid fa-circle-up'></i>
-                </a>} */}
+                </a>
             </p>
         </div>
     </li>;
