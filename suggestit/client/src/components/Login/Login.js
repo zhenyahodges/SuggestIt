@@ -5,6 +5,7 @@ import { Form, Link,redirect,
     useNavigation,
     useLoaderData,
     useNavigate, } from 'react-router-dom';
+import { loginUser } from '../../utils/api';
 // import useForm from '../../hooks/useForm';
 
 // export const Login = ({
@@ -19,9 +20,17 @@ export async function action({request}){
     const formData=await request.formData();
     const email=formData.get('email');
    const password= formData.get('pass');
-   console.log(email, password);
+
+  const data= await loginUser({email,password});
+   console.log(data);
     return null;
 }
+
+// {
+//     "email":"peter@abv.bg",
+//     "_id":"35c62d76-8152-4626-8712-eeb96381bea8",
+//     "accessToken":"63f6a769a2d17e76583a48dabafe23e3429a54e0345e9322b2f952bdf6a46599"
+// }
 
 export default function Login(){
     // const [loginFormData,setLoginFormData] = useState();

@@ -19,7 +19,7 @@ export async function getCards(id) {
 
 export async function getSuggestions(id) {
     const url = `${baseUrl}/jsonstore/cards/${id}`;
-       
+
     const res = await fetch(url);
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
@@ -28,7 +28,35 @@ export async function getSuggestions(id) {
         return console.log('empty');
     }
     const data = await res.json();
-    console.log(Object.values(data));
+    // console.log(Object.values(data));
     return Object.values(data);
     // return (data);
+}
+
+export async function loginUser(creds) {
+    const res = await fetch(`${baseUrl}/users/login`, {
+        method: 'post',
+        body: JSON.stringify(creds),
+    });
+    const data = await res.json();
+
+    if (!res.ok) {
+        throw new Error(`${res.status} - ${res.statusText}`);
+    }
+
+    return data;
+}
+
+export async function registerUser(creds) {
+    const res = await fetch(`${baseUrl}/users/register`, {
+        method: 'post',
+        body: JSON.stringify(creds),
+    });
+    const data = await res.json();
+
+    if (!res.ok) {
+        throw new Error(`${res.status} - ${res.statusText}`);
+    }
+
+    return data;
 }
