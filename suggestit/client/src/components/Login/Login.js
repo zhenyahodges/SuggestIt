@@ -2,10 +2,7 @@ import {
     Form,
     Link,
     redirect,
-    useActionData,
     useNavigation,
-    useLoaderData,
-    useNavigate,
 } from 'react-router-dom';
 import { loginUser } from '../../utils/api';
 
@@ -13,12 +10,16 @@ export async function action({ request }) {
     const formData = await request.formData();
     const email = formData.get('email');
     const password = formData.get('pass');
-
+    
+    try{
     const data = await loginUser({ email, password });
     //    console.log(data);
     // localStorage.setItem('loggedin', true);
     return redirect(`/users/${data._id}`);
     // return null;
+    }catch(err){
+        return err.message;
+    }
 }
 
 // {
@@ -28,7 +29,7 @@ export async function action({ request }) {
 // }
 
 export default function Login() {
-    const navigate = useNavigate();
+    const navigation = useNavigation();
 
     return (
         // <!-- LOGIN -->
@@ -75,9 +76,11 @@ export default function Login() {
                     className='log btn dark subm'
                     form='log-form'
                     id='btn-log-form'
-                    // disabled
+                    disabled={navigation.state === 'submitting'}
                 >
-                    Login
+                    {navigation.state === 'submitting'
+                        ? 'Loggingin ...'
+                        : 'Login'}
                 </button>
                 <Link to='/register' className='login link'>
                     Don't have an account? Register

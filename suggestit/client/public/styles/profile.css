@@ -122,3 +122,13 @@ input.card-timeout{
     color: var(---clr-bgr);
 
 }
+
+nav .prof-nav > a .btn.dark {
+    color: var(--clr-light);
+    font-weight: 500;
+}
+
+.prof-nav > .btn.dark:hover {
+    color: var(--clr-highlight);
+}
+

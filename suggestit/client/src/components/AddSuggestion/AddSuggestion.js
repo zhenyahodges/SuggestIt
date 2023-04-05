@@ -15,8 +15,8 @@ export const AddSuggestion=()=>{
                     type="text"
                     id="poll-code"
                     name="poll-code"
-                    minlength="6"
-                    maxlength="6"
+                    minLength="6"
+                    maxLength="6"
                     required
                 />
                 <p className="poll-code error-message">
@@ -60,7 +60,7 @@ export const AddSuggestion=()=>{
                     name="sugg"
                     rows="4"
                     cols="50"
-                    maxlength="150"
+                    maxLength="150"
                     placeholder="Type your suggestion here"
                     required
                 >

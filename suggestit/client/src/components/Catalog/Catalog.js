@@ -1,8 +1,4 @@
-import { Link, defer, useLoaderData } from 'react-router-dom';
-// import { Loader } from '../Loader/Loader';
-
-// import { useState } from 'react';
-// import CardItem from './Card/CardItem';
+import { Link, NavLink, defer, useLoaderData } from 'react-router-dom';
 import { getCards } from '../../utils/api';
 
 // import { defer, useLoaderData } from 'react-router-dom';
@@ -15,52 +11,7 @@ export function loader() {
     }
 
 export default function Catalog() {
-    // const [cards, setCards] = useState([]);
-    // const [loading, setLoading] = useState(false);
-
-    // useEffect(() => {
-    //     fetch('http://localhost:3030/jsonstore/cards')
-    //         .then((res) => {
-    //             if (!res.ok) {
-    //                 throw new Error('res.status');
-    //             }
-    //             if (res.status === 204) {
-    //                 console.log('empty');
-    //                 return {};
-    //                 // return console.log('empty');
-    //             }
-    //             // console.log('empty');
-    //             // return {};
-    //             return res.json();
-    //         })
-    //         .then((data) => setCards(Object.values(data)))
-    //         // .then((data) => console.log(Object.values(data)))
-    //         // .then((data) => setCards(data.cards))
-    //         .catch((err) => {
-    //             throw new Error(err.status);
-    //         });
-
-    //     // async function loadCards() {
-    //     //     setLoading(true);
-    //     // try {
-    //     //     const data = await getCards();
-    //     //     setCards(data);
-    //     // } catch (err) {
-    //     //     // setErr(err);
-    //     //     console.log(err);
-    //     // } finally {
-    //     //     setLoading(false);
-    //     // }
-    //     // }
-
-    //     // loadCards();
-    // }, []);
-
-    // console.log(cards);
-
-    // console.log(`'cards: '+ ${cards[0].brand} + 'brand': ${cards.brand} ${cards._id}`);
   const cards=useLoaderData();
-//   console.log(cards);
   
     const cardElements = cards.map(({brand, _createdOn,_id,_ownerId   }) => (
         // TODO:!!! Hide overflow!!!from Details?! or SHOW ONLY FIRST N SUGGS
@@ -90,45 +41,14 @@ export default function Catalog() {
             </main>
 
             <footer className='card-footer suggs-card foot'>
-                <div className='card-footer-content'>
-                    {/* <p className='card-footer-owner'>Owner</p> */}
+                <div className='card-footer-content'>                    
                     <p className='card-footer-text'>
                         Thank you for your contributions!
                     </p>
-
                     <div className='card-footer-links-wrapper'>
                         <Link to={_id} className='details-link'>
                             Details
-                        </Link>
-
-                        {/* ADD-SUGGESTION LINK: visible for LOGGED (NOT OWNERS?)
-
-                {/* {(isAuthorized && !isOwner)&&
-                <Link to='/addSuggestion' className='add-sugg-link'>
-                Suggest
-                </Link>} */}
-
-                        {/*------- LATER  */}
-                        {/*  <a href="/" className="print details">Print</a> */}
-                        {/*  <a href="/" className="print email details"
-                            >Email</a
-                            > */}
-
-                        {/*------- LATER  */}
-                        {/*  VISIBLE FOR LOGGED OWNER ONLY */}
-                        {/* <p className="countdown-text"><span className="count-end">20</span> days left</p> */}
-
-                        {/* if POLL ENDED  */}
-                        {/* <p className="countdown-text">Poll ended</p> */}
-
-                        {/*  VISIBLE FOR OWNER IF NOT TIMED OUT */}
-                        {/* { (isAuthorized && !isOwner)&&
-               <a href='/' className='card-details edit-card'>
-                    Edit
-                </a>
-                <a href='/' className='card-details delete-card'>
-                    Delete
-                </a>} */}
+                        </Link>                        
                     </div>
                 </div>
             </footer>

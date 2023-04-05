@@ -1,6 +1,5 @@
-// import { useState } from 'react';
-import { Form, Link, useNavigate } from 'react-router-dom';
-// import useForm from '../../hooks/useForm';
+import { Form, Link, useNavigation } from 'react-router-dom';
+
 export async function action({request}){
     const formData=await request.formData();
     const fname=formData.get('fname');
@@ -13,46 +12,7 @@ export async function action({request}){
 }
 
 export default function Register (){
-    const navigate=useNavigate();
-    // const [users,SetUsers]=useState([]);
-
-    // useEffect(() => {
-    //     fetch('http://localhost:3030/jsonstore/cards')
-    //         .then((res) => {
-    //             if (!res.ok) {
-    //                 throw new Error('res.status');
-    //             }
-    //             if (res.status === 204) {
-    //                 console.log('empty');
-    //                 return {};
-    //                 // return console.log('empty');
-    //             }
-    //             // console.log('empty');
-    //             // return {};
-    //             return res.json();
-    //         })
-    //         .then((data) => setCards(Object.values(data)))
-    //         // .then((data) => console.log(Object.values(data)))
-    //         // .then((data) => setCards(data.cards))
-    //         .catch((err) => {
-    //             throw new Error(err.status);
-    //         });
-
-    //     // async function loadCards() {
-    //     //     setLoading(true);
-    //     // try {
-    //     //     const data = await getCards();
-    //     //     setCards(data);
-    //     // } catch (err) {
-    //     //     // setErr(err);
-    //     //     console.log(err);
-    //     // } finally {
-    //     //     setLoading(false);
-    //     // }
-    //     // }
-
-    //     // loadCards();
-    // }, []);
+    const navigation=useNavigation();
 
     return (
         // <!-- REGISTER -->
@@ -152,9 +112,11 @@ export default function Register (){
                     className='btn dark subm'
                     form='reg-form'
                     id='btn-reg-form'
-                    // disabled
+                    disabled={navigation.state === 'submitting'}
                 >
-                    Register
+                    {navigation.state === 'submitting'
+                        ? 'Registering ...'
+                        : 'Register'}
                 </button>
 
                 <Link to='/login' className='login link'>

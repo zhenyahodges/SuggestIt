@@ -24,8 +24,8 @@ export default function CreateCard() {
                             name='card-name'
                             id='card-name'
                             placeholder='Enter title'
-                            minlength='3'
-                            maxlength='30'
+                            minLength='3'
+                            maxLength='30'
                             required
                         />
                     </div>
@@ -39,8 +39,8 @@ export default function CreateCard() {
                             className='card-code'
                             name='card-code'
                             id='card-code'
-                            minlength='6'
-                            maxlength='6'
+                            minLength='6'
+                            maxLength='6'
                             placeholder='Create form code'
                             required
                         />

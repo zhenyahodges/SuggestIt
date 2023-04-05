@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { Form, NavLink, Outlet } from 'react-router-dom';
 
 export default function ProfileLayout() {
     const activeStyles = {
@@ -16,9 +16,9 @@ export default function ProfileLayout() {
             <div className='profile-wrapper'>
                 {/* <!-- ||PROF INFO --> */}
                 <div className='profile-form-wrap'>
-                    <form
+                    <Form
                         action='#'
-                        method='post'
+                        method='get'
                         id='prof-form'
                         className='prof form'
                     >
@@ -77,7 +77,7 @@ export default function ProfileLayout() {
                         className="prof entry pass"
                         name="prof-pass"
                         id="prof-pass"
-                        minlength="6"
+                        minLength="6"
                         placeholder=" 6 characters minimum"
                         required
                     />
@@ -107,7 +107,7 @@ export default function ProfileLayout() {
                 >
                     Register
                 </button> --> */}
-                    </form>
+                    </Form>
                     <nav className='prof-nav'>
                         <NavLink to='.' 
                         end 
