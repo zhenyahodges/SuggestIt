@@ -1,17 +1,19 @@
 import { Link, NavLink, useLoaderData } from 'react-router-dom';
 import { getCard, getCards } from '../../../utils/api';
+import SuggestionItem from '../../AddSuggestion/SuggestionItem/SuggestionItem';
 // import { SuggestionItem } from '../../AddSuggestion/SuggestionItem/SuggestionItem';
 // import { SuggestionItem } from '../../Details/AddSuggestion/SuggestionItem/SuggestionItem';
 
 export function loader({ params }) {
     // console.log(params);
-    return getCard(params.cardId);
+    return getCards(params.cardId);
 }
 
 export default function CardItem() {
     const card = useLoaderData();
     const [ownerId,brand,createdOn,suggestions] = card;
     // console.log(card);
+    console.log(suggestions);
 
     return (
         //  DETAILS vis for all
@@ -24,7 +26,7 @@ export default function CardItem() {
             {
                 // TODO:!!! Hide overflow!!!from Details?! or SHOW ONLY FIRST N SUGGS
 
-                <article className='sugg-card details'>
+                <article className='sugg-card details detailed-card'>
                     <header className='card-header'>
                         <h5 className='brand'>{brand}</h5>
                     </header>
@@ -33,10 +35,10 @@ export default function CardItem() {
                         <p>HERE GO THE SUGGESTIONS</p>
                         <ul className='sugg-list'>
                             {/* TODO: MAP SUGGESTIONS */}
-                            {/* {suggestions && suggestions.map((s) => <SuggestionItem id={s._id} key={s._id} {...s} />)} */}
-                            {/* {_id.suggestions.map(s=>(<SuggestionItem key={s._id} {...s}/>))}   */}
+                            {/* {suggestions && suggestions.map((s) => <SuggestionItem id={s._id} key={s._id} {...s} />)}
+                            {_id.suggestions.map(s=>(<SuggestionItem key={s._id} {...s}/>))}  
 
-                            {/* {card.suggestions &&
+                            {card.suggestions &&
      Object.values(card.suggestions).map((x) => (
         <li key={x._id} className='sugg-item'>
              <div className='sugg-item-wrapper'>
@@ -92,8 +94,7 @@ export default function CardItem() {
                         </div>
                     </footer>
                 </article>
-            }
-            {/* SUGGESTIONS */}
+            }      
         </section>
     );
 }

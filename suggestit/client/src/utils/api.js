@@ -9,7 +9,8 @@ export async function getCards(id) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
     if (res.statusCode === 204) {
-        return console.log('empty');
+        console.log('empty');
+        return {};
     }
     const data = await res.json();
     // console.log(Object.values(data));
@@ -17,21 +18,22 @@ export async function getCards(id) {
     // return (data);
 }
 
-export async function getCard(id) {
-    const url =   `${baseUrl}/jsonstore/cards/${id}`;
+// export async function getCard(id) {
+//     const url =   `${baseUrl}/jsonstore/cards/${id}`;
 
-    const res = await fetch(url);
-    if (!res.ok) {
-        throw new Error(`${res.status} - ${res.statusText}`);
-    }
-    if (res.statusCode === 204) {
-        return console.log('empty');
-    }
-    const data = await res.json();
-    console.log(Object.values(data));
-    return Object.values(data);
-    // return (data);
-}
+//     const res = await fetch(url);
+//     if (!res.ok) {
+//         throw new Error(`${res.status} - ${res.statusText}`);
+//     }
+//     if (res.statusCode === 204) {
+//         console.log('empty');
+//         return {};
+//     }
+//     const data = await res.json();
+//     // console.log(Object.values(data));
+//     return Object.values(data);
+//     // return (data);
+// }
 
 export async function getSuggestions(id) {
     const url = `${baseUrl}/jsonstore/cards/${id}`;
