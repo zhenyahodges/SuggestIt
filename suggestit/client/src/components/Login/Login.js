@@ -1,29 +1,24 @@
-// import { useState } from 'react';
-// import { useState } from 'react';
-import { Form, Link,redirect,
+import {
+    Form,
+    Link,
+    redirect,
     useActionData,
     useNavigation,
     useLoaderData,
-    useNavigate, } from 'react-router-dom';
+    useNavigate,
+} from 'react-router-dom';
 import { loginUser } from '../../utils/api';
-// import useForm from '../../hooks/useForm';
 
-// export const Login = ({
-    
-// }) => {
-//     const {data,handleChange,handleSubmit} = useForm ({
-//         email: '',
-//         password: ''
-//     },);
+export async function action({ request }) {
+    const formData = await request.formData();
+    const email = formData.get('email');
+    const password = formData.get('pass');
 
-export async function action({request}){
-    const formData=await request.formData();
-    const email=formData.get('email');
-   const password= formData.get('pass');
-
-  const data= await loginUser({email,password});
-   console.log(data);
-    return null;
+    const data = await loginUser({ email, password });
+    //    console.log(data);
+    // localStorage.setItem('loggedin', true);
+    return redirect(`/users/${data._id}`);
+    // return null;
 }
 
 // {
@@ -32,10 +27,9 @@ export async function action({request}){
 //     "accessToken":"63f6a769a2d17e76583a48dabafe23e3429a54e0345e9322b2f952bdf6a46599"
 // }
 
-export default function Login(){
-    // const [loginFormData,setLoginFormData] = useState();
-    const navigate=useNavigate();
-    
+export default function Login() {
+    const navigate = useNavigate();
+
     return (
         // <!-- LOGIN -->
         <section className='login form-wrapper'>
@@ -44,8 +38,7 @@ export default function Login(){
                 action='/login'
                 method='post'
                 id='log-form'
-                className='login form'                
-                // onSubmit={handleSubmit}
+                className='login form'
             >
                 <div className='wrap email'>
                     <label htmlFor='email' className='log lbl email'>
@@ -56,7 +49,7 @@ export default function Login(){
                         className='log entry email'
                         name='email'
                         id='log-email'
-                        autoComplete='email'                     
+                        autoComplete='email'
                         required
                     />
                 </div>
@@ -71,7 +64,7 @@ export default function Login(){
                         id='log-pass'
                         autoComplete='current-password'
                         minLength='6'
-                        placeholder='6 characters minimum'                  
+                        placeholder='6 characters minimum'
                         required
                     />
                 </div>
@@ -93,4 +86,4 @@ export default function Login(){
             {/* <!-- END LOGIN --> */}
         </section>
     );
-};
+}
