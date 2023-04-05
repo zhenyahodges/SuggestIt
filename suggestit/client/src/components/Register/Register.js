@@ -1,26 +1,68 @@
-import { Link } from 'react-router-dom';
-import useForm from '../../hooks/useForm';
+// import { useState } from 'react';
+import { Form, Link, useNavigate } from 'react-router-dom';
+// import useForm from '../../hooks/useForm';
+export async function action({request}){
+    const formData=await request.formData();
+    const fname=formData.get('fname');
+    const lname=formData.get('lname');
+    const email=formData.get('email');
+   const password= formData.get('pass');
+   const repass=formData.get('repass');
+   console.log(fname,lname,email, password,repass);
+    return null;
+}
 
-export const Register = ({
-}) => {
-    const {data,handleChange,handleSubmit} = useForm ({
-        fname: '',
-        lname: '',
-        email: '',
-        password: '',
-        repass: ''
-    },[]);
+export default function Register (){
+    const navigate=useNavigate();
+    // const [users,SetUsers]=useState([]);
+
+    // useEffect(() => {
+    //     fetch('http://localhost:3030/jsonstore/cards')
+    //         .then((res) => {
+    //             if (!res.ok) {
+    //                 throw new Error('res.status');
+    //             }
+    //             if (res.status === 204) {
+    //                 console.log('empty');
+    //                 return {};
+    //                 // return console.log('empty');
+    //             }
+    //             // console.log('empty');
+    //             // return {};
+    //             return res.json();
+    //         })
+    //         .then((data) => setCards(Object.values(data)))
+    //         // .then((data) => console.log(Object.values(data)))
+    //         // .then((data) => setCards(data.cards))
+    //         .catch((err) => {
+    //             throw new Error(err.status);
+    //         });
+
+    //     // async function loadCards() {
+    //     //     setLoading(true);
+    //     // try {
+    //     //     const data = await getCards();
+    //     //     setCards(data);
+    //     // } catch (err) {
+    //     //     // setErr(err);
+    //     //     console.log(err);
+    //     // } finally {
+    //     //     setLoading(false);
+    //     // }
+    //     // }
+
+    //     // loadCards();
+    // }, []);
 
     return (
         // <!-- REGISTER -->
         <section className='register form-wrapper'>
             <h2>Register</h2>
-            <form
-                action='#'
+            <Form
+                action='/register'                
                 method='post'
                 id='reg-form'
-                className='register form'
-                onSubmit={handleSubmit}
+                className='register form'               
             >
                 <div className='wrap fname'>
                     <label htmlFor='fname' className='reg lbl fname'>
@@ -32,9 +74,7 @@ export const Register = ({
                         name='fname'
                         id='reg-fname'
                         minLength='3'
-                        autoComplete='given-name'
-                        value={data.fname}
-                        onChange={handleChange}
+                        autoComplete='given-name'                    
                         required
                     />
                 </div>
@@ -48,9 +88,7 @@ export const Register = ({
                         name='lname'
                         id='reg-lname'
                         minLength='3'
-                        autoComplete='family-name'
-                        value={data.lname}
-                        onChange={handleChange}
+                        autoComplete='family-name'                       
                         required
                     />
                 </div>
@@ -63,9 +101,7 @@ export const Register = ({
                         className='reg entry email'
                         name='email'
                         id='reg-email'
-                        autoComplete='email'
-                        value={data.email}
-                        onChange={handleChange}
+                        autoComplete='email'                     
                         required
                     />
                 </div>
@@ -79,9 +115,8 @@ export const Register = ({
                         name='pass'
                         id='reg-pass'
                         minLength='6'
-                        placeholder='6 characters minimum'                        
-                        value={data.password}
-                        onChange={handleChange}
+                        placeholder='6 characters minimum'
+                        autoComplete='new-password'
                         required
                     />
                 </div>
@@ -94,8 +129,7 @@ export const Register = ({
                         className='reg entry repass'
                         name='repass'
                         id='reg-repass'
-                        value={data.repass}
-                        onChange={handleChange}
+                        autoComplete='new-password'
                         required
                     />
                 </div>
@@ -113,12 +147,12 @@ export const Register = ({
 
                 <button
                     type='submit'
-                    method='post'
+                    // method='post'
                     value='Register'
                     className='btn dark subm'
                     form='reg-form'
                     id='btn-reg-form'
-                    disabled
+                    // disabled
                 >
                     Register
                 </button>
@@ -126,7 +160,7 @@ export const Register = ({
                 <Link to='/login' className='login link'>
                     Already have an account? Login
                 </Link>
-            </form>
+            </Form>
             {/* END REGISTER  */}
         </section>
     );

@@ -1,4 +1,3 @@
-import { Register } from './components/Register/Register';
 import { AddSuggestion } from './components/AddSuggestion/AddSuggestion';
 import { Details } from './components/Catalog/Card/Details';
 import { Home } from './components/Home/Home';
@@ -16,8 +15,9 @@ import ProfileLayout from './components/Profile/ProfileLayout';
 import UserCards from './components/Profile/UserCards';
 import UserSuggs from './components/Profile/UserSuggs';
 import CreateCard from './components/Profile/CreateCard';
-import Catalog from './components/Catalog/Catalog';
-import Login from './components/Login/Login';
+import  Register , {action as registerAction} from './components/Register/Register';
+import Catalog, {loader as cardsLoader} from './components/Catalog/Catalog';
+import Login, {action as loginAction} from './components/Login/Login';
 
 // import { CardItem } from './components/Card/CardItem';
 
@@ -25,20 +25,44 @@ const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path='/' element={<Root />}>
             <Route index element={<Home />} />
-            <Route path='catalog' element={<Catalog />} />
-            <Route path='catalog/:cardId' element={<Details />} />
+            <Route 
+            path='cards' 
+            element={<Catalog />}
+            loader={cardsLoader}
+             />
+            <Route 
+            path='cards/:cardId' 
+            element={<Details />} />
             <Route
-                path='catalog/:cardId/:suggestionId'
+                path='cards/:cardId/:suggestionId'
                 element={<AddSuggestion />}
             />
-            <Route path='login' element={<Login />} />
-            <Route path='register' element={<Register />} />
+            <Route 
+            path='login' 
+            element={<Login />}
+            action={loginAction}
+            
+            />
+            <Route 
+            path='register' 
+            element={<Register />}
+            action={registerAction}
+            />
 
             {/* PROFILE */}
-            <Route path='profile/:userId' element={<ProfileLayout />}>
-                <Route index element={<UserCards />} />
-                <Route path='create' element={<UserSuggs />} />
-                <Route path='suggest' element={<CreateCard />} />
+            <Route path='users/:userId' 
+            element={<ProfileLayout />}
+            >
+                <Route 
+                index 
+                element={<UserCards />}
+                 />
+                <Route 
+                path='create' 
+                element={<UserSuggs />} />
+                <Route 
+                path='suggest' 
+                element={<CreateCard />} />
             </Route>
 
             <Route path='*' element={<NotFound />} />

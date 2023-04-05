@@ -1,8 +1,10 @@
 // import { useState } from 'react';
+// import { useState } from 'react';
 import { Form, Link,redirect,
     useActionData,
     useNavigation,
-    useLoaderData, } from 'react-router-dom';
+    useLoaderData,
+    useNavigate, } from 'react-router-dom';
 // import useForm from '../../hooks/useForm';
 
 // export const Login = ({
@@ -12,13 +14,25 @@ import { Form, Link,redirect,
 //         email: '',
 //         password: ''
 //     },);
+
+export async function action({request}){
+    const formData=await request.formData();
+    const email=formData.get('email');
+   const password= formData.get('pass');
+   console.log(email, password);
+    return null;
+}
+
 export default function Login(){
+    // const [loginFormData,setLoginFormData] = useState();
+    const navigate=useNavigate();
     
     return (
         // <!-- LOGIN -->
         <section className='login form-wrapper'>
             <h2>Login</h2>
             <Form
+                action='/login'
                 method='post'
                 id='log-form'
                 className='login form'                
@@ -33,9 +47,7 @@ export default function Login(){
                         className='log entry email'
                         name='email'
                         id='log-email'
-                        autoComplete='email'
-                        // value={data.email}
-                        // onChange={handleChange}
+                        autoComplete='email'                     
                         required
                     />
                 </div>
@@ -50,20 +62,18 @@ export default function Login(){
                         id='log-pass'
                         autoComplete='current-password'
                         minLength='6'
-                        placeholder='6 characters minimum'
-                        // value={data.password}
-                        // onChange={handleChange}
+                        placeholder='6 characters minimum'                  
                         required
                     />
                 </div>
                 <button
-                    type='submit'
-                    method='get'
-                    value='Login'
+                    // type='submit'
+                    // method='post'
+                    // value='Login'
                     className='log btn dark subm'
                     form='log-form'
                     id='btn-log-form'
-                    disabled
+                    // disabled
                 >
                     Login
                 </button>

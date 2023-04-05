@@ -22,7 +22,7 @@ export const Home = () => {
                         ranks them by popularity
                     </p>
                 </div>
-                <button onClick={()=>navigate('/login')} className='btn highlight login' id='login-btn'>
+                <button onClick={()=>navigate('login')} className='btn highlight login' id='login-btn'>
                     Login
                 </button>
             </section>
@@ -130,7 +130,7 @@ export const Home = () => {
             </section>
 
             <div className='more'>
-                <button onClick={()=>navigate('/Catalog')} className='btn dark catalog' id='catalog-btn'>
+                <button onClick={()=>navigate('cards')} className='btn dark catalog' id='catalog-btn'>
                     Catalog
                 </button>
             </div>

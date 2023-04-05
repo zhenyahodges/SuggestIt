@@ -1,61 +1,70 @@
-import { Link } from 'react-router-dom';
+import { Link, defer, useLoaderData } from 'react-router-dom';
 // import { Loader } from '../Loader/Loader';
 
-import { useEffect, useState } from 'react';
-import CardItem from './Card/CardItem';
-// import { getCards } from '../../utils/api';
+// import { useState } from 'react';
+// import CardItem from './Card/CardItem';
+import { getCards } from '../../utils/api';
+
 // import { defer, useLoaderData } from 'react-router-dom';
 
 // export function loader() {
-//     return defer({ cards: getCards() });
+//     // return defer({ cards: getCards() });
 // }
+export function loader() {
+        return getCards() ;
+    }
 
 export default function Catalog() {
-    const [cards, setCards] = useState([]);
+    // const [cards, setCards] = useState([]);
     // const [loading, setLoading] = useState(false);
 
-    useEffect(() => {
-        fetch('http://localhost:3030/jsonstore/cards')
-            .then((res) => {
-                if (!res.ok) {
-                    throw new Error('res.status');
-                }
-                if (res.status === 204) {
-                    console.log('empty');
-                    return {};
-                    // return console.log('empty');
-                }
-                // console.log('empty');
-                // return {};
-                return res.json();
-            })
-            .then((data) => setCards(Object.values(data)))
-            // .then((data) => console.log(Object.values(data)))
-            // .then((data) => setCards(data.cards))
-            .catch((err) => {
-                throw new Error(err.status);
-            });
+    // useEffect(() => {
+    //     fetch('http://localhost:3030/jsonstore/cards')
+    //         .then((res) => {
+    //             if (!res.ok) {
+    //                 throw new Error('res.status');
+    //             }
+    //             if (res.status === 204) {
+    //                 console.log('empty');
+    //                 return {};
+    //                 // return console.log('empty');
+    //             }
+    //             // console.log('empty');
+    //             // return {};
+    //             return res.json();
+    //         })
+    //         .then((data) => setCards(Object.values(data)))
+    //         // .then((data) => console.log(Object.values(data)))
+    //         // .then((data) => setCards(data.cards))
+    //         .catch((err) => {
+    //             throw new Error(err.status);
+    //         });
 
-        // async function loadCards() {
-        //     setLoading(true);
-        // try {
-        //     const data = await getCards();
-        //     setCards(data);
-        // } catch (err) {
-        //     // setErr(err);
-        //     console.log(err);
-        // } finally {
-        //     setLoading(false);
-        // }
-        // }
+    //     // async function loadCards() {
+    //     //     setLoading(true);
+    //     // try {
+    //     //     const data = await getCards();
+    //     //     setCards(data);
+    //     // } catch (err) {
+    //     //     // setErr(err);
+    //     //     console.log(err);
+    //     // } finally {
+    //     //     setLoading(false);
+    //     // }
+    //     // }
 
-        // loadCards();
-    }, []);
+    //     // loadCards();
+    // }, []);
+
+    // console.log(cards);
 
     // console.log(`'cards: '+ ${cards[0].brand} + 'brand': ${cards.brand} ${cards._id}`);
-    const cardElements = cards.map(({ _ownerId, brand, _createdOn, _id }) => (
+  const cards=useLoaderData();
+//   console.log(cards);
+  
+    const cardElements = cards.map(({brand, _createdOn,_id,_ownerId   }) => (
         // TODO:!!! Hide overflow!!!from Details?! or SHOW ONLY FIRST N SUGGS
-        <article className='sugg-card details'>
+        <article key={_id} className='sugg-card details' id={_id}>
             <header className='card-header'>
                 <h5 className='brand'>{brand}</h5>
             </header>
@@ -88,7 +97,7 @@ export default function Catalog() {
                     </p>
 
                     <div className='card-footer-links-wrapper'>
-                        <Link to={`/catalog/${_id}`} className='details-link'>
+                        <Link to={_id} className='details-link'>
                             Details
                         </Link>
 

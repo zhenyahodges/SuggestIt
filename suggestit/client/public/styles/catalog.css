@@ -1,8 +1,7 @@
 /* || CATALOG */
-.catalog.window,
+/* .catalog.window,
 .catalog.all{
-    /* display: none; */
-}
+} */
 
 .catalog-wrapper {
     display: flex;
@@ -14,10 +13,10 @@
     display: none;
 }
 
-.catalog .add-sugg-link,
+/* .catalog .add-sugg-link,
 .catalog .vote-sugg-link {
-    /* display: none; */
-}
+    display: none;
+} */
 
 .catalog .card-main {
     position: relative;
@@ -36,6 +35,18 @@
 }
 
 /* details links */
-.public .details-link{
-    display: none;
-}
+/* .public .details-link{
+     display: none;
+} */
+
+/* CATALOG CARDS */
+  /* === ***Card START */
+  
+  .catalog-wrapper > .sugg-card {
+      max-width: 40%;
+  }
+ 
+   /* *** Card Main */
+   .catalog-wrapper > .sugg-card.details > .card-main {
+          min-height: 70%;
+   }

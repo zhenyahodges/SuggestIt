@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 export const Header = () => {
     return (
@@ -7,9 +7,9 @@ export const Header = () => {
             <section className='header container special-border'>
                 <div className='header-wrapper'>
                     <h1 className='title-header'>
-                        <Link className='logo-nav' to='/'>
+                        <NavLink className='logo-nav' to='.'>
                             Suggest<span className='suggest-it'>It</span>
-                        </Link>
+                        </NavLink>
                     </h1>
                     <p className='subtitle-header'>
                         Ultimate Feedback
@@ -21,54 +21,54 @@ export const Header = () => {
                 {/* <!-- ||HEADER NAV --> */}
                 <nav className='nav header'>
                     <ul className='nav header list'>
-                        {/* <Link
-                            to='/'
+                        {/* <NavLink
+                            to='.'
                             className='nav header list links home'
                             id='nav-head-home-link'
                         >
                             Home
-                        </Link> */}
-                        <Link
-                            to='/catalog'
+                        </NavLink> */}
+                        <NavLink
+                            to='cards'
                             className='nav header list links cat'
                             id='nav-head-cat-link'
                         >
                             Catalog
-                        </Link>
+                        </NavLink>
 
                         {/* visible when not logged in */}
-                        <Link
-                            to='/login'
+                        <NavLink
+                            to='login'
                             className='nav header list links log'
                             id='nav-head-log-link'
                         >
                             Login
-                        </Link>
+                        </NavLink>
 
                     {/* LOGOUT visible when looged in only */}
-                        <Link
-                            to='/'
+                        <NavLink
+                            to='logout'
                             className='nav header list links logout'
                             id='nav-head-logout-link'
                         >
                             Logout
-                        </Link>
+                        </NavLink>
 
                       {/* visible when not logged in */}
-                        <Link
-                            to='/register'
+                        <NavLink
+                            to='register'
                             className='nav header list links reg'
                             id='nav-head-reg-link'
                         >
                             Register
-                        </Link>
-                        <Link
-                            to='/profile'
+                        </NavLink>
+                        <NavLink
+                            to='profile'
                             className='nav header list links prof'
                             id='nav-head-prof-link'
                         >
                             Profile
-                        </Link>
+                        </NavLink>
                         {/* <!-- <a to="/about" className="nav header list links">About</a> --> */}
                         {/* <!-- <a to="/contact" className="nav header list links">Contact</a> --> */}
                     </ul>
