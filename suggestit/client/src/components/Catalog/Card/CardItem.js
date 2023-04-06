@@ -10,7 +10,7 @@ export default function CardItem() {
     const card = useLoaderData();
     const [ownerId,brand,createdOn,suggestions] = card;
     // console.log(card);
-    console.log(suggestions);
+    // console.log(suggestions);
 
     return (
         //  DETAILS vis for all

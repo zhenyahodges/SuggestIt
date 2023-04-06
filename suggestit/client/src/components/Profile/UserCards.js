@@ -4,9 +4,6 @@ export default function userCards() {
         <section className='user published'>
             <h2 className='user-title'>Published</h2>
 
-            {/* <!-- LOADER show when fetching --> */}
-            {/* <Loader/> */}
-
             <div className='user-article-wrapper'>
                 {/* <!-- 1st card --> */}
                 <article className='sugg-card catalog private'>

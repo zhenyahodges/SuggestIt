@@ -1,12 +1,54 @@
-import { Form, NavLink, Outlet } from 'react-router-dom';
+import { Form, NavLink, Outlet, redirect, useActionData, useFetcher, useLoaderData, useRouteLoaderData } from 'react-router-dom';
+import { getUser } from '../../utils/api';
+import { requireAuth } from '../../utils/requireAuth';
+
+// export async function loader({ params}) {  
+   
+//     return getUser(params.userId);
+//     // return null;
+// }
+
+// export async function action({ request }) {
+//     // const url=request.url.split('/');
+//     // const id=url.slice(-1);  
+//     // console.log(request);
+//     const formData = await request.formData();
+//     console.log(formData);
+//     return null;
+//     // formData.set('email');
+//     // const password = formData.get('pass');
+// // console.log(formData);
+// // return null;
+//     // try {
+//     //     const data = await getUser({});
+//     //     console.log(data);
+//     //     // localStorage.setItem('loggedin', true);
+//     //     // return redirect(`/users/${data._id}`);
+//     //     // return null;
+//     //     return null;
+//     // } catch (err) {
+//     //     return err.message;
+//     // }
+// }
 
 export default function ProfileLayout() {
     const activeStyles = {
         backgroundColor: '#F79234',
         color: '#132930',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
     };
+    // const user=useLoaderData();
 
+    const fetcher= useFetcher();
+    // fetcher.load()
+    // const data=fetcher.data;
+    // console.log('fetcher:'+fetcher);
+
+//    const user=useRouteLoaderData('logindata');
+//    console.log(user);
+
+    // const []
+    // console.log(user);
 
     return (
         // <!-- PROFILE -->
@@ -16,9 +58,9 @@ export default function ProfileLayout() {
             <div className='profile-wrapper'>
                 {/* <!-- ||PROF INFO --> */}
                 <div className='profile-form-wrap'>
-                    <Form
-                        action='#'
-                        method='get'
+                    <fetcher.Form
+                        // action='/login'
+                        // method='get'
                         id='prof-form'
                         className='prof form'
                     >
@@ -34,7 +76,7 @@ export default function ProfileLayout() {
                                 className='prof entry fname'
                                 name='prof-fname'
                                 id='prof-fname'
-                                // value='John'
+                                // value={}
                             />
                         </div>
                         <div className='wrap prof-lname'>
@@ -64,7 +106,7 @@ export default function ProfileLayout() {
                                 className='prof entry email'
                                 name='prof-email'
                                 id='prof-email'
-                                // value='johnson@gmail.com'
+                                // value={user.email}
                             />
                         </div>
                         {/* 
@@ -107,30 +149,37 @@ export default function ProfileLayout() {
                 >
                     Register
                 </button> --> */}
-                    </Form>
+                    </fetcher.Form>
+
                     <nav className='prof-nav'>
-                        <NavLink to='.' 
-                        end 
-                        className='btn dark show published'
-                        style={({ isActive }) => (isActive ? activeStyles : null)}
+                        <NavLink
+                            to='.'
+                            end
+                            className='btn dark show published'
+                            style={({ isActive }) =>
+                                isActive ? activeStyles : null
+                            }
                         >
                             Published
                         </NavLink>
                         <NavLink
                             to='suggested'
                             className='btn dark show suggested'
-                             style={({ isActive }) => (isActive ? activeStyles : null)}
+                            style={({ isActive }) =>
+                                isActive ? activeStyles : null
+                            }
                         >
                             Suggested
                         </NavLink>
                         <NavLink
                             to='create'
                             className='btn light show create'
-                             style={({ isActive }) => (isActive ? activeStyles : null)}
+                            style={({ isActive }) =>
+                                isActive ? activeStyles : null
+                            }
                         >
                             Create
                         </NavLink>
-                      
                     </nav>
                 </div>
 

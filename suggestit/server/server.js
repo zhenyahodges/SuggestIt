@@ -1509,11 +1509,15 @@
     var protectedData = {
         users: {
             '35c62d76-8152-4626-8712-eeb96381bea8': {
+                fname: 'Peter',
+                lname: 'Pan',
                 email: 'peter@abv.bg',
                 hashedPassword:
                     '83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1',
             },
             '847ec027-f659-4086-8032-5173e2f9c93a': {
+                fname: 'John',
+                lname: 'Smith',
                 email: 'john@abv.bg',
                 hashedPassword:
                     '83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1',
@@ -1523,21 +1527,21 @@
     };
     var seedData = {
         cards: {
-            'ff436770-76c5-40e2-b231-77409eda7a61': {
-                _ownerId: '35c62d76-8152-4626-8712-eeb96381bea8',
-                brand: 'Brand 1',
-                _createdOn: 1617194128618,
-            },
-            '1840a313-225c-416a-817a-9954d4609f7c': {
-                _ownerId: '35c62d76-8152-4626-8712-eeb96381bea8',
-                brand: 'Brand 2',
-                _createdOn: 1617194210928,
-            },
-            '126777f5-3277-42ad-b874-76d043b069cb': {
-                _ownerId: '847ec027-f659-4086-8032-5173e2f9c93a',
-                brand: 'Brand 3',
-                _createdOn: 1617194295474,
-            },
+            // 'ff436770-76c5-40e2-b231-77409eda7a61': {
+            //     _ownerId: '35c62d76-8152-4626-8712-eeb96381bea8',
+            //     brand: 'Brand 1',
+            //     _createdOn: 1617194128618,
+            // },
+            // '1840a313-225c-416a-817a-9954d4609f7c': {
+            //     _ownerId: '35c62d76-8152-4626-8712-eeb96381bea8',
+            //     brand: 'Brand 2',
+            //     _createdOn: 1617194210928,
+            // },
+            // '126777f5-3277-42ad-b874-76d043b069cb': {
+            //     _ownerId: '847ec027-f659-4086-8032-5173e2f9c93a',
+            //     brand: 'Brand 3',
+            //     _createdOn: 1617194295474,
+            // },
         },
         suggestions: {
             // "1": {

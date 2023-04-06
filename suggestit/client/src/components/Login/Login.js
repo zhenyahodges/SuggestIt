@@ -10,11 +10,11 @@ export async function action({ request }) {
     const formData = await request.formData();
     const email = formData.get('email');
     const password = formData.get('pass');
-    
+          
     try{
-    const data = await loginUser({ email, password });
-    //    console.log(data);
-    // localStorage.setItem('loggedin', true);
+    const data = await loginUser({email, password }); 
+       console.log(data.accessToken);
+    localStorage.setItem('userId', JSON.stringify(data._id));
     return redirect(`/users/${data._id}`);
     // return null;
     }catch(err){
@@ -36,7 +36,7 @@ export default function Login() {
         <section className='login form-wrapper'>
             <h2>Login</h2>
             <Form
-                action='/login'
+                // action='/login'
                 method='post'
                 id='log-form'
                 className='login form'

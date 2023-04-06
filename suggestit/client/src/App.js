@@ -8,7 +8,10 @@ import {
     RouterProvider,
 } from 'react-router-dom';
 import Root from './components/Root/Root';
-import ProfileLayout from './components/Profile/ProfileLayout';
+import ProfileLayout, {
+    loader as userLoader,
+    action as userProfileAction,
+} from './components/Profile/ProfileLayout';
 import UserCards from './components/Profile/UserCards';
 import UserSuggs from './components/Profile/UserSuggs';
 import CreateCard from './components/Profile/CreateCard';
@@ -27,10 +30,7 @@ const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path='/' element={<Root />}>
             <Route index element={<Home />} />
-            <Route 
-            path='cards' 
-            element={<Catalog />} 
-            loader={cardsLoader} />
+            <Route path='cards' element={<Catalog />} loader={cardsLoader} />
 
             <Route
                 path='cards/:cardId'
@@ -43,10 +43,12 @@ const router = createBrowserRouter(
                 element={<AddSuggestion />}
             />
 
-            <Route 
-            path='login' 
-            element={<Login />} 
-            action={loginAction} />
+            <Route
+                path='login'
+                element={<Login />}
+                action={loginAction}
+                id='logindata'
+            />
 
             <Route
                 path='register'
@@ -55,21 +57,33 @@ const router = createBrowserRouter(
             />
 
             {/* PROFILE */}
-            <Route path='users/:userId' 
-            element={<ProfileLayout />}>
-                <Route 
-                path='.' 
-                element={<UserCards />}
-                loader={async()=>{return null}}
-                 />
-                <Route 
-                path='suggested' 
-                element={<UserSuggs />}
-                loader={async()=>{return null}} />
-                <Route 
-                path='create' 
-                element={<CreateCard />}
-                loader={async()=>{return null}} />
+            <Route
+                path='users/:userId'
+                element={<ProfileLayout />}
+                // loader={userLoader}
+                // action={userProfileAction}
+            >
+                <Route
+                    index
+                    element={<UserCards />}
+                    loader={async () => {
+                        return null;
+                    }}
+                />
+                <Route
+                    path='suggested'
+                    element={<UserSuggs />}
+                    loader={async () => {
+                        return null;
+                    }}
+                />
+                <Route
+                    path='create'
+                    element={<CreateCard />}
+                    loader={async () => {
+                        return null;
+                    }}
+                />
             </Route>
 
             <Route path='*' element={<NotFound />} />

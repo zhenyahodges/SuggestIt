@@ -1,28 +1,44 @@
-import { Form, Link, useNavigation } from 'react-router-dom';
+import { Form, Link, redirect, useNavigation } from 'react-router-dom';
+import { registerUser } from '../../utils/api';
 
-export async function action({request}){
-    const formData=await request.formData();
-    const fname=formData.get('fname');
-    const lname=formData.get('lname');
-    const email=formData.get('email');
-   const password= formData.get('pass');
-   const repass=formData.get('repass');
-   console.log(fname,lname,email, password,repass);
-    return null;
+export async function action({ request }) {
+    const formData = await request.formData();
+    const fname = formData.get('fname');
+    const lname = formData.get('lname');
+    const email = formData.get('email');
+    const password = formData.get('pass');
+    const repass = formData.get('repass');
+    if (password !== repass) {
+        throw new Error('Passwords do not match');
+    }
+    
+    try {
+            const data = await registerUser({ fname, lname, email, password });
+            //    console.log(data);
+            // localStorage.setItem('user', JSON.stringify(id));
+            return redirect(`/users/${data._id}`);
+            // return null;
+        } catch (err) {
+            return err.message;
+        }
+  
+
+    //    console.log(fname,lname,email, password,repass);
+    // return null;
 }
 
-export default function Register (){
-    const navigation=useNavigation();
+export default function Register() {
+    const navigation = useNavigation();
 
     return (
         // <!-- REGISTER -->
         <section className='register form-wrapper'>
             <h2>Register</h2>
             <Form
-                action='/register'                
+                action='/register'
                 method='post'
                 id='reg-form'
-                className='register form'               
+                className='register form'
             >
                 <div className='wrap fname'>
                     <label htmlFor='fname' className='reg lbl fname'>
@@ -34,7 +50,7 @@ export default function Register (){
                         name='fname'
                         id='reg-fname'
                         minLength='3'
-                        autoComplete='given-name'                    
+                        autoComplete='given-name'
                         required
                     />
                 </div>
@@ -48,7 +64,7 @@ export default function Register (){
                         name='lname'
                         id='reg-lname'
                         minLength='3'
-                        autoComplete='family-name'                       
+                        autoComplete='family-name'
                         required
                     />
                 </div>
@@ -61,7 +77,7 @@ export default function Register (){
                         className='reg entry email'
                         name='email'
                         id='reg-email'
-                        autoComplete='email'                     
+                        autoComplete='email'
                         required
                     />
                 </div>
@@ -126,4 +142,4 @@ export default function Register (){
             {/* END REGISTER  */}
         </section>
     );
-};
+}
