@@ -18,13 +18,13 @@ import { useContext } from 'react';
 // console.log(userId);
 
 export async function loader() {
-    const user = localStorage.getItem('user');
-// console.log(user);
-    //    console.log(params.userId);
-    // console.log('token' + token);
-    // if (token) {
-    //     return getUser(token);
-    // }
+    const user = JSON.parse(localStorage.getItem('user'));
+    const {email,userId,token}=user;
+// console.log(token);
+
+    if (user.token) {
+        return getUser(token);
+    }
     return null;
 }
 
