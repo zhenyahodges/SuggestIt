@@ -1,16 +1,37 @@
-import { Form, NavLink, Outlet, redirect, useActionData, useFetcher, useLoaderData, useRouteLoaderData } from 'react-router-dom';
+import {
+    Form,
+    NavLink,
+    Outlet,
+    redirect,
+    useActionData,
+    useFetcher,
+    useLoaderData,
+    useRouteLoaderData,
+} from 'react-router-dom';
 import { getUser } from '../../utils/api';
 import { requireAuth } from '../../utils/requireAuth';
+import { AuthContext } from '../../utils/authContext';
+import { useContext } from 'react';
 
-// export async function loader({ params}) {  
-   
-//     return getUser(params.userId);
-//     // return null;
-// }
+// const userId= localStorage.getItem('userId');
+// console.log(token);
+// console.log(userId);
 
-// export async function action({ request }) {
+export async function loader() {
+    const user = localStorage.getItem('user');
+// console.log(user);
+    //    console.log(params.userId);
+    // console.log('token' + token);
+    // if (token) {
+    //     return getUser(token);
+    // }
+    return null;
+}
+
+// export async function action({ params }) {
+
 //     // const url=request.url.split('/');
-//     // const id=url.slice(-1);  
+//     // const id=url.slice(-1);
 //     // console.log(request);
 //     const formData = await request.formData();
 //     console.log(formData);
@@ -32,6 +53,8 @@ import { requireAuth } from '../../utils/requireAuth';
 // }
 
 export default function ProfileLayout() {
+    // const isAuthProfile = useContext(AuthContext);
+
     const activeStyles = {
         backgroundColor: '#F79234',
         color: '#132930',
@@ -39,19 +62,20 @@ export default function ProfileLayout() {
     };
     // const user=useLoaderData();
 
-    const fetcher= useFetcher();
+    const fetcher = useFetcher();
     // fetcher.load()
     // const data=fetcher.data;
     // console.log('fetcher:'+fetcher);
 
-//    const user=useRouteLoaderData('logindata');
-//    console.log(user);
+    //    const user=useRouteLoaderData('logindata');
+    //    console.log(user);
 
     // const []
     // console.log(user);
 
     return (
-        // <!-- PROFILE -->
+        // <AuthContext.Provider value={userId}>
+        //  <!-- PROFILE -->
         <section className='profile window container'>
             <h2>Profile</h2>
 
@@ -192,5 +216,6 @@ export default function ProfileLayout() {
                 </section>
             </div>
         </section>
+        // </AuthContext.Provider>
     );
 }

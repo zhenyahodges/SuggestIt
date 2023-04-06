@@ -1,32 +1,33 @@
-import {
-    Form,
-    Link,
-    redirect,
-    useNavigation,
-} from 'react-router-dom';
+import { Form, Link, redirect, useNavigation } from 'react-router-dom';
 import { loginUser } from '../../utils/api';
 
+
 export async function action({ request }) {
-    const formData = await request.formData();
+    const formData = await request.formData();  
     const email = formData.get('email');
     const password = formData.get('pass');
-          
-    try{
-    const data = await loginUser({email, password }); 
-       console.log(data.accessToken);
-    localStorage.setItem('userId', JSON.stringify(data._id));
-    return redirect(`/users/${data._id}`);
-    // return null;
-    }catch(err){
+    
+    try {      
+        const data = await loginUser({ email, password });
+        const token = data.accessToken;       
+
+        if (token) {
+            const user={
+                email: data.email,
+                userId: data._id,
+                token,
+            };
+            // console.log(user);
+            // isAuthProfile = true;
+            localStorage.setItem('user', JSON.stringify(user));
+        } 
+        return redirect(`/users/${data._id}`);
+        // return null;
+    } catch (err) {
         return err.message;
     }
 }
 
-// {
-//     "email":"peter@abv.bg",
-//     "_id":"35c62d76-8152-4626-8712-eeb96381bea8",
-//     "accessToken":"63f6a769a2d17e76583a48dabafe23e3429a54e0345e9322b2f952bdf6a46599"
-// }
 
 export default function Login() {
     const navigation = useNavigation();
@@ -78,9 +79,7 @@ export default function Login() {
                     id='btn-log-form'
                     disabled={navigation.state === 'submitting'}
                 >
-                    {navigation.state === 'submitting'
-                        ? 'Logging...'
-                        : 'Login'}
+                    {navigation.state === 'submitting' ? 'Logging...' : 'Login'}
                 </button>
                 <Link to='/register' className='login link'>
                     Don't have an account? Register

@@ -23,6 +23,8 @@ import Login, { action as loginAction } from './components/Login/Login';
 import CardItem, {
     loader as cardLoader,
 } from './components/Catalog/Card/CardItem';
+import { AuthContext } from './utils/authContext';
+
 
 // import { CardItem } from './components/Card/CardItem';
 
@@ -55,14 +57,17 @@ const router = createBrowserRouter(
                 element={<Register />}
                 action={registerAction}
             />
+           
+            {/* <AuthContext.Provider value={userId}> */}
 
             {/* PROFILE */}
             <Route
                 path='users/:userId'
                 element={<ProfileLayout />}
-                // loader={userLoader}
+                loader={userLoader}
                 // action={userProfileAction}
             >
+              
                 <Route
                     index
                     element={<UserCards />}
@@ -83,9 +88,9 @@ const router = createBrowserRouter(
                     loader={async () => {
                         return null;
                     }}
-                />
+                />                
             </Route>
-
+            {/* </AuthContext.Provider> */}
             <Route path='*' element={<NotFound />} />
         </Route>
     )

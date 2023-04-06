@@ -49,12 +49,11 @@ export async function loginUser(creds) {
     //     return {};
     // }
     const data = await res.json();
-
     return data;
 }
 
 export async function registerUser(creds) {
-    console.log(creds);
+    // console.log(creds);
     const res = await fetch(`${baseUrl}/users/register`, {
         method: 'post',
         body: JSON.stringify(creds),
@@ -71,9 +70,14 @@ export async function registerUser(creds) {
     return data;
 }
 
-export async function getUser(id) {
-    const res = await fetch(`${baseUrl}/users/${id}`, {
-        method: 'get'       
+export async function getUser(token) {
+    // const res = await fetch(`${baseUrl}/users/${id}`, {
+        console.log(token);
+        const res = await fetch(`${baseUrl}/users/me`, {
+        method: 'get',
+        headers:{
+            'X-Authorization:': token,
+        }       
     });
   
     if (!res.ok) {
@@ -85,7 +89,7 @@ export async function getUser(id) {
     // }
     const data = await res.json();
     console.log(data);
-    // console.log(Object.values(data));
-    // return Object.values(data);
-    return null;
+    console.log(Object.values(data));
+    return Object.values(data);
+    // return null;
 }
