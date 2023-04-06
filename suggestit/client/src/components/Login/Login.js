@@ -79,7 +79,7 @@ export default function Login() {
                     disabled={navigation.state === 'submitting'}
                 >
                     {navigation.state === 'submitting'
-                        ? 'Loggingin ...'
+                        ? 'Logging...'
                         : 'Login'}
                 </button>
                 <Link to='/register' className='login link'>

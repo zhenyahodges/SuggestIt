@@ -106,9 +106,9 @@ export default function Register (){
             </label> */}
 
                 <button
-                    type='submit'
+                    // type='submit'
                     // method='post'
-                    value='Register'
+                    // value='Register'
                     className='btn dark subm'
                     form='reg-form'
                     id='btn-reg-form'

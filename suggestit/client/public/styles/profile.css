@@ -58,7 +58,7 @@
 
 /*|| PUBLISHED */
 .user.published {
-    display: none;
+    /* display: none; */
 }
 
 .user-article-wrapper {
@@ -68,7 +68,7 @@
 
 /*|| CREATE */
 .user.create {
-    display: none;
+    /* display: none; */
 }
 
 /* Create Form Styles*/
@@ -100,7 +100,7 @@ input.card-timeout{
 
 /*|| SUGGESTED */
 .user.suggested {
-    display: none;
+    /* display: none; */
 }
 
 .user-sugged-list{

@@ -59,9 +59,6 @@ export default function Catalog() {
         <section className='catalog window'>
             <h2 className='catalog title'>Catalog</h2>
 
-            {/* LOADER show when fetching   */}
-            {/* <Loader/> */}
-
             <div className='catalog-wrapper'>
                 {cardElements}
                 {/* {cards && cards.map((c) => <CardItem key={c._id} {...c} />)} */}

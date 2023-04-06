@@ -1,4 +1,7 @@
+import { Form, useNavigation } from 'react-router-dom';
+
 export default function CreateCard() {
+    const navigation = useNavigation();
     return (
         //   {/* <!-- || sec USER-OWNER CREATE polls --> */}
         <section className='user create'>
@@ -8,15 +11,15 @@ export default function CreateCard() {
             {/* <Loader/> */}
 
             <div className='user-create-wrapper'>
-                <form
-                    action='#'
+                <Form
+                    action='/create'
                     method='post'
                     id='create-card-form'
                     className='create-card form'
                 >
                     <div className='wrap card-title'>
                         <label htmlFor='card-name' className='lbl card-name'>
-                            Feedback Form Title
+                            Feedback Form Title / Brand
                         </label>
                         <input
                             type='text'
@@ -29,11 +32,12 @@ export default function CreateCard() {
                             required
                         />
                     </div>
-                    <div className='wrap card-code'>
+                    {/* LATER--CODE */}
+                    {/* <div className='wrap card-code'>
                         <label htmlFor='card-code' className='lbl card-code'>
                             Create Code
                         </label>
-                        {/* <!-- ?!POLL-ID?! --> */}
+                        <!-- ?!POLL-ID?! -->
                         <input
                             type='text'
                             className='card-code'
@@ -44,7 +48,7 @@ export default function CreateCard() {
                             placeholder='Create form code'
                             required
                         />
-                    </div>
+                    </div> */}
                     {/* <!-- <div className="wrap card-timeout">
                       <label
                           htmlFor="card-timeout"
@@ -58,62 +62,26 @@ export default function CreateCard() {
                           id="card-timeout"
                           min="2023-03-20"
                           max="2023-06-20"
-                          value="2023-03-01"
+                        //   value="2023-03-01"
                           required
                       />
                   </div> --> */}
 
                     <button
-                        type='submit'
-                        method='post'
-                        value='Create'
+                        // type='submit'
+                        // method='post'
+                        // value='Create'
                         className='create btn dark subm'
                         form='create-card-form'
                         id='btn-create-form'
-                        disabled
+                        disabled={navigation.state === 'submitting'}
                     >
-                        Submit
+                        {navigation.state === 'submitting'
+                            ? 'Submitting ...'
+                            : 'Submit'}
                     </button>
-                </form>
-                {/* <!-- <article className="create sugg-card catalog private">
-                  <header
-                      className="card-header  suggestit-brand"
-                  >
-                      <h5 className="brand">
-                          Your Brand
-                      </h5>
-                  </header>
-
-                  <main className="card-main">
-                      <ul className="sugg-list" role="list">
-                         
-                      </ul>
-                  </main>
-                  <footer
-                      className="card-footer suggs-card foot"
-                  >
-                      <div className="card-footer-content">
-                          <p className="card-footer-text">
-                              Thank you for your
-                              contributions!
-                          </p>
-                          <div
-                              className="card-footer-links-wrapper"
-                          >
-                              <a
-                                  href="#"
-                                  className="details-link"
-                                  >Details</a
-                              >
-                              <a
-                                  href="#"
-                                  className="add-sugg-link"
-                                  >Suggest</a
-                              >
-                          </div>
-                      </div>
-                  </footer>
-              </article> --> */}
+                </Form>
+                {/* AFTER SUBMISSION REDIRECT TO CARD FOR EDIT VIEW */}
             </div>
         </section>
     );

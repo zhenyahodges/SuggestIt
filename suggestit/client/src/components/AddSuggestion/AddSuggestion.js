@@ -28,9 +28,9 @@ export const AddSuggestion=()=>{
             Me
         </span>  */}
                 {/* <button
-                    type="submit"
-                    method="get"
-                    value="Submit"
+                    // type="submit"
+                    // method="get"
+                    // value="Submit"
                     className="btn dark subm"
                     form="poll-code-form"
                     id="poll-code-btn-form"
@@ -69,9 +69,9 @@ export const AddSuggestion=()=>{
                     Me
                 </span>
                 <button
-                    type="submit"
-                    method="post"
-                    value="Submit"
+                    // type="submit"
+                    // method="post"
+                    // value="Submit"
                     className="add-sugg btn dark subm"
                     form="add-sugg"
                     id="btn-add-form"

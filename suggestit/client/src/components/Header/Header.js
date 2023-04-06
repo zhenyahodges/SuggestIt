@@ -1,6 +1,12 @@
 import { Link, NavLink } from 'react-router-dom';
 
 export const Header = () => {
+    const activeStyles = {           
+       backgroundColor: '#F79234',     
+       borderRadius: '5px',
+       textShadow: '1px 1px 1px #132930'
+    };
+
     return (
         // <!-- || HEADER -->
         <header className='page header'>
@@ -32,6 +38,7 @@ export const Header = () => {
                             to='cards'
                             className='nav header list links cat'
                             id='nav-head-cat-link'
+                              style={({ isActive }) => (isActive ? activeStyles : null)}
                         >
                             Catalog
                         </NavLink>
@@ -41,6 +48,7 @@ export const Header = () => {
                             to='login'
                             className='nav header list links log'
                             id='nav-head-log-link'
+                              style={({ isActive }) => (isActive ? activeStyles : null)}
                         >
                             Login
                         </NavLink>
@@ -50,6 +58,7 @@ export const Header = () => {
                             to='logout'
                             className='nav header list links logout'
                             id='nav-head-logout-link'
+                              style={({ isActive }) => (isActive ? activeStyles : null)}
                         >
                             Logout
                         </NavLink>
@@ -59,6 +68,7 @@ export const Header = () => {
                             to='register'
                             className='nav header list links reg'
                             id='nav-head-reg-link'
+                              style={({ isActive }) => (isActive ? activeStyles : null)}
                         >
                             Register
                         </NavLink>
@@ -66,6 +76,7 @@ export const Header = () => {
                             to='profile'
                             className='nav header list links prof'
                             id='nav-head-prof-link'
+                              style={({ isActive }) => (isActive ? activeStyles : null)}
                         >
                             Profile
                         </NavLink>

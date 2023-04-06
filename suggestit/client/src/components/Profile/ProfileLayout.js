@@ -2,9 +2,9 @@ import { Form, NavLink, Outlet } from 'react-router-dom';
 
 export default function ProfileLayout() {
     const activeStyles = {
-        fontWeight: 'bold',
-        textDecoration: 'underline',
-        color: '#161616'
+        backgroundColor: '#F79234',
+        color: '#132930',
+        fontWeight: 'bold'
     };
 
 
@@ -34,7 +34,7 @@ export default function ProfileLayout() {
                                 className='prof entry fname'
                                 name='prof-fname'
                                 id='prof-fname'
-                                value='John'
+                                // value='John'
                             />
                         </div>
                         <div className='wrap prof-lname'>
@@ -49,7 +49,7 @@ export default function ProfileLayout() {
                                 className='prof entry lname'
                                 name='prof-lname'
                                 id='prof-lname'
-                                value='Johnson'
+                                // value='Johnson'
                             />
                         </div>
                         <div className='wrap email'>
@@ -64,7 +64,7 @@ export default function ProfileLayout() {
                                 className='prof entry email'
                                 name='prof-email'
                                 id='prof-email'
-                                value='johnson@gmail.com'
+                                // value='johnson@gmail.com'
                             />
                         </div>
                         {/* 
@@ -97,9 +97,9 @@ export default function ProfileLayout() {
                 </div> --> */}
 
                         {/* <!-- <button
-                    type="submit"
-                    method="post"
-                    value="Register"
+                    // type="submit"
+                    // method="post"
+                    // value="Register"
                     className="prof btn dark subm"
                     form="prof-form"
                     id="btn-prof-form"
@@ -117,19 +117,20 @@ export default function ProfileLayout() {
                             Published
                         </NavLink>
                         <NavLink
+                            to='suggested'
+                            className='btn dark show suggested'
+                             style={({ isActive }) => (isActive ? activeStyles : null)}
+                        >
+                            Suggested
+                        </NavLink>
+                        <NavLink
                             to='create'
                             className='btn light show create'
                              style={({ isActive }) => (isActive ? activeStyles : null)}
                         >
                             Create
                         </NavLink>
-                        <NavLink
-                            to='suggest'
-                            className='btn dark show suggested'
-                             style={({ isActive }) => (isActive ? activeStyles : null)}
-                        >
-                            Suggested
-                        </NavLink>
+                      
                     </nav>
                 </div>
 

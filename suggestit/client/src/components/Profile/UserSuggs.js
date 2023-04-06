@@ -1,4 +1,4 @@
-export default function userOwnerSuggs() {
+export default function userSuggs() {
     return (
         //   {/* <!-- || USER-OWNER SUGGESTIONS --> */}
         <section className='user suggested'>

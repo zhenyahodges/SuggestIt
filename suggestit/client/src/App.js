@@ -27,7 +27,10 @@ const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path='/' element={<Root />}>
             <Route index element={<Home />} />
-            <Route path='cards' element={<Catalog />} loader={cardsLoader} />
+            <Route 
+            path='cards' 
+            element={<Catalog />} 
+            loader={cardsLoader} />
 
             <Route
                 path='cards/:cardId'
@@ -40,7 +43,11 @@ const router = createBrowserRouter(
                 element={<AddSuggestion />}
             />
 
-            <Route path='login' element={<Login />} action={loginAction} />
+            <Route 
+            path='login' 
+            element={<Login />} 
+            action={loginAction} />
+
             <Route
                 path='register'
                 element={<Register />}
@@ -48,10 +55,21 @@ const router = createBrowserRouter(
             />
 
             {/* PROFILE */}
-            <Route path='users/:userId' element={<ProfileLayout />}>
-                <Route path='.' element={<UserCards />} />
-                <Route path='create' element={<UserSuggs />} />
-                <Route path='suggest' element={<CreateCard />} />
+            <Route path='users/:userId' 
+            element={<ProfileLayout />}>
+                <Route 
+                path='.' 
+                element={<UserCards />}
+                loader={async()=>{return null}}
+                 />
+                <Route 
+                path='suggested' 
+                element={<UserSuggs />}
+                loader={async()=>{return null}} />
+                <Route 
+                path='create' 
+                element={<CreateCard />}
+                loader={async()=>{return null}} />
             </Route>
 
             <Route path='*' element={<NotFound />} />

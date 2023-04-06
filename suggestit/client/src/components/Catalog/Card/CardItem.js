@@ -1,8 +1,5 @@
 import { Link, NavLink, useLoaderData } from 'react-router-dom';
 import { getCard, getCards } from '../../../utils/api';
-import SuggestionItem from '../../AddSuggestion/SuggestionItem/SuggestionItem';
-// import { SuggestionItem } from '../../AddSuggestion/SuggestionItem/SuggestionItem';
-// import { SuggestionItem } from '../../Details/AddSuggestion/SuggestionItem/SuggestionItem';
 
 export function loader({ params }) {
     // console.log(params);
@@ -19,10 +16,6 @@ export default function CardItem() {
         //  DETAILS vis for all
         <section className='details-view container'>
             <h2>Details</h2>
-
-            {/*  LOADER show when fetching */}
-            {/* <Loader/> */}
-
             {
                 // TODO:!!! Hide overflow!!!from Details?! or SHOW ONLY FIRST N SUGGS
 
