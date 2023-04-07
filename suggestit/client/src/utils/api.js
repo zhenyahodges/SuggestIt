@@ -95,26 +95,27 @@ export async function registerUser(creds) {
 //     return null;
 // }
 
-export async function newCard(brand,token) { 
-    // console.log(brand,token); 
-    const res = await fetch( `${baseUrl}/jsonstore/cards`,{
+export async function createNewCard(token,brand,userId) { 
+    // console.log(brand+'======'+token); 
+    const creds={userId,brand};
+    const res = await fetch( `${baseUrl}/data/cards`,{
         method: 'post',
         headers: {
             'Content-Type': 'application/json',
             'X-Authorization': token,
         },
-        body: JSON.stringify(brand)
+        body: JSON.stringify(creds)
     });
-    console.log('res--'+res);
+    // console.log('res--'+res);
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
     if (res.status === 204) { 
-               
+        console.log(res.status);
         return null;
     }
     const data = await res.json();
-    console.log('data--'+data);
+    // console.log('data--'+data);
     // console.log(Object.values(data));
     // return Object.values(data);
     return (data);

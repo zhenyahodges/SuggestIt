@@ -7,6 +7,7 @@ import {
     createRoutesFromElements,
     RouterProvider,
 } from 'react-router-dom';
+
 import Root,{loader as headerLoader} from './components/Root/Root';
 import ProfileLayout, {
     loader as userLoader,
@@ -16,6 +17,7 @@ import UserCards from './components/Profile/UserCards';
 import UserSuggs from './components/Profile/UserSuggs';
 import CreateCard, {
     action as createCardAction,
+    loader as createLoader,
 } from './components/Profile/CreateCard';
 import Register, {
     action as registerAction,
@@ -62,7 +64,7 @@ const router = createBrowserRouter(
             <Route
                 path='cards/:cardId/:suggestionId'
                 element={<AddSuggestion />}
-                loader={async () => await requireAuth()}
+                // loader={async () => await requireAuth()}
             />
 
             <Route
@@ -84,24 +86,23 @@ const router = createBrowserRouter(
             <Route
                 path='users/:userId'
                 element={<ProfileLayout />}
-                // loader={userLoader}
-                // action={userProfileAction}
-                loader={async () => await requireAuth()}
+                loader={userLoader}
+                // action={userProfileAction}             
             >
                 <Route
                     index
                     element={<UserCards />}
-                    loader={async () => await requireAuth()}
+                    // loader={async () => await requireAuth()}
                 />
                 <Route
                     path='suggested'
                     element={<UserSuggs />}
-                    loader={async () => await requireAuth()}
+                    // loader={async () => await requireAuth()}
                 />
                 <Route
                     path='create'
                     element={<CreateCard />}
-                    loader={async () => await requireAuth()}
+                    // loader={createLoader}
                     action={createCardAction}
                 />
             </Route>
