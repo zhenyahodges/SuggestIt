@@ -32,7 +32,10 @@ const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path='/' element={<Root />}>
             <Route index element={<Home />} />
-            <Route path='cards' element={<Catalog />} loader={cardsLoader} />
+            <Route 
+            path='cards' 
+            element={<Catalog />} 
+            loader={cardsLoader} />
 
             <Route
                 path='cards/:cardId'

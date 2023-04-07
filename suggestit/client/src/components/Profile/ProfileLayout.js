@@ -2,13 +2,15 @@ import {
     Form,
     NavLink,
     Outlet,
-    // redirect,
-    // useActionData,
-    // useFetcher,
-    // useLoaderData,
-    // useRouteLoaderData,
+    redirect,
+    useActionData,
+    useFetcher,
+    useLoaderData,
+    useLocation,
+    useRouteLoaderData,
 } from 'react-router-dom';
 import { getUser } from '../../utils/api';
+import { useEffect } from 'react';
 // import { requireAuth } from '../../utils/requireAuth';
 // import { AuthContext } from '../../utils/authContext';
 // import { useContext } from 'react';
@@ -16,39 +18,46 @@ import { getUser } from '../../utils/api';
 // const userId= localStorage.getItem('userId');
 // console.log(token);
 // console.log(userId);
-   const user = JSON.parse(localStorage.getItem('user'));
-    const {email,userId,token}=user;
 
-export async function loader() {
-    if (token) {
-        return getUser(userId,token);
-    }
-    return null;
-}
+// export async function loader() {
+//     const user = JSON.parse(localStorage.getItem('user'));
+//     // console.log(user);
+    
+    
+//         // const {email,userId,token}=user;
+//         if (user) {
+//         return getUser(user.token);
+//     }else{
+//      return null;   
+//     }
+    
+// }
 
-// export async function action({ params }) {
+// export async function action({ params,request }) {
 
-//     // const url=request.url.split('/');
-//     // const id=url.slice(-1);
-//     // console.log(request);
+// //     // const url=request.url.split('/');
+// //     // const id=url.slice(-1);
+//     // console.log(action);
 //     const formData = await request.formData();
 //     console.log(formData);
 //     return null;
-//     // formData.set('email');
-//     // const password = formData.get('pass');
-// // console.log(formData);
-// // return null;
-//     // try {
-//     //     const data = await getUser({});
-//     //     console.log(data);
-//     //     // localStorage.setItem('loggedin', true);
-//     //     // return redirect(`/users/${data._id}`);
-//     //     // return null;
-//     //     return null;
-//     // } catch (err) {
-//     //     return err.message;
-//     // }
+// //     // formData.set('email');
+// //     // const password = formData.get('pass');
+// // // console.log(formData);
+// // // return null;
+// //     // try {
+// //     //     const data = await getUser({});
+// //     //     console.log(data);
+// //     //     // localStorage.setItem('loggedin', true);
+// //     //     // return redirect(`/users/${data._id}`);
+// //     //     // return null;
+// //     //     return null;
+// //     // } catch (err) {
+// //     //     return err.message;
+// //     // }
 // }
+const user = JSON.parse(localStorage.getItem('user'));
+//     // console.log(user);
 
 export default function ProfileLayout() {
     // const isAuthProfile = useContext(AuthContext);
@@ -58,9 +67,16 @@ export default function ProfileLayout() {
         color: '#132930',
         fontWeight: 'bold',
     };
-    // const user=useLoaderData();
-
+    // const userCards=useLoaderData();
+    // const location = useLocation();
     // const fetcher = useFetcher();
+    // useEffect(()=>{
+    //     fetcher.load(location.pathname);
+    //     fetcher.submit(null,
+    //        { method: 'get',
+    //          action: location.pathname}
+    //     );
+    // },[]);
     // fetcher.load()
     // const data=fetcher.data;
     // console.log('fetcher:'+fetcher);
@@ -80,13 +96,13 @@ export default function ProfileLayout() {
             <div className='profile-wrapper'>
                 {/* <!-- ||PROF INFO --> */}
                 <div className='profile-form-wrap'>
-                    <Form
+                    {/* <Form
                         // action='/login'
-                        // method='get'
+                        method='get'
                         id='prof-form'
                         className='prof form'
-                    >
-                        <div className='wrap fname'>
+                    > */}
+                        {/* <div className='wrap fname'>
                             <label
                                 htmlFor='prof-fname'
                                 className='prof lbl fname'
@@ -115,7 +131,7 @@ export default function ProfileLayout() {
                                 id='prof-lname'
                                 // value='Johnson'
                             />
-                        </div>
+                        </div> */}
                         <div className='wrap email'>
                             <label
                                 htmlFor='prof-email'
@@ -129,6 +145,7 @@ export default function ProfileLayout() {
                                 name='prof-email'
                                 id='prof-email'
                                 value={user.email}
+                                readOnly                               
                             />
                         </div>
                         {/* 
@@ -158,20 +175,8 @@ export default function ProfileLayout() {
                         id="prof-repass"
                         required
                     />
-                </div> --> */}
-
-                        {/* <!-- <button
-                    // type="submit"
-                    // method="post"
-                    // value="Register"
-                    className="prof btn dark subm"
-                    form="prof-form"
-                    id="btn-prof-form"
-                    disabled
-                >
-                    Register
-                </button> --> */}
-                    </Form>
+                </div> --> */}                       
+                    {/* </Form> */}
 
                     <nav className='prof-nav'>
                         <NavLink
