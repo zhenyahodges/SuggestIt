@@ -16,9 +16,7 @@ import { getUser } from '../../utils/api';
 // const userId= localStorage.getItem('userId');
 // console.log(token);
 // console.log(userId);
-  
-
-const user = JSON.parse(localStorage.getItem('user'));
+   const user = JSON.parse(localStorage.getItem('user'));
     const {email,userId,token}=user;
 
 export async function loader() {
@@ -130,7 +128,7 @@ export default function ProfileLayout() {
                                 className='prof entry email'
                                 name='prof-email'
                                 id='prof-email'
-                                value={email}
+                                value={user.email}
                             />
                         </div>
                         {/* 
