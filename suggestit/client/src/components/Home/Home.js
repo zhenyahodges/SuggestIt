@@ -1,18 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-// export async function loader() {
-//     // await requireAuth();
-//     const user = JSON.parse(localStorage.getItem('user'));
-//    const token=user.token;
-//    let isLoggedIn =false;
-
-//     if (token) {
-//         isLoggedIn=true;
-//     }
-//     return isLoggedIn;
-// }
-
-export const Home = () => {
+export default function Home(){
     const navigate=useNavigate();
  
     return (

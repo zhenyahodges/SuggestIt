@@ -1,4 +1,4 @@
-import { Outlet, redirect, useLoaderData } from 'react-router-dom';
+import { Outlet, useLoaderData } from 'react-router-dom';
 import { Header}  from '../Header/Header';
 import { Footer } from '../Footer/Footer';
 
@@ -26,7 +26,6 @@ export async function loader() {
 
 export default function Root() {
     const result = useLoaderData();
-    // console.log(result);
 
     return(
         <>

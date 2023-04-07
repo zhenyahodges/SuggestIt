@@ -1,5 +1,5 @@
 import { AddSuggestion } from './components/AddSuggestion/AddSuggestion';
-import { Home } from './components/Home/Home';
+import Home from './components/Home/Home';
 import { NotFound } from './components/NotFound/NotFound';
 import {
     Route,
@@ -48,7 +48,10 @@ const router = createBrowserRouter(
                 element={<Home />}             
             />
             {/* <AuthContext.Provider value={isLogged}> */}
-            <Route path='cards' element={<Catalog />} loader={cardsLoader} />
+            <Route 
+            path='cards' 
+            element={<Catalog />} 
+            loader={cardsLoader} />
 
             <Route
                 path='cards/:cardId'
