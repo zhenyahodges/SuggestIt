@@ -5,35 +5,28 @@ import { Footer } from '../Footer/Footer';
 export async function loader() {
     let isLogged = false;
     let whoIsLookin = 'Guest';
-    let result = {
-        currUser: 'Guest',
+    let result = {      
         whoIsLookin,
-        isLogged,
+        isLogged    
     };
-    
+
   const user = JSON.parse(localStorage.getItem('user'));
-    console.log(user);
+
     if (user) {
-        result.whoIsLookin = user.email;
-        // whoIsLookin = user.email;
+        result.whoIsLookin = user.email;  
         result.isLogged = true;
-       
+        result.userId=user.userId;      
     } else {
-        result.whoIsLookin = 'Guest';
-        // whoIsLookin = 'Guest';
-        // console.log(whoIsLookin);
-        // whoIsLookin = user.email;
+        result.whoIsLookin = 'Guest';        
         result.isLogged = false;
-    }
-    
-    console.log(result);
-    // return result;
-    return null;
+    }    
+    return result;
+
 }
 
 export default function Root() {
     const result = useLoaderData();
-    console.log(result);
+    // console.log(result);
 
     return(
         <>

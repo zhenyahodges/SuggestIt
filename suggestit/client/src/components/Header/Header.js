@@ -1,9 +1,8 @@
-import { NavLink, useLoaderData } from 'react-router-dom';
-
-
+import { NavLink } from 'react-router-dom';
 
 export const Header = (props) => {
-
+    const [result] = Object.values(props);
+    const { whoIsLookin, isLogged, userId } = result;
 
     const activeStyles = {
         backgroundColor: '#F79234',
@@ -50,7 +49,7 @@ export const Header = (props) => {
                         </NavLink>
 
                         {/* visible when not logged in */}
-                        {/* {!logged && (
+                        {!isLogged && (
                             <NavLink
                                 to='login'
                                 className='nav header list links log'
@@ -61,10 +60,10 @@ export const Header = (props) => {
                             >
                                 Login
                             </NavLink>
-                        )} */}
+                        )}
 
                         {/* LOGOUT visible when looged in only */}
-                        {/* {logged && (
+                        {isLogged && (
                             <NavLink
                                 to='logout'
                                 className='nav header list links logout'
@@ -75,10 +74,10 @@ export const Header = (props) => {
                             >
                                 Logout
                             </NavLink>
-                        )} */}
+                        )}
 
                         {/* visible when not logged in */}
-                        {/* {!logged && (
+                        {!isLogged && (
                             <NavLink
                                 to='register'
                                 className='nav header list links reg'
@@ -90,7 +89,7 @@ export const Header = (props) => {
                                 Register
                             </NavLink>
                         )}
-                        {logged && (
+                        {isLogged && (
                             <NavLink
                                 to={`users/${userId}`}
                                 className='nav header list links prof'
@@ -101,14 +100,14 @@ export const Header = (props) => {
                             >
                                 Profile
                             </NavLink>
-                        )} */}
+                        )}
                         {/* <!-- <a to="/about" className="nav header list links">About</a> --> */}
                         {/* <!-- <a to="/contact" className="nav header list links">Contact</a> --> */}
                     </ul>
                 </nav>
                 <div className='whos-lookin-wrapper'>
                     <p className='whos-lookin' id='whos-lookin'>
-                        {/* {who} */}
+                        {whoIsLookin}
                     </p>
                 </div>
             </section>
