@@ -16,15 +16,17 @@ import { getUser } from '../../utils/api';
 // const userId= localStorage.getItem('userId');
 // console.log(token);
 // console.log(userId);
-   const user = JSON.parse(localStorage.getItem('user'));
+  
+
+const user = JSON.parse(localStorage.getItem('user'));
     const {email,userId,token}=user;
 
-// export async function loader() {
-//     if (token) {
-//         return getUser(userId,token);
-//     }
-//     return null;
-// }
+export async function loader() {
+    if (token) {
+        return getUser(userId,token);
+    }
+    return null;
+}
 
 // export async function action({ params }) {
 
