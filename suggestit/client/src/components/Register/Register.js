@@ -8,23 +8,27 @@ export async function action({ request }) {
     const email = formData.get('email');
     const password = formData.get('pass');
     const repass = formData.get('repass');
+    
     if (password !== repass) {
         throw new Error('Passwords do not match');
     }
-    
-    try {
-            const data = await registerUser({ fname, lname, email, password });
-            //    console.log(data);
-            // localStorage.setItem('user', JSON.stringify(id));
-            return redirect(`/users/${data._id}`);
-            // return null;
-        } catch (err) {
-            return err.message;
-        }
-  
 
-    //    console.log(fname,lname,email, password,repass);
-    // return null;
+    try {
+        const data = await registerUser({ fname, lname, email, password });
+
+        const token = data.accessToken;
+        if (token) {
+            const user = {
+                email: data.email,
+                userId: data._id,
+                token,
+            };
+            localStorage.setItem('user', JSON.stringify(user));
+        }
+        return redirect(`/users/${data._id}`);
+    } catch (err) {
+        return err.message;
+    }
 }
 
 export default function Register() {

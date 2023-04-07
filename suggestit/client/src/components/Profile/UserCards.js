@@ -1,4 +1,14 @@
+import { requireAuth } from '../../utils/requireAuth';
+
+export async function loader(){
+    const {userId,token}=await requireAuth();
+    return null;
+}
+
+
 export default function userCards() {
+ 
+
     return (
         //  {/* <!-- || sec USER-OWNER PUBLISHED polls --> */}
         <section className='user published'>

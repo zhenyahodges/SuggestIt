@@ -18,23 +18,6 @@ export async function getCards(id) {
     // return (data);
 }
 
-export async function getCardSuggestions(id) {
-    const url = `${baseUrl}/jsonstore/cards/${id}`;
-
-    const res = await fetch(url);
-    if (!res.ok) {
-        throw new Error(`${res.status} - ${res.statusText}`);
-    }
-    // if (res.statusCode === 204) {
-    //     console.log('empty');
-    //     return {};
-    // }
-    const data = await res.json();
-    // console.log(Object.values(data));
-    return Object.values(data);
-    // return (data);
-}
-
 export async function loginUser(creds) {
     const res = await fetch(`${baseUrl}/users/login`, {
         method: 'post',
@@ -66,7 +49,7 @@ export async function registerUser(creds) {
     //     console.log('empty');
     //     return {};
     // }
-    const data = await res.json();
+    const data = await res.json(); 
     return data;
 }
 
@@ -97,7 +80,7 @@ export async function registerUser(creds) {
 
 export async function createNewCard(token,brand,userId) { 
     // console.log(brand+'======'+token); 
-    const creds={userId,brand};
+    const creds={brand};
     const res = await fetch( `${baseUrl}/data/cards`,{
         method: 'post',
         headers: {
@@ -142,3 +125,20 @@ export async function createNewCard(token,brand,userId) {
 //     // return Object.values(data);
 //     return (data);
 // }
+
+export async function getCardSuggestions(id) {
+    const url = `${baseUrl}/jsonstore/cards/${id}`;
+
+    const res = await fetch(url);
+    if (!res.ok) {
+        throw new Error(`${res.status} - ${res.statusText}`);
+    }
+    // if (res.statusCode === 204) {
+    //     console.log('empty');
+    //     return {};
+    // }
+    const data = await res.json();
+    // console.log(Object.values(data));
+    return Object.values(data);
+    // return (data);
+}

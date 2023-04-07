@@ -13,7 +13,7 @@ import ProfileLayout, {
     loader as userLoader,
     action as userProfileAction,
 } from './components/Profile/ProfileLayout';
-import UserCards from './components/Profile/UserCards';
+import UserCards,{loader as userCardsLoader} from './components/Profile/UserCards';
 import UserSuggs from './components/Profile/UserSuggs';
 import CreateCard, {
     action as createCardAction,
@@ -29,6 +29,7 @@ import CardItem, {
 } from './components/Catalog/Card/CardItem';
 import { AuthContext } from './utils/authContext';
 import { requireAuth } from './utils/requireAuth';
+import Logout,{action as logoutAction} from './components/Logout/Logout';
 
 // const user = JSON.parse(localStorage.getItem('user'));
 // const token = user.token;
@@ -74,6 +75,13 @@ const router = createBrowserRouter(
                 id='logindata'
             />
 
+              <Route
+                path='logout'
+                element={<Logout />}
+                action={logoutAction}
+                id='logoutdata'
+            />
+
             <Route
                 path='register'
                 element={<Register />}
@@ -92,7 +100,7 @@ const router = createBrowserRouter(
                 <Route
                     index
                     element={<UserCards />}
-                    // loader={async () => await requireAuth()}
+                    loader={userCardsLoader}
                 />
                 <Route
                     path='suggested'

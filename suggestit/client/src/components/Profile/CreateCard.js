@@ -1,22 +1,6 @@
-import { Form, redirect, useLoaderData, useNavigation } from 'react-router-dom';
-import { createNewCard, newCard } from '../../utils/api';
+import { Form, redirect, useNavigation } from 'react-router-dom';
+import { createNewCard } from '../../utils/api';
 import { requireAuth } from '../../utils/requireAuth';
-
-// const user = JSON.parse(localStorage.getItem('user'));
-// let isLogged = false;
-// let token='';
-// if(user){
-//     token=user.token;
-// }
-// console.log(token)
-// export async function loader(){
-//  const result=await requireAuth();
-//     // const token=result.token;
-// //    console.log(userId,token);
-// //    return null;
-//    return result;
-// }
-
 
 export async function action({request}){
     const {userId,token}=await requireAuth();
