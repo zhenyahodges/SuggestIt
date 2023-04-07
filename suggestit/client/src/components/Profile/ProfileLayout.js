@@ -2,31 +2,29 @@ import {
     Form,
     NavLink,
     Outlet,
-    redirect,
-    useActionData,
-    useFetcher,
-    useLoaderData,
-    useRouteLoaderData,
+    // redirect,
+    // useActionData,
+    // useFetcher,
+    // useLoaderData,
+    // useRouteLoaderData,
 } from 'react-router-dom';
 import { getUser } from '../../utils/api';
-import { requireAuth } from '../../utils/requireAuth';
-import { AuthContext } from '../../utils/authContext';
-import { useContext } from 'react';
+// import { requireAuth } from '../../utils/requireAuth';
+// import { AuthContext } from '../../utils/authContext';
+// import { useContext } from 'react';
 
 // const userId= localStorage.getItem('userId');
 // console.log(token);
 // console.log(userId);
-
-export async function loader() {
-    const user = JSON.parse(localStorage.getItem('user'));
+   const user = JSON.parse(localStorage.getItem('user'));
     const {email,userId,token}=user;
-// console.log(token);
 
-    if (user.token) {
-        return getUser(token);
-    }
-    return null;
-}
+// export async function loader() {
+//     if (token) {
+//         return getUser(userId,token);
+//     }
+//     return null;
+// }
 
 // export async function action({ params }) {
 
@@ -62,7 +60,7 @@ export default function ProfileLayout() {
     };
     // const user=useLoaderData();
 
-    const fetcher = useFetcher();
+    // const fetcher = useFetcher();
     // fetcher.load()
     // const data=fetcher.data;
     // console.log('fetcher:'+fetcher);
@@ -82,7 +80,7 @@ export default function ProfileLayout() {
             <div className='profile-wrapper'>
                 {/* <!-- ||PROF INFO --> */}
                 <div className='profile-form-wrap'>
-                    <fetcher.Form
+                    <Form
                         // action='/login'
                         // method='get'
                         id='prof-form'
@@ -100,7 +98,7 @@ export default function ProfileLayout() {
                                 className='prof entry fname'
                                 name='prof-fname'
                                 id='prof-fname'
-                                // value={}
+                                // value={user.}
                             />
                         </div>
                         <div className='wrap prof-lname'>
@@ -130,7 +128,7 @@ export default function ProfileLayout() {
                                 className='prof entry email'
                                 name='prof-email'
                                 id='prof-email'
-                                // value={user.email}
+                                value={email}
                             />
                         </div>
                         {/* 
@@ -173,7 +171,7 @@ export default function ProfileLayout() {
                 >
                     Register
                 </button> --> */}
-                    </fetcher.Form>
+                    </Form>
 
                     <nav className='prof-nav'>
                         <NavLink

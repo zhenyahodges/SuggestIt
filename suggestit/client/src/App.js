@@ -64,7 +64,7 @@ const router = createBrowserRouter(
             <Route
                 path='users/:userId'
                 element={<ProfileLayout />}
-                loader={userLoader}
+                // loader={userLoader}
                 // action={userProfileAction}
             >
               
