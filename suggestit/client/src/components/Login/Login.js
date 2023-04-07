@@ -15,7 +15,7 @@ export async function action({ request }) {
             const user={
                 email: data.email,
                 userId: data._id,
-                token,
+                token,            
             };
             // console.log(user);
             // isAuthProfile = true;

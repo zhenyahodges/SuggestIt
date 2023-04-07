@@ -7,14 +7,16 @@ import {
     createRoutesFromElements,
     RouterProvider,
 } from 'react-router-dom';
-import Root from './components/Root/Root';
+import Root,{loader as headerLoader} from './components/Root/Root';
 import ProfileLayout, {
     loader as userLoader,
     action as userProfileAction,
 } from './components/Profile/ProfileLayout';
 import UserCards from './components/Profile/UserCards';
 import UserSuggs from './components/Profile/UserSuggs';
-import CreateCard from './components/Profile/CreateCard';
+import CreateCard, {
+    action as createCardAction,
+} from './components/Profile/CreateCard';
 import Register, {
     action as registerAction,
 } from './components/Register/Register';
@@ -24,6 +26,7 @@ import CardItem, {
     loader as cardLoader,
 } from './components/Catalog/Card/CardItem';
 import { AuthContext } from './utils/authContext';
+import { requireAuth } from './utils/requireAuth';
 
 // const user = JSON.parse(localStorage.getItem('user'));
 // const token = user.token;
@@ -36,38 +39,41 @@ import { AuthContext } from './utils/authContext';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
-        <Route path='/' element={<Root />}>
-            <Route index element={<Home />} />
+        <Route path='/'
+         element={<Root />} 
+         loader={headerLoader}       
+         >
+            <Route
+                index
+                element={<Home />}             
+            />
             {/* <AuthContext.Provider value={isLogged}> */}
-                <Route
-                    path='cards'
-                    element={<Catalog />}
-                    loader={cardsLoader}
-                />
+            <Route path='cards' element={<Catalog />} loader={cardsLoader} />
 
-                <Route
-                    path='cards/:cardId'
-                    element={<CardItem />}
-                    loader={cardLoader}
-                />
+            <Route
+                path='cards/:cardId'
+                element={<CardItem />}
+                loader={cardLoader}
+            />
 
-                <Route
-                    path='cards/:cardId/:suggestionId'
-                    element={<AddSuggestion />}
-                />
+            <Route
+                path='cards/:cardId/:suggestionId'
+                element={<AddSuggestion />}
+                loader={async () => await requireAuth()}
+            />
 
-                <Route
-                    path='login'
-                    element={<Login />}
-                    action={loginAction}
-                    id='logindata'
-                />
+            <Route
+                path='login'
+                element={<Login />}
+                action={loginAction}
+                id='logindata'
+            />
 
-                <Route
-                    path='register'
-                    element={<Register />}
-                    action={registerAction}
-                />
+            <Route
+                path='register'
+                element={<Register />}
+                action={registerAction}
+            />
             {/* </AuthContext.Provider> */}
             {/* <AuthContext.Provider value={userId}> */}
 
@@ -77,27 +83,23 @@ const router = createBrowserRouter(
                 element={<ProfileLayout />}
                 // loader={userLoader}
                 // action={userProfileAction}
+                loader={async () => await requireAuth()}
             >
                 <Route
                     index
                     element={<UserCards />}
-                    loader={async () => {
-                        return null;
-                    }}
+                    loader={async () => await requireAuth()}
                 />
                 <Route
                     path='suggested'
                     element={<UserSuggs />}
-                    loader={async () => {
-                        return null;
-                    }}
+                    loader={async () => await requireAuth()}
                 />
                 <Route
                     path='create'
                     element={<CreateCard />}
-                    loader={async () => {
-                        return null;
-                    }}
+                    loader={async () => await requireAuth()}
+                    action={createCardAction}
                 />
             </Route>
             <Route path='*' element={<NotFound />} />

@@ -1,91 +1,31 @@
-import {
-    Form,
-    NavLink,
-    Outlet,
-    redirect,
-    useActionData,
-    useFetcher,
-    useLoaderData,
-    useLocation,
-    useRouteLoaderData,
-} from 'react-router-dom';
-import { getUser } from '../../utils/api';
-import { useEffect } from 'react';
+import { NavLink, Outlet, redirect, useLoaderData } from 'react-router-dom';
 // import { requireAuth } from '../../utils/requireAuth';
-// import { AuthContext } from '../../utils/authContext';
-// import { useContext } from 'react';
 
-// const userId= localStorage.getItem('userId');
-// console.log(token);
-// console.log(userId);
-
-// export async function loader() {
-//     const user = JSON.parse(localStorage.getItem('user'));
-//     // console.log(user);
-    
-    
-//         // const {email,userId,token}=user;
-//         if (user) {
-//         return getUser(user.token);
-//     }else{
-//      return null;   
-//     }
-    
-// }
-
-// export async function action({ params,request }) {
-
-// //     // const url=request.url.split('/');
-// //     // const id=url.slice(-1);
-//     // console.log(action);
-//     const formData = await request.formData();
-//     console.log(formData);
-//     return null;
-// //     // formData.set('email');
-// //     // const password = formData.get('pass');
-// // // console.log(formData);
-// // // return null;
-// //     // try {
-// //     //     const data = await getUser({});
-// //     //     console.log(data);
-// //     //     // localStorage.setItem('loggedin', true);
-// //     //     // return redirect(`/users/${data._id}`);
-// //     //     // return null;
-// //     //     return null;
-// //     // } catch (err) {
-// //     //     return err.message;
-// //     // }
-// }
-const user = JSON.parse(localStorage.getItem('user'));
-    // console.log(user);
+export async function loader() {
+    // await requireAuth();
+    const user = JSON.parse(localStorage.getItem('user'));
+    // console.log(user); 
+    let token = '';
+    if(!user){
+        redirect('/login');
+    }
+    if (user) {
+        token = user.token;
+        if (!token) {
+           throw redirect('/login');
+        }
+    }
+    return user;
+}
 
 export default function ProfileLayout() {
-    // const isAuthProfile = useContext(AuthContext);
+   const user=useLoaderData();
 
     const activeStyles = {
         backgroundColor: '#F79234',
         color: '#132930',
         fontWeight: 'bold',
     };
-    // const userCards=useLoaderData();
-    // const location = useLocation();
-    // const fetcher = useFetcher();
-    // useEffect(()=>{
-    //     fetcher.load(location.pathname);
-    //     fetcher.submit(null,
-    //        { method: 'get',
-    //          action: location.pathname}
-    //     );
-    // },[]);
-    // fetcher.load()
-    // const data=fetcher.data;
-    // console.log('fetcher:'+fetcher);
-
-    //    const user=useRouteLoaderData('logindata');
-    //    console.log(user);
-
-    // const []
-    // console.log(user);
 
     return (
         // <AuthContext.Provider value={userId}>
@@ -96,13 +36,13 @@ export default function ProfileLayout() {
             <div className='profile-wrapper'>
                 {/* <!-- ||PROF INFO --> */}
                 <div className='profile-form-wrap'>
-                    {/* <Form
+                    {/* <fetcher.Form
                         // action='/login'
                         method='get'
                         id='prof-form'
                         className='prof form'
                     > */}
-                        {/* <div className='wrap fname'>
+                    {/* <div className='wrap fname'>
                             <label
                                 htmlFor='prof-fname'
                                 className='prof lbl fname'
@@ -132,7 +72,7 @@ export default function ProfileLayout() {
                                 // value='Johnson'
                             />
                         </div> */}
-                        <div className='wrap email'>
+                    <div className='wrap email'>
                             <label
                                 htmlFor='prof-email'
                                 className='prof lbl email'
@@ -148,7 +88,7 @@ export default function ProfileLayout() {
                                 readOnly                               
                             />
                         </div>
-                        {/* 
+                    {/* 
                         <!-- <div className="wrap pass">
                     <label htmlFor="pass" className="prof lbl pass"
                         >Password</label
@@ -164,7 +104,7 @@ export default function ProfileLayout() {
                     />
                 </div> --> */}
 
-                        {/* <!-- <div className="wrap repass">
+                    {/* <!-- <div className="wrap repass">
                     <label htmlFor="repass" className="prof lbl repass"
                         >Confirm Password</label
                     >
@@ -175,8 +115,8 @@ export default function ProfileLayout() {
                         id="prof-repass"
                         required
                     />
-                </div> --> */}                       
-                    {/* </Form> */}
+                </div> --> */}
+                    {/* </fetcher.Form> */}
 
                     <nav className='prof-nav'>
                         <NavLink

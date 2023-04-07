@@ -1,4 +1,33 @@
-import { Form, useNavigation } from 'react-router-dom';
+import { Form, redirect, useNavigation } from 'react-router-dom';
+import { newCard } from '../../utils/api';
+
+const user = JSON.parse(localStorage.getItem('user'));
+let isLogged = false;
+let token='';
+if(user){
+    token=user.token;
+}
+
+
+export async function action({request}){
+    const formData= await request.formData();
+    const brand=formData.get('brand');
+  
+    // console.log(brand);
+
+    try{
+      if(token){
+         const data= await newCard({brand,token});
+        console.log(data);
+        return null;
+      } else{
+        redirect('login');
+      }
+    } catch (err) {
+        return err.message;
+    }
+}
+
 
 export default function CreateCard() {
     const navigation = useNavigation();
@@ -12,20 +41,20 @@ export default function CreateCard() {
 
             <div className='user-create-wrapper'>
                 <Form
-                    action='/create'
+                    // action='/create'
                     method='post'
                     id='create-card-form'
                     className='create-card form'
                 >
                     <div className='wrap card-title'>
-                        <label htmlFor='card-name' className='lbl card-name'>
+                        <label htmlFor='brand' className='lbl card-name'>
                             Feedback Form Title / Brand
                         </label>
                         <input
                             type='text'
                             className='card-name'
-                            name='card-name'
-                            id='card-name'
+                            name='brand'
+                            id='brand'
                             placeholder='Enter title'
                             minLength='3'
                             maxLength='30'

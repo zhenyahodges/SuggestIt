@@ -95,5 +95,49 @@ export async function registerUser(creds) {
 //     return null;
 // }
 
-
+export async function newCard(brand,token) { 
+    // console.log(brand,token); 
+    const res = await fetch( `${baseUrl}/jsonstore/cards`,{
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': token,
+        },
+        body: JSON.stringify(brand)
+    });
+    console.log('res--'+res);
+    if (!res.ok) {
+        throw new Error(`${res.status} - ${res.statusText}`);
+    }
+    if (res.status === 204) { 
+               
+        return null;
+    }
+    const data = await res.json();
+    console.log('data--'+data);
+    // console.log(Object.values(data));
+    // return Object.values(data);
+    return (data);
+}
     
+// export async function updateCard(ownerId,id,token,data) {  
+//     const res = await fetch( `${baseUrl}/jsonstore/cards/${id}`,{
+//         method: 'put',
+//         headers: {
+//             'Content-Type': 'application/json',
+//             'X-Authorization': token,
+//         },
+//         body: JSON.stringify(data)
+//     });
+//     // console.log(res);
+//     if (!res.ok) {
+//         throw new Error(`${res.status} - ${res.statusText}`);
+//     }
+//     if (res.status === 204) {        
+//         return null;
+//     }
+//     const data = await res.json();
+//     // console.log(Object.values(data));
+//     // return Object.values(data);
+//     return (data);
+// }

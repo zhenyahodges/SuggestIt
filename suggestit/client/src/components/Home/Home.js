@@ -1,5 +1,17 @@
 import { useNavigate } from "react-router-dom";
 
+// export async function loader() {
+//     // await requireAuth();
+//     const user = JSON.parse(localStorage.getItem('user'));
+//    const token=user.token;
+//    let isLoggedIn =false;
+
+//     if (token) {
+//         isLoggedIn=true;
+//     }
+//     return isLoggedIn;
+// }
+
 export const Home = () => {
     const navigate=useNavigate();
  
@@ -22,9 +34,9 @@ export const Home = () => {
                         ranks them by popularity
                     </p>
                 </div>
-                <button onClick={()=>navigate('login')} className='btn highlight login' id='login-btn'>
+                {/* {<button onClick={()=>navigate('login')} className='btn highlight login' id='login-btn'>
                     Login
-                </button>
+                </button>} */}
             </section>
 
             {/* <!-- SAMPLE  --> */}
