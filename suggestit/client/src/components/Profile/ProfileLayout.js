@@ -57,7 +57,7 @@ import { useEffect } from 'react';
 // //     // }
 // }
 const user = JSON.parse(localStorage.getItem('user'));
-//     // console.log(user);
+    // console.log(user);
 
 export default function ProfileLayout() {
     // const isAuthProfile = useContext(AuthContext);

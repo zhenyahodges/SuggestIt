@@ -25,42 +25,50 @@ import CardItem, {
 } from './components/Catalog/Card/CardItem';
 import { AuthContext } from './utils/authContext';
 
-
+// const user = JSON.parse(localStorage.getItem('user'));
+// const token = user.token;
+// let isLogged = false;
+// if (token) {
+//     isLogged = true;
+// }
+// console.log(isLogged);
 // import { CardItem } from './components/Card/CardItem';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path='/' element={<Root />}>
             <Route index element={<Home />} />
-            <Route 
-            path='cards' 
-            element={<Catalog />} 
-            loader={cardsLoader} />
+            {/* <AuthContext.Provider value={isLogged}> */}
+                <Route
+                    path='cards'
+                    element={<Catalog />}
+                    loader={cardsLoader}
+                />
 
-            <Route
-                path='cards/:cardId'
-                element={<CardItem />}
-                loader={cardLoader}
-            />
+                <Route
+                    path='cards/:cardId'
+                    element={<CardItem />}
+                    loader={cardLoader}
+                />
 
-            <Route
-                path='cards/:cardId/:suggestionId'
-                element={<AddSuggestion />}
-            />
+                <Route
+                    path='cards/:cardId/:suggestionId'
+                    element={<AddSuggestion />}
+                />
 
-            <Route
-                path='login'
-                element={<Login />}
-                action={loginAction}
-                id='logindata'
-            />
+                <Route
+                    path='login'
+                    element={<Login />}
+                    action={loginAction}
+                    id='logindata'
+                />
 
-            <Route
-                path='register'
-                element={<Register />}
-                action={registerAction}
-            />
-           
+                <Route
+                    path='register'
+                    element={<Register />}
+                    action={registerAction}
+                />
+            {/* </AuthContext.Provider> */}
             {/* <AuthContext.Provider value={userId}> */}
 
             {/* PROFILE */}
@@ -70,7 +78,6 @@ const router = createBrowserRouter(
                 // loader={userLoader}
                 // action={userProfileAction}
             >
-              
                 <Route
                     index
                     element={<UserCards />}
@@ -91,9 +98,8 @@ const router = createBrowserRouter(
                     loader={async () => {
                         return null;
                     }}
-                />                
+                />
             </Route>
-            {/* </AuthContext.Provider> */}
             <Route path='*' element={<NotFound />} />
         </Route>
     )

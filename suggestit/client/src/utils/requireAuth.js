@@ -12,29 +12,3 @@ export async function requireAuth({request}) {
     }
 }
 
-
-// export const requestFactory = (token) => {
-
-    // if(!token){
-    //     const serializedAuth=localStorage.getItem('auth');
-        
-    //     if(serializedAuth){
-    //         const auth=JSON.parse(serializedAuth);
-    //         token=auth.accessToken;
-    //     }
-    // }
-    
-    //     return {
-    //         // get: request.bind(null, 'GET', token),
-    //         // post: request.bind(null, 'POST', token),
-    //         // put: request.bind(null, 'PUT', token),
-    //         // delete: request.bind(null, 'DELETE', token),
-    //         // patch: request.bind(null, 'PATCH', token),
-      
-    //         get: requester.bind(null, 'GET', token),
-    //         post: requester.bind(null, 'POST', token),
-    //         put: requester.bind(null, 'PUT', token),
-    //         delete: requester.bind(null, 'DELETE', token),
-    //         patch: requester.bind(null, 'PATCH', token),
-    //     };
-    // };
