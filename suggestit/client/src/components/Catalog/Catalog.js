@@ -8,6 +8,7 @@ import { getCards } from '../../utils/api';
 // }
 export function loader() {
     const cards = getCards();
+    console.log(cards);
     if (cards) {
         return cards;
     }
@@ -16,7 +17,7 @@ export function loader() {
 
 export default function Catalog() {
     const cards = useLoaderData();
-    // console.log(cards);
+    console.log(cards);
 
     return (
         <section className='catalog window'>

@@ -9,10 +9,12 @@ export async function getCards(id) {
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
-    if (res.status === 204) {        
+    if (res.status === 204) {    
+    // console.log('empty');
         return null;
     }
     const data = await res.json();
+    console.log(data);
     // console.log(Object.values(data));
     return Object.values(data);
     // return (data);

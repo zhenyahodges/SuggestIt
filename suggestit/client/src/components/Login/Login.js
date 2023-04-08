@@ -19,10 +19,12 @@ export async function action({ request }) {
     const email = formData.get('email');
     const password = formData.get('pass'); 
 
+
     const myNewUrl=(request.url.split('/login')[0]);
 
     let pathname =
-        new URL(request.url).searchParams.get('redirectTo') || '/cards';
+        new URL(request.url).searchParams.get('redirectTo') || '.';
+        // new URL(request.url).searchParams.get('redirectTo') || '/cards';
 
     try {
         const data = await loginUser({ email, password });
@@ -35,7 +37,10 @@ export async function action({ request }) {
                 token,
             };
             localStorage.setItem('user', JSON.stringify(user));            
-            return redirect(`${myNewUrl}/users/${user.userId}`);
+            // return redirect(`${myNewUrl}/users/${user.userId}`);
+            // return localStorage.setItem('user', JSON.stringify(user)); 
+        return redirect('/');
+
         }
         // return redirect(`/users/${data._id}`);
         return redirect(pathname);

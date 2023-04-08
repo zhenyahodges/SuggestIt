@@ -1,31 +1,47 @@
-import { NavLink, Outlet, redirect, useLoaderData } from 'react-router-dom';
+import { NavLink, Outlet, redirect, useLoaderData, useNavigate } from 'react-router-dom';
 import { requireAuth } from '../../utils/requireAuth';
-import { loginUser } from '../../utils/api';
 // import { requireAuth } from '../../utils/requireAuth';
+let pathname;
+// export async function loader({ request }) {
+    export async function loader({ request }) {
 
-export async function loader({request}) {
-   const res= await requireAuth(request);
-   console.log(res)
-    return null;
-//   return new URL(request.url).searchParams.get('message');
-    // await requireAuth();
-    // const user = JSON.parse(localStorage.getItem('user'));
-    // // console.log(user); 
+       const res= await requireAuth(request);
+        const user = res;
+
     // let token = '';
-    // if(!user){
-    //     redirect('/login');
+    // if (!user) {
+    //     // redirect('/login');
+    //     console.log('no user');
+    //     // pathname = new URL(request.url).searchParams.get('message');
+    //     // console.log('path---'+pathname);
+    //     // return redirect(pathname);
+    //     // return redirect('/');
+    //     return navig('/');
     // }
     // if (user) {
     //     token = user.token;
+    //     console.log('found');
     //     if (!token) {
-    //        throw redirect('/login');
+    //         console.log('no token');
+    //         // pathname = new URL(request.url).searchParams.get('message');
+    //         // console.log('path---'+pathname);
+    //         // return redirect(pathname);
+    //         return redirect('/');
     //     }
-    // }
-    // return user;
-}
+        // pathname = new URL(request.url).searchParams.get('message');
+        // redirect(request.url);
+        // console.log('path---'+pathname);
+        // -----------------
 
+        return user;
+    }
+    // console.log(user);
+    // return user;
+// }
+// const user=useLoaderData();
 export default function ProfileLayout() {
-   const user=useLoaderData();
+    const user = useLoaderData();
+    // const user=JSON.parse(localStorage.getItem('user'));
 
     const activeStyles = {
         backgroundColor: '#F79234',
@@ -79,21 +95,18 @@ export default function ProfileLayout() {
                             />
                         </div> */}
                     <div className='wrap email'>
-                            <label
-                                htmlFor='prof-email'
-                                className='prof lbl email'
-                            >
-                                Email
-                            </label>
-                            <input
-                                type='email'
-                                className='prof entry email'
-                                name='prof-email'
-                                id='prof-email'
-                                value={user.email}
-                                readOnly                               
-                            />
-                        </div>
+                        <label htmlFor='prof-email' className='prof lbl email'>
+                            Email
+                        </label>
+                        <input
+                            type='email'
+                            className='prof entry email'
+                            name='prof-email'
+                            id='prof-email'
+                            value={user.email}
+                            readOnly
+                        />
+                    </div>
                     {/* 
                         <!-- <div className="wrap pass">
                     <label htmlFor="pass" className="prof lbl pass"
