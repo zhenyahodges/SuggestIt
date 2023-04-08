@@ -13,9 +13,8 @@ export async function action({ request }) {
     // const formData = await request.formData();
     // console.log(formData);
     // const { userId }=JSON.parse(localStorage.getItem('user'));
-     pathname =
-        new URL(request.url).searchParams.get('redirectTo') || '/cards';
-        console.log(pathname);
+    pathname = new URL(request.url).searchParams.get('redirectTo') || '/cards';
+    console.log(pathname);
     // console.log(pathname);
     return redirect(pathname);
 }
@@ -36,16 +35,15 @@ async function onLogout() {
     }
     if (res.status === 204) {
         localStorage.clear();
-        console.log('cleared');
-        // return (window.location.href = '/');
-        return redirect('/jsonstore/cards');
+    
+        return (window.location.href = '/');
+        // return redirect('.');
     }
-    if (res === 204) {
-        return res;
-    }
-    // return (window.location.href = '/');
-    // return redirect('http://localhost:3030/jsonstore/cards');
-    return null;
+   
+    // return redirect((window.location.href = '/'));
+    return redirect('/jsonstore/cards');
+    // return null;
+    // throw redirect('/');
 }
 
 function onStay() {
