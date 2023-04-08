@@ -1,4 +1,8 @@
-import { NavLink, Outlet, useLoaderData } from 'react-router-dom';
+import {
+    NavLink,
+    Outlet,
+    useLoaderData, 
+} from 'react-router-dom';
 import { requireAuth } from '../../utils/requireAuth';
 // import { requireAuth } from '../../utils/requireAuth';
 // let pathname;
@@ -171,6 +175,7 @@ export default function ProfileLayout() {
                 {/* <!-- SECTION USER PROFILE INFO-CARDS --> */}
                 <section className='user-profile-cards-wrapper'>
                     <Outlet />
+                    
                 </section>
             </div>
         </section>

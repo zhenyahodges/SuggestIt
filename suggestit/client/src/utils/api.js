@@ -192,3 +192,8 @@ export async function onSuggSubmReq(sugg,cardId,token,userId){
     console.log(data);
     return data;
 }
+
+
+export async function getUserCards(id){
+
+}

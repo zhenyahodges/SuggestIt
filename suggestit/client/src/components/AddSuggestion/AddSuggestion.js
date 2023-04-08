@@ -2,7 +2,11 @@ import { Form } from "react-router-dom";
 import { onSuggSubmReq } from "../../utils/api";
 
 
+// export const create = async (gameId, comment) => {
+//     const result = await request.post(baseUrl, { gameId, comment });
 
+//     return result;
+// };
 export async function action({ request }) {
     console.log('here');
     return null;
