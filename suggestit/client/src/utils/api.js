@@ -2,15 +2,17 @@ const baseUrl = 'http://localhost:3030';
 
 export async function getCards(id) {
     const url = id
-        ? `${baseUrl}/jsonstore/cards/${id}`
-        : `${baseUrl}/jsonstore/cards`;
+        // ? `${baseUrl}/jsonstore/cards/${id}`
+        // : `${baseUrl}/jsonstore/cards`;
+        ? `${baseUrl}/data/cards/${id}`
+        : `${baseUrl}/data/cards`;
     const res = await fetch(url);
-    // console.log(res);
+    console.log(res);
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
     if (res.status === 204) {    
-    // console.log('empty');
+    console.log('empty');
         return null;
     }
     const data = await res.json();
@@ -30,7 +32,7 @@ export async function loginUser(creds) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
     if (res.statusCode === 204) {
-        console.log('empty');
+        // console.log('empty');
         return {};
     }
     const data = await res.json();
