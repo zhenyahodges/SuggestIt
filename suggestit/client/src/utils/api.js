@@ -171,7 +171,7 @@ export async function logoutUser(token){
 
 export async function onSuggSubmReq(sugg,cardId,token,userId){
     const creds={sugg};
-    console.log(creds);
+    // console.log(creds);
     const res = await fetch(`${baseUrl}/data/cards/${cardId}`, {
         method: 'post',
         headers: {
@@ -189,11 +189,44 @@ export async function onSuggSubmReq(sugg,cardId,token,userId){
     //     return {};
     // }
     const data = await res.json(); 
-    console.log(data);
+    // console.log(data);
     return data;
 }
 
 
 export async function getUserCards(id){
 
+}
+
+// async function onSuggSubmit(e){
+//    e.preventDefault();
+//      const  user=JSON.parse(localStorage.getItem('user'));
+//     const userId=user.userId;
+//     const token=user.token;
+//     const res=await onSuggSubmReq(sugg,cardId,token,userId)
+
+// }
+
+export async function onDeleteCard(id,token){
+    // console.log('token=='+token+'id=='+id);
+    
+    const res = await fetch(`${baseUrl}/data/cards/${id}`, {
+        method: 'delete',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': token,
+        }
+    });   
+
+    if (!res.ok) {
+        throw new Error(`${res.status} - ${res.statusText}`);
+    }
+    if (res.statusCode === 204) {
+        console.log('empty');
+        return {};
+    }
+    const data = await res.json(); 
+    console.log(data);
+    return data;
+    // return null;
 }

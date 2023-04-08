@@ -1,72 +1,69 @@
-import { AddSuggestion, 
-    // action as suggestAction
- } from './components/AddSuggestion/AddSuggestion';
-import Home from './components/Home/Home';
-import { NotFound } from './components/NotFound/NotFound';
 import {
     Route,
     createBrowserRouter,
     createRoutesFromElements,
     RouterProvider,
 } from 'react-router-dom';
+import { requireAuth } from './utils/requireAuth';
 
-import Root,{loader as headerLoader} from './components/Root/Root';
-import ProfileLayout, {
-    loader as userLoader  
-} from './components/Profile/ProfileLayout';
-import UserCards,{
-    loader as userCardsLoader} from './components/Profile/UserCards';
-import UserSuggs from './components/Profile/UserSuggs';
-import CreateCard, {
-    action as createCardAction    
-} from './components/Profile/CreateCard';
+import Root, { loader as headerLoader } from './components/Root/Root';
+import Home from './components/Home/Home';
+import { NotFound } from './components/NotFound/NotFound';
+
+import Login, {
+    action as loginAction,
+    loader as loginLoader,
+} from './components/Login/Login';
 import Register, {
     action as registerAction,
 } from './components/Register/Register';
-import Catalog, { 
-    loader as cardsLoader } from './components/Catalog/Catalog';
-import Login, { 
-    action as loginAction,
-    loader as loginLoader } from './components/Login/Login';
+import Logout, {
+    action as logoutAction,
+    loader as logoutLoader,
+} from './components/Logout/Logout';
+
+import Catalog, { loader as cardsLoader } from './components/Catalog/Catalog';
 import CardItem, {
     loader as cardLoader,
-    action as suggestAction
+    // action as suggestAction,
 } from './components/Catalog/Card/CardItem';
+import {
+    AddSuggestion,
+    // action as suggestAction
+} from './components/AddSuggestion/AddSuggestion';
 
-import { requireAuth } from './utils/requireAuth';
-import Logout, {action as logoutAction,loader as logoutLoader} from './components/Logout/Logout';
-
+import ProfileLayout, {
+    loader as userLoader,
+} from './components/Profile/ProfileLayout';
+import UserCards, {
+    loader as userCardsLoader,
+} from './components/Profile/UserCards';
+import UserSuggs from './components/Profile/UserSuggs';
+import CreateCard, {
+    action as createCardAction,
+} from './components/Profile/CreateCard';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
-        <Route path='/'
-         element={<Root />} 
-         loader={headerLoader}       
-         >
-            <Route
-                index
-                element={<Home />}             
-            />
+        <Route path='/' element={<Root />} loader={headerLoader}>
+            <Route index element={<Home />} />
             {/* <AuthContext.Provider value={isLogged}> */}
-            <Route 
-            path='cards' 
-            element={<Catalog />} 
-            loader={cardsLoader} />
+            <Route path='cards' element={<Catalog />} loader={cardsLoader} />
 
             <Route
                 path='cards/:cardId'
                 element={<CardItem />}
                 loader={cardLoader}
-                action={suggestAction}
+                // action={suggestAction}
             />
 
             <Route
                 // path='cards/:cardId/:suggestionId'
                 path='sugg'
                 element={<AddSuggestion />}
-                loader={async ({request}) => await requireAuth(request)}
+                loader={async ({ request }) => await requireAuth(request)}
                 // action={suggestAction}
-           />
+            />
 
             <Route
                 path='login'
@@ -76,11 +73,11 @@ const router = createBrowserRouter(
                 id='logindata'
             />
 
-              <Route
+            <Route
                 path='logout'
                 element={<Logout />}
                 action={logoutAction}
-                loader={logoutLoader}            
+                loader={logoutLoader}
                 id='logoutdata'
             />
 
@@ -89,28 +86,24 @@ const router = createBrowserRouter(
                 element={<Register />}
                 action={registerAction}
             />
-        
+
             {/* PROFILE */}
             <Route
                 path='users/:userId'
                 element={<ProfileLayout />}
                 loader={userLoader}
-                // action={userProfileAction}             
+                // action={userProfileAction}
             >
-                <Route
-                    index
-                    element={<UserCards />}
-                    loader={userCardsLoader}
-                />
+                <Route index element={<UserCards />} loader={userCardsLoader} />
                 <Route
                     path='suggested'
                     element={<UserSuggs />}
-                    loader={async ({request}) => await requireAuth(request)}
+                    loader={async ({ request }) => await requireAuth(request)}
                 />
                 <Route
                     path='create'
                     element={<CreateCard />}
-                    loader={async ({request}) => await requireAuth(request)}
+                    loader={async ({ request }) => await requireAuth(request)}
                     action={createCardAction}
                 />
             </Route>

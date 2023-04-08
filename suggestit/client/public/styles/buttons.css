@@ -58,6 +58,9 @@ background: linear-gradient(0deg, rgba(19, 41, 48, 1) 0%, rgba(46, 101, 119, 1) 
 color: var(--clr-light);
 }
 
-
+.btn-sm{ 
+    background-color: transparent;
+    border:none;    
+}
 
 /* buttons end */

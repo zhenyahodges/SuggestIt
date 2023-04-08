@@ -1,41 +1,39 @@
-import { Form, Link, NavLink, useLoaderData, useNavigation } from 'react-router-dom';
-import { getCard, getCards, onSuggSubmReq } from '../../../utils/api';
+import {
+    Form,
+    Link,
+    NavLink,
+    redirect,
+    useLoaderData,
+    useNavigation,
+    useParams,
+} from 'react-router-dom';
+import { getCard, getCards, onDeleteCard, onSuggSubmReq } from '../../../utils/api';
 
 let cardId;
 
 export function loader({ params }) {
     // console.log(params);
-    cardId=params.cardId;
+    cardId = params.cardId;
     return getCards(params.cardId);
 }
 
-export async function action({ request,params }) {
-    console.log('hwer');
-    console.log(request);
-    console.log(params);
-    return null;
-    // const formData = await request.formData();
-    // console.log(formData);
-    // const sugg=formData.get('sugg');
-}
-
-// async function onSuggSubmit(e){
-//    e.preventDefault();
-//      const  user=JSON.parse(localStorage.getItem('user'));
-//     const userId=user.userId;
-//     const token=user.token;
-//     const res=await onSuggSubmReq(sugg,cardId,token,userId)
-
+// export async function action({ request,params }) {
+//     // console.log('hwer');
+//     // console.log(request);
+//     // console.log(params);
+//     return null;
+//     // const formData = await request.formData();
+//     // console.log(formData);
+//     // const sugg=formData.get('sugg');
 // }
 
 export default function CardItem() {
     const card = useLoaderData();
-    const navigation=useNavigation();
-    const [ownerId, brand, createdOn, cardId, suggestions] = card;
+    const navigation = useNavigation();
 
+    const [ownerId, brand, createdOn, cardId, suggestions] = card;
     const { token, userId } = JSON.parse(localStorage.getItem('user'));
-    // const userId = user.userId;
-    // console.log(ownerId);
+     // console.log(ownerId);
     // console.log(userId);
 
     let isOwner = false;
@@ -44,7 +42,6 @@ export default function CardItem() {
     if (token) {
         isAuthorized = true;
     }
-
     if (ownerId === userId) {
         isOwner = true;
     }
@@ -57,8 +54,19 @@ export default function CardItem() {
 
     // console.log(card);
     // console.log(suggestions);
+
+    const onDelete = async () => {        
+        // const result = confirm(`Are you sure you want to delete this card?`);
+
+        // if (result) {
+        await onDeleteCard(cardId,token);
+        // cards.filter(c => c._id !== cardId);
+        // state.filter(game => game._id !== gameId));
+
+        throw redirect('/catalog');
+    };
+
     return (
-     
         //  DETAILS vis for all
         <section className='details-view container'>
             <h2>Details</h2>
@@ -99,14 +107,14 @@ export default function CardItem() {
 
                                 <div className='card-footer-links-wrapper'>
                                     {/* ADD-SUGGESTION LINK: visible for LOGGED (NOT OWNERS?) */}
-                                    {(isAuthorized && !isOwner)&&
-                                    <Link
-                                        to={`.`}
-                                        className='add-sugg-link'
-                                    >
-                                        Suggest
-                                    </Link>
-                                     } 
+                                    {isAuthorized && !isOwner && (
+                                        <Link
+                                            to={`.`}
+                                            className='add-sugg-link'
+                                        >
+                                            Suggest
+                                        </Link>
+                                    )}
 
                                     {/*------- LATER  */}
                                     {/*  <a href="/" className="print details">Print</a> */}
@@ -124,18 +132,19 @@ export default function CardItem() {
                                     {/*  VISIBLE FOR OWNER IF NOT TIMED OUT */}
                                     {isAuthorized && isOwner && (
                                         <>
-                                            <NavLink
+                                            <button
                                                 to='/'
-                                                className='card-details edit-card'
+                                                className='btn-sm card-details edit-card'
                                             >
                                                 Edit
-                                            </NavLink>
-                                            <NavLink
+                                            </button>
+                                            <button
                                                 to='/'
-                                                className='card-details delete-card'
+                                                className='btn-sm card-details delete-card'
+                                                onClick={onDelete}
                                             >
                                                 Delete
-                                            </NavLink>
+                                            </button>
                                         </>
                                     )}
                                 </div>
@@ -188,9 +197,9 @@ export default function CardItem() {
                                     // onClick={onSuggSubmit}
                                     disabled={navigation.state === 'submitting'}
                                 >
-                                   {navigation.state === 'submitting'
-                        ? 'Submitting ...'
-                        : 'Submit'}
+                                    {navigation.state === 'submitting'
+                                        ? 'Submitting ...'
+                                        : 'Submit'}
                                 </button>
                             </Form>
 
