@@ -1,12 +1,11 @@
-import { NavLink, Outlet, redirect, useLoaderData, useNavigate } from 'react-router-dom';
+import { NavLink, Outlet, useLoaderData } from 'react-router-dom';
 import { requireAuth } from '../../utils/requireAuth';
 // import { requireAuth } from '../../utils/requireAuth';
-let pathname;
+// let pathname;
 // export async function loader({ request }) {
-    export async function loader({ request }) {
-
-       const res= await requireAuth(request);
-        const user = res;
+export async function loader({ request }) {
+    const res = await requireAuth(request);
+    const user = res;
 
     // let token = '';
     // if (!user) {
@@ -28,15 +27,15 @@ let pathname;
     //         // return redirect(pathname);
     //         return redirect('/');
     //     }
-        // pathname = new URL(request.url).searchParams.get('message');
-        // redirect(request.url);
-        // console.log('path---'+pathname);
-        // -----------------
+    // pathname = new URL(request.url).searchParams.get('message');
+    // redirect(request.url);
+    // console.log('path---'+pathname);
+    // -----------------
 
-        return user;
-    }
-    // console.log(user);
-    // return user;
+    return user;
+}
+// console.log(user);
+// return user;
 // }
 // const user=useLoaderData();
 export default function ProfileLayout() {
@@ -172,9 +171,6 @@ export default function ProfileLayout() {
                 {/* <!-- SECTION USER PROFILE INFO-CARDS --> */}
                 <section className='user-profile-cards-wrapper'>
                     <Outlet />
-                    {/* <!-- || sec USER-OWNER PUBLISHED polls --> */}
-                    {/* <!-- || sec USER-OWNER CREATE polls --> */}
-                    {/* <!-- || USER-OWNER SUGGESTIONS --> */}
                 </section>
             </div>
         </section>

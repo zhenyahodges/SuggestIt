@@ -1,0 +1,70 @@
+{/* //  authorised & NOT owner- ADD SUGGESTION form  */}
+
+{isAuthorized && !isOwner && (
+    <section className='add-sugg form-wrapper'>
+        {/* ?with or without li?  */}
+        <Form
+            action={`cards/${cardId}`}
+            method='post'
+            id='add-form'
+            className='add-sugg form'
+        >
+            <h2>Add a Suggestion</h2>
+            <p>
+                <label htmlFor='sugg'>
+                    Your Suggestion:
+                </label>
+            </p>
+
+            <textarea
+                className='sugg-text-add'
+                id='sugg'
+                form='add-form'
+                name='sugg'
+                rows='4'
+                cols='50'
+                maxLength='150'
+                placeholder='Type your suggestion here'
+                required
+            ></textarea>
+            <span
+                className='add sugg author'
+                id='add-sugg-author'
+            >
+                Me
+            </span>
+            <button
+                // type="submit"
+                // method="post"
+                // value="Submit"
+                className='add-sugg btn dark subm'
+                form='add-sugg'
+                id='btn-add-form'
+                disabled={navigation.state === 'submitting'}
+            >
+                {navigation.state === 'submitting'
+                    ? 'Submitting ...'
+                    : 'Submit'}
+            </button>
+        </Form>
+
+        {/* SUGG PREVIEW -display for a brief period before confirming ? timed?*/}
+
+        {/*  <div className="sugg-item-wrapper">
+<p className="sugg-text" placeholder="Suggestion">
+<span className="author">
+Me
+</span>
+Another suggestion for you
+</p>
+<p className="sugg-ranking">
+<span className="rank">10</span
+><a className="sugg-like-link"
+><i
+    className="like fa-solid fa-circle-up"
+></i
+></a>
+</p>
+</div>  */}
+    </section>
+)}

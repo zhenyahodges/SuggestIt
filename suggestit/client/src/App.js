@@ -1,4 +1,6 @@
-import { AddSuggestion } from './components/AddSuggestion/AddSuggestion';
+import { AddSuggestion, 
+    // action as suggestAction
+ } from './components/AddSuggestion/AddSuggestion';
 import Home from './components/Home/Home';
 import { NotFound } from './components/NotFound/NotFound';
 import {
@@ -12,7 +14,8 @@ import Root,{loader as headerLoader} from './components/Root/Root';
 import ProfileLayout, {
     loader as userLoader  
 } from './components/Profile/ProfileLayout';
-import UserCards,{loader as userCardsLoader} from './components/Profile/UserCards';
+import UserCards,{
+    loader as userCardsLoader} from './components/Profile/UserCards';
 import UserSuggs from './components/Profile/UserSuggs';
 import CreateCard, {
     action as createCardAction    
@@ -20,10 +23,14 @@ import CreateCard, {
 import Register, {
     action as registerAction,
 } from './components/Register/Register';
-import Catalog, { loader as cardsLoader } from './components/Catalog/Catalog';
-import Login, { action as loginAction,loader as loginLoader } from './components/Login/Login';
+import Catalog, { 
+    loader as cardsLoader } from './components/Catalog/Catalog';
+import Login, { 
+    action as loginAction,
+    loader as loginLoader } from './components/Login/Login';
 import CardItem, {
     loader as cardLoader,
+    action as suggestAction
 } from './components/Catalog/Card/CardItem';
 
 import { requireAuth } from './utils/requireAuth';
@@ -50,13 +57,16 @@ const router = createBrowserRouter(
                 path='cards/:cardId'
                 element={<CardItem />}
                 loader={cardLoader}
+                action={suggestAction}
             />
 
             <Route
-                path='cards/:cardId/:suggestionId'
+                // path='cards/:cardId/:suggestionId'
+                path='sugg'
                 element={<AddSuggestion />}
                 loader={async ({request}) => await requireAuth(request)}
-            />
+                // action={suggestAction}
+           />
 
             <Route
                 path='login'

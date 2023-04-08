@@ -168,3 +168,27 @@ export async function logoutUser(token){
     // return Object.values(data);
     return res;
 }
+
+export async function onSuggSubmReq(sugg,cardId,token,userId){
+    const creds={sugg};
+    console.log(creds);
+    const res = await fetch(`${baseUrl}/data/cards/${cardId}`, {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': token,
+        },
+        body: JSON.stringify(creds),
+    });   
+
+    if (!res.ok) {
+        throw new Error(`${res.status} - ${res.statusText}`);
+    }
+    // if (res.statusCode === 204) {
+    //     console.log('empty');
+    //     return {};
+    // }
+    const data = await res.json(); 
+    console.log(data);
+    return data;
+}

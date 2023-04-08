@@ -1,4 +1,21 @@
+import { Form } from "react-router-dom";
+import { onSuggSubmReq } from "../../utils/api";
+
+
+
+export async function action({ request }) {
+    console.log('here');
+    return null;
+    // const  user=JSON.parse(localStorage.getItem('user'));
+    // const userId=user.userId;
+    // const token=user.token;
+    // const res=await onSuggSubmReq(sugg,cardId,token,userId);
+
+}
+
 export const AddSuggestion=()=>{
+    
+
     return (
         //  *** ADD A SUGGESTION 
         //  ASK for poll-code auth for suggesting 
@@ -44,14 +61,13 @@ export const AddSuggestion=()=>{
         {/* //  authorised ADD SUGGESTION form  */}
         <section className="add-sugg form-wrapper">
             {/*  ?with or without li?  */}
-            <form
-                action="#"
+            <Form           
                 method="post"
                 id="add-form"
                 className="add-sugg form"
             >
                 <h2>Add a Suggestion</h2>
-                <p><label for="sugg">Your Suggestion:</label></p>
+                <p><label htmlFor="sugg">Your Suggestion:</label></p>
 
                 <textarea
                     className="sugg-text-add"
@@ -79,7 +95,7 @@ export const AddSuggestion=()=>{
                 >
                     Submit
                 </button>
-            </form>
+            </Form>
 
             {/* SUGG PREVIEW -display for a brief period before confirming ? timed?*/}           
 

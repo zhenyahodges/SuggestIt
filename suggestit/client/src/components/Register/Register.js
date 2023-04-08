@@ -8,7 +8,7 @@ export async function action({ request }) {
     const email = formData.get('email');
     const password = formData.get('pass');
     const repass = formData.get('repass');
-    
+
     if (password !== repass) {
         throw new Error('Passwords do not match');
     }
