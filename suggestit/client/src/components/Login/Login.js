@@ -1,12 +1,24 @@
-import { Form, Link, redirect, useNavigation } from 'react-router-dom';
+import {
+    Form,
+    Link,
+    redirect,
+    useActionData,
+    useLoaderData,
+    useNavigation,
+} from 'react-router-dom';
 import { loginUser } from '../../utils/api';
+
+export async function loader({ request }) {
+    return new URL(request.url).searchParams.get('message');
+}
 
 export async function action({ request }) {
     const formData = await request.formData();
     const email = formData.get('email');
     const password = formData.get('pass');
 
-    const pathname = new URL(request.url).searchParams.get('redirectTo');
+    const pathname =
+        new URL(request.url).searchParams.get('redirectTo') || '/login';
 
     try {
         const data = await loginUser({ email, password });
@@ -32,11 +44,15 @@ export async function action({ request }) {
 
 export default function Login() {
     const navigation = useNavigation();
+    const message = useLoaderData();
+    const errorMessage = useActionData();
 
     return (
         // <!-- LOGIN -->
         <section className='login form-wrapper'>
             <h2>Login</h2>
+            {message && <h3 style={{ color: 'red' }}>{message}</h3>}
+            {errorMessage && <h3 style={{ color: 'red' }}>{errorMessage}</h3>}
             <Form
                 // action='/login'
                 method='post'

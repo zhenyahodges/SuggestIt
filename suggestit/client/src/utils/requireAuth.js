@@ -8,7 +8,7 @@ import { redirect } from 'react-router-dom';
     // { message && <h2>{message}</h2> }
     // <h1>Login page goes here</h1>
 export async function requireAuth(request) {
-    const pathname = new URL(request.url).pathname
+    const pathname = new URL(request.url).pathname;
     // const url= new URL(request.split('/')[0]);
 
     let isLogged = false;
@@ -25,7 +25,10 @@ export async function requireAuth(request) {
     } else {
         result.isLogged = false;       
         // throw redirect('/login');
-        throw redirect(`login?redirectTo=${pathname}`);
+        // throw redirect(`login?redirectTo=${pathname}`);
+        throw redirect(
+            `/login?message=You must log in first.&redirectTo=${pathname}`
+        );
     }
 
     // throw redirect(`/login?message=You must log in first.&redirectTo=${pathname}`);

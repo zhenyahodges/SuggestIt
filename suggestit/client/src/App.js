@@ -23,7 +23,7 @@ import Register, {
     action as registerAction,
 } from './components/Register/Register';
 import Catalog, { loader as cardsLoader } from './components/Catalog/Catalog';
-import Login, { action as loginAction } from './components/Login/Login';
+import Login, { action as loginAction,loader as loginLoader } from './components/Login/Login';
 import CardItem, {
     loader as cardLoader,
 } from './components/Catalog/Card/CardItem';
@@ -65,12 +65,13 @@ const router = createBrowserRouter(
             <Route
                 path='cards/:cardId/:suggestionId'
                 element={<AddSuggestion />}
-                loader={async () => await requireAuth()}
+                loader={async ({request}) => await requireAuth(request)}
             />
 
             <Route
                 path='login'
                 element={<Login />}
+                loader={loginLoader}
                 action={loginAction}
                 id='logindata'
             />
@@ -107,12 +108,12 @@ const router = createBrowserRouter(
                 <Route
                     path='suggested'
                     element={<UserSuggs />}
-                    loader={async ({request}) => await requireAuth()}
+                    loader={async ({request}) => await requireAuth(request)}
                 />
                 <Route
                     path='create'
                     element={<CreateCard />}
-                    loader={async () => await requireAuth()}
+                    loader={async ({request}) => await requireAuth(request)}
                     action={createCardAction}
                 />
             </Route>
