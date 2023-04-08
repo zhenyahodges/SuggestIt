@@ -75,7 +75,6 @@ export async function loader({ request }) {
 
 export default function UserCards() {
     const cards = useLoaderData();
-    // console.log(cards);
 
     return (
         //  {/* <!-- || sec USER-OWNER PUBLISHED polls --> */}

@@ -5,38 +5,38 @@ import {
     useLoaderData, 
 } from 'react-router-dom';
 import { requireAuth } from '../../utils/requireAuth';
-// import { requireAuth } from '../../utils/requireAuth';
+
 let pathname;
-// export async function loader({ request }) {
+
 export async function loader({ request }) {
     const res = await requireAuth(request);
     const user = res;
 
-    // let token = '';
-    // if (!user) {
-        // redirect('/login');
+    let token = '';
+    if (!user) {
+    // return redirect('login');
     //     console.log('no user');
-        // pathname = new URL(request.url).searchParams.get('message');
+    pathname = new URL(request.url).searchParams.get('message');
     //     // console.log('path---'+pathname);
-        // return redirect(pathname);
-        // return redirect('/');
-        // return navig('/');
-    // }
-    // if (user) {
-    //     token = user.token;
+    return redirect(pathname);
+    // return redirect('/');
+    // return navig('/');
+    }
+    if (user) {
+        token = user.token;
     //     console.log('found');
-    //     if (!token) {
+        if (!token) {
     //         console.log('no token');
-    //         // pathname = new URL(request.url).searchParams.get('message');
+            pathname = new URL(request.url).searchParams.get('message');
     //         // console.log('path---'+pathname);
-    //         // return redirect(pathname);
-    //         return redirect('/');
-    //     }
+            return redirect(pathname);
+            // return redirect('login');
+        }
     // pathname = new URL(request.url).searchParams.get('message');
     // redirect(request.url);
     // console.log('path---'+pathname);
     // -----------------
-
+    }
     return user;
 }
 // console.log(user);
@@ -44,8 +44,7 @@ export async function loader({ request }) {
 // }
 // const user=useLoaderData();
 export default function ProfileLayout() {
-    const user = useLoaderData();
-    // const user=JSON.parse(localStorage.getItem('user'));
+    const user= useLoaderData();
 
     const activeStyles = {
         backgroundColor: '#F79234',
@@ -107,7 +106,7 @@ export default function ProfileLayout() {
                             className='prof entry email'
                             name='prof-email'
                             id='prof-email'
-                            value={user.email}
+                            value={user? user.email: ''}
                             readOnly
                         />
                     </div>
@@ -175,11 +174,13 @@ export default function ProfileLayout() {
 
                 {/* <!-- SECTION USER PROFILE INFO-CARDS --> */}
                 <section className='user-profile-cards-wrapper'>
-                    <Outlet />
-                    
+                    <Outlet context={{ user }} />
                 </section>
             </div>
         </section>
-        // </AuthContext.Provider>
     );
 }
+
+// export function useUser() {
+//     return useOutletContext();
+// }

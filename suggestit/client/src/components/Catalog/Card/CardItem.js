@@ -64,6 +64,10 @@ export default function CardItem() {
         navigate(-1);
     };
 
+    const onEdit=async=()=>{
+        await onEditCard(cardId,token);
+    }
+
     return (
         //  DETAILS vis for all
         <section className='details-view container'>
@@ -133,6 +137,7 @@ export default function CardItem() {
                                             <button
                                                 to='/'
                                                 className='btn-sm card-details edit-card'
+                                            onClick={onEdit}
                                             >
                                                 Edit
                                             </button>

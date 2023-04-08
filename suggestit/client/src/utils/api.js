@@ -166,6 +166,7 @@ export async function logoutUser(token) {
     }   
     // return redirect((window.location.href = '/'));
     return res;
+
 }
 
 export async function onSuggSubmReq(sugg, cardId, token, userId) {
