@@ -7,7 +7,7 @@ export async function getCards(id) {
         ? `${baseUrl}/data/cards/${id}`
         : `${baseUrl}/data/cards`;
     const res = await fetch(url);
-    console.log(res);
+    // console.log(res);
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
@@ -16,7 +16,7 @@ export async function getCards(id) {
         return null;
     }
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
     // console.log(Object.values(data));
     return Object.values(data);
     // return (data);

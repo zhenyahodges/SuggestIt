@@ -8,7 +8,31 @@ export function loader({ params }) {
 
 export default function CardItem() {
     const card = useLoaderData();
-    const [ownerId,brand,createdOn,suggestions] = card;
+    const [ownerId, brand, createdOn, cardId,suggestions] = card;
+
+    const {token,userId} = JSON.parse(localStorage.getItem('user'));
+    // const userId = user.userId;
+    console.log(ownerId);
+    console.log(userId);
+
+
+    let isOwner = false;
+    let isAuthorized = false;
+
+    if (token) {
+        isAuthorized = true;
+    }
+
+    if (ownerId === userId) {
+        isOwner = true;
+    }
+console.log(isOwner);
+console.log(isAuthorized);
+    // brand :     "IBM"
+    // _createdOn  :  1680963671960
+    // _id    :     "54151e7c-7c1e-41f8-a8d0-35d6860386c9"
+    // _ownerId    :     "35c62d76-8152-4626-8712-eeb96381bea8"
+
     // console.log(card);
     // console.log(suggestions);
 
@@ -55,7 +79,7 @@ export default function CardItem() {
                                 {/* ADD-SUGGESTION LINK: visible for LOGGED (NOT OWNERS?) */}
                                 {/* {(isAuthorized && !isOwner)&& */}
                                 <Link
-                                    to='/addSuggestion'
+                                    to={`/:suggestionId`}
                                     className='add-sugg-link'
                                 >
                                     Suggest
@@ -76,18 +100,27 @@ export default function CardItem() {
                                 {/* <p className="countdown-text">Poll ended</p> */}
 
                                 {/*  VISIBLE FOR OWNER IF NOT TIMED OUT */}
-                                {/* { (isAuthorized && !isOwner)&&
-       <a href='/' className='card-details edit-card'>
-            Edit
-        </a>
-        <a href='/' className='card-details delete-card'>
-            Delete
-        </a>} */}
+                                {(isAuthorized && isOwner) && (
+                                    <>
+                                        <NavLink
+                                            to='/'
+                                            className='card-details edit-card'
+                                        >
+                                            Edit
+                                        </NavLink>
+                                        <NavLink
+                                            to='/'
+                                            className='card-details delete-card'
+                                        >
+                                            Delete
+                                        </NavLink>
+                                    </>
+                                )}
                             </div>
                         </div>
                     </footer>
                 </article>
-            }      
+            }
         </section>
     );
 }

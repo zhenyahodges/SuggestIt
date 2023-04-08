@@ -8,7 +8,7 @@ import { getCards } from '../../utils/api';
 // }
 export function loader() {
     const cards = getCards();
-    console.log(cards);
+    // console.log(cards);
     if (cards) {
         return cards;
     }
