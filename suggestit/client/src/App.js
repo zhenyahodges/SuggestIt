@@ -78,7 +78,7 @@ const router = createBrowserRouter(
               <Route
                 path='logout'
                 element={<Logout />}
-                action={logoutAction}
+                loader={async () => await requireAuth()}
                 id='logoutdata'
             />
 
@@ -105,12 +105,12 @@ const router = createBrowserRouter(
                 <Route
                     path='suggested'
                     element={<UserSuggs />}
-                    // loader={async () => await requireAuth()}
+                    loader={async () => await requireAuth()}
                 />
                 <Route
                     path='create'
                     element={<CreateCard />}
-                    // loader={createLoader}
+                    loader={async () => await requireAuth()}
                     action={createCardAction}
                 />
             </Route>

@@ -17,3 +17,6 @@
 .logout.log.btn{
     width: 5rem;
 }
+.logout.log.btn:active{
+    color: white;
+}

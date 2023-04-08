@@ -142,3 +142,27 @@ export async function getCardSuggestions(id) {
     return Object.values(data);
     // return (data);
 }
+
+// export async function logoutUser(token,userId){
+//     const creds={userId};
+//     const res=await fetch('http://localhost:3030/users/logout', {
+//         method: 'get',
+//         headers: {
+//             'Content-Type': 'application/json',
+//             'X-Authorization': token,
+//         }, 
+//         body: JSON.stringify(creds)
+//     });
+//     if (!res.ok) {
+//         throw new Error(`${res.status} - ${res.statusText}`);
+//     }
+//     if (res.status === 204) { 
+//         console.log(res.status);
+//         return null;
+//     }
+//     localStorage.clear();
+//     console.log(res);
+//     // console.log(Object.values(data));
+//     // return Object.values(data);
+//     return res;
+// }
