@@ -1,7 +1,14 @@
-import { Form, Navigate, redirect, useNavigation } from 'react-router-dom';
+import {
+    Form,
+    Navigate,
+    redirect,
+    useNavigate,
+    useNavigation,
+} from 'react-router-dom';
 import { logoutUser } from '../../utils/api';
 import { requireAuth } from '../../utils/requireAuth';
 
+// let isLoggedOut = false;
 // async function onLogout() {
 //     const { userId, token } = await requireAuth();
 //     try {
@@ -17,38 +24,45 @@ import { requireAuth } from '../../utils/requireAuth';
 //     }
 // }
 // const isLoggedOut=false;
-async function onLogout(){    
-    const { userId, token } = await requireAuth();
+export async function loader({request}){
+    await requireAuth(request);
+    return null;
+}
 
-    const creds={userId};
-    const res=await fetch('http://localhost:3030/users/logout', {
+async function onLogout() {
+    const { token } = await requireAuth();
+
+    const res = await fetch('http://localhost:3030/users/logout', {
         method: 'get',
         headers: {
             'Content-Type': 'application/json',
             'X-Authorization': token,
-        }
+        },
     });
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
-    if (res.status === 204) {       
-        return null;
+    if (res.status === 204) {
+        // isLoggedOut = true;
+        localStorage.clear();
+        return res;
     }
-
-    localStorage.clear();
-  
-    return requireAuth();
-    // return null;
+    // if (res === 204) {
+    //     // redirect('/login');
+    //     return res;
+    // }
+    return res;
 }
 
 export default function Logout() {
     const navigation = useNavigation();
-    
+
     return (
         // <!-- LOGOUT -->
         <section className='login logout form-wrapper'>
             <h2>Logout</h2>
             <Form
+                replace
                 // action='/login'
                 // method='get'
                 id='logout-form'

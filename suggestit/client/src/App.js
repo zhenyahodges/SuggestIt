@@ -29,7 +29,7 @@ import CardItem, {
 } from './components/Catalog/Card/CardItem';
 import { AuthContext } from './utils/authContext';
 import { requireAuth } from './utils/requireAuth';
-import Logout,{action as logoutAction} from './components/Logout/Logout';
+import Logout,{action as logoutAction,loader as logoutLoader} from './components/Logout/Logout';
 
 // const user = JSON.parse(localStorage.getItem('user'));
 // const token = user.token;
@@ -65,7 +65,7 @@ const router = createBrowserRouter(
             <Route
                 path='cards/:cardId/:suggestionId'
                 element={<AddSuggestion />}
-                // loader={async () => await requireAuth()}
+                loader={async () => await requireAuth()}
             />
 
             <Route
@@ -78,7 +78,9 @@ const router = createBrowserRouter(
               <Route
                 path='logout'
                 element={<Logout />}
-                loader={async () => await requireAuth()}
+                // action={logoutAction}
+                loader={logoutLoader}
+                // loader={async () => await requireAuth()}
                 id='logoutdata'
             />
 
@@ -105,7 +107,7 @@ const router = createBrowserRouter(
                 <Route
                     path='suggested'
                     element={<UserSuggs />}
-                    loader={async () => await requireAuth()}
+                    loader={async ({request}) => await requireAuth()}
                 />
                 <Route
                     path='create'

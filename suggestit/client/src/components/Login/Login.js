@@ -1,33 +1,34 @@
 import { Form, Link, redirect, useNavigation } from 'react-router-dom';
 import { loginUser } from '../../utils/api';
 
-
 export async function action({ request }) {
-    const formData = await request.formData();  
+    const formData = await request.formData();
     const email = formData.get('email');
     const password = formData.get('pass');
-    
-    try {      
+
+    const pathname = new URL(request.url).searchParams.get('redirectTo');
+
+    try {
         const data = await loginUser({ email, password });
-        const token = data.accessToken;       
+        const token = data.accessToken;
 
         if (token) {
-            const user={
+            const user = {
                 email: data.email,
                 userId: data._id,
-                token,            
+                token,
             };
             // console.log(user);
             // isAuthProfile = true;
             localStorage.setItem('user', JSON.stringify(user));
-        } 
-        return redirect(`/users/${data._id}`);
+        }
+        // return redirect(`/users/${data._id}`);
+        return redirect(pathname);
         // return null;
     } catch (err) {
         return err.message;
     }
 }
-
 
 export default function Login() {
     const navigation = useNavigation();
