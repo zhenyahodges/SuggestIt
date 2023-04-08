@@ -1,14 +1,13 @@
 import { redirect } from 'react-router-dom';
 
 // export async function requireAuth({request}) {
-    // return new URL(request.url).searchParams.get("message")
-
-// function Login() {
-//     const message = useLoaderData()
-    // { message && <h2>{message}</h2> }
-    // <h1>Login page goes here</h1>
-export async function requireAuth(request) {
-    const pathname = new URL(request.url).pathname;
+    
+    export async function requireAuth(request) {
+   const pathname=new URL(request.url).searchParams.get('message');
+    // console.log(request.url);
+    // const url=request.url;
+    // const pathname = new URL(url).pathname;
+    // console.log(pathname);
     // const url= new URL(request.split('/')[0]);
 
     let isLogged = false;

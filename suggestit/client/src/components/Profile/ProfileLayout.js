@@ -1,21 +1,27 @@
 import { NavLink, Outlet, redirect, useLoaderData } from 'react-router-dom';
+import { requireAuth } from '../../utils/requireAuth';
+import { loginUser } from '../../utils/api';
 // import { requireAuth } from '../../utils/requireAuth';
 
-export async function loader() {
+export async function loader({request}) {
+   const res= await requireAuth(request);
+   console.log(res)
+    return null;
+//   return new URL(request.url).searchParams.get('message');
     // await requireAuth();
-    const user = JSON.parse(localStorage.getItem('user'));
-    // console.log(user); 
-    let token = '';
-    if(!user){
-        redirect('/login');
-    }
-    if (user) {
-        token = user.token;
-        if (!token) {
-           throw redirect('/login');
-        }
-    }
-    return user;
+    // const user = JSON.parse(localStorage.getItem('user'));
+    // // console.log(user); 
+    // let token = '';
+    // if(!user){
+    //     redirect('/login');
+    // }
+    // if (user) {
+    //     token = user.token;
+    //     if (!token) {
+    //        throw redirect('/login');
+    //     }
+    // }
+    // return user;
 }
 
 export default function ProfileLayout() {

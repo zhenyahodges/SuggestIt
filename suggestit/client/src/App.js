@@ -10,14 +10,12 @@ import {
 
 import Root,{loader as headerLoader} from './components/Root/Root';
 import ProfileLayout, {
-    loader as userLoader,
-    action as userProfileAction,
+    loader as userLoader  
 } from './components/Profile/ProfileLayout';
 import UserCards,{loader as userCardsLoader} from './components/Profile/UserCards';
 import UserSuggs from './components/Profile/UserSuggs';
 import CreateCard, {
-    action as createCardAction,
-    loader as createLoader,
+    action as createCardAction    
 } from './components/Profile/CreateCard';
 import Register, {
     action as registerAction,
@@ -27,18 +25,10 @@ import Login, { action as loginAction,loader as loginLoader } from './components
 import CardItem, {
     loader as cardLoader,
 } from './components/Catalog/Card/CardItem';
-import { AuthContext } from './utils/authContext';
-import { requireAuth } from './utils/requireAuth';
-import Logout,{action as logoutAction,loader as logoutLoader} from './components/Logout/Logout';
 
-// const user = JSON.parse(localStorage.getItem('user'));
-// const token = user.token;
-// let isLogged = false;
-// if (token) {
-//     isLogged = true;
-// }
-// console.log(isLogged);
-// import { CardItem } from './components/Card/CardItem';
+import { requireAuth } from './utils/requireAuth';
+import Logout, {action as logoutAction,loader as logoutLoader} from './components/Logout/Logout';
+
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -79,9 +69,8 @@ const router = createBrowserRouter(
               <Route
                 path='logout'
                 element={<Logout />}
-                // action={logoutAction}
-                loader={logoutLoader}
-                // loader={async () => await requireAuth()}
+                action={logoutAction}
+                loader={logoutLoader}            
                 id='logoutdata'
             />
 
@@ -90,9 +79,7 @@ const router = createBrowserRouter(
                 element={<Register />}
                 action={registerAction}
             />
-            {/* </AuthContext.Provider> */}
-            {/* <AuthContext.Provider value={userId}> */}
-
+        
             {/* PROFILE */}
             <Route
                 path='users/:userId'

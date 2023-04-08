@@ -1,36 +1,28 @@
-import {
-    Form,
-    Navigate,
-    redirect,
-    useNavigate,
-    useNavigation,
-} from 'react-router-dom';
+import { Form, redirect, useNavigation } from 'react-router-dom';
 import { logoutUser } from '../../utils/api';
 import { requireAuth } from '../../utils/requireAuth';
 
-// let isLoggedOut = false;
-// async function onLogout() {
-//     const { userId, token } = await requireAuth();
-//     try {
-//         if (token) {
-//             await logoutUser(token, userId);
-//             // localStorage.clear();
-//             return redirect('login');
-//         } else {
-//             redirect('login');
-//         }
-//     } catch (err) {
-//         return err.message;
-//     }
-// }
-// const isLoggedOut=false;
-export async function loader({request}){
+export async function loader({ request }) {
     await requireAuth(request);
-    return null;
+    return new URL(request.url).searchParams.get('message');
+}
+
+let pathname;
+
+export async function action({ request }) {
+    // const formData = await request.formData();
+    // console.log(formData);
+    // const { userId }=JSON.parse(localStorage.getItem('user'));
+     pathname =
+        new URL(request.url).searchParams.get('redirectTo') || '/cards';
+        console.log(pathname);
+    // console.log(pathname);
+    return redirect(pathname);
 }
 
 async function onLogout() {
-    const { token } = await requireAuth();
+    const { token } = JSON.parse(localStorage.getItem('user'));
+    // console.log(token);
 
     const res = await fetch('http://localhost:3030/users/logout', {
         method: 'get',
@@ -43,15 +35,22 @@ async function onLogout() {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
     if (res.status === 204) {
-        // isLoggedOut = true;
         localStorage.clear();
+        console.log('cleared');
+        // return (window.location.href = '/');
+        return redirect('/jsonstore/cards');
+    }
+    if (res === 204) {
         return res;
     }
-    // if (res === 204) {
-    //     // redirect('/login');
-    //     return res;
-    // }
-    return res;
+    // return (window.location.href = '/');
+    // return redirect('http://localhost:3030/jsonstore/cards');
+    return null;
+}
+
+function onStay() {
+    const { userId } = JSON.parse(localStorage.getItem('user'));
+    return (window.location.href = `/users/${userId}`);
 }
 
 export default function Logout() {
@@ -99,6 +98,7 @@ export default function Logout() {
                         className='logout log btn dark subm'
                         form='log-form'
                         id='btn-log-form'
+                        onClick={onStay}
                         disabled={navigation.state === 'submitting'}
                     >
                         {navigation.state === 'submitting'
