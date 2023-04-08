@@ -2,17 +2,17 @@ const baseUrl = 'http://localhost:3030';
 
 export async function getCards(id) {
     const url = id
-        // ? `${baseUrl}/jsonstore/cards/${id}`
-        // : `${baseUrl}/jsonstore/cards`;
-        ? `${baseUrl}/data/cards/${id}`
+        ? // ? `${baseUrl}/jsonstore/cards/${id}`
+          // : `${baseUrl}/jsonstore/cards`;
+          `${baseUrl}/data/cards/${id}`
         : `${baseUrl}/data/cards`;
     const res = await fetch(url);
     // console.log(res);
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
-    if (res.status === 204) {    
-    console.log('empty');
+    if (res.status === 204) {
+        console.log('empty');
         return null;
     }
     const data = await res.json();
@@ -27,7 +27,7 @@ export async function loginUser(creds) {
         method: 'post',
         body: JSON.stringify(creds),
     });
-    
+
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
@@ -44,7 +44,7 @@ export async function registerUser(creds) {
     const res = await fetch(`${baseUrl}/users/register`, {
         method: 'post',
         body: JSON.stringify(creds),
-    });   
+    });
 
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
@@ -53,21 +53,21 @@ export async function registerUser(creds) {
     //     console.log('empty');
     //     return {};
     // }
-    const data = await res.json(); 
+    const data = await res.json();
     return data;
 }
 
 // export async function getUserCards(token) {
 //           // console.log(token);
-        
+
 //         const res = await fetch(`${baseUrl}/users/me`, {
 //         method: 'get',
 //         headers:{
 //             // 'Content-Type': 'application/json',
 //             'X-Authorization:': token,
-//         }       
+//         }
 //     });
-  
+
 //     if (!res.ok) {
 //         throw new Error(`${res.status} - ${res.statusText}`);
 //     }
@@ -82,22 +82,22 @@ export async function registerUser(creds) {
 //     return null;
 // }
 
-export async function createNewCard(token,brand,userId) { 
-    // console.log(brand+'======'+token); 
-    const creds={brand};
-    const res = await fetch( `${baseUrl}/data/cards`,{
+export async function createNewCard(token, brand, userId) {
+    // console.log(brand+'======'+token);
+    const creds = { brand };
+    const res = await fetch(`${baseUrl}/data/cards`, {
         method: 'post',
         headers: {
             'Content-Type': 'application/json',
             'X-Authorization': token,
         },
-        body: JSON.stringify(creds)
+        body: JSON.stringify(creds),
     });
     // console.log('res--'+res);
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
-    if (res.status === 204) { 
+    if (res.status === 204) {
         console.log(res.status);
         return null;
     }
@@ -105,10 +105,10 @@ export async function createNewCard(token,brand,userId) {
     // console.log('data--'+data);
     // console.log(Object.values(data));
     // return Object.values(data);
-    return (data);
+    return data;
 }
-    
-// export async function updateCard(ownerId,id,token,data) {  
+
+// export async function updateCard(ownerId,id,token,data) {
 //     const res = await fetch( `${baseUrl}/jsonstore/cards/${id}`,{
 //         method: 'put',
 //         headers: {
@@ -121,7 +121,7 @@ export async function createNewCard(token,brand,userId) {
 //     if (!res.ok) {
 //         throw new Error(`${res.status} - ${res.statusText}`);
 //     }
-//     if (res.status === 204) {        
+//     if (res.status === 204) {
 //         return null;
 //     }
 //     const data = await res.json();
@@ -147,30 +147,29 @@ export async function getCardSuggestions(id) {
     // return (data);
 }
 
-export async function logoutUser(token){
-  
-    const res=await fetch('http://localhost:3030/users/logout', {
+export async function logoutUser(token) {
+    const res = await fetch('http://localhost:3030/users/logout', {
         method: 'get',
         headers: {
             'Content-Type': 'application/json',
             'X-Authorization': token,
-        }
+        },
     });
+
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
-    if (res.status === 204) {            
-            
-        return console.log('cleeeeeared'+res);  
-    }
-    console.log('final=='+res);
-    // console.log(Object.values(data));
-    // return Object.values(data);
+    if (res.status === 204) {
+        localStorage.clear();    
+        // return (window.location.href = '/');
+      return {};
+    }   
+    // return redirect((window.location.href = '/'));
     return res;
 }
 
-export async function onSuggSubmReq(sugg,cardId,token,userId){
-    const creds={sugg};
+export async function onSuggSubmReq(sugg, cardId, token, userId) {
+    const creds = { sugg };
     // console.log(creds);
     const res = await fetch(`${baseUrl}/data/cards/${cardId}`, {
         method: 'post',
@@ -179,7 +178,7 @@ export async function onSuggSubmReq(sugg,cardId,token,userId){
             'X-Authorization': token,
         },
         body: JSON.stringify(creds),
-    });   
+    });
 
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
@@ -188,15 +187,12 @@ export async function onSuggSubmReq(sugg,cardId,token,userId){
     //     console.log('empty');
     //     return {};
     // }
-    const data = await res.json(); 
+    const data = await res.json();
     // console.log(data);
     return data;
 }
 
-
-export async function getUserCards(id){
-
-}
+export async function getUserCards(id) {}
 
 // async function onSuggSubmit(e){
 //    e.preventDefault();
@@ -207,16 +203,16 @@ export async function getUserCards(id){
 
 // }
 
-export async function onDeleteCard(id,token){
+export async function onDeleteCard(id, token) {
     // console.log('token=='+token+'id=='+id);
-    
+
     const res = await fetch(`${baseUrl}/data/cards/${id}`, {
         method: 'delete',
         headers: {
             'Content-Type': 'application/json',
             'X-Authorization': token,
-        }
-    });   
+        },
+    });
 
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
@@ -225,7 +221,7 @@ export async function onDeleteCard(id,token){
         console.log('empty');
         return {};
     }
-    const data = await res.json(); 
+    const data = await res.json();
     console.log(data);
     return data;
     // return null;

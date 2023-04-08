@@ -1,58 +1,36 @@
-import { Form, redirect, useNavigation } from 'react-router-dom';
+import { Form, redirect, useNavigate, useNavigation, useParams } from 'react-router-dom';
 import { logoutUser } from '../../utils/api';
 import { requireAuth } from '../../utils/requireAuth';
+import { useState } from 'react';
 
 export async function loader({ request }) {
     await requireAuth(request);
     return new URL(request.url).searchParams.get('message');
 }
-
 let pathname;
 
-export async function action({ request }) {
-    // const formData = await request.formData();
-    // console.log(formData);
-    // const { userId }=JSON.parse(localStorage.getItem('user'));
+export async function action({ request }) { 
+    console.log('reeeeeeee'+request);
     pathname = new URL(request.url).searchParams.get('redirectTo') || '/cards';
     console.log(pathname);
-    // console.log(pathname);
     return redirect(pathname);
-}
-
-async function onLogout() {
-    const { token } = JSON.parse(localStorage.getItem('user'));
-    // console.log(token);
-
-    const res = await fetch('http://localhost:3030/users/logout', {
-        method: 'get',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-Authorization': token,
-        },
-    });
-    if (!res.ok) {
-        throw new Error(`${res.status} - ${res.statusText}`);
-    }
-    if (res.status === 204) {
-        localStorage.clear();
-    
-        return (window.location.href = '/');
-        // return redirect('.');
-    }
-   
-    // return redirect((window.location.href = '/'));
-    return redirect('/jsonstore/cards');
-    // return null;
-    // throw redirect('/');
-}
-
-function onStay() {
-    const { userId } = JSON.parse(localStorage.getItem('user'));
-    return (window.location.href = `/users/${userId}`);
 }
 
 export default function Logout() {
     const navigation = useNavigation();
+    const navigate=useNavigate();
+
+    const onLogout= async () =>{
+        const { token } = JSON.parse(localStorage.getItem('user'));
+        await logoutUser(token);
+        // await requireAuth();
+        navigate(-1);
+    };   
+
+    const onStay=()=> {
+        const { userId } = JSON.parse(localStorage.getItem('user'));
+        return navigate(`/users/${userId}`);
+    };
 
     return (
         // <!-- LOGOUT -->

@@ -1,11 +1,12 @@
 import {
     NavLink,
     Outlet,
+    redirect,
     useLoaderData, 
 } from 'react-router-dom';
 import { requireAuth } from '../../utils/requireAuth';
 // import { requireAuth } from '../../utils/requireAuth';
-// let pathname;
+let pathname;
 // export async function loader({ request }) {
 export async function loader({ request }) {
     const res = await requireAuth(request);
@@ -13,13 +14,13 @@ export async function loader({ request }) {
 
     // let token = '';
     // if (!user) {
-    //     // redirect('/login');
+        // redirect('/login');
     //     console.log('no user');
-    //     // pathname = new URL(request.url).searchParams.get('message');
+        // pathname = new URL(request.url).searchParams.get('message');
     //     // console.log('path---'+pathname);
-    //     // return redirect(pathname);
-    //     // return redirect('/');
-    //     return navig('/');
+        // return redirect(pathname);
+        // return redirect('/');
+        // return navig('/');
     // }
     // if (user) {
     //     token = user.token;

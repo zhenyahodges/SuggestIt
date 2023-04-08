@@ -4,6 +4,7 @@ import {
     NavLink,
     redirect,
     useLoaderData,
+    useNavigate,
     useNavigation,
     useParams,
 } from 'react-router-dom';
@@ -30,6 +31,7 @@ export function loader({ params }) {
 export default function CardItem() {
     const card = useLoaderData();
     const navigation = useNavigation();
+    const navigate=useNavigate();
 
     const [ownerId, brand, createdOn, cardId, suggestions] = card;
     const { token, userId } = JSON.parse(localStorage.getItem('user'));
@@ -57,13 +59,9 @@ export default function CardItem() {
 
     const onDelete = async () => {        
         // const result = confirm(`Are you sure you want to delete this card?`);
-
         // if (result) {
         await onDeleteCard(cardId,token);
-        // cards.filter(c => c._id !== cardId);
-        // state.filter(game => game._id !== gameId));
-
-        throw redirect('/catalog');
+        navigate(-1);
     };
 
     return (
