@@ -24,11 +24,12 @@ import Logout, {
 
 import Catalog, { loader as cardsLoader } from './components/Catalog/Catalog';
 import CardItem, {
-    loader as cardLoader,    
+    loader as cardLoader,  
+    // action as suggestAction  
 } from './components/Catalog/Card/CardItem';
 import {
     AddSuggestion,
-    action as suggestAction
+    // action as suggestAction
 } from './components/AddSuggestion/AddSuggestion';
 
 import ProfileLayout, {
@@ -52,7 +53,9 @@ const router = createBrowserRouter(
             <Route
                 path='cards/:cardId'
                 element={<CardItem />}
-                loader={cardLoader}              
+                loader={cardLoader} 
+                // action={suggestAction}
+           
             />
 
             {/* <Route

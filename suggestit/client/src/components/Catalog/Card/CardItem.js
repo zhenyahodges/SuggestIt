@@ -15,10 +15,11 @@ import {
     // getCard,
     getCards,
     onDeleteCard,
-    // onSuggSubmReq
+    // onsuggubmReq
 } from '../../../utils/api';
 // import useDirect from '../../../hooks/useDirect';
 import { AddSuggestion } from '../../AddSuggestion/AddSuggestion';
+import { useEffect, useState } from 'react';
 
 let cardId;
 
@@ -39,6 +40,8 @@ export function loader({ params }) {
 // }
 
 export default function CardItem() {
+    const [sugg,setSugg]=useState();
+
     const card = useLoaderData();
     const navigation = useNavigation();
     const navigate = useNavigate();
@@ -46,8 +49,6 @@ export default function CardItem() {
 
     const [ownerId, brand, createdOn, cardId, suggestions] = card;
     const { token, userId } = JSON.parse(localStorage.getItem('user'));
-    // console.log(ownerId);
-    // console.log(userId);
 
     let isOwner = false;
     let isAuthorized = false;
@@ -65,8 +66,15 @@ export default function CardItem() {
     // _id    :     "54151e7c-7c1e-41f8-a8d0-35d6860386c9"
     // _ownerId    :     "35c62d76-8152-4626-8712-eeb96381bea8"
 
-    // console.log(card);
-    // console.log(suggestions);
+    const handleChange =(e)=>{
+        // console.log(e);
+        setSugg(e.target.value);
+        console.log(sugg);
+    };
+
+    // const onSubmit=(e)=>{
+    //     console.log(e.target.value);
+    // };
 
     const onDelete = async () => {
         // const result = confirm(`Are you sure you want to delete this card?`);
@@ -80,14 +88,14 @@ export default function CardItem() {
     //     // await onEditCard(cardId,token);
     // }
 
-    // const onSuggSubmit=async(e)=>{
+    // const onsuggubmit=async(e)=>{
     //     const value=e.target.value;
     //     console.log(e.currentTarget.name);
     //     console.log(e.currentTarget.value);
     //     // e.preventDefault();
-    // const form = e.target;
-    // const data = new FormData(form);
-    // const formData= Object.fromEntries(data.entries());
+    // // const form = e.target;
+    // // const data = new FormData(form);
+    // // const formData= Object.fromEntries(data.entries());
     //     // const formData = await formData();
     //     // const sugg=
     //     // await onSuggestion(cardId,token,sugg);
@@ -98,7 +106,7 @@ export default function CardItem() {
         <section className='details-view container'>
             <h2>Details</h2>
             {
-                // TODO:!!! Hide overflow!!!from Details?! or SHOW ONLY FIRST N SUGGS
+                // TODO:!!! Hide overflow!!!from Details?! or SHOW ONLY FIRST N sugg
                 <>
                     <article className='sugg-card details detailed-card'>
                         <header className='card-header'>
@@ -125,7 +133,7 @@ export default function CardItem() {
                             </ul>
                         </main>
 
-                        <footer className='card-footer suggs-card foot'>
+                        <footer className='card-footer sugg-card foot'>
                             <div className='card-footer-content'>
                                 {/* <p className='card-footer-owner'>Owner</p> */}
                                 <p className='card-footer-text'>
@@ -135,7 +143,7 @@ export default function CardItem() {
                                 <div className='card-footer-links-wrapper'>
                                     {/* ADD-SUGGESTION LINK: visible for LOGGED (NOT OWNERS?) */}
                                     {isAuthorized && !isOwner && (
-                                        // <AddSuggestion onSuggSubmit={onSuggSubmit}/>
+                                        // <AddSuggestion onsuggubmit={onsuggubmit}/>
                                         <Link
                                             to={`/suggestions/${cardId}`}
                                             className='add-sugg-link'
@@ -187,10 +195,8 @@ export default function CardItem() {
                         <section className='add-sugg form-wrapper'>
                             {/* ?with or without li?  */}
                             <Form
-                                // onChange={(event) => {
-                                //     submit(event.currentTarget);
-                                // }}
-                                action={`/${cardId}`}
+                             
+                                // action={`/${cardId}`}
                                 method='post'
                                 id='add-form'
                                 className='add-sugg form'
@@ -203,15 +209,17 @@ export default function CardItem() {
                                 </p>
 
                                 <textarea
-                                    className='sugg-text-add'
-                                    id='sugg'
-                                    form='add-form'
-                                    name='sugg'
-                                    rows='4'
-                                    cols='50'
-                                    maxLength='150'
-                                    placeholder='Type your suggestion here'
-                                    required
+                                     className='sugg-text-add'
+                                     id='sugg'
+                                     form='add-form'
+                                     name='sugg'
+                                     rows='4'
+                                     cols='50'
+                                     maxLength='150'
+                                     placeholder='Type your suggestion here'
+                                     value={sugg}
+                                     onChange={handleChange}
+                                     required
                                 ></textarea>
                                 <span
                                     className='add sugg author'
@@ -226,7 +234,7 @@ export default function CardItem() {
                                     className='add-sugg btn dark subm'
                                     form='add-sugg'
                                     id='btn-add-form'
-                                    // onClick={onSuggSubmit}
+                                    // onSubmit={onSubmit}
                                     disabled={navigation.state === 'submitting'}
                                 >
                                     {navigation.state === 'submitting'
