@@ -57,31 +57,6 @@ export async function registerUser(creds) {
     return data;
 }
 
-// export async function getUserCards(token) {
-//           // console.log(token);
-
-//         const res = await fetch(`${baseUrl}/users/me`, {
-//         method: 'get',
-//         headers:{
-//             // 'Content-Type': 'application/json',
-//             'X-Authorization:': token,
-//         }
-//     });
-
-//     if (!res.ok) {
-//         throw new Error(`${res.status} - ${res.statusText}`);
-//     }
-//     // if (res.statusCode === 204) {
-//     //     console.log('empty');
-//     //     return {};
-//     // }
-//     const data = await res.json();
-//     console.log('data--'+data);
-//     console.log('obj--'+Object.values(data));
-//     // return Object.values(data);
-//     return null;
-// }
-
 export async function createNewCard(token, brand, userId) {
     // console.log(brand+'======'+token);
     const creds = { brand };
@@ -228,27 +203,31 @@ export async function onDeleteCard(id, token) {
     // return null;
 }
 
-export async function onSuggestion(cardId, token) {
-
-    const res = await fetch(`${baseUrl}/data/cards/${cardId}`, {
-        method: 'delete',
+export async function addNewSugg(token, sugg, userId) {
+    // console.log(brand+'======'+token);
+    const creds = { sugg };
+    const res = await fetch(`${baseUrl}/data/cards/`, {
+        method: 'post',
         headers: {
             'Content-Type': 'application/json',
             'X-Authorization': token,
         },
+        body: JSON.stringify(creds),
     });
-
+    // console.log('res--'+res);
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
-    if (res.statusCode === 204) {
-        console.log('empty');
-        return {};
+    if (res.status === 204) {
+        console.log(res.status);
+        return null;
     }
     const data = await res.json();
-    console.log(data);
+    // console.log('data--'+data);
+    // console.log(Object.values(data));
+    // return Object.values(data);
     return data;
-    // return null;
 }
+
 
 

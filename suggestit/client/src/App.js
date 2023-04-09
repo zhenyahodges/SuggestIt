@@ -24,12 +24,11 @@ import Logout, {
 
 import Catalog, { loader as cardsLoader } from './components/Catalog/Catalog';
 import CardItem, {
-    loader as cardLoader,
-    // action as suggestAction,
+    loader as cardLoader,    
 } from './components/Catalog/Card/CardItem';
 import {
     AddSuggestion,
-    // action as suggestAction
+    action as suggestAction
 } from './components/AddSuggestion/AddSuggestion';
 
 import ProfileLayout, {
@@ -53,13 +52,12 @@ const router = createBrowserRouter(
             <Route
                 path='cards/:cardId'
                 element={<CardItem />}
-                loader={cardLoader}
-                // action={suggestAction}
+                loader={cardLoader}              
             />
 
             {/* <Route
-                // path='cards/:cardId/:suggestionId'
-                path='sugg'
+                // path='cards/:cardId/:suggestionId'  
+                path='suggestions/:cardId'           
                 element={<AddSuggestion />}
                 loader={async ({ request }) => await requireAuth(request)}
                 action={suggestAction}

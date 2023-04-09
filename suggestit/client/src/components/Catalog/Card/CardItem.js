@@ -1,14 +1,22 @@
 import {
-    Form,
+    // Form,
     Link,
-    NavLink,
-    redirect,
+    // NavLink,
+    // redirect,
     useLoaderData,
     useNavigate,
     useNavigation,
-    useParams,
+    // useParams,
+    useSubmit,
 } from 'react-router-dom';
-import { getCard, getCards, onDeleteCard, onSuggSubmReq } from '../../../utils/api';
+import { 
+    // addNewSugg, 
+    // getCard,
+     getCards, onDeleteCard, 
+    // onSuggSubmReq 
+} from '../../../utils/api';
+// import useDirect from '../../../hooks/useDirect';
+import { AddSuggestion } from '../../AddSuggestion/AddSuggestion';
 
 let cardId;
 
@@ -32,6 +40,7 @@ export default function CardItem() {
     const card = useLoaderData();
     const navigation = useNavigation();
     const navigate=useNavigate();
+    let submit = useSubmit(); 
 
     const [ownerId, brand, createdOn, cardId, suggestions] = card;
     const { token, userId } = JSON.parse(localStorage.getItem('user'));
@@ -70,6 +79,7 @@ export default function CardItem() {
     // }
 
     // const onSuggSubmit=async(e)=>{
+    //     const value=e.target.value;
     //     console.log(e.currentTarget.name);
     //     console.log(e.currentTarget.value);
     //     // e.preventDefault(); 
@@ -122,14 +132,15 @@ export default function CardItem() {
 
                                 <div className='card-footer-links-wrapper'>
                                     {/* ADD-SUGGESTION LINK: visible for LOGGED (NOT OWNERS?) */}
-                                    {/* {isAuthorized && !isOwner && (
+                                    {isAuthorized && !isOwner && (
+                                        // <AddSuggestion onSuggSubmit={onSuggSubmit}/>
                                         <Link
-                                            // to={`suggs`}
+                                            to={`/suggestions/${cardId}`}
                                             className='add-sugg-link'
                                         >
                                             Suggest
                                         </Link>
-                                    )} */}
+                                    )}
 
                                     {/*------- LATER  */}
                                     {/*  <a href="/" className="print details">Print</a> */}
@@ -170,75 +181,7 @@ export default function CardItem() {
                     {/* // ===================== //{' '} */}
                     {/* //  authorised & NOT owner- ADD SUGGESTION form  */}
 
-                    {isAuthorized && !isOwner && (
-                        <section className='add-sugg form-wrapper'>
-                            {/* ?with or without li?  */}
-                            <form
-                                action={`/${cardId}`}
-                                method='post'
-                                id='add-form'
-                                className='add-sugg form'
-                            >
-                                <h2>Add a Suggestion</h2>
-                                <p>
-                                    <label htmlFor='sugg'>
-                                        Your Suggestion:
-                                    </label>
-                                </p>
-
-                                <textarea
-                                    className='sugg-text-add'
-                                    id='sugg'
-                                    form='add-form'
-                                    name='sugg'
-                                    rows='4'
-                                    cols='50'
-                                    maxLength='150'
-                                    placeholder='Type your suggestion here'
-                                    required
-                                ></textarea>
-                                <span
-                                    className='add sugg author'
-                                    id='add-sugg-author'
-                                >
-                                    Me
-                                </span>
-                                <button
-                                    type="submit"
-                                    method="post"
-                                    value="Submit"
-                                    className='add-sugg btn dark subm'
-                                    form='add-sugg'
-                                    id='btn-add-form'
-                                    // onClick={onSuggSubmit}
-                                    disabled={navigation.state === 'submitting'}
-                                >
-                                    {navigation.state === 'submitting'
-                                        ? 'Submitting ...'
-                                        : 'Submit'}
-                                </button>
-                            </form>
-
-                            {/* SUGG PREVIEW -display for a brief period before confirming ? timed?*/}
-
-                            {/*  <div className="sugg-item-wrapper">
-            <p className="sugg-text" placeholder="Suggestion">
-                <span className="author">
-                    Me
-                </span>
-                Another suggestion for you
-            </p>
-            <p className="sugg-ranking">
-                <span className="rank">10</span
-                ><a className="sugg-like-link"
-                    ><i
-                        className="like fa-solid fa-circle-up"
-                    ></i
-                ></a>
-            </p>
-        </div>  */}
-                        </section>
-                    )}
+                  
                 </>
 
                 // =====================

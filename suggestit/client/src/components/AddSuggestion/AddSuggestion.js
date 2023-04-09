@@ -1,30 +1,48 @@
-import { Form } from "react-router-dom";
-import { onSuggSubmReq } from "../../utils/api";
-
+import { Form, redirect, useNavigation, useParams } from 'react-router-dom';
+import { addNewSugg } from '../../utils/api';
+import { requireAuth } from '../../utils/requireAuth';
 
 // export const create = async (gameId, comment) => {
 //     const result = await request.post(baseUrl, { gameId, comment });
 
 //     return result;
 // };
-export async function action({ request }) {
-    console.log('here');
+export async function action({ request, params }) {
+    // console.log(params);
+    const { userId, token } = await requireAuth();
+    const formData = await request.formData();
+    const sugg = formData.get('sugg');
+
+    try {
+        if (token) {
+            await addNewSugg(token, sugg, userId);
+            // console.log(data);
+            // return null;
+            return redirect(`/users/${userId}`);
+        } else {
+            redirect('login');
+        }
+    } catch (err) {
+        return err.message;
+    }
+    // console.log('here');
     return null;
     // const  user=JSON.parse(localStorage.getItem('user'));
     // const userId=user.userId;
     // const token=user.token;
     // const res=await onSuggSubmReq(sugg,cardId,token,userId);
-
 }
 
-export const AddSuggestion=()=>{
-    
+export const AddSuggestion = () => {
+    const navigation = useNavigation();
+    // const path=useParams();
+    // console.log('PARAA---'+path)
 
     return (
-        //  *** ADD A SUGGESTION 
-        //  ASK for poll-code auth for suggesting 
+        //  *** ADD A SUGGESTION
+        //  ASK for poll-code auth for suggesting
         <>
-        {/* <section className="poll-code form-wrapper">
+            {/* <section className="poll-code form-wrapper">
             <form
                 action="#"
                 method="post"
@@ -45,10 +63,10 @@ export const AddSuggestion=()=>{
                     obtain a code from your provider first.
                 </p> */}
 
-              {/* <span className="poll-code add sugg author" id="add-sugg-author"> 
+            {/* <span className="poll-code add sugg author" id="add-sugg-author"> 
             Me
         </span>  */}
-                {/* <button
+            {/* <button
                     // type="submit"
                     // method="get"
                     // value="Submit"
@@ -62,48 +80,53 @@ export const AddSuggestion=()=>{
             </form>
         </section> */}
 
-        {/* //  authorised ADD SUGGESTION form  */}
-        <section className="add-sugg form-wrapper">
-            {/*  ?with or without li?  */}
-            <Form           
-                method="post"
-                id="add-form"
-                className="add-sugg form"
-            >
-                <h2>Add a Suggestion</h2>
-                <p><label htmlFor="sugg">Your Suggestion:</label></p>
-
-                <textarea
-                    className="sugg-text-add"
-                    id="sugg"
-                    form="add-form"
-                    name="sugg"
-                    rows="4"
-                    cols="50"
-                    maxLength="150"
-                    placeholder="Type your suggestion here"
-                    required
+            {/* //  authorised ADD SUGGESTION form  */}
+            <section className='add-sugg form-wrapper'>
+                {/*  ?with or without li?  */}
+                <Form
+                    // action={`/suggestions/${cardId}`}
+                    method='post'
+                    id='add-form'
+                    className='add-sugg form'
+                    name='add-form'
                 >
-                </textarea>
-                <span className="add sugg author" id="add-sugg-author">
-                    Me
-                </span>
-                <button
-                    // type="submit"
-                    // method="post"
-                    // value="Submit"
-                    className="add-sugg btn dark subm"
-                    form="add-sugg"
-                    id="btn-add-form"
-                    disabled
-                >
-                    Submit
-                </button>
-            </Form>
+                    <h2>Add a Suggestion</h2>
+                    <p>
+                        <label htmlFor='sugg'>Your Suggestion:</label>
+                    </p>
 
-            {/* SUGG PREVIEW -display for a brief period before confirming ? timed?*/}           
+                    <textarea
+                        className='sugg-text-add'
+                        id='sugg'
+                        form='add-form'
+                        name='sugg'
+                        rows='4'
+                        cols='50'
+                        maxLength='150'
+                        placeholder='Type your suggestion here'
+                        required
+                    ></textarea>
+                    <span className='add sugg author' id='add-sugg-author'>
+                        Me
+                    </span>
+                    <button
+                        // type="submit"
+                        // method="post"
+                        // value="Submit"
+                        className='add-sugg btn dark subm'
+                        form='add-sugg'
+                        id='btn-add-form'
+                        disabled={navigation.state === 'submitting'}
+                    >
+                        {navigation.state === 'submitting'
+                            ? 'Submitting ...'
+                            : 'Submit'}
+                    </button>
+                </Form>
 
-            {/*  <div className="sugg-item-wrapper">
+                {/* SUGG PREVIEW -display for a brief period before confirming ? timed?*/}
+
+                {/*  <div className="sugg-item-wrapper">
                 <p className="sugg-text" placeholder="Suggestion">
                     <span className="author">
                         Me
@@ -119,9 +142,9 @@ export const AddSuggestion=()=>{
                     ></a>
                 </p>
             </div>  */}
-        </section>
+            </section>
         </>
-        
-    // {/*  END ADD POST  */}
+
+        // {/*  END ADD POST  */}
     );
 };
