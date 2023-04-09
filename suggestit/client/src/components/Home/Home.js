@@ -13,9 +13,9 @@ export default function Home(){
                 </h2>
                 <div className='sub-wrapper'>
                     <h3 className='main-subtitle'>
-                        Do you want an easy and efficient way to get direct
-                        feedback and ideas for imrovements from your customers
-                        and employees?
+                        Easy and efficient way to get direct
+                        feedback and ideas for improvements from your customers
+                        and employees
                     </h3>
                     <p className='main-subtext'>
                         We offer a user-friendly interface for suggestions which
