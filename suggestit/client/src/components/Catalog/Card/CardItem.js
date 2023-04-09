@@ -1,4 +1,5 @@
 import {
+    Form,
     // Form,
     Link,
     // NavLink,
@@ -9,11 +10,12 @@ import {
     // useParams,
     useSubmit,
 } from 'react-router-dom';
-import { 
-    // addNewSugg, 
+import {
+    // addNewSugg,
     // getCard,
-     getCards, onDeleteCard, 
-    // onSuggSubmReq 
+    getCards,
+    onDeleteCard,
+    // onSuggSubmReq
 } from '../../../utils/api';
 // import useDirect from '../../../hooks/useDirect';
 import { AddSuggestion } from '../../AddSuggestion/AddSuggestion';
@@ -39,12 +41,12 @@ export function loader({ params }) {
 export default function CardItem() {
     const card = useLoaderData();
     const navigation = useNavigation();
-    const navigate=useNavigate();
-    let submit = useSubmit(); 
+    const navigate = useNavigate();
+    let submit = useSubmit();
 
     const [ownerId, brand, createdOn, cardId, suggestions] = card;
     const { token, userId } = JSON.parse(localStorage.getItem('user'));
-     // console.log(ownerId);
+    // console.log(ownerId);
     // console.log(userId);
 
     let isOwner = false;
@@ -66,15 +68,15 @@ export default function CardItem() {
     // console.log(card);
     // console.log(suggestions);
 
-    const onDelete = async () => {        
+    const onDelete = async () => {
         // const result = confirm(`Are you sure you want to delete this card?`);
         // if (result) {
-        await onDeleteCard(cardId,token);
+        await onDeleteCard(cardId, token);
         navigate(-1);
     };
 
     // const onEdit=async()=>{
-       
+
     //     // await onEditCard(cardId,token);
     // }
 
@@ -82,7 +84,7 @@ export default function CardItem() {
     //     const value=e.target.value;
     //     console.log(e.currentTarget.name);
     //     console.log(e.currentTarget.value);
-    //     // e.preventDefault(); 
+    //     // e.preventDefault();
     // const form = e.target;
     // const data = new FormData(form);
     // const formData= Object.fromEntries(data.entries());
@@ -161,7 +163,7 @@ export default function CardItem() {
                                             <button
                                                 to='/'
                                                 className='btn-sm card-details edit-card'
-                                            // onClick={onEdit}
+                                                // onClick={onEdit}
                                             >
                                                 Edit
                                             </button>
@@ -181,7 +183,78 @@ export default function CardItem() {
                     {/* // ===================== //{' '} */}
                     {/* //  authorised & NOT owner- ADD SUGGESTION form  */}
 
-                  
+                    {isAuthorized && !isOwner && (
+                        <section className='add-sugg form-wrapper'>
+                            {/* ?with or without li?  */}
+                            <Form
+                                // onChange={(event) => {
+                                //     submit(event.currentTarget);
+                                // }}
+                                action={`/${cardId}`}
+                                method='post'
+                                id='add-form'
+                                className='add-sugg form'
+                            >
+                                <h2>Add a Suggestion</h2>
+                                <p>
+                                    <label htmlFor='sugg'>
+                                        Your Suggestion:
+                                    </label>
+                                </p>
+
+                                <textarea
+                                    className='sugg-text-add'
+                                    id='sugg'
+                                    form='add-form'
+                                    name='sugg'
+                                    rows='4'
+                                    cols='50'
+                                    maxLength='150'
+                                    placeholder='Type your suggestion here'
+                                    required
+                                ></textarea>
+                                <span
+                                    className='add sugg author'
+                                    id='add-sugg-author'
+                                >
+                                    Me
+                                </span>
+                                <button
+                                    type='submit'
+                                    method='post'
+                                    // value={sugg}
+                                    className='add-sugg btn dark subm'
+                                    form='add-sugg'
+                                    id='btn-add-form'
+                                    // onClick={onSuggSubmit}
+                                    disabled={navigation.state === 'submitting'}
+                                >
+                                    {navigation.state === 'submitting'
+                                        ? 'Submitting ...'
+                                        : 'Submit'}
+                                </button>
+                            </Form>
+
+                            {/* SUGG PREVIEW -display for a brief period before confirming ? timed?*/}
+
+                            {/*  <div className="sugg-item-wrapper">
+<p className="sugg-text" placeholder="Suggestion">
+<span className="author">
+Me
+</span>
+Another suggestion for you
+</p>
+<p className="sugg-ranking">
+<span className="rank">10</span
+><a className="sugg-like-link"
+><i
+    className="like fa-solid fa-circle-up"
+></i
+></a>
+</p>
+</div>  */}
+                        </section>
+                    )}
                 </>
 
                 // =====================

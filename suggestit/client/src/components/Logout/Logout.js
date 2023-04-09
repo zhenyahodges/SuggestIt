@@ -10,9 +10,9 @@ export async function loader({ request }) {
 let pathname;
 
 export async function action({ request }) { 
-    console.log('reeeeeeee'+request);
+    // console.log('reeeeeeee'+request);
     pathname = new URL(request.url).searchParams.get('redirectTo') || '/cards';
-    console.log(pathname);
+    // console.log(pathname);
     return redirect(pathname);
 }
 
