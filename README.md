@@ -10,6 +10,14 @@ ReactJS Course. Details of the assignment are available [here](https://github.co
 
 Suggest<span style="color:#F79234">**It**</span> is a web application which provides a simple interface for receiving feedback and suggestions for improvements for companies.
 
+To start: folder suggestit
+
+cd client
+npm start
+
+cd server
+node server.js
+
 
 ### <span style="color:#c2e2ee">Welcome</span>
 <br>
