@@ -169,29 +169,29 @@ export async function logoutUser(token) {
 
 }
 
-export async function onSuggSubmReq(sugg, cardId, token, userId) {
-    const creds = { sugg };
-    // console.log(creds);
-    const res = await fetch(`${baseUrl}/data/cards/${cardId}`, {
-        method: 'post',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-Authorization': token,
-        },
-        body: JSON.stringify(creds),
-    });
+// export async function onSuggSubmReq(sugg, cardId, token, userId) {
+//     const creds = { sugg };
+//     // console.log(creds);
+//     const res = await fetch(`${baseUrl}/data/cards/${cardId}`, {
+//         method: 'post',
+//         headers: {
+//             'Content-Type': 'application/json',
+//             'X-Authorization': token,
+//         },
+//         body: JSON.stringify(creds),
+//     });
 
-    if (!res.ok) {
-        throw new Error(`${res.status} - ${res.statusText}`);
-    }
-    // if (res.statusCode === 204) {
-    //     console.log('empty');
-    //     return {};
-    // }
-    const data = await res.json();
-    // console.log(data);
-    return data;
-}
+//     if (!res.ok) {
+//         throw new Error(`${res.status} - ${res.statusText}`);
+//     }
+//     // if (res.statusCode === 204) {
+//     //     console.log('empty');
+//     //     return {};
+//     // }
+//     const data = await res.json();
+//     // console.log(data);
+//     return data;
+// }
 
 export async function getUserCards(id) {}
 
@@ -227,3 +227,28 @@ export async function onDeleteCard(id, token) {
     return data;
     // return null;
 }
+
+export async function onSuggestion(cardId, token) {
+
+    const res = await fetch(`${baseUrl}/data/cards/${cardId}`, {
+        method: 'delete',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': token,
+        },
+    });
+
+    if (!res.ok) {
+        throw new Error(`${res.status} - ${res.statusText}`);
+    }
+    if (res.statusCode === 204) {
+        console.log('empty');
+        return {};
+    }
+    const data = await res.json();
+    console.log(data);
+    return data;
+    // return null;
+}
+
+

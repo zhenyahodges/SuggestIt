@@ -57,13 +57,13 @@ const router = createBrowserRouter(
                 // action={suggestAction}
             />
 
-            <Route
+            {/* <Route
                 // path='cards/:cardId/:suggestionId'
                 path='sugg'
                 element={<AddSuggestion />}
                 loader={async ({ request }) => await requireAuth(request)}
-                // action={suggestAction}
-            />
+                action={suggestAction}
+            /> */}
 
             <Route
                 path='login'

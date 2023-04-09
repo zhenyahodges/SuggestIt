@@ -19,9 +19,9 @@ export function loader({ params }) {
 }
 
 // export async function action({ request,params }) {
-//     // console.log('hwer');
-//     // console.log(request);
-//     // console.log(params);
+//     console.log('here');
+//     console.log(request);
+//     console.log(params);
 //     return null;
 //     // const formData = await request.formData();
 //     // console.log(formData);
@@ -64,9 +64,22 @@ export default function CardItem() {
         navigate(-1);
     };
 
-    const onEdit=async=()=>{
-        await onEditCard(cardId,token);
-    }
+    // const onEdit=async()=>{
+       
+    //     // await onEditCard(cardId,token);
+    // }
+
+    // const onSuggSubmit=async(e)=>{
+    //     console.log(e.currentTarget.name);
+    //     console.log(e.currentTarget.value);
+    //     // e.preventDefault(); 
+    // const form = e.target;
+    // const data = new FormData(form);
+    // const formData= Object.fromEntries(data.entries());
+    //     // const formData = await formData();
+    //     // const sugg=
+    //     // await onSuggestion(cardId,token,sugg);
+    // };
 
     return (
         //  DETAILS vis for all
@@ -109,14 +122,14 @@ export default function CardItem() {
 
                                 <div className='card-footer-links-wrapper'>
                                     {/* ADD-SUGGESTION LINK: visible for LOGGED (NOT OWNERS?) */}
-                                    {isAuthorized && !isOwner && (
+                                    {/* {isAuthorized && !isOwner && (
                                         <Link
-                                            to={`.`}
+                                            // to={`suggs`}
                                             className='add-sugg-link'
                                         >
                                             Suggest
                                         </Link>
-                                    )}
+                                    )} */}
 
                                     {/*------- LATER  */}
                                     {/*  <a href="/" className="print details">Print</a> */}
@@ -137,7 +150,7 @@ export default function CardItem() {
                                             <button
                                                 to='/'
                                                 className='btn-sm card-details edit-card'
-                                            onClick={onEdit}
+                                            // onClick={onEdit}
                                             >
                                                 Edit
                                             </button>
@@ -160,7 +173,7 @@ export default function CardItem() {
                     {isAuthorized && !isOwner && (
                         <section className='add-sugg form-wrapper'>
                             {/* ?with or without li?  */}
-                            <Form
+                            <form
                                 action={`/${cardId}`}
                                 method='post'
                                 id='add-form'
@@ -191,9 +204,9 @@ export default function CardItem() {
                                     Me
                                 </span>
                                 <button
-                                    // type="submit"
-                                    // method="post"
-                                    // value="Submit"
+                                    type="submit"
+                                    method="post"
+                                    value="Submit"
                                     className='add-sugg btn dark subm'
                                     form='add-sugg'
                                     id='btn-add-form'
@@ -204,7 +217,7 @@ export default function CardItem() {
                                         ? 'Submitting ...'
                                         : 'Submit'}
                                 </button>
-                            </Form>
+                            </form>
 
                             {/* SUGG PREVIEW -display for a brief period before confirming ? timed?*/}
 
