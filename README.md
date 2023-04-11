@@ -14,7 +14,7 @@ Suggest<span style="color:#F79234">**It**</span> is a web application which prov
 
 In the project directory, you can run:
 
-### `cd client`
+#### `cd client`
 ### `npm start`
 
 Runs the app in the development mode.\
