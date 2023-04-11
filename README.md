@@ -15,13 +15,13 @@ Suggest<span style="color:#F79234">**It**</span> is a web application which prov
 In the project directory, you can run:
 
 #### `cd client`
-### `npm start`
+#### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-### `cd server`
-### `node server.js`
+#### `cd server`
+#### `node server.js`
 
 
 ### <span style="color:#c2e2ee">Welcome</span>
