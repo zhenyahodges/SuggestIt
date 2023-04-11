@@ -13,7 +13,7 @@ export default function Home(){
                 </h2>
                 <div className='sub-wrapper'>
                     <h3 className='main-subtitle'>
-                        Easy and efficient way to get direct
+                        An easy and efficient way to get direct
                         feedback and ideas for improvements from your customers
                         and employees
                     </h3>
