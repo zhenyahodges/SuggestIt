@@ -10,13 +10,18 @@ ReactJS Course. Details of the assignment are available [here](https://github.co
 
 Suggest<span style="color:#F79234">**It**</span> is a web application which provides a simple interface for receiving feedback and suggestions for improvements for companies.
 
-To start: folder suggestit
+### To run
 
-cd client
-npm start
+In the project directory, you can run:
 
-cd server
-node server.js
+### `cd client`
+### `npm start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+### `cd server`
+### `node server.js`
 
 
 ### <span style="color:#c2e2ee">Welcome</span>
