@@ -1,6 +1,5 @@
 import {
-    Form,
-    // Form,
+    Form, 
     Link,
     // NavLink,
     // redirect,
@@ -48,7 +47,13 @@ export default function CardItem() {
     let submit = useSubmit();
 
     const [ownerId, brand, createdOn, cardId, suggestions] = card;
-    const { token, userId } = JSON.parse(localStorage.getItem('user'));
+ const user = JSON.parse(localStorage.getItem('user'));
+//  change
+ let userId;
+ let token;
+ if(user){
+       ({ token, userId }=user);
+ }
 
     let isOwner = false;
     let isAuthorized = false;

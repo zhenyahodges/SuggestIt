@@ -24,7 +24,8 @@ export default function Logout() {
         const { token } = JSON.parse(localStorage.getItem('user'));
         await logoutUser(token);
         // await requireAuth();
-        navigate(-1);
+        // navigate(-1);
+        navigate('/');
     };   
 
     const onStay=()=> {

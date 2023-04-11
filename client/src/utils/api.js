@@ -1,3 +1,5 @@
+import { redirect } from "react-router-dom";
+
 const baseUrl = 'http://localhost:3030';
 
 export async function getCards(id) {
@@ -135,7 +137,9 @@ export async function logoutUser(token) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
     if (res.status === 204) {
-        localStorage.clear();    
+        localStorage.clear();  
+        // redirect('/');
+      
         // return (window.location.href = '/');
       return {};
     }   
