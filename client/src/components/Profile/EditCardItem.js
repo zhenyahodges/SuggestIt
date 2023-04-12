@@ -1,16 +1,20 @@
-import { Form, redirect, useNavigation } from 'react-router-dom';
-import { createNewCard } from '../../utils/service';
+import { Form, redirect, useLoaderData, useNavigation, useParams } from 'react-router-dom';
+import { createNewCard, editCard, getCards } from '../../utils/service';
 import { requireAuth } from '../../utils/requireAuth';
+
+export async function loader({params}){   
+    const res = await getCards(params.cardId);
+    return res;
+}
 
 export async function action({request}){
     const {userId,token}=await requireAuth();
-
     const formData= await request.formData();
     const brand=formData.get('brand');
 
     try{
       if(token){
-         await createNewCard(token,brand,userId);
+         await editCard(token,brand,userId);
            return redirect(`/users/${userId}`);
       } else{
         redirect('login');
@@ -21,22 +25,39 @@ export async function action({request}){
 }
 
 
-export default function CreateCard() {
+export default function EditCardItem() {
     const navigation = useNavigation();
-    return (
-        //   {/* <!-- || sec USER-OWNER CREATE polls --> */}
-        <section className='user create'>
-            <h2 className='user-title'>Create</h2>
+    const card = useLoaderData();
+    const [ownerId, brand, createdOn, cardId, suggestions] = card;
+  
+    // const user = JSON.parse(localStorage.getItem('user'));
+    // //  change
+    // let userId;
+    // let token;
+    // if (user) {
+    //     ({ token, userId } = user);
+    // }
 
-            {/* <!-- LOADER show when fetching --> */}
-            {/* <Loader/> */}
+    // let isOwner = false;
+    // let isAuthorized = false;
+
+    // if (token) {
+    //     isAuthorized = true;
+    // }
+    // if (ownerId === userId) {
+    //     isOwner = true;
+    // }
+
+    return (
+          <section className='user create edit'>
+            <h2 className='user-title'>Edit</h2>
 
             <div className='user-create-wrapper'>
                 <Form
                     // action='/create'
-                    method='post'
-                    id='create-card-form'
-                    className='create-card form'
+                    method='put'
+                    id='edit-card-form'
+                    className='create-card form edit'
                 >
                     <div className='wrap card-title'>
                         <label htmlFor='brand' className='lbl card-name'>
@@ -50,6 +71,7 @@ export default function CreateCard() {
                             placeholder='Enter title'
                             minLength='3'
                             maxLength='30'
+                            // defaultValue={}
                             required
                         />
                     </div>

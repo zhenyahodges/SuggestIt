@@ -7,7 +7,7 @@ export async function loader() {
     if (cards) {
         return cards;
     }
-    return <h2>No content yet</h2>;
+    return null;
 }
 
 export default function Catalog() {

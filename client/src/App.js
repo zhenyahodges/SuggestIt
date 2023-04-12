@@ -44,20 +44,43 @@ import CreateCard, {
 } from './components/Profile/CreateCard';
 import { AuthProvider } from './context/AuthContext';
 import { useState } from 'react';
+import EditCardItem, {
+    loader as editCardLoader,
+    action as editCardAction}
+     from './components/Profile/EditCardItem';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
-        <Route path='/' element={<Root />} loader={headerLoader}>
+        <Route
+            path='/'
+            element={<Root />}
+            loader={headerLoader}
+            errorElement={<NotFound />}
+        >
             <Route index element={<Home />} />
             {/* <AuthContext.Provider value={isLogged}> */}
-            <Route path='cards' element={<Catalog />} loader={cardsLoader} />
+            <Route
+                path='cards'
+                element={<Catalog />}
+                loader={cardsLoader}
+                errorElement={<NotFound />}
+            />
 
             <Route
                 path='cards/:cardId'
                 element={<CardItem />}
                 loader={cardLoader}
                 // action={suggestAction}
+                errorElement={<NotFound />}
             />
+                <Route
+                path='cards/:cardId/edit'
+                element={<EditCardItem />}
+                loader={editCardLoader}
+                action={editCardAction}
+                errorElement={<NotFound />}
+            />
+         
 
             {/* <Route
                 // path='cards/:cardId/:suggestionId'  
@@ -73,6 +96,7 @@ const router = createBrowserRouter(
                 loader={loginLoader}
                 action={loginAction}
                 id='logindata'
+                errorElement={<NotFound />}
             />
 
             <Route
@@ -81,12 +105,14 @@ const router = createBrowserRouter(
                 action={logoutAction}
                 loader={logoutLoader}
                 id='logoutdata'
+                errorElement={<NotFound />}
             />
 
             <Route
                 path='register'
                 element={<Register />}
                 action={registerAction}
+                errorElement={<NotFound />}
             />
 
             {/* PROFILE */}
@@ -95,26 +121,29 @@ const router = createBrowserRouter(
                 element={<ProfileLayout />}
                 loader={userLoader}
                 // action={userProfileAction}
+                errorElement={<NotFound />}
             >
                 <Route index element={<UserCards />} loader={userCardsLoader} />
                 <Route
                     path='suggested'
                     element={<UserSuggs />}
                     loader={async ({ request }) => await requireAuth(request)}
+                    errorElement={<NotFound />}
                 />
                 <Route
                     path='create'
                     element={<CreateCard />}
                     loader={async ({ request }) => await requireAuth(request)}
                     action={createCardAction}
+                    errorElement={<NotFound />}
                 />
+               
             </Route>
             <Route path='*' element={<NotFound />} />
         </Route>
     )
 );
 function App() {
-
     return (
         <AuthProvider>
             <RouterProvider router={router} />

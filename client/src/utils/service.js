@@ -88,27 +88,27 @@ export async function createNewCard(token, brand, userId) {
     return data;
 }
 
-// export async function updateCard(ownerId,id,token,data) {
-//     const res = await fetch( `${baseUrl}/jsonstore/cards/${id}`,{
-//         method: 'put',
-//         headers: {
-//             'Content-Type': 'application/json',
-//             'X-Authorization': token,
-//         },
-//         body: JSON.stringify(data)
-//     });
-//     // console.log(res);
-//     if (!res.ok) {
-//         throw new Error(`${res.status} - ${res.statusText}`);
-//     }
-//     if (res.status === 204) {
-//         return null;
-//     }
-//     const data = await res.json();
-//     // console.log(Object.values(data));
-//     // return Object.values(data);
-//     return (data);
-// }
+export async function editCard(ownerId,cardId,token,info) {
+    const res = await fetch( `${baseUrl}/jsonstore/cards/${cardId}`,{
+        method: 'put',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': token,
+        },
+        body: JSON.stringify(info)
+    });
+    // console.log(res);
+    if (!res.ok) {
+        throw new Error(`${res.status} - ${res.statusText}`);
+    }
+    if (res.status === 204) {
+        return null;
+    }
+    const data = await res.json();
+    // console.log(Object.values(data));
+    // return Object.values(data);
+    return (data);
+}
 
 export async function getCardSuggestions(id) {
     const url = `${baseUrl}/jsonstore/cards/${id}`;

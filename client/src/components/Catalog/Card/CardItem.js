@@ -1,14 +1,12 @@
 import {
-    Link,    
+    Link,
+    redirect,
     useLoaderData,
     useNavigate,
     useNavigation,
     useSubmit,
 } from 'react-router-dom';
-import {
-    getCards,
-    onDeleteCard,
-} from '../../../utils/service';
+import { getCards, onDeleteCard } from '../../../utils/service';
 import { useEffect, useState } from 'react';
 
 let cardId;
@@ -29,7 +27,7 @@ export default function CardItem() {
 
     const [ownerId, brand, createdOn, cardId, suggestions] = card;
     const user = JSON.parse(localStorage.getItem('user'));
-    //  change
+
     let userId;
     let token;
     if (user) {
@@ -46,9 +44,8 @@ export default function CardItem() {
         isOwner = true;
     }
 
-
     const handleChange = (e) => {
-             setSugg(e.target.value);
+        setSugg(e.target.value);
     };
 
     const onDelete = async () => {
@@ -58,6 +55,11 @@ export default function CardItem() {
         navigate(-1);
         // }
     };
+
+    // const onEditCard = () =>{
+    //   navigate(`/cards/${cardId}/edit`);
+
+    // };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -131,13 +133,13 @@ export default function CardItem() {
                                     {/*  VISIBLE FOR OWNER IF NOT TIMED OUT */}
                                     {isAuthorized && isOwner && (
                                         <>
-                                            <button
-                                                to='/'
+                                            <Link
+                                                to={`/cards/${cardId}/edit`}
                                                 className='btn-sm card-details edit-card'
-                                                // onClick={onEdit}
+                                                // onClick={onEditCard}
                                             >
                                                 Edit
-                                            </button>
+                                            </Link>
                                             <button
                                                 to='/'
                                                 className='btn-sm card-details delete-card'
