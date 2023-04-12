@@ -1,9 +1,9 @@
 import { redirect } from 'react-router-dom';
 
-const baseUrl =
-    process.env.NODE_ENV === 'development'
-        ? 'http://localhost:3030'
-        : 'https: //localhost:3030';
+const baseUrl = 'http://localhost:3030';
+// process.env.NODE_ENV === 'development'
+// ? 'http://localhost:3030'
+// : 'https: //localhost:3030';
 
 export async function getCards(id) {
     const url = id
@@ -37,7 +37,7 @@ export async function loginUser(creds) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
     if (res.statusCode === 204) {
-        // console.log('empty');
+        console.log('empty');
         return {};
     }
     const data = await res.json();
@@ -59,6 +59,28 @@ export async function registerUser(creds) {
     //     return {};
     // }
     const data = await res.json();
+    return data;
+}
+
+export async function getUserInfo(token) {
+    const res = await fetch(`${baseUrl}/users/me`, {
+        method: 'get',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': token,
+        },
+    });
+
+    if (!res.ok) {
+        throw new Error(`${res.status} - ${res.statusText}`);
+    }
+    if (res.status === 204) {
+        console.log(res.status);
+        return null;
+    }
+
+    const data = await res.json();
+
     return data;
 }
 
@@ -201,7 +223,7 @@ export async function onDeleteCard(id, token) {
         return {};
     }
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
     return data;
     // return null;
 }

@@ -1,50 +1,37 @@
-import {
-    NavLink,
-    Outlet,
-    redirect,
-    useLoaderData, 
-} from 'react-router-dom';
+import { NavLink, Outlet, redirect, useLoaderData } from 'react-router-dom';
 import { requireAuth } from '../../utils/requireAuth';
+import { getUserInfo } from '../../utils/service';
 
 let pathname;
 
-export async function loader({ request }) {
-    const res = await requireAuth(request);
-    const user = res;
+export async function loader({ request, params }) {
+    const { userId, token } = await requireAuth(request);
+    const res = await getUserInfo(token);
+   const {fname,lname,email}=res;
+   const user={fname,lname,email};
 
-    let token = '';
-    if (!user) {
-    // return redirect('login');
-    //     console.log('no user');
-    pathname = new URL(request.url).searchParams.get('message');
-    //     // console.log('path---'+pathname);
-    return redirect(pathname);
-    // return redirect('/');
-    // return navig('/');
+    if (!userId) {
+        pathname = new URL(request.url).searchParams.get('message');
+        console.log(pathname);
+        return redirect(pathname);
     }
-    if (user) {
-        token = user.token;
-    //     console.log('found');
-        if (!token) {
-    //         console.log('no token');
-            pathname = new URL(request.url).searchParams.get('message');
-    //         // console.log('path---'+pathname);
-            return redirect(pathname);
-            // return redirect('login');
-        }
+
+    if (!token) {
+        pathname = new URL(request.url).searchParams.get('message');
+        console.log(pathname);
+        return redirect(pathname);
+    }
+
     // pathname = new URL(request.url).searchParams.get('message');
     // redirect(request.url);
     // console.log('path---'+pathname);
     // -----------------
-    }
+
     return user;
 }
-// console.log(user);
-// return user;
-// }
-// const user=useLoaderData();
+
 export default function ProfileLayout() {
-    const user= useLoaderData();
+    const user = useLoaderData();
 
     const activeStyles = {
         backgroundColor: '#F79234',
@@ -54,7 +41,6 @@ export default function ProfileLayout() {
 
     return (
         // <AuthContext.Provider value={userId}>
-        //  <!-- PROFILE -->
         <section className='profile window container'>
             <h2>Profile</h2>
 
@@ -67,7 +53,7 @@ export default function ProfileLayout() {
                         id='prof-form'
                         className='prof form'
                     > */}
-                    {/* <div className='wrap fname'>
+                    <div className='wrap fname'>
                             <label
                                 htmlFor='prof-fname'
                                 className='prof lbl fname'
@@ -79,7 +65,9 @@ export default function ProfileLayout() {
                                 className='prof entry fname'
                                 name='prof-fname'
                                 id='prof-fname'
-                                // value={user.}
+                                value={user.fname}
+                                readOnly
+                                disabled
                             />
                         </div>
                         <div className='wrap prof-lname'>
@@ -94,9 +82,11 @@ export default function ProfileLayout() {
                                 className='prof entry lname'
                                 name='prof-lname'
                                 id='prof-lname'
-                                // value='Johnson'
+                                value={user.lname}
+                                readOnly
+                                disabled
                             />
-                        </div> */}
+                        </div>
                     <div className='wrap email'>
                         <label htmlFor='prof-email' className='prof lbl email'>
                             Email
@@ -106,8 +96,9 @@ export default function ProfileLayout() {
                             className='prof entry email'
                             name='prof-email'
                             id='prof-email'
-                            value={user? user.email: ''}
+                            value={user.email}
                             readOnly
+                            disabled
                         />
                     </div>
                     {/* 
