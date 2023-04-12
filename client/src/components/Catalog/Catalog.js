@@ -3,11 +3,11 @@ import { getCards } from '../../utils/service';
 
 export async function loader() {
     const cards = await getCards();
-    // console.log(cards);
+   
     if (cards) {
         return cards;
     }
-    return null;
+    return <h2>No content yet</h2>;
 }
 
 export default function Catalog() {
@@ -19,7 +19,7 @@ export default function Catalog() {
             <h2 className='catalog title'>Catalog</h2>
 
             <div className='catalog-wrapper'>
-                {!cards && <h2>No content yet</h2>}
+              
                 {/* {cardElements} */}
                 {/* {cards && cards.map((c) => <CardItem key={c._id} {...c} />)} */}
                 {cards &&
