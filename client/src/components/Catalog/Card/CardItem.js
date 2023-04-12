@@ -1,59 +1,40 @@
 import {
-    Form, 
-    Link,
-    // NavLink,
-    // redirect,
+    Link,    
     useLoaderData,
     useNavigate,
     useNavigation,
-    // useParams,
     useSubmit,
 } from 'react-router-dom';
 import {
-    // addNewSugg,
-    // getCard,
     getCards,
     onDeleteCard,
-    // onsuggubmReq
-} from '../../../utils/api';
-// import useDirect from '../../../hooks/useDirect';
-import { AddSuggestion } from '../../AddSuggestion/AddSuggestion';
+} from '../../../utils/service';
 import { useEffect, useState } from 'react';
 
 let cardId;
 
-export function loader({ params }) {
-    // console.log(params);
+export async function loader({ params }) {
     cardId = params.cardId;
-    return getCards(params.cardId);
+    const res = await getCards(params.cardId);
+    return res;
 }
 
-// export async function action({ request,params }) {
-//     console.log('here');
-//     console.log(request);
-//     console.log(params);
-//     return null;
-//     // const formData = await request.formData();
-//     // console.log(formData);
-//     // const sugg=formData.get('sugg');
-// }
-
 export default function CardItem() {
-    const [sugg,setSugg]=useState();
+    const [sugg, setSugg] = useState();
 
     const card = useLoaderData();
     const navigation = useNavigation();
     const navigate = useNavigate();
-    let submit = useSubmit();
+    // let submit = useSubmit();
 
     const [ownerId, brand, createdOn, cardId, suggestions] = card;
- const user = JSON.parse(localStorage.getItem('user'));
-//  change
- let userId;
- let token;
- if(user){
-       ({ token, userId }=user);
- }
+    const user = JSON.parse(localStorage.getItem('user'));
+    //  change
+    let userId;
+    let token;
+    if (user) {
+        ({ token, userId } = user);
+    }
 
     let isOwner = false;
     let isAuthorized = false;
@@ -64,47 +45,24 @@ export default function CardItem() {
     if (ownerId === userId) {
         isOwner = true;
     }
-    // console.log(isOwner);
-    // console.log(isAuthorized);
-    // brand :     "IBM"
-    // _createdOn  :  1680963671960
-    // _id    :     "54151e7c-7c1e-41f8-a8d0-35d6860386c9"
-    // _ownerId    :     "35c62d76-8152-4626-8712-eeb96381bea8"
 
-    const handleChange =(e)=>{
-        // console.log(e);
-        setSugg(e.target.value);
-        console.log(sugg);
+
+    const handleChange = (e) => {
+             setSugg(e.target.value);
     };
-
-    // const onSubmit=(e)=>{
-    //     console.log(e.target.value);
-    // };
 
     const onDelete = async () => {
         // const result = confirm(`Are you sure you want to delete this card?`);
         // if (result) {
         await onDeleteCard(cardId, token);
         navigate(-1);
+        // }
     };
 
-    // const onEdit=async()=>{
-
-    //     // await onEditCard(cardId,token);
-    // }
-
-    // const onsuggubmit=async(e)=>{
-    //     const value=e.target.value;
-    //     console.log(e.currentTarget.name);
-    //     console.log(e.currentTarget.value);
-    //     // e.preventDefault();
-    // // const form = e.target;
-    // // const data = new FormData(form);
-    // // const formData= Object.fromEntries(data.entries());
-    //     // const formData = await formData();
-    //     // const sugg=
-    //     // await onSuggestion(cardId,token,sugg);
-    // };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(sugg);
+    };
 
     return (
         //  DETAILS vis for all
@@ -199,12 +157,12 @@ export default function CardItem() {
                     {isAuthorized && !isOwner && (
                         <section className='add-sugg form-wrapper'>
                             {/* ?with or without li?  */}
-                            <Form
-                             
+                            <form
                                 // action={`/${cardId}`}
                                 method='post'
                                 id='add-form'
                                 className='add-sugg form'
+                                onSubmit={handleSubmit}
                             >
                                 <h2>Add a Suggestion</h2>
                                 <p>
@@ -214,17 +172,17 @@ export default function CardItem() {
                                 </p>
 
                                 <textarea
-                                     className='sugg-text-add'
-                                     id='sugg'
-                                     form='add-form'
-                                     name='sugg'
-                                     rows='4'
-                                     cols='50'
-                                     maxLength='150'
-                                     placeholder='Type your suggestion here'
-                                     value={sugg}
-                                     onChange={handleChange}
-                                     required
+                                    className='sugg-text-add'
+                                    id='sugg'
+                                    form='add-form'
+                                    name='sugg'
+                                    rows='4'
+                                    cols='50'
+                                    maxLength='150'
+                                    placeholder='Type your suggestion here'
+                                    value={sugg}
+                                    onChange={handleChange}
+                                    required
                                 ></textarea>
                                 <span
                                     className='add sugg author'
@@ -246,7 +204,7 @@ export default function CardItem() {
                                         ? 'Submitting ...'
                                         : 'Submit'}
                                 </button>
-                            </Form>
+                            </form>
 
                             {/* SUGG PREVIEW -display for a brief period before confirming ? timed?*/}
 

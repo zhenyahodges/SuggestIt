@@ -1,5 +1,5 @@
 import { Form, redirect, useNavigation, useParams } from 'react-router-dom';
-import { addNewSugg } from '../../utils/api';
+import { addNewSugg } from '../../utils/service';
 import { requireAuth } from '../../utils/requireAuth';
 
 // export const create = async (gameId, comment) => {
@@ -8,7 +8,7 @@ import { requireAuth } from '../../utils/requireAuth';
 //     return result;
 // };
 export async function action({ request, params }) {
-    // console.log(params);
+    console.log(params);
     const { userId, token } = await requireAuth();
     const formData = await request.formData();
     const sugg = formData.get('sugg');

@@ -1,8 +1,4 @@
 /* || CATALOG */
-/* .catalog.window,
-.catalog.all{
-} */
-
 .catalog-wrapper {
     display: flex;
     flex-flow: row wrap;
@@ -12,11 +8,6 @@
 .catalog .post-sugg.link {
     display: none;
 }
-
-/* .catalog .add-sugg-link,
-.catalog .vote-sugg-link {
-    display: none;
-} */
 
 .catalog .card-main {
     position: relative;
@@ -33,11 +24,6 @@
     background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.9501050420168067) 14%, rgba(255, 255, 255, 0) 41%);
     z-index: 1;
 }
-
-/* details links */
-/* .public .details-link{
-     display: none;
-} */
 
 /* CATALOG CARDS */
   /* === ***Card START */

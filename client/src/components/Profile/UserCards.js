@@ -1,5 +1,5 @@
 import { Link, useLoaderData } from 'react-router-dom';
-import { getCards } from '../../utils/api';
+import { getCards } from '../../utils/service';
 import { requireAuth } from '../../utils/requireAuth';
 
 export async function loader({ request }) {

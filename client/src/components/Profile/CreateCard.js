@@ -1,5 +1,5 @@
 import { Form, redirect, useNavigation } from 'react-router-dom';
-import { createNewCard } from '../../utils/api';
+import { createNewCard } from '../../utils/service';
 import { requireAuth } from '../../utils/requireAuth';
 
 export async function action({request}){

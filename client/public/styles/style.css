@@ -23,8 +23,6 @@
     --clr-err: rgb(194, 33, 33);
 }
 
-/* <i class="fa-solid fa-circle-arrow-down"></i> */
-
 html {
     background: linear-gradient(119deg, rgba(19, 41, 48, 1) 0%, rgba(202, 235, 247, 1) 49%, rgba(247, 247, 247, 1) 100%);
     font-family: "Mulish", "sans-serif";
@@ -40,6 +38,7 @@ html {
 .like.fa-solid:hover {
     color: var(--clr-highlight)
 }
+
 /*--- icons end */
 
 
@@ -103,11 +102,12 @@ html {
     font-size: 1.2rem;
 }
 
-.logo-nav{ 
+.logo-nav {
     color: inherit;
 }
+
 .logo-nav:active,
-.logo-nav:hover{
+.logo-nav:hover {
     text-shadow: 4px 4px 4px #132930;
 }
 
@@ -142,10 +142,6 @@ html {
     font-style: italic;
     font-size: smaller;
     color: var(--clr-highlight);
-}
-
-.whos-lookin.guest {
-    /* display: none; */
 }
 
 .whos-lookin.logged-user {
@@ -199,6 +195,6 @@ lower likes? or bar */
     font-size: 12px;
 }
 
-.foot{
+.foot {
     padding-right: 10px;
 }

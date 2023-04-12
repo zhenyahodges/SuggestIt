@@ -6,7 +6,7 @@ import {
     useLoaderData,
     useNavigation,
 } from 'react-router-dom';
-import { loginUser } from '../../utils/api';
+import { loginUser } from '../../utils/service';
 import { requireAuth } from '../../utils/requireAuth';
 
 export async function loader({ request }) {

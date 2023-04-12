@@ -1,9 +1,7 @@
 import { redirect } from 'react-router-dom';
 
-// export async function requireAuth({request}) {
-    
+   
     export async function requireAuth() {
-//    const pathname=new URL(request.url).searchParams.get('message');
 
     let isLogged = false;
     let result = {
@@ -19,11 +17,8 @@ import { redirect } from 'react-router-dom';
     } else {
         result.isLogged = false;      
 
-        // throw redirect(
-        //     `/login?message=You must log in first.&redirectTo=${pathname}`
-        // );
         throw redirect(
-            `/login?message=You must log in first.`
+            '/login?message=You must log in first.'
         );
     }
 

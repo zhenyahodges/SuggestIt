@@ -1,11 +1,6 @@
-import { Link, NavLink, defer, useLoaderData } from 'react-router-dom';
-import { getCards } from '../../utils/api';
+import { Link, NavLink, useLoaderData } from 'react-router-dom';
+import { getCards } from '../../utils/service';
 
-// import { defer, useLoaderData } from 'react-router-dom';
-
-// export function loader() {
-//     // return defer({ cards: getCards() });
-// }
 export async function loader() {
     const cards = await getCards();
     // console.log(cards);
@@ -29,6 +24,7 @@ export default function Catalog() {
                 {cards &&
                     cards.map(({ brand, _createdOn, _id, _ownerId }) => (
                         // TODO:!!! Hide overflow!!!from Details?! or SHOW ONLY FIRST N SUGGS
+
                         <article
                             key={_id}
                             className='sugg-card details'
@@ -63,7 +59,10 @@ export default function Catalog() {
                                         Thank you for your contributions!
                                     </p>
                                     <div className='card-footer-links-wrapper'>
-                                        <Link to={_id} className='details-link'>
+                                        <Link
+                                            to={_id}
+                                            className='details-link'
+                                        >
                                             Details
                                         </Link>
                                     </div>
@@ -71,7 +70,6 @@ export default function Catalog() {
                             </footer>
                         </article>
                     ))}
-                
             </div>
         </section>
     );

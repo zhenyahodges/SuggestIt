@@ -1,5 +1,5 @@
 import { Form, Link, redirect, useNavigation } from 'react-router-dom';
-import { registerUser } from '../../utils/api';
+import { registerUser } from '../../utils/service';
 
 export async function action({ request }) {
     const formData = await request.formData();

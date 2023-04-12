@@ -24,8 +24,8 @@ import Logout, {
 
 import Catalog, { loader as cardsLoader } from './components/Catalog/Catalog';
 import CardItem, {
-    loader as cardLoader,  
-    // action as suggestAction  
+    loader as cardLoader,
+    // action as suggestAction
 } from './components/Catalog/Card/CardItem';
 import {
     AddSuggestion,
@@ -42,6 +42,8 @@ import UserSuggs from './components/Profile/UserSuggs';
 import CreateCard, {
     action as createCardAction,
 } from './components/Profile/CreateCard';
+import { AuthProvider } from './context/AuthContext';
+import { useState } from 'react';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -53,9 +55,8 @@ const router = createBrowserRouter(
             <Route
                 path='cards/:cardId'
                 element={<CardItem />}
-                loader={cardLoader} 
+                loader={cardLoader}
                 // action={suggestAction}
-           
             />
 
             {/* <Route
@@ -113,7 +114,12 @@ const router = createBrowserRouter(
     )
 );
 function App() {
-    return <RouterProvider router={router} />;
+
+    return (
+        <AuthProvider>
+            <RouterProvider router={router} />
+        </AuthProvider>
+    );
 }
 
 export default App;
