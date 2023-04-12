@@ -1,4 +1,4 @@
-import { NavLink, Outlet, redirect, useLoaderData } from 'react-router-dom';
+import { Form, NavLink, Outlet, redirect, useLoaderData } from 'react-router-dom';
 import { requireAuth } from '../../utils/requireAuth';
 import { getUserInfo } from '../../utils/service';
 
@@ -47,12 +47,13 @@ export default function ProfileLayout() {
             <div className='profile-wrapper'>
                 {/* <!-- ||PROF INFO --> */}
                 <div className='profile-form-wrap'>
-                    {/* <fetcher.Form
+                    <Form
                         // action='/login'
                         method='get'
                         id='prof-form'
                         className='prof form'
-                    > */}
+                    >
+                        <div className='user-details'>
                     <div className='wrap fname'>
                             <label
                                 htmlFor='prof-fname'
@@ -101,6 +102,7 @@ export default function ProfileLayout() {
                             disabled
                         />
                     </div>
+                    </div>
                     {/* 
                         <!-- <div className="wrap pass">
                     <label htmlFor="pass" className="prof lbl pass"
@@ -129,7 +131,7 @@ export default function ProfileLayout() {
                         required
                     />
                 </div> --> */}
-                    {/* </fetcher.Form> */}
+                    </Form>
 
                     <nav className='prof-nav'>
                         <NavLink
