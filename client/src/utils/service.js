@@ -88,16 +88,15 @@ export async function createNewCard(token, brand, userId) {
     return data;
 }
 
-export async function editCard(ownerId,cardId,token,info) {
-    const res = await fetch( `${baseUrl}/jsonstore/cards/${cardId}`,{
+export async function editCard(token, info, cardId) {
+    const res = await fetch(`${baseUrl}/data/cards/${cardId}`, {
         method: 'put',
         headers: {
             'Content-Type': 'application/json',
             'X-Authorization': token,
         },
-        body: JSON.stringify(info)
+        body: JSON.stringify(info),
     });
-    // console.log(res);
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
@@ -105,9 +104,7 @@ export async function editCard(ownerId,cardId,token,info) {
         return null;
     }
     const data = await res.json();
-    // console.log(Object.values(data));
-    // return Object.values(data);
-    return (data);
+    return data;
 }
 
 export async function getCardSuggestions(id) {

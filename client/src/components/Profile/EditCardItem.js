@@ -7,14 +7,18 @@ export async function loader({params}){
     return res;
 }
 
-export async function action({request}){
+export async function action({request,params}){
     const {userId,token}=await requireAuth();
     const formData= await request.formData();
     const brand=formData.get('brand');
+    const cardId=params.cardId;
+    const info={
+        brand,
+    };
 
     try{
       if(token){
-         await editCard(token,brand,userId);
+         await editCard(token,info,cardId);
            return redirect(`/users/${userId}`);
       } else{
         redirect('login');
@@ -29,24 +33,6 @@ export default function EditCardItem() {
     const navigation = useNavigation();
     const card = useLoaderData();
     const [ownerId, brand, createdOn, cardId, suggestions] = card;
-  
-    // const user = JSON.parse(localStorage.getItem('user'));
-    // //  change
-    // let userId;
-    // let token;
-    // if (user) {
-    //     ({ token, userId } = user);
-    // }
-
-    // let isOwner = false;
-    // let isAuthorized = false;
-
-    // if (token) {
-    //     isAuthorized = true;
-    // }
-    // if (ownerId === userId) {
-    //     isOwner = true;
-    // }
 
     return (
           <section className='user create edit'>
@@ -54,7 +40,6 @@ export default function EditCardItem() {
 
             <div className='user-create-wrapper'>
                 <Form
-                    // action='/create'
                     method='put'
                     id='edit-card-form'
                     className='create-card form edit'
@@ -71,7 +56,7 @@ export default function EditCardItem() {
                             placeholder='Enter title'
                             minLength='3'
                             maxLength='30'
-                            // defaultValue={}
+                            defaultValue={brand}
                             required
                         />
                     </div>
@@ -115,8 +100,8 @@ export default function EditCardItem() {
                         // method='post'
                         // value='Create'
                         className='create btn dark subm'
-                        form='create-card-form'
-                        id='btn-create-form'
+                        form='edit-card-form'
+                        id='btn-edit-form'
                         disabled={navigation.state === 'submitting'}
                     >
                         {navigation.state === 'submitting'
