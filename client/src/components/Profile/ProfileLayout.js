@@ -8,7 +8,7 @@ export async function loader({ request, params }) {
     const { userId, token } = await requireAuth(request);
     const res = await getUserInfo(token);
    const {fname,lname,email}=res;
-   const user={fname,lname,email};
+   const user={fname,lname,email,userId};
 
     if (!userId) {
         pathname = new URL(request.url).searchParams.get('message');
@@ -103,34 +103,6 @@ export default function ProfileLayout() {
                         />
                     </div>
                     </div>
-                    {/* 
-                        <!-- <div className="wrap pass">
-                    <label htmlFor="pass" className="prof lbl pass"
-                        >Password</label
-                    >
-                    <input
-                        type="password"
-                        className="prof entry pass"
-                        name="prof-pass"
-                        id="prof-pass"
-                        minLength="6"
-                        placeholder=" 6 characters minimum"
-                        required
-                    />
-                </div> --> */}
-
-                    {/* <!-- <div className="wrap repass">
-                    <label htmlFor="repass" className="prof lbl repass"
-                        >Confirm Password</label
-                    >
-                    <input
-                        type="password"
-                        className="prof entry repass"
-                        name="prof-repass"
-                        id="prof-repass"
-                        required
-                    />
-                </div> --> */}
                     </Form>
 
                     <nav className='prof-nav'>
@@ -174,6 +146,3 @@ export default function ProfileLayout() {
     );
 }
 
-// export function useUser() {
-//     return useOutletContext();
-// }

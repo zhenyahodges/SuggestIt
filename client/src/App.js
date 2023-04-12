@@ -123,7 +123,10 @@ const router = createBrowserRouter(
                 // action={userProfileAction}
                 errorElement={<NotFound />}
             >
-                <Route index element={<UserCards />} loader={userCardsLoader} />
+                <Route 
+                index element={<UserCards />} 
+                loader={userCardsLoader} 
+                />
                 <Route
                     path='suggested'
                     element={<UserSuggs />}
