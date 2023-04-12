@@ -12,16 +12,14 @@ export async function loader() {
 
 export default function Catalog() {
     const cards = useLoaderData();
-    // console.log(cards);
-
+ 
     return (
         <section className='catalog window'>
             <h2 className='catalog title'>Catalog</h2>
 
             <div className='catalog-wrapper'>
               
-                {/* {cardElements} */}
-                {/* {cards && cards.map((c) => <CardItem key={c._id} {...c} />)} */}
+                
                 {cards &&
                     cards.map(({ brand, _createdOn, _id, _ownerId }) => (
                         // TODO:!!! Hide overflow!!!from Details?! or SHOW ONLY FIRST N SUGGS

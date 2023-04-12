@@ -1,3 +1,6 @@
+const cors = require('cors');
+app.use(cors());
+
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined'
         ? (module.exports = factory(
