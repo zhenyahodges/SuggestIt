@@ -3,7 +3,7 @@ import { redirect } from 'react-router-dom';
 const baseUrl =
     process.env.NODE_ENV === 'development'
         ? 'http://localhost:3030'
-        : 'http: //localhost:3031';
+        : 'https: //localhost:3031';
 
 export async function getCards(id) {
     const url = id
