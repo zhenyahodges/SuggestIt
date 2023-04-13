@@ -1,7 +1,11 @@
-import { createContext, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 import { requireAuth } from '../utils/requireAuth';
 
 export const AuthContext = createContext();
+
+export function useAuth(){
+    return useContext(AuthContext);
+}
 
 export const AuthProvider = ({ children }) => {
     const [isAuth, setIsAuth] = useState(false);
