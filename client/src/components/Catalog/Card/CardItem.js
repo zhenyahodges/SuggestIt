@@ -74,17 +74,12 @@ export default function CardItem() {
     // };
 
     const onDelete = async () => {
-        // const result = confirm(`Are you sure you want to delete this card?`);
+        // const result = confirm('Are you sure you want to delete this card?');
         // if (result) {
         await onDeleteCard(cardId, token);
-        navigate(-1);
+        // navigate(-1);
         // }
     };
-
-    // const onEditCard = () =>{
-    //   navigate(`/cards/${cardId}/edit`);
-
-    // };
 
     // const handleSubmit = (e) => {
     //     e.preventDefault();
