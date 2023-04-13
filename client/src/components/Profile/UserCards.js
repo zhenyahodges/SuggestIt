@@ -3,71 +3,19 @@ import { getCards } from '../../utils/service';
 import { requireAuth } from '../../utils/requireAuth';
 
 export async function loader({ request }) {
-    // console.log(request);
     const { userId, token } = await requireAuth(request);
-    // console.log((request));
-    const cards = await getCards();
-   
-    if (cards) {
-        const usercs=cards.map(X => { return X._Id}).includes(userId);
-        return cards;
+    const cardsColl = await getCards();
+    const cards = [];
+    if (cardsColl) {
+        for (let i = 0; i < cardsColl.length; i++) {
+            if (cardsColl[i]._ownerId === userId) {
+                cards.push(cardsColl[i]);
+            }
+        }
     }
-  
-    // if (cards) {
-    //     const cardId = cards._id;
-        
-        // console.log('cardId'+cardId);
 
-        // const searchQuery = encodeURIComponent(`cardId="${cardId}"`);
-        // const relationQuery = encodeURIComponent(`author=_ownerId:users`);
-        // const url =new URL(`http://localhost:3030/jsonstore/cards?where=cardId="${searchQuery}"&load=author=${relationQuery}`);
-        // console.log(url);
-
-        // const res = await fetch(url);
-        // console.log(res);
-        // if (!res.ok) {
-        //     throw new Error(`${res.status} - ${res.statusText}`);
-        // }
-        // if (res.status === 204) {    
-        // console.log('empty');
-        //     return null;
-        // }
-        // const data = await res.json();
-        // console.log(data);
-        // console.log(Object.values(data));
-        // return Object.values(data);
-       
-   
-    //  const result = await request.get(`http://localhost:3030?where=${searchQuery}&load=${relationQuery}`);
-    //  console.log(result);
-    //  console.log(Object.values(result));
-   
-    // const comments = Object.values(result);
-   
-
-
-  
-
-    // const userCards=cards.map(x=>userId===x._ownerId);
-    // console.log(userCards);
-
-    // if (cards) {
-    //     // const userCards=cards.filter(x=>x._ownerId===userId);
-    //     return userCards;
-    // }
-
-    // console.log(userId,token);
-    // const ownerId=
-
-    // const cards =await  getUserCards(userId,ownerId);
-    // console.log(cards);
-    // if (cards) {
-    //     //
-    //     console.log(userCards);
-    //     return null;
-    //     // return userCards;
-    // }
-    return null;
+    console.log(cards);
+    return cards;
     // return null;
 }
 

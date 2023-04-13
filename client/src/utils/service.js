@@ -7,12 +7,10 @@ const baseUrl = 'http://localhost:3030';
 
 export async function getCards(id) {
     const url = id
-        ? // ? `${baseUrl}/jsonstore/cards/${id}`
-          // : `${baseUrl}/jsonstore/cards`;
-          `${baseUrl}/data/cards/${id}`
+        ? `${baseUrl}/data/cards/${id}`
         : `${baseUrl}/data/cards`;
     const res = await fetch(url);
-    // console.log(res);
+
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
@@ -21,10 +19,7 @@ export async function getCards(id) {
         return null;
     }
     const data = await res.json();
-    // console.log(data);
-    // console.log(Object.values(data));
     return Object.values(data);
-    // return (data);
 }
 
 export async function loginUser(creds) {
@@ -85,7 +80,7 @@ export async function getUserInfo(token) {
 }
 
 export async function createNewCard(token, brand, userId) {
-    // console.log(brand+'======'+token);
+ 
     const creds = { brand };
     const res = await fetch(`${baseUrl}/data/cards`, {
         method: 'post',
@@ -104,9 +99,6 @@ export async function createNewCard(token, brand, userId) {
         return null;
     }
     const data = await res.json();
-    // console.log('data--'+data);
-    // console.log(Object.values(data));
-    // return Object.values(data);
     return data;
 }
 
@@ -193,16 +185,44 @@ export async function logoutUser(token) {
 //     return data;
 // }
 
-export async function getUserCards(id) {}
-
-// async function onSuggSubmit(e){
-//    e.preventDefault();
-//      const  user=JSON.parse(localStorage.getItem('user'));
-//     const userId=user.userId;
-//     const token=user.token;
-//     const res=await onSuggSubmReq(sugg,cardId,token,userId)
-
+// export async function getUserCards(userId, token) {
+//     const uri = `${baseUrl}/data/cards?where=_ownerId=${userId}&load=author=_ownerId:cardss`;
+//     const encoded = encodeURI(uri);
+//     const enc=encodeURIComponent(uri);
+//     console.log(encoded);
+//     console.log(enc);
+//     // const url = `${baseUrl}/data/cards`;
+//     // ) /data/comments?where=recipeId="8f414b4f-ab39-4d36-bedb-2ad69da9c830"&load=author=_ownerId:users
+//     const res = await fetch(encoded,{
+//         method: 'GET',
+//         headers:{
+//             'Content-Type':'application/json',
+//             'X-Authorization':token,
+//         }
+//     });
+//     console.log(res);
+//     if (!res.ok) {
+//         throw new Error(`${res.status} - ${res.statusText}`);
+//     }
+//     if (res.status === 204) {
+//         console.log('empty');
+//         return null;
+//     }
+//     const data = await res.json();
+//     console.log(data);
+//     // console.log(Object.values(data));
+//     // return Object.values(data);
+//     return (data);
+//     // return null;
 // }
+
+async function onSuggSubmit(e) {
+    e.preventDefault();
+    const user = JSON.parse(localStorage.getItem('user'));
+    const userId = user.userId;
+    const token = user.token;
+    // const res=await onSuggSubmReq(sugg,cardId,token,userId)
+}
 
 export async function onDeleteCard(id, token) {
     // console.log('token=='+token+'id=='+id);
