@@ -185,36 +185,28 @@ export async function logoutUser(token) {
 //     return data;
 // }
 
-// export async function getUserCards(userId, token) {
-//     const uri = `${baseUrl}/data/cards?where=_ownerId=${userId}&load=author=_ownerId:cardss`;
-//     const encoded = encodeURI(uri);
-//     const enc=encodeURIComponent(uri);
-//     console.log(encoded);
-//     console.log(enc);
-//     // const url = `${baseUrl}/data/cards`;
-//     // ) /data/comments?where=recipeId="8f414b4f-ab39-4d36-bedb-2ad69da9c830"&load=author=_ownerId:users
-//     const res = await fetch(encoded,{
-//         method: 'GET',
-//         headers:{
-//             'Content-Type':'application/json',
-//             'X-Authorization':token,
-//         }
-//     });
-//     console.log(res);
-//     if (!res.ok) {
-//         throw new Error(`${res.status} - ${res.statusText}`);
-//     }
-//     if (res.status === 204) {
-//         console.log('empty');
-//         return null;
-//     }
-//     const data = await res.json();
-//     console.log(data);
-//     // console.log(Object.values(data));
-//     // return Object.values(data);
-//     return (data);
-//     // return null;
-// }
+export async function getUserCards(userId, token) {
+    const uri = `${baseUrl}/data/cards?where=_ownerId LIKE "${userId}"`;
+    const encoded = encodeURI(uri);
+    // console.log(encoded);
+    const res = await fetch(encoded,{
+        method: 'GET',
+        headers:{
+            'Content-Type':'application/json',
+            'X-Authorization':token,
+        }
+    });
+    console.log(res);
+    if (!res.ok) {
+        throw new Error(`${res.status} - ${res.statusText}`);
+    }
+    if (res.status === 204) {
+        console.log('empty');
+        return null;
+    }
+    const data = await res.json();
+    return (data);
+}
 
 async function onSuggSubmit(e) {
     e.preventDefault();
@@ -248,7 +240,7 @@ export async function onDeleteCard(id, token) {
     // return null;
 }
 
-export async function addNewSugg(token, sugg, userId) {
+export async function addSuggestion(token, sugg, userId) {
     // console.log(brand+'======'+token);
     const creds = { sugg };
     const res = await fetch(`${baseUrl}/data/cards/`, {

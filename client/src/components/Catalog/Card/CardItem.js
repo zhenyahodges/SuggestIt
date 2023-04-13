@@ -1,13 +1,16 @@
 import {
+    Form,
     Link,
     redirect,
+    useFetcher,
     useLoaderData,
     useNavigate,
     useNavigation,
     useSubmit,
 } from 'react-router-dom';
-import { getCards, onDeleteCard } from '../../../utils/service';
+import { addSuggestion, getCards, onDeleteCard } from '../../../utils/service';
 import { useEffect, useState } from 'react';
+import { requireAuth } from '../../../utils/requireAuth';
 
 let cardId;
 
@@ -16,9 +19,31 @@ export async function loader({ params }) {
     const res = await getCards(params.cardId);
     return res;
 }
+export async function action({ request,params }) {
+    const {userId,token}=await requireAuth();
+    const formData= await request.formData();
+    console.log(formData);
+    const data=Object.entries(formData);
+    const suggestion=formData.get('sugg');
+    console.log(data);
+    console.log(suggestion);
+
+    // try{
+    //   if(token){
+    //      await addSuggestion(token,suggestion,userId);
+    //        return redirect(`/users/${userId}`);
+    //   } else{
+    //     redirect('login');
+    //   }
+    // } catch (err) {
+    //     return err.message;
+    // }
+    return null;
+}
 
 export default function CardItem() {
     const [sugg, setSugg] = useState();
+    const fetcher=useFetcher();
 
     const card = useLoaderData();
     const navigation = useNavigation();
@@ -44,9 +69,9 @@ export default function CardItem() {
         isOwner = true;
     }
 
-    const handleChange = (e) => {
-        setSugg(e.target.value);
-    };
+    // const handleChange = (e) => {
+    //     setSugg(e.target.value);
+    // };
 
     const onDelete = async () => {
         // const result = confirm(`Are you sure you want to delete this card?`);
@@ -61,10 +86,10 @@ export default function CardItem() {
 
     // };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(sugg);
-    };
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     console.log(sugg);
+    // };
 
     return (
         //  DETAILS vis for all
@@ -107,7 +132,7 @@ export default function CardItem() {
 
                                 <div className='card-footer-links-wrapper'>
                                     {/* ADD-SUGGESTION LINK: visible for LOGGED (NOT OWNERS?) */}
-                                    {isAuthorized && !isOwner && (
+                                    {/* {isAuthorized && !isOwner && (
                                         // <AddSuggestion onsuggubmit={onsuggubmit}/>
                                         <Link
                                             to={`/suggestions/${cardId}`}
@@ -115,7 +140,7 @@ export default function CardItem() {
                                         >
                                             Suggest
                                         </Link>
-                                    )}
+                                    )} */}
 
                                     {/*------- LATER  */}
                                     {/*  <a href="/" className="print details">Print</a> */}
@@ -159,12 +184,12 @@ export default function CardItem() {
                     {isAuthorized && !isOwner && (
                         <section className='add-sugg form-wrapper'>
                             {/* ?with or without li?  */}
-                            <form
+                            <fetcher.Form
                                 // action={`/${cardId}`}
                                 method='post'
                                 id='add-form'
                                 className='add-sugg form'
-                                onSubmit={handleSubmit}
+                                // onSubmit={handleSubmit}
                             >
                                 <h2>Add a Suggestion</h2>
                                 <p>
@@ -182,8 +207,8 @@ export default function CardItem() {
                                     cols='50'
                                     maxLength='150'
                                     placeholder='Type your suggestion here'
-                                    value={sugg}
-                                    onChange={handleChange}
+                                    // value={sugg}
+                                    // onChange={handleChange}
                                     required
                                 ></textarea>
                                 <span
@@ -206,7 +231,7 @@ export default function CardItem() {
                                         ? 'Submitting ...'
                                         : 'Submit'}
                                 </button>
-                            </form>
+                            </fetcher.Form>
 
                             {/* SUGG PREVIEW -display for a brief period before confirming ? timed?*/}
 

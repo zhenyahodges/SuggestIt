@@ -25,7 +25,7 @@ import Logout, {
 import Catalog, { loader as cardsLoader } from './components/Catalog/Catalog';
 import CardItem, {
     loader as cardLoader,
-    // action as suggestAction
+    action as suggestAction
 } from './components/Catalog/Card/CardItem';
 import {
     AddSuggestion,
@@ -70,7 +70,7 @@ const router = createBrowserRouter(
                 path='cards/:cardId'
                 element={<CardItem />}
                 loader={cardLoader}
-                // action={suggestAction}
+                action={suggestAction}
                 errorElement={<NotFound />}
             />
                 <Route

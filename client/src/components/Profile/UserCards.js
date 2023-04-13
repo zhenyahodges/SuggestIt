@@ -1,22 +1,11 @@
 import { Link, useLoaderData } from 'react-router-dom';
-import { getCards } from '../../utils/service';
+import { getCards, getUserCards } from '../../utils/service';
 import { requireAuth } from '../../utils/requireAuth';
 
 export async function loader({ request }) {
     const { userId, token } = await requireAuth(request);
-    const cardsColl = await getCards();
-    const cards = [];
-    if (cardsColl) {
-        for (let i = 0; i < cardsColl.length; i++) {
-            if (cardsColl[i]._ownerId === userId) {
-                cards.push(cardsColl[i]);
-            }
-        }
-    }
-
-    console.log(cards);
+    const cards = await getUserCards(userId,token);
     return cards;
-    // return null;
 }
 
 // return comments;
@@ -25,19 +14,16 @@ export default function UserCards() {
     const cards = useLoaderData();
 
     return (
-        //  {/* <!-- || sec USER-OWNER PUBLISHED polls --> */}
         <section className='user published'>
             <h2 className='user-title'>Published</h2>
 
             <div className='user-article-wrapper'>
                 {cards &&
                     cards.map(({ brand, _createdOn, _id, _ownerId }) => (
-                        // TODO:!!! Hide overflow!!!from Details?! or SHOW ONLY FIRST N SUGGS
+                        // TODO:!!! Hide overflow if necess!!!from Details?! or SHOW ONLY FIRST N SUGGS
                         <article
                             key={_id}
                             className='sugg-card catalog private'
-                            // sugg-card catalog private
-                            // sugg-card details
                             id={_id}
                         >
                             <header className='card-header'>
