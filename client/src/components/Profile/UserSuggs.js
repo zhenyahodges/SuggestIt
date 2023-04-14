@@ -1,4 +1,16 @@
+import { useLoaderData } from "react-router-dom";
+import { requireAuth } from "../../utils/requireAuth";
+
+export async function loader({ request }) {
+    const { userId, token } = await requireAuth(request);
+    // const suggs = await getUserSuggs(userId,token);
+    // return suggs;
+    return null;
+}
+
 export default function userSuggs() {
+    // const suggs = useLoaderData();
+
     return (
         //   {/* <!-- || USER-OWNER SUGGESTIONS --> */}
         <section className='user suggested'>

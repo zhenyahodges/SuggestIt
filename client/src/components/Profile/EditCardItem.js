@@ -1,8 +1,10 @@
 import { Form, redirect, useLoaderData, useNavigation, useParams } from 'react-router-dom';
-import { createNewCard, editCard, getCards } from '../../utils/service';
+import {editCard, getCards } from '../../utils/service';
 import { requireAuth } from '../../utils/requireAuth';
 
-export async function loader({params}){   
+export async function loader({request,params}){   
+    const { userId, token } = await requireAuth(request);
+
     const res = await getCards(params.cardId);
     return res;
 }

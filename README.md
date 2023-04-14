@@ -47,9 +47,10 @@ Guests cannot edit or delete a card, vote for or add a suggestion.
 ### <span style="color:#c2e2ee">**Profile**</span>
 
 Logged users can:
+* View their details
 * View the feedback cards they created, edit & delete them.
-* Create new feedback cards
 * View a list of the suggestions they made, edit & delete them.
+* Create new feedback cards
 
 #
 
@@ -75,7 +76,7 @@ The email address must not have any spaces, tabs, or other special characters.
 * If not found returns: <span style="color:red">*'Email or password invalid. Please try again.'*</span>
 
 ### **Inputs:  Create**
-* Textarea: Max lenght 150 characters.
+* Textarea: Max length 150 characters.
 
 ### **Not Found**
 * If the page is not found, returns 404 page Not Found, with link back to the home page.
@@ -83,8 +84,8 @@ The email address must not have any spaces, tabs, or other special characters.
 ### **Fetch requests**
 * Error handling implemented
 
-### **Loading:**
-* Buttons show when data is loading.
+### **Loading & Submitting:**
+* Buttons show when data is loading or submitting.
 #
 ### **To run**
 

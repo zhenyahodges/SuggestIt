@@ -1,4 +1,4 @@
-import { Form, NavLink, Outlet, redirect, useLoaderData } from 'react-router-dom';
+import { Form, NavLink, Outlet, redirect, useLoaderData, useNavigation } from 'react-router-dom';
 import { requireAuth } from '../../utils/requireAuth';
 import { getUserInfo } from '../../utils/service';
 
@@ -32,6 +32,7 @@ export async function loader({ request, params }) {
 
 export default function ProfileLayout() {
     const user = useLoaderData();
+    const navigation = useNavigation();
 
     const activeStyles = {
         backgroundColor: '#F79234',
@@ -113,8 +114,9 @@ export default function ProfileLayout() {
                             style={({ isActive }) =>
                                 isActive ? activeStyles : null
                             }
+                            disabled={navigation.state === 'loading'}
                         >
-                            Published
+                            {navigation.state === 'Loading' ? 'Loading...' : 'Published'}
                         </NavLink>
                         <NavLink
                             to='suggested'
@@ -122,8 +124,9 @@ export default function ProfileLayout() {
                             style={({ isActive }) =>
                                 isActive ? activeStyles : null
                             }
+                             disabled={navigation.state === 'loading'}
                         >
-                            Suggested
+                            {navigation.state === 'Loading' ? 'Loading...' : 'Suggested'}                            
                         </NavLink>
                         <NavLink
                             to='create'
@@ -131,8 +134,9 @@ export default function ProfileLayout() {
                             style={({ isActive }) =>
                                 isActive ? activeStyles : null
                             }
+                             disabled={navigation.state === 'loading'}
                         >
-                            Create
+                            {navigation.state === 'Loading' ? 'Loading...' : 'Create'}                            
                         </NavLink>
                     </nav>
                 </div>

@@ -8,25 +8,18 @@ import {
     useParams,
 } from 'react-router-dom';
 import { loginUser } from '../../utils/service';
-import { requireAuth } from '../../utils/requireAuth';
 
-export async function loader({ request }) {
-    // await requireAuth();
+export async function loader({ request}) {
     return new URL(request.url).searchParams.get('message');
 }
 
-export async function action({ request,params }) {
+export async function action({ request}) {
     const formData = await request.formData();
     const email = formData.get('email');
     const password = formData.get('pass'); 
-console.log('parsms==='+params);
-console.log(request.url);
-
-    // const myNewUrl=(request.url.split('/login')[0]);
 
     let pathname =
         new URL(request.url).searchParams.get('redirectTo') || '.';
-        // new URL(request.url).searchParams.get('redirectTo') || '/cards';
 
     try {
         const data = await loginUser({ email, password });
@@ -39,14 +32,11 @@ console.log(request.url);
                 token,
             };
             localStorage.setItem('user', JSON.stringify(user));            
-            // return redirect(`${myNewUrl}/users/${user.userId}`);
-            // return localStorage.setItem('user', JSON.stringify(user)); 
-        return redirect('/');
-
+        
+        return redirect(`/users/${user.userId}`);
         }
-        // return redirect(`/users/${data._id}`);
+        
         return redirect(pathname);
-        // return null;
     } catch (err) {
         return err.message;
     }
@@ -77,7 +67,7 @@ export default function Login() {
                         name='email'
                         id='log-email'
                         minLength='3'
-                        maxlength='64'
+                        maxLength='64'
                         autoComplete='email'
                         pattern='^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
                         required
@@ -94,7 +84,7 @@ export default function Login() {
                         id='log-pass'
                         autoComplete='current-password'
                         minLength='6'
-                        maxlength='64'
+                        maxLength='64'
                         placeholder='6 characters minimum'
                         required
                     />

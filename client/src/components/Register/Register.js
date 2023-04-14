@@ -36,7 +36,6 @@ export default function Register() {
     const navigation = useNavigation();
 
     return (
-        // <!-- REGISTER -->
         <section className='register form-wrapper'>
             <h2>Register</h2>
             <Form
@@ -87,6 +86,7 @@ export default function Register() {
                         minLength='3'                        
                         maxLength='64'
                         autoComplete='email'
+                        pattern='^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
                         required
                     />
                 </div>
@@ -134,9 +134,6 @@ export default function Register() {
             </label> */}
 
                 <button
-                    // type='submit'
-                    // method='post'
-                    // value='Register'
                     className='btn dark subm'
                     form='reg-form'
                     id='btn-reg-form'
@@ -151,7 +148,6 @@ export default function Register() {
                     Already have an account? Login
                 </Link>
             </Form>
-            {/* END REGISTER  */}
         </section>
     );
 }

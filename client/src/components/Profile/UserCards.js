@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData, useNavigation } from 'react-router-dom';
 import { getCards, getUserCards } from '../../utils/service';
 import { requireAuth } from '../../utils/requireAuth';
 
@@ -12,11 +12,13 @@ export async function loader({ request }) {
 
 export default function UserCards() {
     const cards = useLoaderData();
+    const navigation = useNavigation();
 
     return (
         <section className='user published'>
             <h2 className='user-title'>Published</h2>
-
+    {/* <!-- LOADER show when fetching --> */}
+            {/* <Loader/> */}
             <div className='user-article-wrapper'>
                 {cards &&
                     cards.map(({ brand, _createdOn, _id, _ownerId }) => (
