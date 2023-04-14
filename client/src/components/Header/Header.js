@@ -1,18 +1,18 @@
 import { useContext, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 
 export const Header = (props) => {
+    const navigation = useNavigation();
+
     console.log(props);
     const [result] = Object.values(props);
     console.log(result);
-    const { whoIsLookin, 
-        isLogged, 
-        userId } = result;
-//     const{isLogged,setIsLogged}=useAuth();
-// useEffect(()=>{
-//     isLoggedIn?setIsLogged(true): setIsLogged(false);
-// },[setIsLogged]);
+    const { whoIsLookin, isLogged, userId } = result;
+    //     const{isLogged,setIsLogged}=useAuth();
+    // useEffect(()=>{
+    //     isLoggedIn?setIsLogged(true): setIsLogged(false);
+    // },[setIsLogged]);
 
     const activeStyles = {
         backgroundColor: '#F79234',
@@ -44,8 +44,11 @@ export const Header = (props) => {
                             to='.'
                             className='nav header list links home'
                             id='nav-head-home-link'
+                            disabled={navigation.state === 'loading'}
                         >
-                            Home
+                            {navigation.state === 'loading'
+                                ? 'Loading..'
+                                : 'Home'}
                         </NavLink>
                         <NavLink
                             to='cards'
@@ -54,8 +57,11 @@ export const Header = (props) => {
                             style={({ isActive }) =>
                                 isActive ? activeStyles : null
                             }
+                            disabled={navigation.state === 'loading'}
                         >
-                            Catalog
+                            {navigation.state === 'loading'
+                                ? 'Loading..'
+                                : 'Catalog'}
                         </NavLink>
 
                         {/* visible when not logged in */}
@@ -67,8 +73,11 @@ export const Header = (props) => {
                                 style={({ isActive }) =>
                                     isActive ? activeStyles : null
                                 }
+                                disabled={navigation.state === 'loading'}
                             >
-                                Login
+                                {navigation.state === 'loading'
+                                    ? 'Loading..'
+                                    : 'Login'}
                             </NavLink>
                         )}
 
@@ -81,8 +90,11 @@ export const Header = (props) => {
                                 style={({ isActive }) =>
                                     isActive ? activeStyles : null
                                 }
+                                disabled={navigation.state === 'loading'}
                             >
-                                Logout
+                                {navigation.state === 'loading'
+                                    ? 'Loading..'
+                                    : 'Logout'}
                             </NavLink>
                         )}
 
@@ -95,8 +107,11 @@ export const Header = (props) => {
                                 style={({ isActive }) =>
                                     isActive ? activeStyles : null
                                 }
+                                disabled={navigation.state === 'loading'}
                             >
-                                Register
+                                {navigation.state === 'loading'
+                                    ? 'Loading..'
+                                    : 'Register'}
                             </NavLink>
                         )}
                         {isLogged && (
@@ -107,8 +122,11 @@ export const Header = (props) => {
                                 style={({ isActive }) =>
                                     isActive ? activeStyles : null
                                 }
+                                disabled={navigation.state === 'loading'}
                             >
-                                Profile
+                                {navigation.state === 'loading'
+                                    ? 'Loading..'
+                                    : 'Profile'}
                             </NavLink>
                         )}
                         {/* <!-- <a to="/about" className="nav header list links">About</a> --> */}

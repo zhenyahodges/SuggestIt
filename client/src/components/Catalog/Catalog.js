@@ -1,9 +1,9 @@
-import { Link, NavLink, useLoaderData } from 'react-router-dom';
+import { Link, NavLink, useLoaderData, useNavigation } from 'react-router-dom';
 import { getCards } from '../../utils/service';
 
 export async function loader() {
     const cards = await getCards();
-   
+
     if (cards) {
         return cards;
     }
@@ -12,14 +12,13 @@ export async function loader() {
 
 export default function Catalog() {
     const cards = useLoaderData();
- 
+    const navigation = useNavigation();
+
     return (
         <section className='catalog window'>
             <h2 className='catalog title'>Catalog</h2>
 
             <div className='catalog-wrapper'>
-              
-                
                 {cards &&
                     cards.map(({ brand, _createdOn, _id, _ownerId }) => (
                         // TODO:!!! Hide overflow!!!from Details?! or SHOW ONLY FIRST N SUGGS
@@ -61,8 +60,13 @@ export default function Catalog() {
                                         <Link
                                             to={_id}
                                             className='details-link'
+                                            disabled={
+                                                navigation.state === 'loading'
+                                            }
                                         >
-                                            Details
+                                            {navigation.state === 'loading'
+                                                ? 'Loading...'
+                                                : 'Details'}
                                         </Link>
                                     </div>
                                 </div>

@@ -1,8 +1,9 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useNavigation } from 'react-router-dom';
 
-export default function Home(){
-    const navigate=useNavigate();
- 
+export default function Home() {
+    const navigate = useNavigate();
+    const navigation = useNavigation();
+
     return (
         // <!-- WELCOME -->
         <section className='welcome window'>
@@ -13,9 +14,8 @@ export default function Home(){
                 </h2>
                 <div className='sub-wrapper'>
                     <h3 className='main-subtitle'>
-                        An easy and efficient way to get direct
-                        feedback and ideas for improvements from your customers
-                        and employees
+                        An easy and efficient way to get direct feedback and
+                        ideas for improvements from your customers and employees
                     </h3>
                     <p className='main-subtext'>
                         We offer a user-friendly interface for suggestions which
@@ -56,11 +56,7 @@ export default function Home(){
 
                                         <p className='sugg-ranking'>
                                             <span className='rank'>15</span>
-                                            <span
-                                               
-                                                className='sugg-like-link'
-                                               
-                                            >
+                                            <span className='sugg-like-link'>
                                                 <i className='like fa-solid fa-circle-up'></i>
                                             </span>
                                         </p>
@@ -79,10 +75,7 @@ export default function Home(){
                                         </p>
                                         <p className='sugg-ranking'>
                                             <span className='rank'>10</span>
-                                            <span
-                                              
-                                                className='sugg-like-link'
-                                            >
+                                            <span className='sugg-like-link'>
                                                 <i className='like fa-solid fa-circle-up'></i>
                                             </span>
                                         </p>
@@ -121,7 +114,6 @@ export default function Home(){
                                 <p className='card-footer-text'>
                                     Thank you for your contributions!
                                 </p>
-                                
                             </div>
                         </footer>
                     </article>
@@ -130,10 +122,15 @@ export default function Home(){
             </section>
 
             <div className='more'>
-                <button onClick={()=>navigate('cards')} className='btn dark catalog' id='catalog-btn'>
-                    Catalog
+                <button
+                    onClick={() => navigate('cards')}
+                    className='btn dark catalog'
+                    id='catalog-btn'
+                    disabled={navigation.state === 'loading'}
+                >
+                    {navigation.state === 'loading' ? ':Loading...' : 'Catalog'}
                 </button>
             </div>
         </section>
     );
-};
+}

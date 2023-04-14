@@ -19,12 +19,12 @@ export async function loader({ params }) {
     const res = await getCards(params.cardId);
     return res;
 }
-export async function action({ request,params }) {
-    const {userId,token}=await requireAuth();
-    const formData= await request.formData();
+export async function action({ request, params }) {
+    const { userId, token } = await requireAuth();
+    const formData = await request.formData();
     console.log(formData);
-    const data=Object.entries(formData);
-    const suggestion=formData.get('sugg');
+    const data = Object.entries(formData);
+    const suggestion = formData.get('sugg');
     console.log(data);
     console.log(suggestion);
 
@@ -43,7 +43,7 @@ export async function action({ request,params }) {
 
 export default function CardItem() {
     const [sugg, setSugg] = useState();
-    const fetcher=useFetcher();
+    const fetcher = useFetcher();
 
     const card = useLoaderData();
     const navigation = useNavigation();
@@ -94,7 +94,7 @@ export default function CardItem() {
                 // TODO:!!! Hide overflow!!!from Details?! or SHOW ONLY FIRST N sugg
                 <>
                     <article className='sugg-card details detailed-card'>
-                        <header className='card-header'>
+                        <header className='card-header details-header'>
                             <h5 className='brand'>{brand}</h5>
                         </header>
 
@@ -157,15 +157,27 @@ export default function CardItem() {
                                                 to={`/cards/${cardId}/edit`}
                                                 className='btn-sm card-details edit-card'
                                                 // onClick={onEditCard}
+                                                disabled={
+                                                    navigation.state ===
+                                                    'loading'
+                                                }
                                             >
-                                                Edit
+                                                {navigation.state === 'loading'
+                                                    ? 'Loading...'
+                                                    : 'Edit'}
                                             </Link>
                                             <button
                                                 to='/'
                                                 className='btn-sm card-details delete-card'
                                                 onClick={onDelete}
+                                                disabled={
+                                                    navigation.state ===
+                                                    'loading'
+                                                }
                                             >
-                                                Delete
+                                                {navigation.state === 'loading'
+                                                    ? ':Loading...'
+                                                    : 'Delete'}
                                             </button>
                                         </>
                                     )}
@@ -173,6 +185,7 @@ export default function CardItem() {
                             </div>
                         </footer>
                     </article>
+                    
                     {/* // ===================== //{' '} */}
                     {/* //  authorised & NOT owner- ADD SUGGESTION form  */}
 
@@ -223,7 +236,7 @@ export default function CardItem() {
                                     disabled={navigation.state === 'submitting'}
                                 >
                                     {navigation.state === 'submitting'
-                                        ? 'Submitting ...'
+                                        ? 'Submitting...'
                                         : 'Submit'}
                                 </button>
                             </fetcher.Form>
