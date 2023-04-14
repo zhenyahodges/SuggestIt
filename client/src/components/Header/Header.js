@@ -1,8 +1,18 @@
+import { useContext, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 
 export const Header = (props) => {
+    console.log(props);
     const [result] = Object.values(props);
-    const { whoIsLookin, isLogged, userId } = result;
+    console.log(result);
+    const { whoIsLookin, 
+        isLogged, 
+        userId } = result;
+//     const{isLogged,setIsLogged}=useAuth();
+// useEffect(()=>{
+//     isLoggedIn?setIsLogged(true): setIsLogged(false);
+// },[setIsLogged]);
 
     const activeStyles = {
         backgroundColor: '#F79234',

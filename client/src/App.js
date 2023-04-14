@@ -42,7 +42,7 @@ import UserSuggs from './components/Profile/UserSuggs';
 import CreateCard, {
     action as createCardAction,
 } from './components/Profile/CreateCard';
-import { AuthProvider } from './context/AuthContext';
+import { AuthContext, AuthProvider } from './context/AuthContext';
 import { useState } from 'react';
 import EditCardItem, {
     loader as editCardLoader,
@@ -51,6 +51,7 @@ import EditCardItem, {
 
 const router = createBrowserRouter(
     createRoutesFromElements(
+    
         <Route
             path='/'
             element={<Root />}
@@ -144,6 +145,7 @@ const router = createBrowserRouter(
             </Route>
             <Route path='*' element={<NotFound />} />
         </Route>
+
     )
 );
 function App() {

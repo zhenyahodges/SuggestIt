@@ -1,4 +1,4 @@
-import { redirect } from 'react-router-dom';
+import { Link, redirect } from 'react-router-dom';
 
 const baseUrl = 'http://localhost:3030';
 // process.env.NODE_ENV === 'development'
@@ -23,13 +23,16 @@ export async function getCards(id) {
 }
 
 export async function loginUser(creds) {
+
     const res = await fetch(`${baseUrl}/users/login`, {
         method: 'post',
         body: JSON.stringify(creds),
     });
+    console.log(creds);
+
 
     if (!res.ok) {
-        throw new Error(`${res.status} - ${res.statusText}`);
+        throw new Error(`Email or password invalid. Please try again.`);
     }
     if (res.statusCode === 204) {
         console.log('empty');

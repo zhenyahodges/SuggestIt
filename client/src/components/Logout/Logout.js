@@ -1,6 +1,8 @@
 import { Form, redirect, useNavigate, useNavigation } from 'react-router-dom';
 import { logoutUser } from '../../utils/service';
 import { requireAuth } from '../../utils/requireAuth';
+import { useAuth } from '../../context/AuthContext';
+import { useEffect } from 'react';
 
 export async function loader({ request }) {
     await requireAuth(request);
@@ -20,7 +22,8 @@ export default function Logout() {
 
     const onLogout = async () => {
         const { token } = JSON.parse(localStorage.getItem('user'));
-        await logoutUser(token);
+        await logoutUser(token);     
+    //  isLogged=false;
         navigate('/');
     };
 

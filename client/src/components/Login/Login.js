@@ -5,6 +5,7 @@ import {
     useActionData,
     useLoaderData,
     useNavigation,
+    useParams,
 } from 'react-router-dom';
 import { loginUser } from '../../utils/service';
 import { requireAuth } from '../../utils/requireAuth';
@@ -14,13 +15,14 @@ export async function loader({ request }) {
     return new URL(request.url).searchParams.get('message');
 }
 
-export async function action({ request }) {
+export async function action({ request,params }) {
     const formData = await request.formData();
     const email = formData.get('email');
     const password = formData.get('pass'); 
+console.log('parsms==='+params);
+console.log(request.url);
 
-
-    const myNewUrl=(request.url.split('/login')[0]);
+    // const myNewUrl=(request.url.split('/login')[0]);
 
     let pathname =
         new URL(request.url).searchParams.get('redirectTo') || '.';
@@ -55,14 +57,12 @@ export default function Login() {
     const message = useLoaderData();
     const errorMessage = useActionData();
 
-    return (
-        // <!-- LOGIN -->
+    return (     
         <section className='login form-wrapper'>
             <h2>Login</h2>
             {message && <h3 style={{ color: 'red' }}>{message}</h3>}
             {errorMessage && <h3 style={{ color: 'red' }}>{errorMessage}</h3>}
-            <Form
-                // action='/login'
+            <Form   
                 method='post'
                 id='log-form'
                 className='login form'
@@ -76,7 +76,10 @@ export default function Login() {
                         className='log entry email'
                         name='email'
                         id='log-email'
+                        minLength='3'
+                        maxlength='64'
                         autoComplete='email'
+                        pattern='^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
                         required
                     />
                 </div>
@@ -91,14 +94,12 @@ export default function Login() {
                         id='log-pass'
                         autoComplete='current-password'
                         minLength='6'
+                        maxlength='64'
                         placeholder='6 characters minimum'
                         required
                     />
                 </div>
                 <button
-                    // type='submit'
-                    // method='post'
-                    // value='Login'
                     className='log btn dark subm'
                     form='log-form'
                     id='btn-log-form'
@@ -110,7 +111,6 @@ export default function Login() {
                     Don't have an account? Register
                 </Link>
             </Form>
-            {/* <!-- END LOGIN --> */}
         </section>
     );
 }

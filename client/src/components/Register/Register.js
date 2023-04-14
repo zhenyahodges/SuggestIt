@@ -10,7 +10,8 @@ export async function action({ request }) {
     const repass = formData.get('repass');
 
     if (password !== repass) {
-        throw new Error('Passwords do not match');
+       alert('Passwords do not match');
+       return null;
     }
 
     try {
@@ -54,6 +55,7 @@ export default function Register() {
                         name='fname'
                         id='reg-fname'
                         minLength='3'
+                        maxLength='64'
                         autoComplete='given-name'
                         required
                     />
@@ -68,6 +70,7 @@ export default function Register() {
                         name='lname'
                         id='reg-lname'
                         minLength='3'
+                        maxLength='64'
                         autoComplete='family-name'
                         required
                     />
@@ -81,6 +84,8 @@ export default function Register() {
                         className='reg entry email'
                         name='email'
                         id='reg-email'
+                        minLength='3'                        
+                        maxLength='64'
                         autoComplete='email'
                         required
                     />
@@ -95,6 +100,7 @@ export default function Register() {
                         name='pass'
                         id='reg-pass'
                         minLength='6'
+                        maxLength='64'
                         placeholder='6 characters minimum'
                         autoComplete='new-password'
                         required
@@ -109,6 +115,8 @@ export default function Register() {
                         className='reg entry repass'
                         name='repass'
                         id='reg-repass'
+                        minLength='6'
+                        maxLength='64'
                         autoComplete='new-password'
                         required
                     />
