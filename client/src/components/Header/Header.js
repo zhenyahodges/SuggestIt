@@ -2,17 +2,28 @@ import { useContext, useEffect } from 'react';
 import { NavLink, useNavigation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 
+
+
 export const Header = (props) => {
     const navigation = useNavigation();
+    const { isLogged, setIsLogged } = useAuth();
+    const {isUser, setIsUser } = useAuth();
 
-    console.log(props);
     const [result] = Object.values(props);
-    console.log(result);
-    const { whoIsLookin, isLogged, userId } = result;
-    //     const{isLogged,setIsLogged}=useAuth();
-    // useEffect(()=>{
-    //     isLoggedIn?setIsLogged(true): setIsLogged(false);
-    // },[setIsLogged]);
+    // console.log('RESULT'+Object.keys(props))
+    const { whoIsLookin, isLoggedIn, userId } = result;
+    // console.log('DATA'+whoIsLookin, isLoggedIn, userId );
+
+    useEffect(() => {
+        isLogged 
+        ? setIsLogged(true) 
+        : setIsLogged(false);
+    }, [setIsLogged]);
+
+
+
+
+
 
     const activeStyles = {
         backgroundColor: '#F79234',

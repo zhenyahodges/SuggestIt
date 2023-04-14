@@ -24,16 +24,17 @@ export default function Logout() {
         const { token } = JSON.parse(localStorage.getItem('user'));
         await logoutUser(token);     
     //  isLogged=false;
+    
         navigate('/');
     };
 
     const onStay = () => {
         const { userId } = JSON.parse(localStorage.getItem('user'));
+        console.log('UUU'+userId);
         return navigate(`/users/${userId}`);
     };
 
     return (
-        // <!-- LOGOUT -->
         <section className='login logout form-wrapper'>
             <h2>Logout</h2>
             <Form replace id='logout-form' className='logout login form'>
@@ -52,9 +53,9 @@ export default function Logout() {
                         className='logout log btn dark subm'
                         form='logout-form'
                         id='btn-log-form'
-                        disabled={navigation.state === 'submitting'}
+                        disabled={navigation.state === 'loading'}
                     >
-                        {navigation.state === 'submitting'
+                        {navigation.state === 'loading'
                             ? 'Logging Out...'
                             : 'Yes'}
                     </button>

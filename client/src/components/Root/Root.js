@@ -1,8 +1,10 @@
 import { Outlet, useLoaderData } from 'react-router-dom';
 import { Header}  from '../Header/Header';
 import { Footer } from '../Footer/Footer';
+import { requireAuth } from '../../utils/requireAuth';
 
-export async function loader() {
+export async function loader({request}) {
+ 
     let isLogged = false;
     let whoIsLookin = 'Guest';
     let result = {      

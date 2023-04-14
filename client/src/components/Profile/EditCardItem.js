@@ -3,8 +3,7 @@ import {editCard, getCards } from '../../utils/service';
 import { requireAuth } from '../../utils/requireAuth';
 
 export async function loader({request,params}){   
-    const { userId, token } = await requireAuth(request);
-
+    await requireAuth(request);
     const res = await getCards(params.cardId);
     return res;
 }

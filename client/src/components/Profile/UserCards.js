@@ -4,7 +4,7 @@ import { requireAuth } from '../../utils/requireAuth';
 
 export async function loader({ request }) {
     const { userId, token } = await requireAuth(request);
-    const cards = await getUserCards(userId,token);
+    const cards = await getUserCards(userId, token);
     return cards;
 }
 
@@ -17,7 +17,7 @@ export default function UserCards() {
     return (
         <section className='user published'>
             <h2 className='user-title'>Published</h2>
-    {/* <!-- LOADER show when fetching --> */}
+            {/* <!-- LOADER show when fetching --> */}
             {/* <Loader/> */}
             <div className='user-article-wrapper'>
                 {cards &&
@@ -60,8 +60,13 @@ export default function UserCards() {
                                         <Link
                                             to={`/cards/${_id}`}
                                             className='details-link'
+                                            disabled={
+                                                navigation.state === 'loading'
+                                            }
                                         >
-                                            Details
+                                            {navigation.state === 'loading'
+                                                ? ':Loading...'
+                                                : 'Details'}
                                         </Link>
                                     </div>
                                 </div>

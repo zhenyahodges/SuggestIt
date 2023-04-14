@@ -28,11 +28,9 @@ export async function loginUser(creds) {
         method: 'post',
         body: JSON.stringify(creds),
     });
-    console.log(creds);
-
 
     if (!res.ok) {
-        throw new Error(`Email or password invalid. Please try again.`);
+        throw new Error('Email or password invalid. Please try again.');
     }
     if (res.statusCode === 204) {
         console.log('empty');
@@ -154,6 +152,8 @@ export async function logoutUser(token) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
     if (res.status === 204) {
+        // localStorage.removeItem('user');
+        // localStorage.setItem({});
         localStorage.clear();
         // redirect('/');
 

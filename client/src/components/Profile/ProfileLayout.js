@@ -1,29 +1,32 @@
-import { Form, NavLink, Outlet, redirect, useLoaderData, useNavigation } from 'react-router-dom';
+import {
+    Form,
+    NavLink,
+    Outlet,
+    redirect,
+    useLoaderData,
+    useNavigation,
+} from 'react-router-dom';
 import { requireAuth } from '../../utils/requireAuth';
 import { getUserInfo } from '../../utils/service';
 
-let pathname;
+
 
 export async function loader({ request, params }) {
     const { userId, token } = await requireAuth(request);
     const res = await getUserInfo(token);
-   const {fname,lname,email}=res;
-   const user={fname,lname,email,userId};
+    const { fname, lname, email } = res;
+    const user = { fname, lname, email, userId };
+const pathname = new URL(request.url).searchParams.get('message');
 
     if (!userId) {
-        pathname = new URL(request.url).searchParams.get('message');
-        console.log(pathname);
         return redirect(pathname);
     }
 
     if (!token) {
-        pathname = new URL(request.url).searchParams.get('message');
-        console.log(pathname);
         return redirect(pathname);
     }
 
-    // pathname = new URL(request.url).searchParams.get('message');
-    // redirect(request.url);
+    redirect(request.url);
     // console.log('path---'+pathname);
     // -----------------
 
@@ -41,69 +44,65 @@ export default function ProfileLayout() {
     };
 
     return (
-        // <AuthContext.Provider value={userId}>
         <section className='profile window container'>
             <h2>Profile</h2>
 
             <div className='profile-wrapper'>
-                {/* <!-- ||PROF INFO --> */}
                 <div className='profile-form-wrap'>
-                    <Form
-                        // action='/login'
-                        method='get'
-                        id='prof-form'
-                        className='prof form'
-                    >
+                    <Form method='get' id='prof-form' className='prof form'>
                         <div className='user-details'>
-                    <div className='wrap fname'>
-                            <label
-                                htmlFor='prof-fname'
-                                className='prof lbl fname'
-                            >
-                                First Name
-                            </label>
-                            <input
-                                type='text'
-                                className='prof entry fname'
-                                name='prof-fname'
-                                id='prof-fname'
-                                value={user.fname}
-                                readOnly
-                                disabled
-                            />
+                            <div className='wrap fname'>
+                                <label
+                                    htmlFor='prof-fname'
+                                    className='prof lbl fname'
+                                >
+                                    First Name
+                                </label>
+                                <input
+                                    type='text'
+                                    className='prof entry fname'
+                                    name='prof-fname'
+                                    id='prof-fname'
+                                    value={user.fname}
+                                    readOnly
+                                    disabled
+                                />
+                            </div>
+                            <div className='wrap prof-lname'>
+                                <label
+                                    htmlFor='prof-lname'
+                                    className='prof lbl lname'
+                                >
+                                    Last Name
+                                </label>
+                                <input
+                                    type='text'
+                                    className='prof entry lname'
+                                    name='prof-lname'
+                                    id='prof-lname'
+                                    value={user.lname}
+                                    readOnly
+                                    disabled
+                                />
+                            </div>
+                            <div className='wrap email'>
+                                <label
+                                    htmlFor='prof-email'
+                                    className='prof lbl email'
+                                >
+                                    Email
+                                </label>
+                                <input
+                                    type='email'
+                                    className='prof entry email'
+                                    name='prof-email'
+                                    id='prof-email'
+                                    value={user.email}
+                                    readOnly
+                                    disabled
+                                />
+                            </div>
                         </div>
-                        <div className='wrap prof-lname'>
-                            <label
-                                htmlFor='prof-lname'
-                                className='prof lbl lname'
-                            >
-                                Last Name
-                            </label>
-                            <input
-                                type='text'
-                                className='prof entry lname'
-                                name='prof-lname'
-                                id='prof-lname'
-                                value={user.lname}
-                                readOnly
-                                disabled
-                            />
-                        </div>
-                    <div className='wrap email'>
-                        <label htmlFor='prof-email' className='prof lbl email'>
-                            Email
-                        </label>
-                        <input
-                            type='email'
-                            className='prof entry email'
-                            name='prof-email'
-                            id='prof-email'
-                            value={user.email}
-                            readOnly
-                            disabled
-                        />
-                    </div>
-                    </div>
                     </Form>
 
                     <nav className='prof-nav'>
@@ -116,7 +115,9 @@ export default function ProfileLayout() {
                             }
                             disabled={navigation.state === 'loading'}
                         >
-                            {navigation.state === 'Loading' ? 'Loading...' : 'Published'}
+                            {navigation.state === 'loading'
+                                ? 'Loading...'
+                                : 'Published'}
                         </NavLink>
                         <NavLink
                             to='suggested'
@@ -124,9 +125,11 @@ export default function ProfileLayout() {
                             style={({ isActive }) =>
                                 isActive ? activeStyles : null
                             }
-                             disabled={navigation.state === 'loading'}
+                            disabled={navigation.state === 'loading'}
                         >
-                            {navigation.state === 'Loading' ? 'Loading...' : 'Suggested'}                            
+                            {navigation.state === 'loading'
+                                ? 'Loading...'
+                                : 'Suggested'}
                         </NavLink>
                         <NavLink
                             to='create'
@@ -134,14 +137,15 @@ export default function ProfileLayout() {
                             style={({ isActive }) =>
                                 isActive ? activeStyles : null
                             }
-                             disabled={navigation.state === 'loading'}
+                            disabled={navigation.state === 'loading'}
                         >
-                            {navigation.state === 'Loading' ? 'Loading...' : 'Create'}                            
+                            {navigation.state === 'loading'
+                                ? 'Loading...'
+                                : 'Create'}
                         </NavLink>
                     </nav>
                 </div>
 
-                {/* <!-- SECTION USER PROFILE INFO-CARDS --> */}
                 <section className='user-profile-cards-wrapper'>
                     <Outlet context={{ user }} />
                 </section>
@@ -149,4 +153,3 @@ export default function ProfileLayout() {
         </section>
     );
 }
-

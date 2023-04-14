@@ -3,7 +3,7 @@ import { requireAuth } from '../utils/requireAuth';
 
 export const AuthContext = createContext();
 
-export function useAuth(){
+export function useAuth() {
     return useContext(AuthContext);
 }
 
@@ -11,23 +11,21 @@ export const AuthProvider = ({ children }) => {
     const [isAuth, setIsAuth] = useState(false);
     const [isLogged, setIsLogged] = useState(false);
 
-useEffect(()=>{
+    useEffect(() => {
+        const { userId, token } = requireAuth();
+        const result = requireAuth();
+        // console.log(result);
+        userId ? setIsLogged(true) : setIsLogged(false);
+        token ? setIsAuth(true) : setIsAuth(false);
+    }, []);
 
-const {userId,token}=requireAuth();
-const result=requireAuth();
-console.log(result);
-userId? setIsLogged(true): setIsLogged(false);
-token? setIsAuth(true): setIsAuth(false);
-
-},[]);
-    
-    const contextValues={
-       isLogged,
-       setIsLogged,
+    const contextValues = {
+        isLogged,
+        setIsLogged,
         isAuth,
-        setIsAuth
+        setIsAuth    
     };
-    
+
     return (
         <>
             <AuthContext.Provider value={contextValues}>
