@@ -53,7 +53,7 @@ Logged users can:
 
 #
 
-## **Validations**
+## **Validations & Error Handling**
 
 ### **Inputs: Register**
 
@@ -80,7 +80,11 @@ The email address must not have any spaces, tabs, or other special characters.
 ### **Not Found**
 * If the page is not found, returns 404 page Not Found, with link back to the home page.
 
+### **Fetch requests**
+* Error handling implemented
 
+### **Loading:**
+* Buttons show when data is loading.
 #
 ### **To run**
 
