@@ -1,37 +1,38 @@
-import { NavLink, useNavigation } from 'react-router-dom';
-import {  useWhoIsLooking } from '../../context/CurrentUserContext';
+import { NavLink, useLoaderData, useNavigation } from 'react-router-dom';
+import { useWhoIsLooking } from '../../context/CurrentUserContext';
 import { useLogged } from '../../context/LoggedContext';
 import { requireAuth } from '../../utils/requireAuth';
 import { useEffect } from 'react';
 import { getUserInfo } from '../../utils/service';
 
-
-
-export async function loader({request}){
-    const { userId, token } = await requireAuth(request);
-    const res = await getUserInfo(token);
-    const { email } = res;
-    console.log('EMAIL'+email);
-
-    if(res){
-        return res;
-    }else{
-        return null;
-    }
-};
+// // let currUserId='';
+// export async function loader({ request }) {
+//     const { userId, token } = await requireAuth(request);
+//     console.log(userId,token);
+//     // currUserId=userId;
+//     const res = await getUserInfo(token);
+//     console.log('RES3333'+res);
+//     if (res) {
+//         return res;
+//     } else {
+//         return null;
+//     }
+// }
 
 export const Header = (props) => {
     const navigation = useNavigation();
-    const { whoIsLooking, setWhoIsLooking } = useWhoIsLooking();
+    const { whoIsLooking } = useWhoIsLooking();
     const { isLogged, setIsLogged } = useLogged();
+    // const result=useLoaderData();
+    // console.log('RESULT###'+result)
 
-    useEffect(()=>{
-        whoIsLooking!=='Guest' && setIsLogged(true);
-    // },[setIsLogged, setWhoIsLooking, whoIsLooking]);
-},[]);
+    useEffect(() => {
+        whoIsLooking !== 'Guest' && setIsLogged(true);
+        // },[setIsLogged, setWhoIsLooking, whoIsLooking]);
+    }, []);
 
-    console.log('LOGGED'+isLogged);
-    console.log('USSSEEEE'+whoIsLooking);
+    console.log('LOGGED' + isLogged);
+    console.log('USSSEEEE' + whoIsLooking);
 
     const activeStyles = {
         backgroundColor: '#F79234',
@@ -48,9 +49,7 @@ export const Header = (props) => {
                             Suggest<span className='suggest-it'>It</span>
                         </NavLink>
                     </h1>
-                    <p className='subtitle-header'>
-                        Ultimate Feedback
-                    </p>
+                    <p className='subtitle-header'>Ultimate Feedback</p>
                     <p></p>
                 </div>
 
@@ -129,7 +128,7 @@ export const Header = (props) => {
                         )}
                         {isLogged && (
                             <NavLink
-
+                            to={`users/${props.userId}`}
                                 className='nav header list links prof'
                                 id='nav-head-prof-link'
                                 style={({ isActive }) =>

@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 import { requireAuth } from './utils/requireAuth';
 
-import Root, { loader as headerLoader } from './components/Root/Root';
+import Root, { loader as rootLoader } from './components/Root/Root';
 import Home from './components/Home/Home';
 import { NotFound } from './components/NotFound/NotFound';
 
@@ -56,6 +56,7 @@ const router = createBrowserRouter(
             path='/'
             element={<Root />}
             // loader={headerLoader}
+            loader={rootLoader}
             errorElement={<NotFound />}
         >
             <Route index element={<Home />} />

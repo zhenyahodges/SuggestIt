@@ -5,43 +5,38 @@ import {
     useActionData,
     useLoaderData,
     useNavigation,
-    useParams,
 } from 'react-router-dom';
 import { loginUser } from '../../utils/service';
 import { useLogged } from '../../context/LoggedContext';
 import { useWhoIsLooking } from '../../context/CurrentUserContext';
 import { useEffect } from 'react';
 
-export async function loader({ request}) {
+export async function loader({ request }) {
     return new URL(request.url).searchParams.get('message');
-    console.log('LOAD');
 }
 
-export async function action({ request}) {
+export async function action({ request }) {
     const formData = await request.formData();
     const email = formData.get('email');
-    const password = formData.get('pass'); 
+    const password = formData.get('pass');
 
-    console.log('ACTION');
-
-    let pathname =
-        new URL(request.url).searchParams.get('redirectTo') || '.';
+    let pathname = new URL(request.url).searchParams.get('redirectTo') || '.';
 
     try {
         const data = await loginUser({ email, password });
         const token = data.accessToken;
-console.log('TOKEN'+token);
+        console.log('TOKEN' + token);
         if (token) {
             const user = {
                 email: data.email,
                 userId: data._id,
                 token,
             };
-            localStorage.setItem('user', JSON.stringify(user));            
-        
-        return redirect(`/users/${user.userId}`);
+            localStorage.setItem('user', JSON.stringify(user));
+
+            return redirect(`/users/${user.userId}`);
         }
-        
+
         return redirect(pathname);
     } catch (err) {
         return err.message;
@@ -49,35 +44,31 @@ console.log('TOKEN'+token);
 }
 
 export default function Login() {
-    const { isLogged, setIsLogged } = useLogged();
+    const { setIsLogged } = useLogged();
     const { whoIsLooking, setWhoIsLooking } = useWhoIsLooking();
     const userData = JSON.parse(localStorage.getItem('user'));
 
     useEffect(() => {
-   console.log('EFFECT');
-        if(userData){
+        if (userData) {
             userData.userId ? setIsLogged(true) : setIsLogged(false);
-            userData.email? setWhoIsLooking(userData.email): setIsLogged('Guest');
-        }else{
+            userData.email
+                ? setWhoIsLooking(userData.email)
+                : setIsLogged('Guest');
+        } else {
             setIsLogged(false);
         }
-
-    },[setIsLogged,userData,whoIsLooking,setWhoIsLooking] );
+    }, [setIsLogged, userData, whoIsLooking, setWhoIsLooking]);
 
     const navigation = useNavigation();
     const message = useLoaderData();
     const errorMessage = useActionData();
 
-    return (     
+    return (
         <section className='login form-wrapper'>
             <h2>Login</h2>
             {message && <h3 style={{ color: 'red' }}>{message}</h3>}
             {errorMessage && <h3 style={{ color: 'red' }}>{errorMessage}</h3>}
-            <Form   
-                method='post'
-                id='log-form'
-                className='login form'
-            >
+            <Form method='post' id='log-form' className='login form'>
                 <div className='wrap email'>
                     <label htmlFor='email' className='log lbl email'>
                         Email

@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useRef, useState } from 'react';
 
 export const LoggedContext = createContext();
 
@@ -8,21 +8,21 @@ export function useLogged() {
 
 export const LoggedProvider = ({ children }) => {
     const [isLogged, setIsLogged] = useState(false);
-
+    const count = useRef(0);
+console.log('COUNT:;;;'+count);
     useEffect(() => {
+        count.current = count.current + 1;
         const userData = JSON.parse(localStorage.getItem('user'));
-   
-        if(userData){
+        if (userData) {
             userData.userId ? setIsLogged(true) : setIsLogged(false);
-        }else{
+        } else {
             setIsLogged(false);
         }
-
-    },[setIsLogged] );
+    }, [setIsLogged]);
 
     const contextValues = {
         isLogged,
-        setIsLogged
+        setIsLogged,
     };
 
     return (
