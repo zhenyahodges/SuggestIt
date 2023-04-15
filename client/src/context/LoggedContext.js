@@ -9,7 +9,7 @@ export function useLogged() {
 export const LoggedProvider = ({ children }) => {
     const [isLogged, setIsLogged] = useState(false);
     const count = useRef(0);
-console.log('COUNT:;;;'+count);
+
     useEffect(() => {
         count.current = count.current + 1;
         const userData = JSON.parse(localStorage.getItem('user'));

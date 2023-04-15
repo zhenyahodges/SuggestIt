@@ -9,14 +9,12 @@ import {
 import { requireAuth } from '../../utils/requireAuth';
 import { getUserInfo } from '../../utils/service';
 
-
-
 export async function loader({ request, params }) {
     const { userId, token } = await requireAuth(request);
     const res = await getUserInfo(token);
     const { fname, lname, email } = res;
     const user = { fname, lname, email, userId };
-const pathname = new URL(request.url).searchParams.get('message');
+    const pathname = new URL(request.url).searchParams.get('message');
 
     if (!userId) {
         return redirect(pathname);
@@ -131,6 +129,18 @@ export default function ProfileLayout() {
                                 ? 'Loading...'
                                 : 'Suggested'}
                         </NavLink>
+                        {/* <NavLink
+                            to=''
+                            className='btn dark show suggested'
+                            style={({ isActive }) =>
+                                isActive ? activeStyles : null
+                            }
+                            disabled={navigation.state === 'loading'}
+                        >
+                            {navigation.state === 'loading'
+                                ? 'Loading...'
+                                : 'Published Infos'}
+                        </NavLink> */}
                         <NavLink
                             to='create'
                             className='btn light show create'
@@ -142,6 +152,18 @@ export default function ProfileLayout() {
                             {navigation.state === 'loading'
                                 ? 'Loading...'
                                 : 'Create'}
+                        </NavLink>
+                        <NavLink
+                            to='createinfo'
+                            className='btn light show create'
+                            style={({ isActive }) =>
+                                isActive ? activeStyles : null
+                            }
+                            disabled={navigation.state === 'loading'}
+                        >
+                            {navigation.state === 'loading'
+                                ? 'Loading...'
+                                : 'Post Info'}
                         </NavLink>
                     </nav>
                 </div>

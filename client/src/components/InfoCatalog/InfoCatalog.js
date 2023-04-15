@@ -1,61 +1,48 @@
-import { Link, NavLink, useLoaderData, useNavigation } from 'react-router-dom';
-import { getCards } from '../../utils/service';
+import { Link, useLoaderData, useNavigation } from 'react-router-dom';
+import { getInfos } from '../../utils/service';
 
 export async function loader() {
-    const cards = await getCards();
+    const infos = await getInfos();
 
-    if (cards) {
-        return cards;
+    if (infos) {
+   
+        return infos;
     }
-    return null;
+       
+       return null;
+   
 }
 
-export default function Catalog() {
-    const cards = useLoaderData();
+export default function InfosCatalog() {
+    const infos = useLoaderData();
     const navigation = useNavigation();
 
     return (
         <section className='catalog window'>
-            <h2 className='catalog title'>Catalog</h2>
+            <h2 className='catalog title'>Infos Catalog</h2>
 
             <div className='catalog-wrapper'>
-                {cards &&
-                    cards.map(({ brand, _createdOn, _id, _ownerId }) => (
+                {infos &&
+                    infos.map(({ title,web,text, _createdOn, _id, _ownerId }) => (
                         // TODO:!!! Hide overflow!!!from Details?! or SHOW ONLY FIRST N SUGGS
-
                         <article
                             key={_id}
                             className='sugg-card details catalog-view-card'
                             id={_id}
                         >
                             <header className='card-header'>
-                                <h5 className='brand'>{brand}</h5>
+                                <h5 className='brand'>{title}</h5>
                             </header>
 
                             <main className='card-main catalog-view-card'>
-                                <p>HERE GO THE SUGGESTIONS</p>
-                                <ul className='sugg-list'>
-                                    {/* TODO: MAP SUGGESTIONS */}
-                                    {/* {suggestions && suggestions.map((s) => <SuggestionItem id={s._id} key={s._id} {...s} />)} */}
-                                    {/* {_id.suggestions.map(s=>(<SuggestionItem key={s._id} {...s}/>))}   */}
-
-                                    {/* {card.suggestions &&
-             Object.values(card.suggestions).map((x) => (
-                <li key={x._id} className='sugg-item'>
-                     <div className='sugg-item-wrapper'>
-                       <p className='sugg-text'>
-                         <span className='author-nickname'>
-                              {x.userName}
-                        </span> */}
-                                    {/* SUGGESTION */}
-                                    {/* {x.suggestion} */}
-                                </ul>
+                               <p>{web}</p>
+                               <p>{text}</p>
                             </main>
                             <footer className='card-footer suggs-card foot'>
                                 <div className='card-footer-content'>
-                                    <p className='card-footer-text'>
+                                    {/* <p className='card-footer-text'>
                                         Thank you for your contributions!
-                                    </p>
+                                    </p> */}
                                     <div className='card-footer-links-wrapper'>
                                         <Link
                                             to={_id}

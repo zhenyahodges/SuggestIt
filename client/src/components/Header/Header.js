@@ -58,6 +58,19 @@ export const Header = (props) => {
                                 ? 'Loading..'
                                 : 'Catalog'}
                         </NavLink>
+                        <NavLink
+                            to='infos'
+                            className='nav header list links cat'
+                            id='nav-head-info-link'
+                            style={({ isActive }) =>
+                                isActive ? activeStyles : null
+                            }
+                            disabled={navigation.state === 'loading'}
+                        >
+                            {navigation.state === 'loading'
+                                ? 'Loading..'
+                                : 'Infos Catalog'}
+                        </NavLink>
 
                         {!isLogged && (
                             <NavLink

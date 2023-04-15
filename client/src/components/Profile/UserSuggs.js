@@ -1,5 +1,5 @@
-import { useLoaderData } from "react-router-dom";
-import { requireAuth } from "../../utils/requireAuth";
+import { useLoaderData } from 'react-router-dom';
+import { requireAuth } from '../../utils/requireAuth';
 
 export async function loader({ request }) {
     const { userId, token } = await requireAuth(request);
@@ -16,11 +16,7 @@ export default function userSuggs() {
         <section className='user suggested'>
             <h2 className='user-title'>Suggested</h2>
 
-            {/* <!-- LOADER show when fetching --> */}
-            {/* <Loader/> */}
-
             <div className='user-sugged-wrapper'>
-                {/* <!-- ???LIST SHOWS/ANY FUNC?! --> */}
                 <ul className='user-sugged-list'>
                     <li className='user-sugged-li-items'>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.

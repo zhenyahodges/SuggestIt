@@ -203,3 +203,8 @@ lower likes? or bar */
 .foot {
     padding-right: 10px;
 }
+
+
+.catalog-view-card{
+    overflow:hidden;
+}

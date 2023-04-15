@@ -42,13 +42,30 @@ import UserSuggs from './components/Profile/UserSuggs';
 import CreateCard, {
     action as createCardAction,
 } from './components/Profile/CreateCard';
-import {CurrentUserProvider } from './context/CurrentUserContext';
-import { useState } from 'react';
+import { CurrentUserProvider } from './context/CurrentUserContext';
+
 import EditCardItem, {
     loader as editCardLoader,
     action as editCardAction,
 } from './components/Profile/EditCardItem';
 import { LoggedProvider } from './context/LoggedContext';
+// JOBS
+import InfoCatalog, {
+    loader as infosLoader,
+} from './components/InfoCatalog/InfoCatalog';
+import InfoItem, {
+    loader as infoLoader,
+} from './components/InfoCatalog/Info/InfoItem';
+import EditInfoItem, {
+    loader as editInfoLoader,
+    action as editInfoAction,
+} from './components/Profile/EditInfoItem';
+import CreateInfo, {
+    action as createInfoAction,
+} from './components/Profile/CreateInfo';
+import UserInfos, {
+    loader as userInfosLoader,
+} from './components/Profile/UserInfos';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -78,6 +95,28 @@ const router = createBrowserRouter(
                 element={<EditCardItem />}
                 loader={editCardLoader}
                 action={editCardAction}
+                errorElement={<NotFound />}
+            />
+            {/* infos catalog */}
+            <Route
+                path='infos'
+                element={<InfoCatalog />}
+                loader={infosLoader}
+                errorElement={<NotFound />}
+            />
+
+            <Route
+                path='infos/:infoId'
+                element={<InfoItem />}
+                loader={infoLoader}
+                // action={suggestAction}
+                errorElement={<NotFound />}
+            />
+            <Route
+                path='infos/:infoId/edit'
+                element={<EditInfoItem />}
+                loader={editInfoLoader}
+                action={editInfoAction}
                 errorElement={<NotFound />}
             />
 
@@ -136,6 +175,17 @@ const router = createBrowserRouter(
                     action={createCardAction}
                     errorElement={<NotFound />}
                 />
+
+                {/* JOBS */}
+
+                <Route index element={<UserInfos />} loader={userInfosLoader} />
+                <Route
+                    path='createinfo'
+                    element={<CreateInfo />}
+                    loader={async ({ request }) => await requireAuth(request)}
+                    action={createInfoAction}
+                    errorElement={<NotFound />}
+                />
             </Route>
             <Route path='*' element={<NotFound />} />
         </Route>
@@ -145,7 +195,7 @@ function App() {
     return (
         <CurrentUserProvider>
             <LoggedProvider>
-            <RouterProvider router={router} />
+                <RouterProvider router={router} />
             </LoggedProvider>
         </CurrentUserProvider>
     );
