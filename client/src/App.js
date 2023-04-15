@@ -55,12 +55,10 @@ const router = createBrowserRouter(
         <Route
             path='/'
             element={<Root />}
-            // loader={headerLoader}
             loader={rootLoader}
             errorElement={<NotFound />}
         >
             <Route index element={<Home />} />
-            {/* <AuthContext.Provider value={isLogged}> */}
             <Route
                 path='cards'
                 element={<Catalog />}

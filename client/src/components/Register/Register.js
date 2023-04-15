@@ -1,5 +1,8 @@
 import { Form, Link, redirect, useNavigation } from 'react-router-dom';
 import { registerUser } from '../../utils/service';
+import { useLogged } from '../../context/LoggedContext';
+import { useWhoIsLooking } from '../../context/CurrentUserContext';
+import { useEffect } from 'react';
 
 export async function action({ request }) {
     const formData = await request.formData();
@@ -33,6 +36,20 @@ export async function action({ request }) {
 }
 
 export default function Register() {
+    const { setIsLogged } = useLogged();
+    const { whoIsLooking, setWhoIsLooking } = useWhoIsLooking();
+    const userData = JSON.parse(localStorage.getItem('user'));
+
+    useEffect(() => {
+        if (userData) {
+            userData.userId ? setIsLogged(true) : setIsLogged(false);
+            userData.email
+                ? setWhoIsLooking(userData.email)
+                : setIsLogged('Guest');
+        } else {
+            setIsLogged(false);
+        }
+    }, [setIsLogged, userData, whoIsLooking, setWhoIsLooking]);
     const navigation = useNavigation();
 
     return (

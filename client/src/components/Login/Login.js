@@ -25,7 +25,7 @@ export async function action({ request }) {
     try {
         const data = await loginUser({ email, password });
         const token = data.accessToken;
-        console.log('TOKEN' + token);
+
         if (token) {
             const user = {
                 email: data.email,

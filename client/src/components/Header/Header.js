@@ -1,38 +1,18 @@
-import { NavLink, useLoaderData, useNavigation } from 'react-router-dom';
+import { NavLink, useNavigation } from 'react-router-dom';
 import { useWhoIsLooking } from '../../context/CurrentUserContext';
 import { useLogged } from '../../context/LoggedContext';
-import { requireAuth } from '../../utils/requireAuth';
 import { useEffect } from 'react';
-import { getUserInfo } from '../../utils/service';
-
-// // let currUserId='';
-// export async function loader({ request }) {
-//     const { userId, token } = await requireAuth(request);
-//     console.log(userId,token);
-//     // currUserId=userId;
-//     const res = await getUserInfo(token);
-//     console.log('RES3333'+res);
-//     if (res) {
-//         return res;
-//     } else {
-//         return null;
-//     }
-// }
 
 export const Header = (props) => {
     const navigation = useNavigation();
     const { whoIsLooking } = useWhoIsLooking();
     const { isLogged, setIsLogged } = useLogged();
-    // const result=useLoaderData();
-    // console.log('RESULT###'+result)
+    const currUserId = Object.values(props);
+    const userId = currUserId[0];
 
     useEffect(() => {
         whoIsLooking !== 'Guest' && setIsLogged(true);
-        // },[setIsLogged, setWhoIsLooking, whoIsLooking]);
     }, []);
-
-    console.log('LOGGED' + isLogged);
-    console.log('USSSEEEE' + whoIsLooking);
 
     const activeStyles = {
         backgroundColor: '#F79234',
@@ -128,7 +108,7 @@ export const Header = (props) => {
                         )}
                         {isLogged && (
                             <NavLink
-                            to={`users/${props.userId}`}
+                                to={`users/${userId}`}
                                 className='nav header list links prof'
                                 id='nav-head-prof-link'
                                 style={({ isActive }) =>
