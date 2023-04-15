@@ -8,9 +8,13 @@ import {
     useParams,
 } from 'react-router-dom';
 import { loginUser } from '../../utils/service';
+import { useLogged } from '../../context/LoggedContext';
+import { useWhoIsLooking } from '../../context/CurrentUserContext';
+import { useEffect } from 'react';
 
 export async function loader({ request}) {
     return new URL(request.url).searchParams.get('message');
+    console.log('LOAD');
 }
 
 export async function action({ request}) {
@@ -18,13 +22,15 @@ export async function action({ request}) {
     const email = formData.get('email');
     const password = formData.get('pass'); 
 
+    console.log('ACTION');
+
     let pathname =
         new URL(request.url).searchParams.get('redirectTo') || '.';
 
     try {
         const data = await loginUser({ email, password });
         const token = data.accessToken;
-
+console.log('TOKEN'+token);
         if (token) {
             const user = {
                 email: data.email,
@@ -43,6 +49,21 @@ export async function action({ request}) {
 }
 
 export default function Login() {
+    const { isLogged, setIsLogged } = useLogged();
+    const { whoIsLooking, setWhoIsLooking } = useWhoIsLooking();
+    const userData = JSON.parse(localStorage.getItem('user'));
+
+    useEffect(() => {
+   console.log('EFFECT');
+        if(userData){
+            userData.userId ? setIsLogged(true) : setIsLogged(false);
+            userData.email? setWhoIsLooking(userData.email): setIsLogged('Guest');
+        }else{
+            setIsLogged(false);
+        }
+
+    },[setIsLogged,userData,whoIsLooking,setWhoIsLooking] );
+
     const navigation = useNavigation();
     const message = useLoaderData();
     const errorMessage = useActionData();

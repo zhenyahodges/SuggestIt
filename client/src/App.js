@@ -25,7 +25,7 @@ import Logout, {
 import Catalog, { loader as cardsLoader } from './components/Catalog/Catalog';
 import CardItem, {
     loader as cardLoader,
-    action as suggestAction
+    action as suggestAction,
 } from './components/Catalog/Card/CardItem';
 import {
     AddSuggestion,
@@ -42,20 +42,20 @@ import UserSuggs from './components/Profile/UserSuggs';
 import CreateCard, {
     action as createCardAction,
 } from './components/Profile/CreateCard';
-import { AuthContext, AuthProvider } from './context/AuthContext';
+import {CurrentUserProvider } from './context/CurrentUserContext';
 import { useState } from 'react';
 import EditCardItem, {
     loader as editCardLoader,
-    action as editCardAction}
-     from './components/Profile/EditCardItem';
+    action as editCardAction,
+} from './components/Profile/EditCardItem';
+import { LoggedProvider } from './context/LoggedContext';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
-    
         <Route
             path='/'
             element={<Root />}
-            loader={headerLoader}
+            // loader={headerLoader}
             errorElement={<NotFound />}
         >
             <Route index element={<Home />} />
@@ -74,14 +74,13 @@ const router = createBrowserRouter(
                 action={suggestAction}
                 errorElement={<NotFound />}
             />
-                <Route
+            <Route
                 path='cards/:cardId/edit'
                 element={<EditCardItem />}
                 loader={editCardLoader}
                 action={editCardAction}
                 errorElement={<NotFound />}
             />
-         
 
             {/* <Route
                 // path='cards/:cardId/:suggestionId'  
@@ -124,10 +123,7 @@ const router = createBrowserRouter(
                 // action={userProfileAction}
                 errorElement={<NotFound />}
             >
-                <Route 
-                index element={<UserCards />} 
-                loader={userCardsLoader} 
-                />
+                <Route index element={<UserCards />} loader={userCardsLoader} />
                 <Route
                     path='suggested'
                     element={<UserSuggs />}
@@ -141,18 +137,18 @@ const router = createBrowserRouter(
                     action={createCardAction}
                     errorElement={<NotFound />}
                 />
-               
             </Route>
             <Route path='*' element={<NotFound />} />
         </Route>
-
     )
 );
 function App() {
     return (
-        <AuthProvider>
+        <CurrentUserProvider>
+            <LoggedProvider>
             <RouterProvider router={router} />
-        </AuthProvider>
+            </LoggedProvider>
+        </CurrentUserProvider>
     );
 }
 

@@ -1,29 +1,37 @@
-import { useContext, useEffect } from 'react';
 import { NavLink, useNavigation } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
+import {  useWhoIsLooking } from '../../context/CurrentUserContext';
+import { useLogged } from '../../context/LoggedContext';
+import { requireAuth } from '../../utils/requireAuth';
+import { useEffect } from 'react';
+import { getUserInfo } from '../../utils/service';
 
 
+
+export async function loader({request}){
+    const { userId, token } = await requireAuth(request);
+    const res = await getUserInfo(token);
+    const { email } = res;
+    console.log('EMAIL'+email);
+
+    if(res){
+        return res;
+    }else{
+        return null;
+    }
+};
 
 export const Header = (props) => {
     const navigation = useNavigation();
-    const { isLogged, setIsLogged } = useAuth();
-    const {isUser, setIsUser } = useAuth();
+    const { whoIsLooking, setWhoIsLooking } = useWhoIsLooking();
+    const { isLogged, setIsLogged } = useLogged();
 
-    const [result] = Object.values(props);
-    // console.log('RESULT'+Object.keys(props))
-    const { whoIsLookin, isLoggedIn, userId } = result;
-    // console.log('DATA'+whoIsLookin, isLoggedIn, userId );
+    useEffect(()=>{
+        whoIsLooking!=='Guest' && setIsLogged(true);
+    // },[setIsLogged, setWhoIsLooking, whoIsLooking]);
+},[]);
 
-    useEffect(() => {
-        isLogged 
-        ? setIsLogged(true) 
-        : setIsLogged(false);
-    }, [setIsLogged]);
-
-
-
-
-
+    console.log('LOGGED'+isLogged);
+    console.log('USSSEEEE'+whoIsLooking);
 
     const activeStyles = {
         backgroundColor: '#F79234',
@@ -32,7 +40,6 @@ export const Header = (props) => {
     };
 
     return (
-        // <!-- || HEADER -->
         <header className='page header'>
             <section className='header container special-border'>
                 <div className='header-wrapper'>
@@ -43,12 +50,10 @@ export const Header = (props) => {
                     </h1>
                     <p className='subtitle-header'>
                         Ultimate Feedback
-                        {/* <!-- Suggestion polls for improvements --> */}
                     </p>
                     <p></p>
                 </div>
 
-                {/* <!-- ||HEADER NAV --> */}
                 <nav className='nav header'>
                     <ul className='nav header list'>
                         <NavLink
@@ -75,7 +80,6 @@ export const Header = (props) => {
                                 : 'Catalog'}
                         </NavLink>
 
-                        {/* visible when not logged in */}
                         {!isLogged && (
                             <NavLink
                                 to='login'
@@ -92,7 +96,6 @@ export const Header = (props) => {
                             </NavLink>
                         )}
 
-                        {/* LOGOUT visible when looged in only */}
                         {isLogged && (
                             <NavLink
                                 to='logout'
@@ -109,7 +112,6 @@ export const Header = (props) => {
                             </NavLink>
                         )}
 
-                        {/* visible when not logged in */}
                         {!isLogged && (
                             <NavLink
                                 to='register'
@@ -127,7 +129,7 @@ export const Header = (props) => {
                         )}
                         {isLogged && (
                             <NavLink
-                                to={`users/${userId}`}
+
                                 className='nav header list links prof'
                                 id='nav-head-prof-link'
                                 style={({ isActive }) =>
@@ -146,7 +148,7 @@ export const Header = (props) => {
                 </nav>
                 <div className='whos-lookin-wrapper'>
                     <p className='whos-lookin' id='whos-lookin'>
-                        {whoIsLookin}
+                        {whoIsLooking}
                     </p>
                 </div>
             </section>

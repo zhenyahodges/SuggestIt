@@ -1,8 +1,9 @@
 import { Form, redirect, useNavigate, useNavigation } from 'react-router-dom';
 import { logoutUser } from '../../utils/service';
 import { requireAuth } from '../../utils/requireAuth';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth, useWhoIsLooking } from '../../context/CurrentUserContext';
 import { useEffect } from 'react';
+import { useLogged } from '../../context/LoggedContext';
 
 export async function loader({ request }) {
     await requireAuth(request);
@@ -17,21 +18,27 @@ export async function action({ request }) {
 }
 
 export default function Logout() {
+    const { isLogged, setIsLogged } = useLogged();
+    const { whoIsLooking, setWhoIsLooking } = useWhoIsLooking();
     const navigation = useNavigation();
     const navigate = useNavigate();
 
     const onLogout = async () => {
         const { token } = JSON.parse(localStorage.getItem('user'));
-        await logoutUser(token);     
-    //  isLogged=false;
-    
+        await logoutUser(token);
+        localStorage.clear();
+        //  isLogged=false;    
+        setIsLogged(false);
+        setWhoIsLooking('Guest');
+   
         navigate('/');
     };
+   
 
     const onStay = () => {
-        const { userId } = JSON.parse(localStorage.getItem('user'));
-        console.log('UUU'+userId);
-        return navigate(`/users/${userId}`);
+        // const { userId } = JSON.parse(localStorage.getItem('user'));
+        // return navigate(`/users/${userId}`);
+        return navigate(-1);
     };
 
     return (
