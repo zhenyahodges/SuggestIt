@@ -9,52 +9,66 @@ import {
     useSubmit,
 } from 'react-router-dom';
 import { addSuggestion, getCards, onDeleteCard } from '../../../utils/service';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { requireAuth } from '../../../utils/requireAuth';
 
 let cardId;
 
 export async function loader({ params }) {
     cardId = params.cardId;
-    const res = await getCards(params.cardId);
+    const res = await getCards(cardId);
+    // const suggestions=await getSuggestions(cardId)
     return res;
 }
 export async function action({ request, params }) {
     const { userId, token } = await requireAuth();
     const formData = await request.formData();
     // console.log(formData);
-    const data = Object.entries(formData);
-    const suggestion = formData.get('sugg');
-    // console.log(data);
-    // console.log(suggestion);
+    const data = Object.entries('formData###'+formData);
+    const sugg= formData.get('sugg');
+    console.log(data);
+    console.log(sugg);
 
-    // try{
-    //   if(token){
-    //      await addSuggestion(token,suggestion,userId);
-    //        return redirect(`/users/${userId}`);
-    //   } else{
-    //     redirect('login');
-    //   }
-    // } catch (err) {
-    //     return err.message;
-    // }
+    try{
+      if(token){
+         await addSuggestion(token,sugg,userId);
+        //    return redirect(`/users/${userId}`);
+      } else{
+        redirect('login');
+      }
+    } catch (err) {
+        return err.message;
+    }
     return null;
 }
 
 export default function CardItem() {
     const navigation = useNavigation();
     const navigate = useNavigate();
-
-    const [sugg, setSugg] = useState();
-    const fetcher = useFetcher();
-
     const res = useLoaderData();
+
+//     const [sugg, setSugg] = useState();
+//     const fetcher = useFetcher();
+
+//     const ref = useRef();
+//     const data=fetcher.data;
+//     console.log('fetchherdATA##'+data);
+
+//  useEffect(() => {
+//     if (
+//       fetcher.state === "idle" &&
+//       fetcher.data?.ok
+//     ) {
+//       ref.current.reset();
+//     }
+//   }, [fetcher]);
  
     const ownerId=res._ownerId;
     const cardId=res._id;
     const brand=res.brand;
     const createdOn=res._createdOn;
     const updatedOn=res._updatedOn;
+    const suggs=res._suggs;
     
     const user = JSON.parse(localStorage.getItem('user'));
 
@@ -106,19 +120,56 @@ export default function CardItem() {
                             <p>HERE GO THE SUGGESTIONS</p>
                             <ul className='sugg-list'>
                                 {/* TODO: MAP SUGGESTIONS */}
-                                {/* {suggestions && suggestions.map((s) => <SuggestionItem id={s._id} key={s._id} {...s} />)}
-                            {_id.suggestions.map(s=>(<SuggestionItem key={s._id} {...s}/>))}  
+                                {/* {suggs && suggs.map((s) => <SuggestionItem id={s._id} key={s._id} {...s} />)}
+                            {_id.suggestions.map(s=>(<SuggestionItem key={s._id} {...s}/>))}   */}
 
-                            {card.suggestions &&
-     Object.values(card.suggestions).map((x) => (
-        <li key={x._id} className='sugg-item'>
-             <div className='sugg-item-wrapper'>
-               <p className='sugg-text'>
-                 <span className='author-nickname'>
-                      {x.userName}
-                </span> */}
-                                {/* SUGGESTION */}
-                                {/* {x.suggestion} */}
+                            {/* {card.suggestions &&  Object.values(card.suggestions).map((x) => (
+                                <li key={x._id} className='sugg-item'>
+                                <div className='sugg-item-wrapper'>
+                                   <p className='sugg-text'>
+                                  <span className='author-nickname'>
+                                      {x.userName}
+                               </span> */}
+
+                              {suggs && suggs.map(sugg=>{
+                                // {/* <!-- li start --> */}
+                               return (<li className="sugg-item"
+                                 key={sugg._id}>
+                                    <div className="sugg-item-wrapper">
+                                        <p className="sugg-text">
+                                            {/* <span className="author-nickname">
+                                                {author}
+                                                author
+                                            </span> */}
+                                        {/* {sugg.text} */}
+                                            SUGG TEXT
+                                            {/* <!--IF OWNER & NOT TIMED OUT --> */}
+                                            <span className="user-sug-list">
+                                                <Link to="#"
+                                                    className="edit-user-sugged link"
+                                                    >Edit</Link>                                                
+                                                <Link to="#"
+                                                    className="delete-user-sugged link"
+                                                    >Delete</Link>
+                                            </span>
+                                        </p>
+
+                                        <p className="sugg-ranking">
+                                            <span className="rank">{sugg.rank}15</span>
+
+                                            {/* <!-- LIKE DISABLED FOR GUESTS & OWNERS -->
+                                            <!--===!? LIKE LIMITED voting!?=== --> */}
+                                            <button className="sugg-like-link">
+                                                <i
+                                                    className="like fa-solid fa-circle-up"
+                                                ></i>
+                                            </button>
+                                        </p>
+                                    </div>
+                                </li>);
+                                // {/* <!-- li end--> */}}
+                              })  }
+                   
                             </ul>
                         </main>
 
@@ -132,7 +183,7 @@ export default function CardItem() {
                                 <div className='card-footer-links-wrapper'>
                                     {/* ADD-SUGGESTION LINK: visible for LOGGED (NOT OWNERS?) */}
                                     {/* {isAuthorized && !isOwner && (
-                                        // <AddSuggestion onsuggubmit={onsuggubmit}/>
+                                        // <Link>ddSuggestion onsuggubmit={onsuggubmit}/>
                                         <Link
                                             to={`/suggestions/${cardId}`}
                                             className='add-sugg-link'
@@ -142,10 +193,8 @@ export default function CardItem() {
                                     )} */}
 
                                     {/*------- LATER  */}
-                                    {/*  <a href="/" className="print details">Print</a> */}
-                                    {/*  <a href="/" className="print email details"
-                    >Email</a
-                    > */}
+                                    {/*  <Link to="/" className="print details">Print</Link> */}
+                                    {/*  <Link to="/" className="print email details">Email</Link> */}
 
                                     {/*------- LATER  */}
                                     {/*  VISIBLE FOR LOGGED OWNER ONLY */}
@@ -188,16 +237,14 @@ export default function CardItem() {
                                 </div>
                             </div>
                         </footer>
-                    </article>
-                    
-                    {/* // ===================== //{' '} */}
-                    {/* //  authorised & NOT owner- ADD SUGGESTION form  */}
-
-                    {isAuthorized && !isOwner && (
+                    </article>                   
+       
+                    {/* // //  authorised & NOT owner- ADD SUGGESTION form  */}
+                    {(isAuthorized && !isOwner) && (
                         <section className='add-sugg form-wrapper'>
                             {/* ?with or without li?  */}
-                            <fetcher.Form
-                                action={`/data/card/${cardId}/suggestions`}
+                            <Form
+                                action={'/data/suggestions'}
                                 method='post'
                                 id='add-form'
                                 className='add-sugg form'
@@ -241,31 +288,10 @@ export default function CardItem() {
                                         ? 'Submitting...'
                                         : 'Submit'}
                                 </button>
-                            </fetcher.Form>
-
-                            {/* SUGG PREVIEW -display for a brief period before confirming ? timed?*/}
-
-                            {/*  <div className="sugg-item-wrapper">
-<p className="sugg-text" placeholder="Suggestion">
-<span className="author">
-Me
-</span>
-Another suggestion for you
-</p>
-<p className="sugg-ranking">
-<span className="rank">10</span
-><a className="sugg-like-link"
-><i
-    className="like fa-solid fa-circle-up"
-></i
-></a>
-</p>
-</div>  */}
+                            </Form>                  
                         </section>
                     )}
                 </>
-
-                // =====================
             }
         </section>
     );
