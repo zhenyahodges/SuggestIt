@@ -7,51 +7,59 @@ import {
 import { getInfos, onDeleteInfo } from '../../../utils/service';
 import { requireAuth } from '../../../utils/requireAuth';
 
-export async function loader({ params }) {
-    //    let infoId = params.infoId;
-    const res = await getInfos(params.infoId);
+let token;
+export async function loader({ request, params }) {
+    // const cardId = params.infoId;
+    const res = await getInfos(params.infoId);  
     return res;
 }
-export async function action({ request, params }) {
-    const { userId, token } = await requireAuth();
-    const formData = await request.formData();
-    console.log(formData);
-    const data = Object.entries(formData);
-    console.log(data);
 
-    return null;
-}
+// export async function action({ request}) {
+//     const { userId, token } = await requireAuth();
+//     const formData = await request.formData();
+//     const data = Object.entries(formData);
+// console.log('DATA'+data);
+//     return null;
+// }
 
 export default function InfoItem() {
-    const info = useLoaderData();
     const navigation = useNavigation();
     const navigate = useNavigate();
+    const res = useLoaderData(); 
 
-    const [ownerId, title, text, web,createdOn, infoId] = info;
-    const user = JSON.parse(localStorage.getItem('user'));
+    const ownerId=res._ownerId;
+    const infoId=res._id;
+    const title=res.title;
+    const web=res.web;
+    const text=res.text;
+    const createdOn=res._createdOn;
+    const updatedOn=res._updatedOn;
 
-    let userId;
-    let token;
-    if (user) {
-        ({ token, userId } = user);
-    }
+//  console.log( ownerId+'ownerId'+cardId,title,web,text,createdOn,updatedOn);
 
-    let isOwner = false;
-    let isAuthorized = false;
+     const user = JSON.parse(localStorage.getItem('user'));
+ 
+     let userId;
+ 
+     if (user) {
+         ({ token, userId } = user);
+        //  console.log('USER=='+userId+'==TOKEN=='+token);
+     }
+ 
+     let isOwner = false;
+     let isAuthorized = false;
+ 
+     if (token) {
+         isAuthorized = true;
+     }
+     if (ownerId === userId) {
+         isOwner = true;
+     }
 
-    if (token) {
-        isAuthorized = true;
-    }
-    if (ownerId === userId) {
-        isOwner = true;
-    }
 
     const onDelete = async () => {
-        // const result = confirm('Are you sure you want to delete this card?');
-        // if (result) {
         await onDeleteInfo(infoId, token);
-        // navigate(-1);
-        // }
+        navigate('/infos');
     };
 
     return (
@@ -69,7 +77,6 @@ export default function InfoItem() {
                         <main className='card-main'>
                             <p>{web}</p>
                             <p>{text}</p>
-                           
                         </main>
 
                         <footer className='card-footer sugg-card foot'>

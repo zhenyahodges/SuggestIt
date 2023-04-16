@@ -10,17 +10,15 @@ export async function loader({request,params}){
 
 export async function action({request,params}){
     const {userId,token}=await requireAuth();
+    console.log(userId,token);
     const formData= await request.formData();
     const brand=formData.get('brand');
     const cardId=params.cardId;
-    const info={
-        brand,
-    };
 
     try{
       if(token){
-         await editCard(token,info,cardId);
-           return redirect(`/users/${userId}`);
+         await editCard(token,brand,cardId);
+           return redirect(`/cards/${cardId}`);
       } else{
         redirect('login');
       }
@@ -32,8 +30,13 @@ export async function action({request,params}){
 
 export default function EditCardItem() {
     const navigation = useNavigation();
-    const card = useLoaderData();
-    const [ownerId, brand, createdOn, cardId, suggestions] = card;
+    const res = useLoaderData();
+    const ownerId=res._ownerId;
+    const cardId=res._id;
+    const brand=res.brand;
+  
+    const createdOn=res._createdOn;
+    const updatedOn=res._updatedOn;
 
     return (
           <section className='user create edit'>

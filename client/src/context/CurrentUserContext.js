@@ -12,7 +12,7 @@ export const CurrentUserProvider = ({ children }) => {
     const userData = JSON.parse(localStorage.getItem('user'));
 
     useEffect(() => {
-        console.log('USER-SURR---' + userData);
+        // console.log('USER-SURR---' + userData);
         if (userData) {
             let email = userData.email;
             email ? setWhoIsLooking(email) : setWhoIsLooking('Guest');

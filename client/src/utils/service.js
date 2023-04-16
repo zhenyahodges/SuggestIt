@@ -17,7 +17,7 @@ export async function getCards(id) {
         return null;
     }
     const data = await res.json();
-    return Object.values(data);
+    return data;
 }
 
 export async function loginUser(creds) {
@@ -99,9 +99,11 @@ export async function createNewCard(token, brand, userId) {
     return data;
 }
 
-export async function editCard(token, info, cardId) {
+export async function editCard(token, brand,cardId) {
+    const info={brand};
+
     const res = await fetch(`${baseUrl}/data/cards/${cardId}`, {
-        method: 'put',
+        method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
             'X-Authorization': token,
@@ -195,7 +197,7 @@ export async function getUserCards(userId, token) {
             'X-Authorization': token,
         },
     });
-    console.log(res);
+    // console.log(res);
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
@@ -270,7 +272,7 @@ export async function addSuggestion(token, sugg, userId) {
 export async function getInfos(id) {
     const url = id ? `${baseUrl}/data/infos/${id}` : `${baseUrl}/data/infos`;
     const res = await fetch(url);
-
+// console.log('RESGETINFOS=='+res);
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
@@ -279,14 +281,16 @@ export async function getInfos(id) {
         return null;
     }
     const data = await res.json();
-    console.log(data);
-    return Object.values(data);
+    // console.log('DATA=='+ Object.entries(data));
+    // console.log('data'+data);
+    // return Object.values(data);
+    return data;
 }
 
 export async function createNewInfo(token, title, web,text, userId) {
     //  check creds!
     const creds = { title, web,text };
-    console.log('CREDS' + creds);
+    // console.log('CREDS' + creds);
     const res = await fetch(`${baseUrl}/data/infos`, {
         method: 'post',
         headers: {
@@ -307,9 +311,13 @@ export async function createNewInfo(token, title, web,text, userId) {
     return data;
 }
 
-export async function editInfo(token, info, infoId) {
+export async function editInfo(token, title, web,text, infoId) {
+    const info={title, web,text,};
+    // console.log(info);
+    // console.log(infoId);
+    // console.log(token);
     const res = await fetch(`${baseUrl}/data/infos/${infoId}`, {
-        method: 'put',
+        method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
             'X-Authorization': token,
@@ -337,7 +345,7 @@ export async function getUserInfos(userId, token) {
             'X-Authorization': token,
         },
     });
-    console.log(res);
+    // console.log(res);
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
@@ -349,10 +357,10 @@ export async function getUserInfos(userId, token) {
     return data;
 }
 
-export async function onDeleteInfo(id, token) {
+export async function onDeleteInfo(infoId, token) {
     // console.log('token=='+token+'id=='+id);
 
-    const res = await fetch(`${baseUrl}/data/infos/${id}`, {
+    const res = await fetch(`${baseUrl}/data/infos/${infoId}`, {
         method: 'delete',
         headers: {
             'Content-Type': 'application/json',

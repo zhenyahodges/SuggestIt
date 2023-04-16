@@ -22,11 +22,11 @@ export async function loader({ params }) {
 export async function action({ request, params }) {
     const { userId, token } = await requireAuth();
     const formData = await request.formData();
-    console.log(formData);
+    // console.log(formData);
     const data = Object.entries(formData);
     const suggestion = formData.get('sugg');
-    console.log(data);
-    console.log(suggestion);
+    // console.log(data);
+    // console.log(suggestion);
 
     // try{
     //   if(token){
@@ -42,15 +42,20 @@ export async function action({ request, params }) {
 }
 
 export default function CardItem() {
+    const navigation = useNavigation();
+    const navigate = useNavigate();
+
     const [sugg, setSugg] = useState();
     const fetcher = useFetcher();
 
-    const card = useLoaderData();
-    const navigation = useNavigation();
-    const navigate = useNavigate();
-    // let submit = useSubmit();
-
-    const [ownerId, brand, createdOn, cardId, suggestions] = card;
+    const res = useLoaderData();
+ 
+    const ownerId=res._ownerId;
+    const cardId=res._id;
+    const brand=res.brand;
+    const createdOn=res._createdOn;
+    const updatedOn=res._updatedOn;
+    
     const user = JSON.parse(localStorage.getItem('user'));
 
     let userId;
@@ -74,11 +79,8 @@ export default function CardItem() {
     // };
 
     const onDelete = async () => {
-        // const result = confirm('Are you sure you want to delete this card?');
-        // if (result) {
         await onDeleteCard(cardId, token);
-        // navigate(-1);
-        // }
+        navigate('/cards');
     };
 
     // const handleSubmit = (e) => {

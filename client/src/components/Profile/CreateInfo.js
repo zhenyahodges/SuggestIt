@@ -9,7 +9,7 @@ export async function action({ request }) {
     const title = formData.get('title');
     const web = formData.get('web');
     const text = formData.get('text');
-    console.log(title, web);
+    // console.log(title, web);
     // const info={
     //     title,text,web
     // };
@@ -17,6 +17,7 @@ export async function action({ request }) {
     try {
         if (token) {
             await createNewInfo(token, title, web,text, userId);
+           console.log('CREATE=='+token, title, web,text, userId);
             return redirect('/infos');
         } else {
             redirect('login');

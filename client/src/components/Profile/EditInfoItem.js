@@ -4,25 +4,25 @@ import { requireAuth } from '../../utils/requireAuth';
 
 export async function loader({ request, params }) {
     await requireAuth(request);
-    const res = await getInfos(params.infoId);
+    const res = await getInfos(Object.values(params));
     return res;
 }
 
 export async function action({ request, params }) {
-    const { userId, token } = await requireAuth();
+    const {userId,  token } = await requireAuth();
     const formData = await request.formData();
     const title = formData.get('title');
+    const web = formData.get('web');
     const text = formData.get('text');
-    const infoId = params.cardId;
-    const info = {
-        title,
-        text,
-    };
+   
+    const infoId = (params.infoId);
 
-    try {
+        try {
         if (token) {
-            await editInfo(token, info, infoId);
-            return redirect(`/users/${userId}`);
+            await editInfo(token, title, web,text, infoId);
+            // console.log('here');
+            return redirect(`/infos/${infoId}`);
+            // return redirect(`/users/${userId}`);
         } else {
             redirect('login');
         }
@@ -33,8 +33,15 @@ export async function action({ request, params }) {
 
 export default function EditInfoItem() {
     const navigation = useNavigation();
-    const card = useLoaderData();
-    const [ownerId, title, text, createdOn, infoId, suggestions] = card;
+    const res = useLoaderData();
+    
+    const ownerId=res._ownerId;
+    const cardId=res._id;
+    const title=res.title;
+    const web=res.web;
+    const text=res.text;
+    const createdOn=res._createdOn;
+    const updatedOn=res._updatedOn;
 
     return (
         <section className='user create edit'>
@@ -62,8 +69,26 @@ export default function EditInfoItem() {
                             required
                         />
                     </div>
-                    <div className='wrap info-decsription'>
-                        <label htmlFor='text'>Info Description</label>
+                    <div className='wrap card-title'>
+                        <label htmlFor='web' className='lbl card-name'>
+                            Website
+                        </label>
+                        <input
+                            type='text'
+                            className='card-name'
+                            name='web'
+                            id='web'
+                            placeholder='Enter title'
+                            minLength='3'
+                            maxLength='30'
+                            defaultValue={web}
+                            required
+                        />
+                    </div>
+                    <div className='wrap card-title'>
+                        <label htmlFor='text' className='lbl card-name'>
+                            Text
+                        </label>
                         <textarea
                             className='sugg-text-add'
                             id='text'
@@ -71,12 +96,12 @@ export default function EditInfoItem() {
                             name='text'
                             rows='4'
                             cols='50'
-                            maxLength='500'
-                            placeholder='Type Info Description Here'
+                            maxLength='300'
+                            // placeholder='Type your text here'
+                            defaultValue={text}
                             required
                         ></textarea>
                     </div>
-
                     {/* LATER--CODE */}
 
                     {/* <!-- <div className="wrap card-timeout">
