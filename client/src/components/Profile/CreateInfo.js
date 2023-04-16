@@ -3,28 +3,31 @@ import { createNewInfo } from '../../utils/service';
 import { requireAuth } from '../../utils/requireAuth';
 
 export async function action({ request }) {
-    const { userId, token } = await requireAuth();
+    if(window.confirm('Are you sure you want to submit?')){
+        const { userId, token } = await requireAuth();
 
-    const formData = await request.formData();
-    const title = formData.get('title');
-    const web = formData.get('web');
-    const text = formData.get('text');
-    // console.log(title, web);
-    // const info={
-    //     title,text,web
-    // };
-
-    try {
-        if (token) {
-            await createNewInfo(token, title, web,text, userId);
-           console.log('CREATE=='+token, title, web,text, userId);
-            return redirect('/infos');
-        } else {
-            redirect('login');
+        const formData = await request.formData();
+        const title = formData.get('title');
+        const web = formData.get('web');
+        const text = formData.get('text');
+        // console.log(title, web);
+        // const info={
+        //     title,text,web
+        // };
+    
+        try {
+            if (token) {
+                await createNewInfo(token, title, web,text, userId);
+               console.log('CREATE=='+token, title, web,text, userId);
+                return redirect('/infos');
+            } else {
+                redirect('login');
+            }
+        } catch (err) {
+            return err.message;
         }
-    } catch (err) {
-        return err.message;
     }
+    
 }
 
 export default function CreateCard() {
@@ -50,7 +53,7 @@ export default function CreateCard() {
                             placeholder='Enter title'
                             minLength='3'
                             maxLength='30'
-                            autoFocus='true'
+                            autoFocus
                             required
                         />
                     </div>

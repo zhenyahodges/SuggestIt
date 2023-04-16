@@ -10,7 +10,7 @@ import { requireAuth } from '../../../utils/requireAuth';
 let token;
 export async function loader({ request, params }) {
     // const cardId = params.infoId;
-    const res = await getInfos(params.infoId);  
+    const res = await getInfos(params.infoId);
     return res;
 }
 
@@ -25,41 +25,42 @@ export async function loader({ request, params }) {
 export default function InfoItem() {
     const navigation = useNavigation();
     const navigate = useNavigate();
-    const res = useLoaderData(); 
+    const res = useLoaderData();
 
-    const ownerId=res._ownerId;
-    const infoId=res._id;
-    const title=res.title;
-    const web=res.web;
-    const text=res.text;
-    const createdOn=res._createdOn;
-    const updatedOn=res._updatedOn;
+    const ownerId = res._ownerId;
+    const infoId = res._id;
+    const title = res.title;
+    const web = res.web;
+    const text = res.text;
+    const createdOn = res._createdOn;
+    const updatedOn = res._updatedOn;
 
-//  console.log( ownerId+'ownerId'+cardId,title,web,text,createdOn,updatedOn);
+    //  console.log( ownerId+'ownerId'+cardId,title,web,text,createdOn,updatedOn);
 
-     const user = JSON.parse(localStorage.getItem('user'));
- 
-     let userId;
- 
-     if (user) {
-         ({ token, userId } = user);
+    const user = JSON.parse(localStorage.getItem('user'));
+
+    let userId;
+
+    if (user) {
+        ({ token, userId } = user);
         //  console.log('USER=='+userId+'==TOKEN=='+token);
-     }
- 
-     let isOwner = false;
-     let isAuthorized = false;
- 
-     if (token) {
-         isAuthorized = true;
-     }
-     if (ownerId === userId) {
-         isOwner = true;
-     }
+    }
 
+    let isOwner = false;
+    let isAuthorized = false;
+
+    if (token) {
+        isAuthorized = true;
+    }
+    if (ownerId === userId) {
+        isOwner = true;
+    }
 
     const onDelete = async () => {
-        await onDeleteInfo(infoId, token);
-        navigate('/infos');
+        if (window.confirm('Are you sure you want to submit?')) {
+            await onDeleteInfo(infoId, token);
+            navigate('/infos');
+        }
     };
 
     return (

@@ -73,7 +73,7 @@ export default function Register() {
                         minLength='3'
                         maxLength='64'
                         autoComplete='given-name'
-                        autoFocus='true'
+                        autoFocus
                         required
                     />
                 </div>

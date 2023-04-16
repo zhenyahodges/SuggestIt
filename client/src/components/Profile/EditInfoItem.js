@@ -9,39 +9,41 @@ export async function loader({ request, params }) {
 }
 
 export async function action({ request, params }) {
-    const {userId,  token } = await requireAuth();
-    const formData = await request.formData();
-    const title = formData.get('title');
-    const web = formData.get('web');
-    const text = formData.get('text');
-   
-    const infoId = (params.infoId);
+    if (window.confirm('Are you sure you want to submit?')) {
+        const { userId, token } = await requireAuth();
+        const formData = await request.formData();
+        const title = formData.get('title');
+        const web = formData.get('web');
+        const text = formData.get('text');
+
+        const infoId = params.infoId;
 
         try {
-        if (token) {
-            await editInfo(token, title, web,text, infoId);
-            // console.log('here');
-            return redirect(`/infos/${infoId}`);
-            // return redirect(`/users/${userId}`);
-        } else {
-            redirect('login');
+            if (token) {
+                await editInfo(token, title, web, text, infoId);
+                // console.log('here');
+                return redirect(`/infos/${infoId}`);
+                // return redirect(`/users/${userId}`);
+            } else {
+                redirect('login');
+            }
+        } catch (err) {
+            return err.message;
         }
-    } catch (err) {
-        return err.message;
     }
 }
 
 export default function EditInfoItem() {
     const navigation = useNavigation();
     const res = useLoaderData();
-    
-    const ownerId=res._ownerId;
-    const cardId=res._id;
-    const title=res.title;
-    const web=res.web;
-    const text=res.text;
-    const createdOn=res._createdOn;
-    const updatedOn=res._updatedOn;
+
+    const ownerId = res._ownerId;
+    const cardId = res._id;
+    const title = res.title;
+    const web = res.web;
+    const text = res.text;
+    const createdOn = res._createdOn;
+    const updatedOn = res._updatedOn;
 
     return (
         <section className='user create edit'>
@@ -66,7 +68,7 @@ export default function EditInfoItem() {
                             minLength='3'
                             maxLength='30'
                             defaultValue={title}
-                            autoFocus='true'
+                            autoFocus
                             required
                         />
                     </div>

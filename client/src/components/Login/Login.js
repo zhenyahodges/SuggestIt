@@ -81,7 +81,7 @@ export default function Login() {
                         minLength='3'
                         maxLength='64'
                         autoComplete='email'
-                        autoFocus='true'
+                        autoFocus
                         pattern='^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
                         required
                     />

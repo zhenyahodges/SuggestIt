@@ -2,24 +2,25 @@ import { Form, redirect, useNavigation } from 'react-router-dom';
 import { createNewCard } from '../../utils/service';
 import { requireAuth } from '../../utils/requireAuth';
 
-export async function action({request}){
-    const {userId,token}=await requireAuth();
+export async function action({ request }) {
+    if (window.confirm('Are you sure you want to submit?')) {
+        const { userId, token } = await requireAuth();
 
-    const formData= await request.formData();
-    const brand=formData.get('brand');
+        const formData = await request.formData();
+        const brand = formData.get('brand');
 
-    try{
-      if(token){
-         await createNewCard(token,brand,userId);
-           return redirect(`/users/${userId}`);
-      } else{
-        redirect('login');
-      }
-    } catch (err) {
-        return err.message;
+        try {
+            if (token) {
+                await createNewCard(token, brand, userId);
+                return redirect(`/users/${userId}`);
+            } else {
+                redirect('login');
+            }
+        } catch (err) {
+            return err.message;
+        }
     }
 }
-
 
 export default function CreateCard() {
     const navigation = useNavigation();
@@ -44,7 +45,7 @@ export default function CreateCard() {
                             placeholder='Enter title'
                             minLength='3'
                             maxLength='30'
-                            autoFocus='true'
+                            autoFocus
                             required
                         />
                     </div>
@@ -65,7 +66,7 @@ export default function CreateCard() {
                             required
                         />
                     </div> */}
-                   {/* <div className="wrap card-timeout">
+                    {/* <div className="wrap card-timeout">
                       <label
                           htmlFor="card-timeout"
                           className="lbl card-timeout"

@@ -9,22 +9,25 @@ export async function loader({request,params}){
 }
 
 export async function action({request,params}){
-    const {userId,token}=await requireAuth();
-    console.log(userId,token);
-    const formData= await request.formData();
-    const brand=formData.get('brand');
-    const cardId=params.cardId;
-
-    try{
-      if(token){
-         await editCard(token,brand,cardId);
-           return redirect(`/cards/${cardId}`);
-      } else{
-        redirect('login');
-      }
-    } catch (err) {
-        return err.message;
+    if (window.confirm('Are you sure you want to submit?')) {
+        const {userId,token}=await requireAuth();
+        console.log(userId,token);
+        const formData= await request.formData();
+        const brand=formData.get('brand');
+        const cardId=params.cardId;
+    
+        try{
+          if(token){
+             await editCard(token,brand,cardId);
+               return redirect(`/cards/${cardId}`);
+          } else{
+            redirect('login');
+          }
+        } catch (err) {
+            return err.message;
+        }
     }
+   
 }
 
 
@@ -61,7 +64,7 @@ export default function EditCardItem() {
                             minLength='3'
                             maxLength='30'
                             defaultValue={brand}
-                            autoFocus='true'
+                            autoFocus
                             required
                         />
                     </div>
