@@ -50,6 +50,7 @@ export default function CreateCard() {
                             placeholder='Enter title'
                             minLength='3'
                             maxLength='30'
+                            autoFocus='true'
                             required
                         />
                     </div>

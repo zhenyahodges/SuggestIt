@@ -61,6 +61,7 @@ export default function EditCardItem() {
                             minLength='3'
                             maxLength='30'
                             defaultValue={brand}
+                            autoFocus='true'
                             required
                         />
                     </div>

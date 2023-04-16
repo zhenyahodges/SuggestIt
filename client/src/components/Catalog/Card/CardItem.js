@@ -195,7 +195,7 @@ export default function CardItem() {
                         <section className='add-sugg form-wrapper'>
                             {/* ?with or without li?  */}
                             <fetcher.Form
-                                // action={`/${cardId}`}
+                                action={`/data/card/${cardId}/suggestions`}
                                 method='post'
                                 id='add-form'
                                 className='add-sugg form'
@@ -216,9 +216,7 @@ export default function CardItem() {
                                     rows='4'
                                     cols='50'
                                     maxLength='150'
-                                    placeholder='Type your suggestion here'
-                                    // value={sugg}
-                                    // onChange={handleChange}
+                                    placeholder='Type your suggestion here'                               
                                     required
                                 ></textarea>
                                 <span

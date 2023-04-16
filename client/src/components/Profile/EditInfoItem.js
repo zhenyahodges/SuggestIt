@@ -66,6 +66,7 @@ export default function EditInfoItem() {
                             minLength='3'
                             maxLength='30'
                             defaultValue={title}
+                            autoFocus='true'
                             required
                         />
                     </div>
