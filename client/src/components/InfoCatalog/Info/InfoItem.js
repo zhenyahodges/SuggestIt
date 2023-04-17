@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 import { getInfos, onDeleteInfo } from '../../../utils/service';
 import { requireAuth } from '../../../utils/requireAuth';
+import {EmailShareButton} from 'react-share';
 
 let token;
 export async function loader({ request, params }) {
@@ -63,6 +64,8 @@ export default function InfoItem() {
         }
     };
 
+
+
     return (
         //  DETAILS vis for all
         <section className='details-view container'>
@@ -83,27 +86,15 @@ export default function InfoItem() {
                         <footer className='card-footer sugg-card foot'>
                             <div className='card-footer-content'>
                                 {/* <p className='card-footer-owner'>Owner</p> */}
-                                {/* <p className='card-footer-text'>
-                                    Thank you for your contributions!
-                                </p> */}
-
                                 <div className='card-footer-links-wrapper'>
-                                    {/* ADD-SUGGESTION LINK: visible for LOGGED (NOT OWNERS?) */}
-                                    {/* {isAuthorized && !isOwner && (
-                                        // <AddSuggestion onsuggubmit={onsuggubmit}/>
-                                        <Link
-                                            to={`/suggestions/${cardId}`}
-                                            className='add-sugg-link'
-                                        >
-                                            Suggest
-                                        </Link>
-                                    )} */}
+                                   
 
                                     {/*------- LATER  */}
-                                    {/*  <a href="/" className="print details">Print</a> */}
-                                    {/*  <a href="/" className="print email details"
-                    >Email</a
-                    > */}
+                                    <EmailShareButton>
+                                        <span className='print details'>
+                                            Email
+                                        </span>
+                                    </EmailShareButton>
 
                                     {/*------- LATER  */}
                                     {/*  VISIBLE FOR LOGGED OWNER ONLY */}

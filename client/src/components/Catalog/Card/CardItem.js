@@ -11,6 +11,7 @@ import {
 import { addSuggestion, getCards, onDeleteCard } from '../../../utils/service';
 import { useEffect, useRef, useState } from 'react';
 import { requireAuth } from '../../../utils/requireAuth';
+import {EmailShareButton} from 'react-share';
 
 let cardId;
 
@@ -20,22 +21,23 @@ export async function loader({ params }) {
     // const suggestions=await getSuggestions(cardId)
     return res;
 }
+
 export async function action({ request, params }) {
     const { userId, token } = await requireAuth();
     const formData = await request.formData();
     // console.log(formData);
-    const data = Object.entries('formData###'+formData);
-    const sugg= formData.get('sugg');
+    const data = Object.entries('formData###' + formData);
+    const suggestion = formData.get('suggestion');
     console.log(data);
-    console.log(sugg);
+    console.log(suggestion);
 
-    try{
-      if(token){
-         await addSuggestion(token,sugg,userId);
-        //    return redirect(`/users/${userId}`);
-      } else{
-        redirect('login');
-      }
+    try {
+        if (token) {
+            await addSuggestion(token, suggestion, userId);
+            //    return redirect(`/users/${userId}`);
+        } else {
+            redirect('login');
+        }
     } catch (err) {
         return err.message;
     }
@@ -46,30 +48,36 @@ export default function CardItem() {
     const navigation = useNavigation();
     const navigate = useNavigate();
     const res = useLoaderData();
+    const [suggestions, setSuggestions] = useState([]);
 
-//     const [sugg, setSugg] = useState();
-//     const fetcher = useFetcher();
+    const ownerId = res._ownerId;
+    const cardId = res._id;
+    const brand = res.brand;
+    const createdOn = res._createdOn;
+    const updatedOn = res._updatedOn;
+    const suggested = res._suggestions;
 
-//     const ref = useRef();
-//     const data=fetcher.data;
-//     console.log('fetchherdATA##'+data);
+    useEffect(()=>{
+        suggested &&
+        setSuggestions(suggested);
 
-//  useEffect(() => {
-//     if (
-//       fetcher.state === "idle" &&
-//       fetcher.data?.ok
-//     ) {
-//       ref.current.reset();
-//     }
-//   }, [fetcher]);
- 
-    const ownerId=res._ownerId;
-    const cardId=res._id;
-    const brand=res.brand;
-    const createdOn=res._createdOn;
-    const updatedOn=res._updatedOn;
-    const suggs=res._suggs;
-    
+    },[setSuggestions]);
+
+    //     const fetcher = useFetcher();
+
+    //     const ref = useRef();
+    //     const data=fetcher.data;
+    //     console.log('fetchherdATA##'+data);
+
+    //  useEffect(() => {
+    //     if (
+    //       fetcher.state === "idle" &&
+    //       fetcher.data?.ok
+    //     ) {
+    //       ref.current.reset();
+    //     }
+    //   }, [fetcher]);
+
     const user = JSON.parse(localStorage.getItem('user'));
 
     let userId;
@@ -93,11 +101,15 @@ export default function CardItem() {
     // };
 
     const onDelete = async () => {
-        if(window.confirm('Are you sure you want to delete?')){
-        await onDeleteCard(cardId, token);
-        navigate(`/users/${userId}`);
+        if (window.confirm('Are you sure you want to delete?')) {
+            await onDeleteCard(cardId, token);
+            navigate(`/users/${userId}`);
         }
     };
+
+    function onPrint(e) {
+        window.print();
+    }
 
     // const handleSubmit = (e) => {
     //     e.preventDefault();
@@ -119,57 +131,54 @@ export default function CardItem() {
                         <main className='card-main'>
                             <p>HERE GO THE SUGGESTIONS</p>
                             <ul className='sugg-list'>
-                                {/* TODO: MAP SUGGESTIONS */}
-                                {/* {suggs && suggs.map((s) => <SuggestionItem id={s._id} key={s._id} {...s} />)}
-                            {_id.suggestions.map(s=>(<SuggestionItem key={s._id} {...s}/>))}   */}
+                                {/* SUGGESTIONS */}
+                                {suggestions &&
+                                    suggestions.map((sugg) => {
+                                         return (
+                                            <li
+                                                className='sugg-item'
+                                                key={sugg._id}
+                                            >
+                                                <div className='sugg-item-wrapper'>
+                                                    <p className='sugg-text'>
+                                                        {/* {sugg.text} */}
+                                                        SUGG TEXT
+                                                        {/* <!--IF OWNER & NOT TIMED OUT --> */}
+                                                        <span className='user-sug-list'>
+                                                            <Link
+                                                                to='#'
+                                                                className='edit-user-sugged link'
+                                                            >
+                                                                Edit
+                                                            </Link>
+                                                            <Link
+                                                                to='#'
+                                                                className='delete-user-sugged link'
+                                                            >
+                                                                Delete
+                                                            </Link>
+                                                        </span>
+                                                    </p>
 
-                            {/* {card.suggestions &&  Object.values(card.suggestions).map((x) => (
-                                <li key={x._id} className='sugg-item'>
-                                <div className='sugg-item-wrapper'>
-                                   <p className='sugg-text'>
-                                  <span className='author-nickname'>
-                                      {x.userName}
-                               </span> */}
+                                                    <p className='sugg-ranking'>
+                                                        <span className='rank'>
+                                                            {sugg.rank}15
+                                                        </span>
 
-                              {suggs && suggs.map(sugg=>{
-                                // {/* <!-- li start --> */}
-                               return (<li className="sugg-item"
-                                 key={sugg._id}>
-                                    <div className="sugg-item-wrapper">
-                                        <p className="sugg-text">
-                                            {/* <span className="author-nickname">
-                                                {author}
-                                                author
-                                            </span> */}
-                                        {/* {sugg.text} */}
-                                            SUGG TEXT
-                                            {/* <!--IF OWNER & NOT TIMED OUT --> */}
-                                            <span className="user-sug-list">
-                                                <Link to="#"
-                                                    className="edit-user-sugged link"
-                                                    >Edit</Link>                                                
-                                                <Link to="#"
-                                                    className="delete-user-sugged link"
-                                                    >Delete</Link>
-                                            </span>
-                                        </p>
-
-                                        <p className="sugg-ranking">
-                                            <span className="rank">{sugg.rank}15</span>
-
-                                            {/* <!-- LIKE DISABLED FOR GUESTS & OWNERS -->
+                                                        {/* <!-- LIKE DISABLED FOR GUESTS & OWNERS -->
                                             <!--===!? LIKE LIMITED voting!?=== --> */}
-                                            <button className="sugg-like-link">
-                                                <i
-                                                    className="like fa-solid fa-circle-up"
-                                                ></i>
-                                            </button>
-                                        </p>
-                                    </div>
-                                </li>);
-                                // {/* <!-- li end--> */}}
-                              })  }
-                   
+                                                        <button className='sugg-like-link'>
+                                                            {/* if voted down=>vote up */}
+                                                            <i className='like fa-solid fa-circle-up'></i>
+                                                            {/* if voted up=>vote down */}
+                                                            <i class="fa-solid fa-circle-down"></i>
+                                                        </button>
+                                                    </p>
+                                                </div>
+                                            </li>
+                                        );
+                                        // {/* <!-- li end--> */}}
+                                    })}
                             </ul>
                         </main>
 
@@ -193,8 +202,18 @@ export default function CardItem() {
                                     )} */}
 
                                     {/*------- LATER  */}
-                                    {/*  <Link to="/" className="print details">Print</Link> */}
-                                    {/*  <Link to="/" className="print email details">Email</Link> */}
+                                    <Link
+                                        to='/'
+                                        className='print details'
+                                        onClick={onPrint}
+                                    >
+                                        Print
+                                    </Link>
+                                    <EmailShareButton>
+                                        <span className='print details'>
+                                            Email
+                                        </span>
+                                    </EmailShareButton>
 
                                     {/*------- LATER  */}
                                     {/*  VISIBLE FOR LOGGED OWNER ONLY */}
@@ -237,10 +256,10 @@ export default function CardItem() {
                                 </div>
                             </div>
                         </footer>
-                    </article>                   
-       
+                    </article>
+
                     {/* // //  authorised & NOT owner- ADD SUGGESTION form  */}
-                    {(isAuthorized && !isOwner) && (
+                    {isAuthorized && !isOwner && (
                         <section className='add-sugg form-wrapper'>
                             {/* ?with or without li?  */}
                             <Form
@@ -252,20 +271,20 @@ export default function CardItem() {
                             >
                                 <h2>Add a Suggestion</h2>
                                 <p>
-                                    <label htmlFor='sugg'>
+                                    <label htmlFor='suggestion'>
                                         Your Suggestion:
                                     </label>
                                 </p>
 
                                 <textarea
                                     className='sugg-text-add'
-                                    id='sugg'
+                                    id='suggestion'
                                     form='add-form'
-                                    name='sugg'
+                                    name='suggestion'
                                     rows='4'
                                     cols='50'
                                     maxLength='150'
-                                    placeholder='Type your suggestion here'                               
+                                    placeholder='Type your suggestion here'
                                     required
                                 ></textarea>
                                 <span
@@ -288,7 +307,7 @@ export default function CardItem() {
                                         ? 'Submitting...'
                                         : 'Submit'}
                                 </button>
-                            </Form>                  
+                            </Form>
                         </section>
                     )}
                 </>

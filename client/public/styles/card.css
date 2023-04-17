@@ -123,13 +123,13 @@
   /* LINKS */
   .add-sugg-link,
   .vote-sugg-link,
-  .details-link {
+  .details-link{
       color: var(--clr-highlight);
   }
 
   .add-sugg-link:hover,
   /* .vote-sugg-link:hover, */
-  .details-link:hover {
+  .details-link:hover{
       color: var(--clr-light);
   }
 
