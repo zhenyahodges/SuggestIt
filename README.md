@@ -12,12 +12,8 @@ ReactJS Course. Details of the assignment are available [here](https://github.co
 
  * createBrowserRouter  with v6.4 data APIs like loader and actions
 #
-
 ## **About**
-
-
 Suggest<span style="color:#F79234">**It**</span> is a web application which provides a simple interface for receiving feedback and suggestions for improvements for companies.
-
 #
 
 ### <span style="color:#c2e2ee">**Welcome**</span>
@@ -29,10 +25,8 @@ Suggest<span style="color:#F79234">**It**</span> is a web application which prov
 ### <span style="color:#c2e2ee">Catalog</span>
 
 Guests & Logged Users can view the Catalog with feedback cards.
-
 #
-### <span style="color:#c2e2ee">**Details**</span>
-
+### <span style="color:#c2e2ee">**Card Details**</span>
 Guests & Logged Users can view the Details of feedback cards.
 
 Logged users, NOT owners can:
@@ -46,14 +40,11 @@ Logged users, owners can:
 * Email card
 
 Guests cannot edit or delete a card, vote for or add a suggestion.
-
-
 #
 ### <span style="color:#c2e2ee">**Info Catalog**</span>
 Additional Info Catalog.
-
 #
-### <span style="color:#c2e2ee">**Details**</span>
+### <span style="color:#c2e2ee">**Info Card Details**</span>
 Guests & Logged Users can view the Details of info cards.
 
 Logged users, NOT owners can:
@@ -67,10 +58,8 @@ Logged users, owners can:
 * Email card
 
 Guests cannot edit or delete a card.
-
 #
 ### <span style="color:#c2e2ee">**Profile**</span>
-
 Logged users can:
 * View their details
 * View the feedback cards they created, edit & delete them.
