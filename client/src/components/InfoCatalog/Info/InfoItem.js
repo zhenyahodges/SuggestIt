@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 import { getInfos, onDeleteInfo } from '../../../utils/service';
 import { requireAuth } from '../../../utils/requireAuth';
-import {EmailShareButton} from 'react-share';
+import { EmailShareButton } from 'react-share';
 
 let token;
 export async function loader({ request, params }) {
@@ -64,7 +64,11 @@ export default function InfoItem() {
         }
     };
 
-
+    function onPrint(e) {
+        e.preventDefault();
+        window.print();
+        return false;
+    }
 
     return (
         //  DETAILS vis for all
@@ -87,9 +91,14 @@ export default function InfoItem() {
                             <div className='card-footer-content'>
                                 {/* <p className='card-footer-owner'>Owner</p> */}
                                 <div className='card-footer-links-wrapper'>
-                                   
-
                                     {/*------- LATER  */}
+                                    <Link
+                                        to='/'
+                                        className='print details'
+                                        onClick={onPrint}
+                                    >
+                                        Print
+                                    </Link>
                                     <EmailShareButton>
                                         <span className='print details'>
                                             Email

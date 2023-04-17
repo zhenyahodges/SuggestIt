@@ -108,7 +108,9 @@ export default function CardItem() {
     };
 
     function onPrint(e) {
+        e.preventDefault();
         window.print();
+        return false;
     }
 
     // const handleSubmit = (e) => {
@@ -202,7 +204,9 @@ export default function CardItem() {
                                     )} */}
 
                                     {/*------- LATER  */}
-                                    <Link
+                                   {(isAuthorized && isOwner) && 
+                                   (<>
+                                   <Link
                                         to='/'
                                         className='print details'
                                         onClick={onPrint}
@@ -214,6 +218,8 @@ export default function CardItem() {
                                             Email
                                         </span>
                                     </EmailShareButton>
+                                    </>)
+                                   } 
 
                                     {/*------- LATER  */}
                                     {/*  VISIBLE FOR LOGGED OWNER ONLY */}

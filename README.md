@@ -40,8 +40,32 @@ Logged users, NOT owners can:
 Logged users, owners can:
 * Edit a card they created.
 * Delete a card they created.
+* Print card
+* Email card
 
 Guests cannot edit or delete a card, vote for or add a suggestion.
+#
+
+### <span style="color:#c2e2ee">Info Catalog</span>
+Additional Info Catalog.
+Guests & Logged Users can view the Catalog with info cards.
+#
+
+### <span style="color:#c2e2ee">**Details**</span>
+
+Guests & Logged Users can view the Details of info cards.
+
+Logged users, NOT owners can:
+* Print card
+* Email card
+
+Logged users, owners can:
+* Edit a card they created.
+* Delete a card they created.
+* Print card
+* Email card
+
+Guests cannot edit or delete a card.
 #
 
 ### <span style="color:#c2e2ee">**Profile**</span>

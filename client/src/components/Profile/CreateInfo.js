@@ -18,7 +18,7 @@ export async function action({ request }) {
         try {
             if (token) {
                 await createNewInfo(token, title, web,text, userId);
-               console.log('CREATE=='+token, title, web,text, userId);
+            //    console.log('CREATE=='+token, title, web,text, userId);
                 return redirect('/infos');
             } else {
                 redirect('login');
@@ -84,9 +84,7 @@ export default function CreateCard() {
                                     rows='4'
                                     cols='50'
                                     maxLength='300'
-                                    placeholder='Type your text here'
-                                    // value={sugg}
-                                    // onChange={handleChange}
+                                    placeholder='Type your text here'                                  
                                     required
                                 ></textarea>
                     </div>
