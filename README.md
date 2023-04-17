@@ -1,11 +1,13 @@
 # Suggest<span style="color:#F79234">**It**</span>
 ## **Project Assignment: SPA with ReactJs**
+#
 
 
 This is a ReactJS project assignment for completing [SoftUni](https://softuni.bg/)
 ReactJS Course. Details of the assignment are available [here](https://github.com/zhenyahodges/SoftUni-Courses/blob/main/Front_End/REACT/REACT-PROJECT/ReactJS-Project-Assignment.docx).
 
  ### **Built with:**
+
  ReactJS, React Router, React Router DOM
 ### **Router:**
 
@@ -13,23 +15,26 @@ ReactJS Course. Details of the assignment are available [here](https://github.co
 
 
 ## **About**
+#
 
 Suggest<span style="color:#F79234">**It**</span> is a web application which provides a simple interface for receiving feedback and suggestions for improvements for companies.
 
-#
 
 ### <span style="color:#c2e2ee">**Welcome**</span>
+#
 <br>
 
 ![alt text](./readme-res/SuggestIt-Welcome-View.png "Welcome View")
 #
 
 ### <span style="color:#c2e2ee">Catalog</span>
-
-Guests & Logged Users can view the Catalog with feedback cards.
 #
 
+Guests & Logged Users can view the Catalog with feedback cards.
+
+
 ### <span style="color:#c2e2ee">**Details**</span>
+#
 
 Guests & Logged Users can view the Details of feedback cards.
 
@@ -44,15 +49,14 @@ Logged users, owners can:
 * Email card
 
 Guests cannot edit or delete a card, vote for or add a suggestion.
-#
 
-### <span style="color:#c2e2ee">Info Catalog</span>
-Additional Info Catalog.
-Guests & Logged Users can view the Catalog with info cards.
+
+### <span style="color:#c2e2ee">**Info Catalog**</span>
 #
+Additional Info Catalog.
 
 ### <span style="color:#c2e2ee">**Details**</span>
-
+#
 Guests & Logged Users can view the Details of info cards.
 
 Logged users, NOT owners can:
@@ -66,9 +70,9 @@ Logged users, owners can:
 * Email card
 
 Guests cannot edit or delete a card.
-#
 
 ### <span style="color:#c2e2ee">**Profile**</span>
+#
 
 Logged users can:
 * View their details
@@ -76,9 +80,9 @@ Logged users can:
 * View a list of the suggestions they made, edit & delete them.
 * Create new feedback cards
 
-#
 
 ## **Validations & Error Handling**
+#
 
 ### **Inputs: Register**
 
