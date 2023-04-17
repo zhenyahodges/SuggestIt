@@ -1,6 +1,5 @@
 # Suggest<span style="color:#F79234">**It**</span>
 ## **Project Assignment: SPA with ReactJs**
-#
 
 
 This is a ReactJS project assignment for completing [SoftUni](https://softuni.bg/)
@@ -12,29 +11,27 @@ ReactJS Course. Details of the assignment are available [here](https://github.co
 ### **Router:**
 
  * createBrowserRouter  with v6.4 data APIs like loader and actions
-
+#
 
 ## **About**
-#
+
 
 Suggest<span style="color:#F79234">**It**</span> is a web application which provides a simple interface for receiving feedback and suggestions for improvements for companies.
 
+#
 
 ### <span style="color:#c2e2ee">**Welcome**</span>
-#
 <br>
 
 ![alt text](./readme-res/SuggestIt-Welcome-View.png "Welcome View")
-#
 
-### <span style="color:#c2e2ee">Catalog</span>
 #
+### <span style="color:#c2e2ee">Catalog</span>
 
 Guests & Logged Users can view the Catalog with feedback cards.
 
-
-### <span style="color:#c2e2ee">**Details**</span>
 #
+### <span style="color:#c2e2ee">**Details**</span>
 
 Guests & Logged Users can view the Details of feedback cards.
 
@@ -51,12 +48,12 @@ Logged users, owners can:
 Guests cannot edit or delete a card, vote for or add a suggestion.
 
 
-### <span style="color:#c2e2ee">**Info Catalog**</span>
 #
+### <span style="color:#c2e2ee">**Info Catalog**</span>
 Additional Info Catalog.
 
-### <span style="color:#c2e2ee">**Details**</span>
 #
+### <span style="color:#c2e2ee">**Details**</span>
 Guests & Logged Users can view the Details of info cards.
 
 Logged users, NOT owners can:
@@ -71,8 +68,8 @@ Logged users, owners can:
 
 Guests cannot edit or delete a card.
 
-### <span style="color:#c2e2ee">**Profile**</span>
 #
+### <span style="color:#c2e2ee">**Profile**</span>
 
 Logged users can:
 * View their details
@@ -81,8 +78,8 @@ Logged users can:
 * Create new feedback cards
 
 
-## **Validations & Error Handling**
 #
+## **Validations & Error Handling**
 
 ### **Inputs: Register**
 
@@ -104,6 +101,12 @@ The email address must not have any spaces, tabs, or other special characters.
 * If not found returns: <span style="color:red">*'Email or password invalid. Please try again.'*</span>
 
 ### **Inputs:  Create**
+#### **Suggestions**:
+* Brand: 30 characters
+* Textarea: Max length 150 characters.
+
+####  **Info cards**:
+* Text Input: 30 characters
 * Textarea: Max length 150 characters.
 
 ### **Not Found**
