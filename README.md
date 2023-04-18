@@ -7,7 +7,7 @@ ReactJS Course. Details of the assignment are available [here](https://github.co
 
  ### **Built with:**
 
- ReactJS, React Router, React Router DOM, react-share
+ ReactJS, React Router, React Router DOM
 ### **Router:**
 
  * createBrowserRouter  with v6.4 data APIs like loader and actions
