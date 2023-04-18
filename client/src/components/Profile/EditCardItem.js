@@ -1,48 +1,51 @@
-import { Form, redirect, useLoaderData, useNavigation, useParams } from 'react-router-dom';
-import {editCard, getCards } from '../../utils/service';
+import {
+    Form,
+    redirect,
+    useLoaderData,
+    useNavigation,
+} from 'react-router-dom';
+import { editCard, getCards } from '../../utils/service';
 import { requireAuth } from '../../utils/requireAuth';
 
-export async function loader({request,params}){   
+export async function loader({ request, params }) {
     await requireAuth(request);
     const res = await getCards(params.cardId);
     return res;
 }
 
-export async function action({request,params}){
+export async function action({ request, params }) {
     if (window.confirm('Are you sure you want to submit?')) {
-        const {userId,token}=await requireAuth();
-        console.log(userId,token);
-        const formData= await request.formData();
-        const brand=formData.get('brand');
-        const cardId=params.cardId;
-    
-        try{
-          if(token){
-             await editCard(token,brand,cardId);
-               return redirect(`/cards/${cardId}`);
-          } else{
-            redirect('login');
-          }
+        const { userId, token } = await requireAuth();
+        console.log(userId, token);
+        const formData = await request.formData();
+        const brand = formData.get('brand');
+        const cardId = params.cardId;
+
+        try {
+            if (token) {
+                await editCard(token, brand, cardId);
+                return redirect(`/cards/${cardId}`);
+            } else {
+                redirect('login');
+            }
         } catch (err) {
             return err.message;
         }
     }
-   
 }
-
 
 export default function EditCardItem() {
     const navigation = useNavigation();
     const res = useLoaderData();
-    const ownerId=res._ownerId;
-    const cardId=res._id;
-    const brand=res.brand;
-  
-    const createdOn=res._createdOn;
-    const updatedOn=res._updatedOn;
+    // const ownerId = res._ownerId;
+    // const cardId = res._id;
+    const brand = res.brand;
+
+    // const createdOn = res._createdOn;
+    // const updatedOn = res._updatedOn;
 
     return (
-          <section className='user create edit'>
+        <section className='user create edit'>
             <h2 className='user-title'>Edit</h2>
 
             <div className='user-create-wrapper'>
@@ -104,9 +107,6 @@ export default function EditCardItem() {
                   </div> --> */}
 
                     <button
-                        // type='submit'
-                        // method='post'
-                        // value='Create'
                         className='create btn dark subm'
                         form='edit-card-form'
                         id='btn-edit-form'
@@ -117,7 +117,6 @@ export default function EditCardItem() {
                             : 'Submit'}
                     </button>
                 </Form>
-                {/* AFTER SUBMISSION REDIRECT TO CARD FOR EDIT VIEW */}
             </div>
         </section>
     );
