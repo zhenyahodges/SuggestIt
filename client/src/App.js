@@ -21,12 +21,10 @@ import Logout, {
     action as logoutAction,
     loader as logoutLoader,
 } from './components/Logout/Logout';
-
 import Catalog, { loader as cardsLoader } from './components/Catalog/Catalog';
 import CardItem, {
     loader as cardLoader,
-    // action as suggestAction,
-    // likeAction
+    // action as likeAction
 } from './components/Catalog/Card/CardItem';
 
 import AddSuggestion, {action as suggestAction,} from './components/AddSuggestion/SuggestionItem/AddSuggestion';
@@ -101,7 +99,6 @@ const router = createBrowserRouter(
             />
             <Route
                 path='cards/:cardId/suggest'
-                // path='suggestions/:cardId'
                 element={<AddSuggestion />}
                 loader={async ({ request }) => await requireAuth(request)}
                 action={suggestAction}
@@ -125,7 +122,6 @@ const router = createBrowserRouter(
                 path='infos/:infoId'
                 element={<InfoItem />}
                 loader={infoLoader}
-                // action={suggestAction}
                 errorElement={<NotFound />}
             />
             <Route
@@ -166,7 +162,6 @@ const router = createBrowserRouter(
                 path='users/:userId'
                 element={<ProfileLayout />}
                 loader={userLoader}
-                // action={userProfileAction}
                 errorElement={<NotFound />}
             >
                 <Route index element={<UserCards />} loader={userCardsLoader} />
@@ -182,10 +177,7 @@ const router = createBrowserRouter(
                     loader={async ({ request }) => await requireAuth(request)}
                     action={createCardAction}
                     errorElement={<NotFound />}
-                />
-
-                {/* JOBS */}
-
+                />                
                 <Route index element={<UserInfos />} loader={userInfosLoader} />
                 <Route
                     path='createinfo'

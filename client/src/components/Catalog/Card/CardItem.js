@@ -47,8 +47,6 @@ export default function CardItem() {
     useEffect(() => {
         suggestions && setSuggs(suggestions);
     }, [setSuggs, suggestions]);
-    
-
 
     // useEffect(()=>{
     //     // fetch
