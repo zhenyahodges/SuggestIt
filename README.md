@@ -30,7 +30,7 @@ Guests & Logged Users can view the Catalog with feedback cards.
 Guests & Logged Users can view the Details of feedback cards.
 
 Logged users, NOT owners can:
-* Vote for a suggestion.
+* (Vote for a suggestion.)
 * Add a new suggestion.
 * Edit suggestion * *if NOT timed out (1min time limit)*
 * Delete suggestion * *if NOT timed out (1min time limit)*
