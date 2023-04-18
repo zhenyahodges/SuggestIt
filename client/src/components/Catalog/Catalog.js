@@ -3,11 +3,10 @@ import { getCards } from '../../utils/service';
 
 export async function loader() {
     const cards = await getCards();
-
-    if (cards) {
+    // if (cards) {
         return cards;
-    }
-    return null;
+    // }
+    // return null;
 }
 
 export default function Catalog() {
@@ -22,7 +21,6 @@ export default function Catalog() {
                 {cards &&
                     cards.map(({ brand, _createdOn, _id, _ownerId }) => (
                         // TODO:!!! Hide overflow!!!from Details?! or SHOW ONLY FIRST N SUGGS
-
                         <article
                             key={_id}
                             className='sugg-card details catalog-view-card'
@@ -36,6 +34,7 @@ export default function Catalog() {
                                
                                 <ul className='sugg-list'>
                                     {/* TODO: MAP SUGGESTIONS */}
+                                    {}
                                     {/* {suggestions && suggestions.map((s) => <SuggestionItem id={s._id} key={s._id} {...s} />)} */}
                                     {/* {_id.suggestions.map(s=>(<SuggestionItem key={s._id} {...s}/>))}   */}
 

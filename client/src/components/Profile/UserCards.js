@@ -32,7 +32,7 @@ export default function UserCards() {
                             </header>
 
                             <main className='card-main'>
-                                <p>HERE GO THE SUGGESTIONS</p>
+                             
                                 <ul className='sugg-list'>
                                     {/* TODO: MAP SUGGESTIONS */}
                                     {/* {suggestions && suggestions.map((s) => <SuggestionItem id={s._id} key={s._id} {...s} />)} */}

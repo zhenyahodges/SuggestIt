@@ -56,7 +56,7 @@
 
   .sugg-item-wrapper {
       display: flex;
-      flex-flow: row;
+      flex-flow: row wrap;
       justify-content: center;
       align-items: center;
   }
@@ -67,8 +67,10 @@
 
   .sugg-text {
       font-size: 14px;
+      max-width: 80%;
       flex: 1 1 80%;
       text-align: left;
+      overflow-wrap: break-word;
   }
 
   .sm-ital {

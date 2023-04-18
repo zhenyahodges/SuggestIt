@@ -194,8 +194,6 @@ export async function editCard(token, brand,cardId) {
 }
 
 export async function onDeleteCard(id, token) {
-    // console.log('token=='+token+'id=='+id);
-
     const res = await fetch(`${baseUrl}/data/cards/${id}`, {
         method: 'delete',
         headers: {
@@ -212,9 +210,27 @@ export async function onDeleteCard(id, token) {
         return {};
     }
     const data = await res.json();
-    // console.log(data);
     return data;
-    // return null;
+}
+
+export async function onDeleteSuggestion(id, token) {
+    const res = await fetch(`${baseUrl}/data/suggestions/${id}`, {
+        method: 'delete',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': token,
+        },
+    });
+
+    if (!res.ok) {
+        throw new Error(`${res.status} - ${res.statusText}`);
+    }
+    if (res.statusCode === 204) {
+        console.log('empty');
+        return {};
+    }
+    const data = await res.json();
+    return data;
 }
 
 export async function getCardSuggestions(cardId) {
@@ -222,10 +238,6 @@ export async function getCardSuggestions(cardId) {
     const relationQuery = encodeURIComponent('author=_ownerId:users');
 
    const url = (`${baseUrl}/data/suggestions?where=${searchQuery}&load=${relationQuery}`);
-    // const uri = `${baseUrl}/data/suggestions?where=cardId LIKE "${cardId}"`;
-//   (`${baseUrl}?where=cardId="${cardId}"&load=author=_ownerId:users`);
-// const encoded = encodeURI(uri);
-
     const res = await fetch(url, {
         method: 'GET',        
     });
@@ -242,30 +254,6 @@ export async function getCardSuggestions(cardId) {
     // return Object.values(data);
     return (data);
 }
-
-// export async function onSuggSubmReq(sugg, cardId, token, userId) {
-//     const creds = { sugg };
-//     // console.log(creds);
-//     const res = await fetch(`${baseUrl}/data/cards/${cardId}`, {
-//         method: 'post',
-//         headers: {
-//             'Content-Type': 'application/json',
-//             'X-Authorization': token,
-//         },
-//         body: JSON.stringify(creds),
-//     });
-
-//     if (!res.ok) {
-//         throw new Error(`${res.status} - ${res.statusText}`);
-//     }
-//     // if (res.statusCode === 204) {
-//     //     console.log('empty');
-//     //     return {};
-//     // }
-//     const data = await res.json();
-//     // console.log(data);
-//     return data;
-// }
 
 export async function addSuggestion(token,cardId,suggestion) {
     // console.log(brand+'======'+token);

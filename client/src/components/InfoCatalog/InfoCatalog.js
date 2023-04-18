@@ -4,10 +4,10 @@ import { getInfos } from '../../utils/service';
 export async function loader() {
     const infos = await getInfos();
 
-    if (infos) {   
+    // if (infos) {   
         return infos;
-    }       
-       return {};
+    // }       
+    //    return {};
 }
 
 export default function InfosCatalog() {
@@ -21,7 +21,6 @@ export default function InfosCatalog() {
             <div className='catalog-wrapper'>
                 {infos &&
                     infos.map(({ title,web,text, _createdOn, _id, _ownerId }) => (
-                        // TODO:!!! Hide overflow!!!from Details?! or SHOW ONLY FIRST N SUGGS
                         <article
                             key={_id}
                             className='sugg-card details catalog-view-card'

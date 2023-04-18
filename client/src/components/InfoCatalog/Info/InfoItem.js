@@ -15,14 +15,6 @@ export async function loader({ request, params }) {
     return res;
 }
 
-// export async function action({ request}) {
-//     const { userId, token } = await requireAuth();
-//     const formData = await request.formData();
-//     const data = Object.entries(formData);
-// console.log('DATA'+data);
-//     return null;
-// }
-
 export default function InfoItem() {
     const navigation = useNavigation();
     const navigate = useNavigate();
