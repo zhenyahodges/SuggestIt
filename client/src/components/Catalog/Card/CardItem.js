@@ -8,8 +8,10 @@ import {
 import {
     getCardSuggestions,
     getCards,
+    getLikes,
     onDeleteCard,
     onDeleteSuggestion,
+    postLikes,
 } from '../../../utils/service';
 import { useEffect, useState } from 'react';
 import { EmailShareButton } from 'react-share';
@@ -33,11 +35,10 @@ export default function CardItem() {
     // console.log('result==>' + suggestions);
 
     // console.log('res=='+res,'sugg=='+suggs);
-
     const [suggs, setSuggs] = useState([]);
-    const [likes, setLikes] = useState([]);
+    const [likesSugg, setLikesSugg] = useState([]);
     // const [voters,setVoters]=useState([]);
-
+    
     const ownerId = res._ownerId;
     const cardId = res._id;
     const brand = res.brand;
@@ -47,47 +48,65 @@ export default function CardItem() {
     useEffect(() => {
         suggestions && setSuggs(suggestions);
     }, [setSuggs, suggestions]);
+    
 
-    useEffect(()=>{
 
-    },[setLikes]);
+    // useEffect(()=>{
+    //     // fetch
+    // },[setLikes]);
   
     const user = JSON.parse(localStorage.getItem('user'));
-
+    
     let userId;
     let token;
     if (user) {
         ({ token, userId } = user);
     }
-
+    
     let isOwner = false;
     let isAuthorized = false;
-
+    
     if (token) {
         isAuthorized = true;
     }
     if (ownerId === userId) {
         isOwner = true;
     }
-
+    
     const onDelete = async () => {
         if (window.confirm('Are you sure you want to delete?')) {
             await onDeleteCard(cardId, token);
             navigate(`/users/${userId}`);
         }
     };    
-
+    
     function onPrint(e) {
         e.preventDefault();
         window.print();
         return false;
     }
 
-   const minutes=100000;
-   const timePassed=new Date()-new Date(createdOn)>minutes;
+    const minutes=100000;
+    const timePassed=new Date()-new Date(createdOn)>minutes;
 
-    return (
-        <section className='details-view container'>
+    // useEffect(() => {
+    //     likes && setLikesSugg(likes);
+    // }, [setLikesSugg, likes]);
+    
+    async function increase(suggestionId,token){ 
+        console.log('sid--'+suggestionId,'tok--'+token);   
+    //     console.log(suggestionId,token);
+        await postLikes(suggestionId,token);
+    //     const res=await getLikes(suggestionId);
+    setLikesSugg(prevCount=>prevCount+1);
+ }
+
+  async function decrease(){
+    setLikesSugg(prevCount=>prevCount-1);
+ }
+
+ return (
+     <section className='details-view container'>
             <h2>Details</h2>
             {
                 <>
@@ -97,7 +116,7 @@ export default function CardItem() {
                         </header>
 
                         <main className='card-main'>
-                            <p>HERE GO THE SUGGESTIONS</p>
+                           
                             <ul className='sugg-list'>
                                 {/* SUGGESTIONS */}
                                 {suggs &&
@@ -105,6 +124,7 @@ export default function CardItem() {
                                         ({
                                             _ownerId,
                                             suggestion,
+                                            likes,
                                             _cardId,
                                             _createdOn,
                                             _updatedOn,
@@ -147,14 +167,20 @@ export default function CardItem() {
                                                             <span className='rank'>
                                                                 {/* {sugg.rank} */}
                                                                 15
+                                                                {likesSugg.length}
                                                             </span>
 
                                                             {/* <!-- LIKE DISABLED FOR GUESTS & OWNERS -->
                                                             <!--===!? LIKE LIMITED voting!?=== --> */}
-                                                            <button className='sugg-like-link'>
+                                                            <button className='sugg-like-link' onClick={()=>increase(_id,token)}>
                                                                 {/* if voted down=>vote up */}
                                                                 <i className='like fa-solid fa-circle-up'></i>
                                                                 {/* if voted up=>vote down */}
+                                                                {/* <i className='fa-solid fa-circle-down'></i> */}
+                                                            </button>
+                                                            <button className='sugg-like-link' 
+                                                           onClick={()=>decrease(_id,token)}
+                                                            >
                                                                 <i className='fa-solid fa-circle-down'></i>
                                                             </button>
                                                         </p>

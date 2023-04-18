@@ -325,7 +325,56 @@ export async function addSuggestion(token, cardId, suggestion) {
     }
     const data = await res.json();
     // console.log('dataservice--'+data);
-    console.log(Object.values(data));
+    // console.log(Object.values(data));
+    // return Object.values(data);
+    return data;
+}
+
+export async function postLikes(suggestionId,token){
+    const info= {suggestionId};
+    // console.log('suggidpost--'+suggestionId);
+    const res = await fetch(`${baseUrl}/data/likes`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': token,
+        },
+        body: JSON.stringify(info),
+    });
+    // console.log('res--'+res);
+    if (!res.ok) {
+        throw new Error(`${res.status} - ${res.statusText}`);
+    }
+    if (res.status === 204) {
+        console.log(res.status);
+        return null;
+    }
+    const data = await res.json();
+    // console.log('dataservice--'+data);
+    // console.log(Object.values(data));
+    // return Object.values(data);
+    return data;
+
+}
+
+export async function getLikes(suggestionId,token){
+    const searchQuery = encodeURIComponent(`cardId="${suggestionId}"`);
+    const relationQuery = encodeURIComponent('author=_ownerId:users');
+
+    const url = `${baseUrl}/data/suggestions?where=${searchQuery}&load=${relationQuery}count`;
+    const res = await fetch(url, {
+        method: 'GET',
+    });
+    // console.log('getres=='+res);
+    if (!res.ok) {
+        throw new Error(`${res.status} - ${res.statusText}`);
+    }
+    if (res.status === 204) {
+        console.log('empty');
+        return null;
+    }
+    const data = await res.json();
+    console.log(data);
     // return Object.values(data);
     return data;
 }
