@@ -3,12 +3,7 @@ import { requireAuth } from '../../../utils/requireAuth';
 import { addSuggestion, getCards } from '../../../utils/service';
 import { useState } from 'react';
 
-// let cardId;
-
 export async function action({ request, params }) {
-    // debugger;
-    console.log('yes');
-
     if (window.confirm('Are you sure you want to submit?')) {
         const { userId, token } = await requireAuth();
         // console.log(userId, token);

@@ -10,6 +10,8 @@ export async function loader({ request }) {
 
 export default function UserSuggs() {
     const suggestions = useLoaderData();
+    const owner=suggestions._ownerId;
+    console.log('OWNER--'+owner);
        
     return (
         //   {/* <!-- || USER-OWNER SUGGESTIONS --> */}
@@ -18,7 +20,7 @@ export default function UserSuggs() {
 
             <div className='user-sugged-wrapper'>
                 <ul className='user-sugged-list'>
-                   {suggestions && suggestions.map(({_ownerId,suggestion,cardId,_createdOn,_id})=>(
+                   {suggestions && suggestions.map(({_ownerId,suggestion,cardId,_createdOn,_updatedOn,_id})=>(
                      <li key={_id} id={_id}  className='user-sugged-li-items'>
                         {suggestion}
                         {/* <!-- VIS IF OWNER & NOT TIMED OUT --> */}

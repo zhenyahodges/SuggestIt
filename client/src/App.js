@@ -66,6 +66,8 @@ import CreateInfo, {
 import UserInfos, {
     loader as userInfosLoader,
 } from './components/Profile/UserInfos';
+import EditSuggestion, { loader as editSuggLoader,
+action as editSuggAction} from './components/AddSuggestion/SuggestionItem/EditSuggestion';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -103,6 +105,13 @@ const router = createBrowserRouter(
                 element={<AddSuggestion />}
                 loader={async ({ request }) => await requireAuth(request)}
                 action={suggestAction}
+            />
+             <Route
+                path='suggestions/:suggestionId'
+                element={<EditSuggestion />}
+                loader={editSuggLoader}
+                action={editSuggAction}
+                errorElement={<NotFound />}
             />
             {/* infos catalog */}
             <Route

@@ -80,7 +80,6 @@ export async function logoutUser(token) {
     return res;
 }
 
-
 export async function getUserInfo(token) {
     const res = await fetch(`${baseUrl}/users/me`, {
         method: 'get',
@@ -172,8 +171,8 @@ export async function createNewCard(token, brand, userId) {
     return data;
 }
 
-export async function editCard(token, brand,cardId) {
-    const info={brand};
+export async function editCard(token, brand, cardId) {
+    const info = { brand };
 
     const res = await fetch(`${baseUrl}/data/cards/${cardId}`, {
         method: 'PUT',
@@ -233,13 +232,59 @@ export async function onDeleteSuggestion(id, token) {
     return data;
 }
 
+export async function getOneSuggestions(suggestionId, token) {
+    const searchQuery = encodeURIComponent(`_id="${suggestionId}"`);
+    const relationQuery = encodeURIComponent('author=_ownerId:users');
+
+    const url = `${baseUrl}/data/suggestions?where=${searchQuery}&load=${relationQuery}`;
+    const res = await fetch(url, {
+    
+    // const res = await fetch(`${baseUrl}/suggestions/${id}}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': token,
+        },
+    });
+    if (!res.ok) {
+        throw new Error(`${res.status} - ${res.statusText}`);
+    }
+    if (res.status === 204) {
+        console.log('empty');
+        return null;
+    }
+    const data = await res.json();
+    return data;
+}
+
+export async function onEditSuggestion(token, cardId,suggestion, suggestionId) {
+    const info = { suggestion,cardId };
+
+    const res = await fetch(`${baseUrl}/data/suggestions/${suggestionId}`, {       
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': token,
+        },
+        body: JSON.stringify(info),
+    });
+    if (!res.ok) {
+        throw new Error(`${res.status} - ${res.statusText}`);
+    }
+    if (res.status === 204) {
+        return null;
+    }
+    const data = await res.json();
+    return data;
+}
+
 export async function getCardSuggestions(cardId) {
     const searchQuery = encodeURIComponent(`cardId="${cardId}"`);
     const relationQuery = encodeURIComponent('author=_ownerId:users');
 
-   const url = (`${baseUrl}/data/suggestions?where=${searchQuery}&load=${relationQuery}`);
+    const url = `${baseUrl}/data/suggestions?where=${searchQuery}&load=${relationQuery}`;
     const res = await fetch(url, {
-        method: 'GET',        
+        method: 'GET',
     });
     // console.log('getres=='+res);
     if (!res.ok) {
@@ -252,12 +297,12 @@ export async function getCardSuggestions(cardId) {
     const data = await res.json();
     // console.log(data);
     // return Object.values(data);
-    return (data);
+    return data;
 }
 
-export async function addSuggestion(token,cardId,suggestion) {
+export async function addSuggestion(token, cardId, suggestion) {
     // console.log(brand+'======'+token);
-    const info = { suggestion,cardId };
+    const info = { suggestion, cardId };
     // console.log('tcf----'+token,cardId,suggestion);
     // console.log(''+fo);
     // console.log('INFO---'+info);
@@ -290,7 +335,7 @@ export async function addSuggestion(token,cardId,suggestion) {
 export async function getInfos(id) {
     const url = id ? `${baseUrl}/data/infos/${id}` : `${baseUrl}/data/infos`;
     const res = await fetch(url);
-// console.log('RESGETINFOS=='+res);
+    // console.log('RESGETINFOS=='+res);
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
@@ -298,13 +343,13 @@ export async function getInfos(id) {
         console.log('empty');
         return null;
     }
-    const data = await res.json();  
+    const data = await res.json();
     return data;
 }
 
-export async function createNewInfo(token, title, web,text, userId) {
+export async function createNewInfo(token, title, web, text, userId) {
     //  check creds!
-    const creds = { title, web,text };
+    const creds = { title, web, text };
     // console.log('CREDS' + creds);
     const res = await fetch(`${baseUrl}/data/infos`, {
         method: 'post',
@@ -326,8 +371,8 @@ export async function createNewInfo(token, title, web,text, userId) {
     return data;
 }
 
-export async function editInfo(token, title, web,text, infoId) {
-    const info={title, web,text,};
+export async function editInfo(token, title, web, text, infoId) {
+    const info = { title, web, text };
     // console.log(info);
     // console.log(infoId);
     // console.log(token);

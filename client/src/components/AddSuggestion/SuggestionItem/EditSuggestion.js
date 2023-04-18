@@ -1,55 +1,58 @@
-import { Form, redirect, useNavigation } from 'react-router-dom';
+import { Form, redirect, useLoaderData, useNavigation } from 'react-router-dom';
 import { requireAuth } from '../../../utils/requireAuth';
-import { addSuggestion, getCards } from '../../../utils/service';
+import {
+    addSuggestion,
+    editSuggestion,
+    getCards,
+    getOneSuggestions,
+    onEditSuggestion,
+} from '../../../utils/service';
 import { useState } from 'react';
+let cardIds;
 
-// let cardId;
+export async function loader({ request, params }) {
+    const { userId, token } = await requireAuth(request);
+    // console.log('params=='+Object.entries(params));
+    const suggestionId = params.suggestionId;
+    const res = await getOneSuggestions(suggestionId, token);
+    // const {_ownerId,suggestion,cardId,_createdOn,_id,author}=res[0];
+    // console.log('resedit=='+_ownerId,suggestion,cardId,_createdOn,_id);
+    // console.log('resedit=='+Object.entries(res));;
+    return res;
+}
 
 export async function action({ request, params }) {
-    // debugger;
-    console.log('yes');
-
     if (window.confirm('Are you sure you want to submit?')) {
         const { userId, token } = await requireAuth();
-        // console.log(userId, token);
-        // console.log('params--' + params, 'req--' + request);
-           const cardId = params.cardId;
-        // const res = await getCards(cardId);
-        console.log('yes');
-        // console.log('cardid--'+cardId);
-
+        console.log(userId, token);
         const formData = await request.formData();
         const suggestion = formData.get('suggestion');
-        // console.log('suggestion--'+suggestion);
+        const suggestionId = params.suggestionId;
+        const cardId=cardIds;
 
         try {
             if (token) {
-                await addSuggestion(token,cardId,suggestion);
-                return redirect(`/cards/${cardId}`);
+                await onEditSuggestion(token,cardId, suggestion, suggestionId);
+                return redirect(`/cards`);
             } else {
                 redirect('login');
             }
         } catch (err) {
             return err.message;
         }
-        return token;
     }
 }
 
-export default function AddSuggestion() {
+export default function EditSuggestion() {
     const navigation = useNavigation();
-
-
+    const res = useLoaderData();
+    const { _ownerId, suggestion, cardId, _createdOn,_updatedOn, _id, author } = res[0];
+    // const updatedOn=res._updatedOn;
+cardIds=cardId;
     return (
         <section className='add-sugg form-wrapper'>
-            {/* ?with or without li?  */}
-            <Form
-                // action='/suggestions'
-                method='post'
-                id='add-form'
-                className='add-sugg form'
-            >
-                <h2>Add a Suggestion</h2>
+            <Form method='post' id='add-form' className='add-sugg form'>
+                <h2>Edit Suggestion</h2>
 
                 <label htmlFor='suggestion'>Your Suggestion:</label>
 
@@ -63,21 +66,16 @@ export default function AddSuggestion() {
                     maxLength='150'
                     placeholder='Type your suggestion here'
                     required
-                    // value={formData.suggestion}
-                    // onChange={handleSuggChange}
+                    defaultValue={suggestion}
+                    autoFocus
                 ></textarea>
                 {/* <span className='add sugg author' id='add-sugg-author'>
                     Me
                 </span> */}
                 <button
-                    // type='submit'
-                    // method='post'
-                    // onSubmit={onSubmitHandler}
                     className='add-sugg btn dark subm'
                     form='add-form'
                     id='btn-add-form'
-                    // onSubmit={onSubmit}
-                    // onClick={addSuggestion(token,)}
                     disabled={navigation.state === 'submitting'}
                 >
                     {navigation.state === 'submitting'

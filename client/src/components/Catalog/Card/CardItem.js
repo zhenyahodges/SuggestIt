@@ -30,7 +30,7 @@ export default function CardItem() {
     const navigation = useNavigation();
     const navigate = useNavigate();
     const { res, suggestions } = useLoaderData();
-    console.log('result==>' + suggestions);
+    // console.log('result==>' + suggestions);
 
     // console.log('res=='+res,'sugg=='+suggs);
 
@@ -102,6 +102,7 @@ export default function CardItem() {
                                             suggestion,
                                             _cardId,
                                             _createdOn,
+                                            _updatedOn,
                                             _id,
                                         }) => {
                                             return (
@@ -210,7 +211,7 @@ export default function CardItem() {
                                             <Link
                                                 to={`/cards/${cardId}/edit`}
                                                 className='btn-sm card-details edit-card'
-                                                // onClick={onEditCard}
+                                              
                                                 disabled={
                                                     navigation.state ===
                                                     'loading'
