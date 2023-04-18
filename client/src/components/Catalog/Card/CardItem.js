@@ -36,19 +36,17 @@ export default function CardItem() {
 
     const [suggs, setSuggs] = useState([]);
     const [likes, setLikes] = useState([]);
+    // const [voters,setVoters]=useState([]);
 
     const ownerId = res._ownerId;
     const cardId = res._id;
     const brand = res.brand;
     const createdOn = res._createdOn;
     const updatedOn = res._updatedOn;
-    // const suggested = suggs;
-    // console.log('sgged=='+suggested);
 
     useEffect(() => {
         suggestions && setSuggs(suggestions);
     }, [setSuggs, suggestions]);
-    // console.log('suggs--' + suggs);
 
     useEffect(()=>{
 
@@ -86,7 +84,6 @@ export default function CardItem() {
     }
 
    const minutes=100000;
-//    const minutes=3000000;
    const timePassed=new Date()-new Date(createdOn)>minutes;
 
     return (
