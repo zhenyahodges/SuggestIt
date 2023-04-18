@@ -85,10 +85,9 @@ export default function CardItem() {
         return false;
     }
 
-   const minutes=100000;
-//    console.log('cre--'+createdOn);
+//    const minutes=200000;
+   const minutes=3000000;
    const timePassed=new Date()-new Date(createdOn)>minutes;
-//    console.log(timePassed);
 
     return (
         <section className='details-view container'>
