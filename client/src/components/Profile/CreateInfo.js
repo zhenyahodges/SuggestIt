@@ -3,18 +3,17 @@ import { createNewInfo } from '../../utils/service';
 import { requireAuth } from '../../utils/requireAuth';
 
 export async function action({ request }) {
-    if(window.confirm('Are you sure you want to submit?')){
+    if (window.confirm('Are you sure you want to submit?')) {
         const { userId, token } = await requireAuth();
 
         const formData = await request.formData();
         const title = formData.get('title');
         const web = formData.get('web');
         const text = formData.get('text');
-    
+
         try {
             if (token) {
-                await createNewInfo(token, title, web,text, userId);
-            //    console.log('CREATE=='+token, title, web,text, userId);
+                await createNewInfo(token, title, web, text, userId);
                 return redirect('/infos');
             } else {
                 redirect('login');
@@ -23,7 +22,6 @@ export async function action({ request }) {
             return err.message;
         }
     }
-    
 }
 
 export default function CreateCard() {
@@ -69,22 +67,21 @@ export default function CreateCard() {
                         />
                     </div>
                     <div className='wrap card-title'>
-                    <label htmlFor='text' className='lbl card-name'>
+                        <label htmlFor='text' className='lbl card-name'>
                             Text
                         </label>
-                    <textarea
-                                    className='sugg-text-add'
-                                    id='text'
-                                    form='create-info-form'
-                                    name='text'
-                                    rows='4'
-                                    cols='50'
-                                    maxLength='300'
-                                    placeholder='Type your text here'                                  
-                                    required
-                                ></textarea>
+                        <textarea
+                            className='sugg-text-add'
+                            id='text'
+                            form='create-info-form'
+                            name='text'
+                            rows='4'
+                            cols='50'
+                            maxLength='300'
+                            placeholder='Type your text here'
+                            required
+                        ></textarea>
                     </div>
-                   
 
                     {/* LATER--CODE */}
                     {/* <div className='wrap card-code'>
@@ -122,9 +119,6 @@ export default function CreateCard() {
                   </div> */}
 
                     <button
-                        // type='submit'
-                        // method='post'
-                        // value='Create'
                         className='create btn dark subm'
                         form='create-info-form'
                         id='btn-info-form'
