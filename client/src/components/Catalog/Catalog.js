@@ -4,7 +4,7 @@ import { getCards } from '../../utils/service';
 export async function loader() {
     const cards = await getCards();
     // if (cards) {
-        return cards;
+    return cards;
     // }
     // return null;
 }
@@ -30,7 +30,6 @@ export default function Catalog() {
                             </header>
 
                             <main className='card-main catalog-view-card'>
-                               
                                 <ul className='sugg-list'>
                                     {/* TODO: MAP SUGGESTIONS */}
                                     {}
