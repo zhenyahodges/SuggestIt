@@ -4,7 +4,7 @@ import { addSuggestion } from '../../../utils/service';
 
 export async function action({ request, params }) {
     if (window.confirm('Are you sure you want to submit?')) {
-        const {  token } = await requireAuth();
+        const { token } = await requireAuth();
         const cardId = params.cardId;
 
         const formData = await request.formData();

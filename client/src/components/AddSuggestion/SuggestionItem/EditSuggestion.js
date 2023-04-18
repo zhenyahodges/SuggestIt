@@ -46,7 +46,7 @@ export default function EditSuggestion() {
     } = res[0];
 
     cardIds = cardId;
-    
+
     return (
         <section className='add-sugg form-wrapper'>
             <Form method='post' id='add-form' className='add-sugg form'>
