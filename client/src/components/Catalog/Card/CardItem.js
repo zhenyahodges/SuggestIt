@@ -1,17 +1,13 @@
 import {
-    Form,
     Link,
-    redirect,
     useFetcher,
     useLoaderData,
     useNavigate,
     useNavigation,
-    useSubmit,
 } from 'react-router-dom';
-import { addSuggestion, getCards, onDeleteCard } from '../../../utils/service';
-import { useEffect, useRef, useState } from 'react';
-import { requireAuth } from '../../../utils/requireAuth';
-import {EmailShareButton} from 'react-share';
+import { getCards, onDeleteCard } from '../../../utils/service';
+import { useEffect, useState } from 'react';
+import { EmailShareButton } from 'react-share';
 
 let cardId;
 
@@ -22,33 +18,14 @@ export async function loader({ params }) {
     return res;
 }
 
-export async function action({ request, params }) {
-    const { userId, token } = await requireAuth();
-    const formData = await request.formData();
-    // console.log(formData);
-    const data = Object.entries('formData###' + formData);
-    const suggestion = formData.get('suggestion');
-    console.log(data);
-    console.log(suggestion);
-
-    try {
-        if (token) {
-            await addSuggestion(token, suggestion, userId);
-            //    return redirect(`/users/${userId}`);
-        } else {
-            redirect('login');
-        }
-    } catch (err) {
-        return err.message;
-    }
-    return null;
-}
-
 export default function CardItem() {
     const navigation = useNavigation();
     const navigate = useNavigate();
     const res = useLoaderData();
+    const fetcher = useFetcher();
     const [suggestions, setSuggestions] = useState([]);
+    const [likes, setLikes] = useState([]);
+    // const { register, handleSubmit, formState: { errors } } = useForm();
 
     const ownerId = res._ownerId;
     const cardId = res._id;
@@ -57,26 +34,9 @@ export default function CardItem() {
     const updatedOn = res._updatedOn;
     const suggested = res._suggestions;
 
-    useEffect(()=>{
-        suggested &&
-        setSuggestions(suggested);
-
-    },[setSuggestions]);
-
-    //     const fetcher = useFetcher();
-
-    //     const ref = useRef();
-    //     const data=fetcher.data;
-    //     console.log('fetchherdATA##'+data);
-
-    //  useEffect(() => {
-    //     if (
-    //       fetcher.state === "idle" &&
-    //       fetcher.data?.ok
-    //     ) {
-    //       ref.current.reset();
-    //     }
-    //   }, [fetcher]);
+    useEffect(() => {
+        suggested && setSuggestions(suggested);
+    }, [setSuggestions, suggested]);
 
     const user = JSON.parse(localStorage.getItem('user'));
 
@@ -96,10 +56,6 @@ export default function CardItem() {
         isOwner = true;
     }
 
-    // const handleChange = (e) => {
-    //     setSugg(e.target.value);
-    // };
-
     const onDelete = async () => {
         if (window.confirm('Are you sure you want to delete?')) {
             await onDeleteCard(cardId, token);
@@ -112,14 +68,41 @@ export default function CardItem() {
         window.print();
         return false;
     }
+    // function onSubmit(data) {
+    //     console.log(data);
+    // }
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     console.log(sugg);
+    // const onSuggSubmit=async(values)=>{
+    // const res=await addSuggestion(token,cardId,values.suggestion);
+    // console.log('res');
+
+    // return null;
     // };
+
+    // function handleSuggChange(e){
+    //     // console.log('e--'+e);
+    //     const {name,value} = e.target;
+    //     // console.log('here'+name,value);
+    //     setFormData((prev) => {
+    //         return {
+    //             ...prev,
+    //             [name]: value,
+    //         };
+    //     });
+    // };
+
+    // async function onSubmitHandler(e){
+    //     e.preventDefault();
+    //     // const {token}=await requireAuth();
+    //     console.log(formData);
+    //     return null;
+    //     // const res=await addSuggestion(token,cardId,formData);
+    //     // console.log('res==='+res);
+    // }
 
     return (
         //  DETAILS vis for all
+
         <section className='details-view container'>
             <h2>Details</h2>
             {
@@ -136,14 +119,14 @@ export default function CardItem() {
                                 {/* SUGGESTIONS */}
                                 {suggestions &&
                                     suggestions.map((sugg) => {
-                                         return (
+                                        return (
                                             <li
                                                 className='sugg-item'
                                                 key={sugg._id}
                                             >
                                                 <div className='sugg-item-wrapper'>
                                                     <p className='sugg-text'>
-                                                        {/* {sugg.text} */}
+                                                        {sugg.text}
                                                         SUGG TEXT
                                                         {/* <!--IF OWNER & NOT TIMED OUT --> */}
                                                         <span className='user-sug-list'>
@@ -164,7 +147,8 @@ export default function CardItem() {
 
                                                     <p className='sugg-ranking'>
                                                         <span className='rank'>
-                                                            {sugg.rank}15
+                                                            {sugg.rank}
+                                                            15
                                                         </span>
 
                                                         {/* <!-- LIKE DISABLED FOR GUESTS & OWNERS -->
@@ -173,7 +157,7 @@ export default function CardItem() {
                                                             {/* if voted down=>vote up */}
                                                             <i className='like fa-solid fa-circle-up'></i>
                                                             {/* if voted up=>vote down */}
-                                                            <i class="fa-solid fa-circle-down"></i>
+                                                            <i class='fa-solid fa-circle-down'></i>
                                                         </button>
                                                     </p>
                                                 </div>
@@ -193,33 +177,33 @@ export default function CardItem() {
 
                                 <div className='card-footer-links-wrapper'>
                                     {/* ADD-SUGGESTION LINK: visible for LOGGED (NOT OWNERS?) */}
-                                    {/* {isAuthorized && !isOwner && (
+                                    {isAuthorized && !isOwner && (
                                         // <Link>ddSuggestion onsuggubmit={onsuggubmit}/>
                                         <Link
-                                            to={`/suggestions/${cardId}`}
+                                            to={`/cards/${cardId}/suggest`}
                                             className='add-sugg-link'
                                         >
                                             Suggest
                                         </Link>
-                                    )} */}
+                                    )}
 
-                                    {/*------- LATER  */}
-                                   {(isAuthorized && isOwner) && 
-                                   (<>
-                                   <Link
-                                        to='/'
-                                        className='print details'
-                                        onClick={onPrint}
-                                    >
-                                        Print
-                                    </Link>
-                                    <EmailShareButton>
-                                        <span className='print details'>
-                                            Email
-                                        </span>
-                                    </EmailShareButton>
-                                    </>)
-                                   } 
+                                    {/*------- EMAIL&P PRINT */}
+                                    {isAuthorized && isOwner && (
+                                        <>
+                                            <Link
+                                                to='/'
+                                                className='print details'
+                                                onClick={onPrint}
+                                            >
+                                                Print
+                                            </Link>
+                                            <EmailShareButton>
+                                                <span className='print details'>
+                                                    Email
+                                                </span>
+                                            </EmailShareButton>
+                                        </>
+                                    )}
 
                                     {/*------- LATER  */}
                                     {/*  VISIBLE FOR LOGGED OWNER ONLY */}
@@ -228,7 +212,7 @@ export default function CardItem() {
                                     {/* if POLL ENDED  */}
                                     {/* <p className="countdown-text">Poll ended</p> */}
 
-                                    {/*  VISIBLE FOR OWNER IF NOT TIMED OUT */}
+                                    {/* EDIT/DELETE VISIBLE FOR OWNER IF NOT TIMED OUT */}
                                     {isAuthorized && isOwner && (
                                         <>
                                             <Link
@@ -263,59 +247,6 @@ export default function CardItem() {
                             </div>
                         </footer>
                     </article>
-
-                    {/* // //  authorised & NOT owner- ADD SUGGESTION form  */}
-                    {isAuthorized && !isOwner && (
-                        <section className='add-sugg form-wrapper'>
-                            {/* ?with or without li?  */}
-                            <Form
-                                action={'/data/suggestions'}
-                                method='post'
-                                id='add-form'
-                                className='add-sugg form'
-                                // onSubmit={handleSubmit}
-                            >
-                                <h2>Add a Suggestion</h2>
-                                <p>
-                                    <label htmlFor='suggestion'>
-                                        Your Suggestion:
-                                    </label>
-                                </p>
-
-                                <textarea
-                                    className='sugg-text-add'
-                                    id='suggestion'
-                                    form='add-form'
-                                    name='suggestion'
-                                    rows='4'
-                                    cols='50'
-                                    maxLength='150'
-                                    placeholder='Type your suggestion here'
-                                    required
-                                ></textarea>
-                                <span
-                                    className='add sugg author'
-                                    id='add-sugg-author'
-                                >
-                                    Me
-                                </span>
-                                <button
-                                    type='submit'
-                                    method='post'
-                                    // value={sugg}
-                                    className='add-sugg btn dark subm'
-                                    form='add-sugg'
-                                    id='btn-add-form'
-                                    // onSubmit={onSubmit}
-                                    disabled={navigation.state === 'submitting'}
-                                >
-                                    {navigation.state === 'submitting'
-                                        ? 'Submitting...'
-                                        : 'Submit'}
-                                </button>
-                            </Form>
-                        </section>
-                    )}
                 </>
             }
         </section>

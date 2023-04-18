@@ -25,12 +25,11 @@ import Logout, {
 import Catalog, { loader as cardsLoader } from './components/Catalog/Catalog';
 import CardItem, {
     loader as cardLoader,
-    action as suggestAction,
+    // action as suggestAction,
+    // likeAction
 } from './components/Catalog/Card/CardItem';
-import {
-    AddSuggestion,
-    // action as suggestAction
-} from './components/AddSuggestion/AddSuggestion';
+
+import AddSuggestion, {action as suggestAction,} from './components/AddSuggestion/SuggestionItem/AddSuggestion';
 
 import ProfileLayout, {
     loader as userLoader,
@@ -49,7 +48,7 @@ import EditCardItem, {
     action as editCardAction,
 } from './components/Profile/EditCardItem';
 import { LoggedProvider } from './context/LoggedContext';
-// JOBS
+// INFOS
 import InfoCatalog, {
     loader as infosLoader,
 } from './components/InfoCatalog/InfoCatalog';
@@ -87,7 +86,7 @@ const router = createBrowserRouter(
                 path='cards/:cardId'
                 element={<CardItem />}
                 loader={cardLoader}
-                action={suggestAction}
+                // action={likeAction}
                 errorElement={<NotFound />}
             />
             <Route
@@ -96,6 +95,13 @@ const router = createBrowserRouter(
                 loader={editCardLoader}
                 action={editCardAction}
                 errorElement={<NotFound />}
+            />
+            <Route
+                path='cards/:cardId/suggest'
+                // path='suggestions/:cardId'
+                element={<AddSuggestion />}
+                loader={async ({ request }) => await requireAuth(request)}
+                action={suggestAction}
             />
             {/* infos catalog */}
             <Route
@@ -119,14 +125,6 @@ const router = createBrowserRouter(
                 action={editInfoAction}
                 errorElement={<NotFound />}
             />
-
-            {/* <Route
-                // path='cards/:cardId/:suggestionId'  
-                path='suggestions/:cardId'           
-                element={<AddSuggestion />}
-                loader={async ({ request }) => await requireAuth(request)}
-                action={suggestAction}
-            /> */}
 
             <Route
                 path='login'

@@ -234,16 +234,20 @@ export async function getCardSuggestions(id) {
 //     return data;
 // }
 
-export async function addSuggestion(token, sugg, userId) {
+export async function addSuggestion(token,cardId,suggestion) {
     // console.log(brand+'======'+token);
-    const creds = { sugg };
-    const res = await fetch(`${baseUrl}/data/suggestions/`, {
+    const info = { suggestion,cardId };
+    console.log('tcf----'+token,cardId,suggestion);
+    // console.log(''+fo);
+    // console.log('INFO---'+info);
+
+    const res = await fetch(`${baseUrl}/data/suggestions`, {
         method: 'post',
         headers: {
             'Content-Type': 'application/json',
             'X-Authorization': token,
         },
-        body: JSON.stringify(creds),
+        body: JSON.stringify(info),
     });
     // console.log('res--'+res);
     if (!res.ok) {
@@ -255,7 +259,7 @@ export async function addSuggestion(token, sugg, userId) {
     }
     const data = await res.json();
     console.log('dataservice--'+data);
-    // console.log(Object.values(data));
+    console.log(Object.values(data));
     // return Object.values(data);
     return data;
 }
@@ -267,9 +271,6 @@ async function onSuggSubmit(e) {
     const token = user.token;
     // const res=await onSuggSubmReq(sugg,cardId,token,userId)
 }
-
-
-
 
 
 // || 2ND CATALOG

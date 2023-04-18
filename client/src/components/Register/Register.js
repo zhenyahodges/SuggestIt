@@ -13,8 +13,8 @@ export async function action({ request }) {
     const repass = formData.get('repass');
 
     if (password !== repass) {
-       alert('Passwords do not match');
-       return null;
+        alert('Passwords do not match');
+        return null;
     }
 
     try {
@@ -101,10 +101,10 @@ export default function Register() {
                         className='reg entry email'
                         name='email'
                         id='reg-email'
-                        minLength='3'                        
+                        minLength='3'
                         maxLength='64'
                         autoComplete='email'
-                        pattern='^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+                        pattern='[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[.]{1}[a-zA-Z]{2,}$'
                         required
                     />
                 </div>
