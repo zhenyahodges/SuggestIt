@@ -34,11 +34,10 @@ export default function CardItem() {
     const { res, suggestions } = useLoaderData();
     // console.log('result==>' + suggestions);
 
-    // console.log('res=='+res,'sugg=='+suggs);
     const [suggs, setSuggs] = useState([]);
-    const [likesSugg, setLikesSugg] = useState([]);
+    // console.log('sugg=='+Object.entries(suggs[0]));
+    // const [likesSugg, setLikesSugg] = useState([]);
     // const [voters,setVoters]=useState([]);
-    
     const ownerId = res._ownerId;
     const cardId = res._id;
     const brand = res.brand;
@@ -76,6 +75,7 @@ export default function CardItem() {
     const onDelete = async () => {
         if (window.confirm('Are you sure you want to delete?')) {
             await onDeleteCard(cardId, token);
+
             navigate(`/users/${userId}`);
         }
     };    
@@ -92,18 +92,25 @@ export default function CardItem() {
     // useEffect(() => {
     //     likes && setLikesSugg(likes);
     // }, [setLikesSugg, likes]);
-    
-    async function increase(suggestionId,token){ 
-        console.log('sid--'+suggestionId,'tok--'+token);   
-    //     console.log(suggestionId,token);
-        await postLikes(suggestionId,token);
-    //     const res=await getLikes(suggestionId);
-    setLikesSugg(prevCount=>prevCount+1);
- }
 
-  async function decrease(){
-    setLikesSugg(prevCount=>prevCount-1);
- }
+    // async function getAll(suggestionId,token){
+    //     const res=await getLikes(suggestionId,token);
+    //     console.log('LIKESRES--'+res);
+    // }
+    
+//     async function increase(suggestionId,token){ 
+//         console.log('sid--'+suggestionId,'tok--'+token);   
+//     //     console.log(suggestionId,token);
+//         await postLikes(suggestionId,token);
+     
+
+//     //     const res=await getLikes(suggestionId);
+//     setLikesSugg(prevCount=>prevCount+1);
+//  }
+
+//   async function decrease(){
+//     setLikesSugg(prevCount=>prevCount-1);
+//  }
 
  return (
      <section className='details-view container'>
@@ -167,19 +174,21 @@ export default function CardItem() {
                                                             <span className='rank'>
                                                                 {/* {sugg.rank} */}
                                                                 15
-                                                                {likesSugg.length}
+                                                                {/* {likesSugg.length} */}
                                                             </span>
 
                                                             {/* <!-- LIKE DISABLED FOR GUESTS & OWNERS -->
                                                             <!--===!? LIKE LIMITED voting!?=== --> */}
-                                                            <button className='sugg-like-link' onClick={()=>increase(_id,token)}>
+                                                            <button className='sugg-like-link' 
+                                                            // onClick={()=>increase(_id,token)}
+                                                            >
                                                                 {/* if voted down=>vote up */}
                                                                 <i className='like fa-solid fa-circle-up'></i>
                                                                 {/* if voted up=>vote down */}
                                                                 {/* <i className='fa-solid fa-circle-down'></i> */}
                                                             </button>
                                                             <button className='sugg-like-link' 
-                                                           onClick={()=>decrease(_id,token)}
+                                                        //    onClick={()=>decrease(_id,token)}
                                                             >
                                                                 <i className='fa-solid fa-circle-down'></i>
                                                             </button>

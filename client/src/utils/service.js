@@ -301,12 +301,8 @@ export async function getCardSuggestions(cardId) {
 }
 
 export async function addSuggestion(token, cardId, suggestion) {
-    // console.log(brand+'======'+token);
     const info = { suggestion, cardId };
-    // console.log('tcf----'+token,cardId,suggestion);
-    // console.log(''+fo);
-    // console.log('INFO---'+info);
-
+ 
     const res = await fetch(`${baseUrl}/data/suggestions`, {
         method: 'post',
         headers: {
@@ -324,8 +320,6 @@ export async function addSuggestion(token, cardId, suggestion) {
         return null;
     }
     const data = await res.json();
-    // console.log('dataservice--'+data);
-    // console.log(Object.values(data));
     // return Object.values(data);
     return data;
 }
@@ -360,7 +354,7 @@ export async function postLikes(suggestionId,token){
 export async function getLikes(suggestionId,token){
     const searchQuery = encodeURIComponent(`cardId="${suggestionId}"`);
     const relationQuery = encodeURIComponent('author=_ownerId:users');
-
+console.log('HERE');
     const url = `${baseUrl}/data/suggestions?where=${searchQuery}&load=${relationQuery}count`;
     const res = await fetch(url, {
         method: 'GET',
