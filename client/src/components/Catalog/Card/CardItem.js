@@ -44,7 +44,7 @@ export default function CardItem() {
         suggestions && setSuggs(suggestions);
     }, [setSuggs, suggestions]);
     console.log('suggs--'+suggs);
-    console.log('suggsdet--'+Object.entries(suggs[0]));
+    // console.log('suggsdet--'+Object.entries(suggs[0]));
 
     const user = JSON.parse(localStorage.getItem('user'));
 
@@ -91,17 +91,18 @@ export default function CardItem() {
                             <p>HERE GO THE SUGGESTIONS</p>
                             <ul className='sugg-list'>
                                 {/* SUGGESTIONS */}
-                                {suggestions &&
-                                    suggestions.map((sugg) => {
+                                {suggs &&
+                                    suggs.map(({_ownerId,suggestion,_cardId,_createdOn,_id}) => {
                                         return (
                                             <li
                                                 className='sugg-item'
-                                                key={sugg._id}
+                                                key={_id}
+                                                id={_id}
                                             >
                                                 <div className='sugg-item-wrapper'>
                                                     <p className='sugg-text'>
-                                                        {sugg.text}
-                                                        SUGG TEXT
+                                                        {suggestion}
+                                                        
                                                         {/* <!--IF OWNER & NOT TIMED OUT --> */}
                                                         <span className='user-sug-list'>
                                                             <Link
@@ -121,7 +122,7 @@ export default function CardItem() {
 
                                                     <p className='sugg-ranking'>
                                                         <span className='rank'>
-                                                            {sugg.rank}
+                                                            {/* {sugg.rank} */}
                                                             15
                                                         </span>
 
