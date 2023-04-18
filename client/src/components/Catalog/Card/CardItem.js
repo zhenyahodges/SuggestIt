@@ -1,6 +1,5 @@
 import {
     Link,
-    useFetcher,
     useLoaderData,
     useNavigate,
     useNavigation,
@@ -8,10 +7,8 @@ import {
 import {
     getCardSuggestions,
     getCards,
-    getLikes,
     onDeleteCard,
     onDeleteSuggestion,
-    postLikes,
 } from '../../../utils/service';
 import { useEffect, useState } from 'react';
 import { EmailShareButton } from 'react-share';

@@ -20,7 +20,6 @@ export default function Catalog() {
             <div className='catalog-wrapper'>
                 {cards &&
                     cards.map(({ brand, _createdOn, _id, _ownerId }) => (
-                        // TODO:!!! Hide overflow!!!from Details?! or SHOW ONLY FIRST N SUGGS
                         <article
                             key={_id}
                             className='sugg-card details catalog-view-card'
