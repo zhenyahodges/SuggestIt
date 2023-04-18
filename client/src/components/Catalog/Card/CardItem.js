@@ -35,7 +35,7 @@ export default function CardItem() {
     // console.log('res=='+res,'sugg=='+suggs);
 
     const [suggs, setSuggs] = useState([]);
-    // const [likes, setLikes] = useState([]);
+    const [likes, setLikes] = useState([]);
 
     const ownerId = res._ownerId;
     const cardId = res._id;
@@ -49,6 +49,10 @@ export default function CardItem() {
         suggestions && setSuggs(suggestions);
     }, [setSuggs, suggestions]);
     // console.log('suggs--' + suggs);
+
+    useEffect(()=>{
+
+    },[setLikes]);
   
     const user = JSON.parse(localStorage.getItem('user'));
 
@@ -80,6 +84,11 @@ export default function CardItem() {
         window.print();
         return false;
     }
+
+   const minutes=100000;
+//    console.log('cre--'+createdOn);
+   const timePassed=new Date()-new Date(createdOn)>minutes;
+//    console.log(timePassed);
 
     return (
         <section className='details-view container'>
@@ -116,6 +125,7 @@ export default function CardItem() {
                                                             {suggestion}
 
                                                             {/* <!--IF OWNER & NOT TIMED OUT --> */}
+                                                           {(_ownerId===userId && !(new Date()-new Date(_createdOn)>100000))&&
                                                             <span className='user-sug-list'>
                                                                 <Link
                                                                     to={`/suggestions/${_id}`}
@@ -134,7 +144,7 @@ export default function CardItem() {
                                                                 >
                                                                     Delete
                                                                 </Link>
-                                                            </span>
+                                                            </span>}
                                                         </p>
 
                                                         <p className='sugg-ranking'>
@@ -144,7 +154,7 @@ export default function CardItem() {
                                                             </span>
 
                                                             {/* <!-- LIKE DISABLED FOR GUESTS & OWNERS -->
-                                            <!--===!? LIKE LIMITED voting!?=== --> */}
+                                                            <!--===!? LIKE LIMITED voting!?=== --> */}
                                                             <button className='sugg-like-link'>
                                                                 {/* if voted down=>vote up */}
                                                                 <i className='like fa-solid fa-circle-up'></i>
@@ -206,7 +216,7 @@ export default function CardItem() {
                                     {/* <p className="countdown-text">Poll ended</p> */}
 
                                     {/* EDIT/DELETE VISIBLE FOR OWNER IF NOT TIMED OUT */}
-                                    {isAuthorized && isOwner && (
+                                    {((isAuthorized && isOwner)&&(!timePassed)) && (
                                         <>
                                             <Link
                                                 to={`/cards/${cardId}/edit`}
