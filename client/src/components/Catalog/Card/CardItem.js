@@ -85,8 +85,8 @@ export default function CardItem() {
         return false;
     }
 
-//    const minutes=200000;
-   const minutes=3000000;
+   const minutes=100000;
+//    const minutes=3000000;
    const timePassed=new Date()-new Date(createdOn)>minutes;
 
     return (

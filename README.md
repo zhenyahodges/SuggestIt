@@ -32,10 +32,12 @@ Guests & Logged Users can view the Details of feedback cards.
 Logged users, NOT owners can:
 * Vote for a suggestion.
 * Add a new suggestion.
+* Edit suggestion *'if NOT timed out (1min time limit)'*
+* Delete suggestion *'if NOT timed out (1min time limit)'*
 
 Logged users, owners can:
-* Edit a card they created.
-* Delete a card they created.
+* Edit a card they created. *'if NOT timed out (2min time limit)'*
+* Delete a card they created. *'if NOT timed out (2min time limit)'*
 * Print card
 * Email card
 
