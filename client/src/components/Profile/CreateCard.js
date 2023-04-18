@@ -85,9 +85,6 @@ export default function CreateCard() {
                   </div> */}
 
                     <button
-                        // type='submit'
-                        // method='post'
-                        // value='Create'
                         className='create btn dark subm'
                         form='create-card-form'
                         id='btn-create-form'
@@ -98,7 +95,6 @@ export default function CreateCard() {
                             : 'Submit'}
                     </button>
                 </Form>
-                {/* AFTER SUBMISSION REDIRECT TO CARD FOR EDIT VIEW */}
             </div>
         </section>
     );

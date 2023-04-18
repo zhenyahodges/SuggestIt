@@ -5,7 +5,6 @@ import {
     useNavigation,
 } from 'react-router-dom';
 import { getInfos, onDeleteInfo } from '../../../utils/service';
-import { requireAuth } from '../../../utils/requireAuth';
 import { EmailShareButton } from 'react-share';
 
 let token;
@@ -25,8 +24,8 @@ export default function InfoItem() {
     const title = res.title;
     const web = res.web;
     const text = res.text;
-    const createdOn = res._createdOn;
-    const updatedOn = res._updatedOn;
+    // const createdOn = res._createdOn;
+    // const updatedOn = res._updatedOn;
 
     //  console.log( ownerId+'ownerId'+cardId,title,web,text,createdOn,updatedOn);
 

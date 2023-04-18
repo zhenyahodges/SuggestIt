@@ -37,7 +37,7 @@ export default function InfosCatalog() {
                             <footer className='card-footer suggs-card foot'>
                                 <div className='card-footer-content'>
                                     {/* <p className='card-footer-text'>
-                                        Thank you for your contributions!
+                                        Some text
                                     </p> */}
                                     <div className='card-footer-links-wrapper'>
                                         <Link

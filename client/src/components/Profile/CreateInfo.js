@@ -10,10 +10,6 @@ export async function action({ request }) {
         const title = formData.get('title');
         const web = formData.get('web');
         const text = formData.get('text');
-        // console.log(title, web);
-        // const info={
-        //     title,text,web
-        // };
     
         try {
             if (token) {
@@ -139,7 +135,6 @@ export default function CreateCard() {
                             : 'Submit'}
                     </button>
                 </Form>
-                {/* AFTER SUBMISSION REDIRECT TO CARD FOR EDIT VIEW */}
             </div>
         </section>
     );

@@ -1,8 +1,7 @@
 import { Form, redirect, useNavigate, useNavigation } from 'react-router-dom';
 import { logoutUser } from '../../utils/service';
 import { requireAuth } from '../../utils/requireAuth';
-import { useAuth, useWhoIsLooking } from '../../context/CurrentUserContext';
-import { useEffect } from 'react';
+import { useWhoIsLooking } from '../../context/CurrentUserContext';
 import { useLogged } from '../../context/LoggedContext';
 
 export async function loader({ request }) {
@@ -18,8 +17,8 @@ export async function action({ request }) {
 }
 
 export default function Logout() {
-    const { isLogged, setIsLogged } = useLogged();
-    const { whoIsLooking, setWhoIsLooking } = useWhoIsLooking();
+    const {  setIsLogged } = useLogged();
+    const { setWhoIsLooking } = useWhoIsLooking();
     const navigation = useNavigation();
     const navigate = useNavigate();
 
@@ -27,17 +26,12 @@ export default function Logout() {
         const { token } = JSON.parse(localStorage.getItem('user'));
         await logoutUser(token);
         localStorage.clear();
-        //  isLogged=false;    
         setIsLogged(false);
         setWhoIsLooking('Guest');
-   
         navigate('/');
-    };
-   
+    };   
 
     const onStay = () => {
-        // const { userId } = JSON.parse(localStorage.getItem('user'));
-        // return navigate(`/users/${userId}`);
         return navigate(-1);
     };
 
