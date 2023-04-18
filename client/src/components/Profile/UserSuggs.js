@@ -1,16 +1,16 @@
 import { useLoaderData } from 'react-router-dom';
 import { requireAuth } from '../../utils/requireAuth';
+import { getUserSuggestions } from '../../utils/service';
 
 export async function loader({ request }) {
     const { userId, token } = await requireAuth(request);
-    // const suggs = await getUserSuggs(userId,token);
-    // return suggs;
-    return null;
+    const res = await getUserSuggestions(userId,token);
+    return res;
 }
 
-export default function userSuggs() {
-    // const suggs = useLoaderData();
-
+export default function UserSuggs() {
+    const suggestions = useLoaderData();
+       
     return (
         //   {/* <!-- || USER-OWNER SUGGESTIONS --> */}
         <section className='user suggested'>
@@ -18,9 +18,9 @@ export default function userSuggs() {
 
             <div className='user-sugged-wrapper'>
                 <ul className='user-sugged-list'>
-                    <li className='user-sugged-li-items'>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Aliquid, ut.
+                   {suggestions && suggestions.map(({_ownerId,suggestion,cardId,_createdOn,_id})=>(
+                     <li key={_id} id={_id}  className='user-sugged-li-items'>
+                        {suggestion}
                         {/* <!-- VIS IF OWNER & NOT TIMED OUT --> */}
                         <span className='user-sug-list'>
                             <a href='/' className='edit-user-sugged link'>
@@ -30,11 +30,9 @@ export default function userSuggs() {
                                 Delete
                             </a>
                         </span>
-                    </li>
-                    <li className='user-sugg-li-items'>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Aliquid, ut.
-                    </li>
+                    </li>                
+                   ))
+                    }
                 </ul>
             </div>
         </section>

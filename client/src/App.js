@@ -37,7 +37,7 @@ import ProfileLayout, {
 import UserCards, {
     loader as userCardsLoader,
 } from './components/Profile/UserCards';
-import UserSuggs from './components/Profile/UserSuggs';
+import UserSuggs, {loader as useSuggLoader} from './components/Profile/UserSuggs';
 import CreateCard, {
     action as createCardAction,
 } from './components/Profile/CreateCard';
@@ -62,6 +62,7 @@ import EditInfoItem, {
 import CreateInfo, {
     action as createInfoAction,
 } from './components/Profile/CreateInfo';
+
 import UserInfos, {
     loader as userInfosLoader,
 } from './components/Profile/UserInfos';
@@ -163,7 +164,7 @@ const router = createBrowserRouter(
                 <Route
                     path='suggested'
                     element={<UserSuggs />}
-                    loader={async ({ request }) => await requireAuth(request)}
+                    loader={useSuggLoader}
                     errorElement={<NotFound />}
                 />
                 <Route

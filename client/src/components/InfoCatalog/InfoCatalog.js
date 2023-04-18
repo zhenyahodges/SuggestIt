@@ -4,13 +4,10 @@ import { getInfos } from '../../utils/service';
 export async function loader() {
     const infos = await getInfos();
 
-    if (infos) {
-   
+    if (infos) {   
         return infos;
-    }
-       
-       return null;
-   
+    }       
+       return {};
 }
 
 export default function InfosCatalog() {

@@ -5,7 +5,7 @@ import {
     useNavigate,
     useNavigation,
 } from 'react-router-dom';
-import { getCards, onDeleteCard } from '../../../utils/service';
+import { getCardSuggestions, getCards, onDeleteCard } from '../../../utils/service';
 import { useEffect, useState } from 'react';
 import { EmailShareButton } from 'react-share';
 
@@ -13,30 +13,38 @@ let cardId;
 
 export async function loader({ params }) {
     cardId = params.cardId;
-    const res = await getCards(cardId);
-    // const suggestions=await getSuggestions(cardId)
-    return res;
+    const res = await getCards(cardId);    
+    const suggestions=await getCardSuggestions(cardId);
+    // console.log('suggs=='+suggestions);
+    const result={res,suggestions};
+    // console.log('result==>'+result);
+    return result;
 }
 
 export default function CardItem() {
     const navigation = useNavigation();
     const navigate = useNavigate();
-    const res = useLoaderData();
-    const fetcher = useFetcher();
-    const [suggestions, setSuggestions] = useState([]);
-    const [likes, setLikes] = useState([]);
-    // const { register, handleSubmit, formState: { errors } } = useForm();
+    const {res,suggestions} = useLoaderData();
+    console.log('result==>'+suggestions);
+
+    // console.log('res=='+res,'sugg=='+suggs);
+
+    const [suggs, setSuggs] = useState([]);
+    // const [likes, setLikes] = useState([]);
 
     const ownerId = res._ownerId;
     const cardId = res._id;
     const brand = res.brand;
     const createdOn = res._createdOn;
     const updatedOn = res._updatedOn;
-    const suggested = res._suggestions;
+    // const suggested = suggs;
+    // console.log('sgged=='+suggested);
 
     useEffect(() => {
-        suggested && setSuggestions(suggested);
-    }, [setSuggestions, suggested]);
+        suggestions && setSuggs(suggestions);
+    }, [setSuggs, suggestions]);
+    console.log('suggs--'+suggs);
+    console.log('suggsdet--'+Object.entries(suggs[0]));
 
     const user = JSON.parse(localStorage.getItem('user'));
 
@@ -68,45 +76,11 @@ export default function CardItem() {
         window.print();
         return false;
     }
-    // function onSubmit(data) {
-    //     console.log(data);
-    // }
-
-    // const onSuggSubmit=async(values)=>{
-    // const res=await addSuggestion(token,cardId,values.suggestion);
-    // console.log('res');
-
-    // return null;
-    // };
-
-    // function handleSuggChange(e){
-    //     // console.log('e--'+e);
-    //     const {name,value} = e.target;
-    //     // console.log('here'+name,value);
-    //     setFormData((prev) => {
-    //         return {
-    //             ...prev,
-    //             [name]: value,
-    //         };
-    //     });
-    // };
-
-    // async function onSubmitHandler(e){
-    //     e.preventDefault();
-    //     // const {token}=await requireAuth();
-    //     console.log(formData);
-    //     return null;
-    //     // const res=await addSuggestion(token,cardId,formData);
-    //     // console.log('res==='+res);
-    // }
-
-    return (
-        //  DETAILS vis for all
-
+  
+    return(
         <section className='details-view container'>
             <h2>Details</h2>
             {
-                // TODO:!!! Hide overflow!!!from Details?! or SHOW ONLY FIRST N sugg
                 <>
                     <article className='sugg-card details detailed-card'>
                         <header className='card-header details-header'>
@@ -157,7 +131,7 @@ export default function CardItem() {
                                                             {/* if voted down=>vote up */}
                                                             <i className='like fa-solid fa-circle-up'></i>
                                                             {/* if voted up=>vote down */}
-                                                            <i class='fa-solid fa-circle-down'></i>
+                                                            <i className='fa-solid fa-circle-down'></i>
                                                         </button>
                                                     </p>
                                                 </div>

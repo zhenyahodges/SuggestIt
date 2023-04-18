@@ -1,4 +1,4 @@
-import { Link, NavLink, useLoaderData, useNavigation } from 'react-router-dom';
+import { Link, useLoaderData, useNavigation } from 'react-router-dom';
 import { getCards } from '../../utils/service';
 
 export async function loader() {
@@ -33,7 +33,7 @@ export default function Catalog() {
                             </header>
 
                             <main className='card-main catalog-view-card'>
-                                <p>HERE GO THE SUGGESTIONS</p>
+                               
                                 <ul className='sugg-list'>
                                     {/* TODO: MAP SUGGESTIONS */}
                                     {/* {suggestions && suggestions.map((s) => <SuggestionItem id={s._id} key={s._id} {...s} />)} */}

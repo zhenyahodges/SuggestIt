@@ -126,6 +126,30 @@ export async function getUserCards(userId, token) {
     return data;
 }
 
+export async function getUserSuggestions(userId, token) {
+    const uri = `${baseUrl}/data/suggestions?where=_ownerId LIKE "${userId}"`;
+    const encoded = encodeURI(uri);
+    // console.log(encoded);
+    const res = await fetch(encoded, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': token,
+        },
+    });
+    // console.log(res);
+    if (!res.ok) {
+        throw new Error(`${res.status} - ${res.statusText}`);
+    }
+    if (res.status === 204) {
+        console.log('empty');
+        return null;
+    }
+    const data = await res.json();
+    // console.log(Object.values(data));
+    return data;
+}
+
 export async function createNewCard(token, brand, userId) {
     const creds = { brand };
     const res = await fetch(`${baseUrl}/data/cards`, {
@@ -193,21 +217,30 @@ export async function onDeleteCard(id, token) {
     // return null;
 }
 
-export async function getCardSuggestions(id) {
-    const url = `${baseUrl}/jsonstore/cards/${id}`;
+export async function getCardSuggestions(cardId) {
+    const searchQuery = encodeURIComponent(`cardId="${cardId}"`);
+    const relationQuery = encodeURIComponent('author=_ownerId:users');
 
-    const res = await fetch(url);
+   const url = (`${baseUrl}/data/suggestions?where=${searchQuery}&load=${relationQuery}`);
+    // const uri = `${baseUrl}/data/suggestions?where=cardId LIKE "${cardId}"`;
+//   (`${baseUrl}?where=cardId="${cardId}"&load=author=_ownerId:users`);
+// const encoded = encodeURI(uri);
+
+    const res = await fetch(url, {
+        method: 'GET',        
+    });
+    // console.log('getres=='+res);
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
-    // if (res.statusCode === 204) {
-    //     console.log('empty');
-    //     return {};
-    // }
+    if (res.status === 204) {
+        console.log('empty');
+        return null;
+    }
     const data = await res.json();
-    // console.log(Object.values(data));
-    return Object.values(data);
-    // return (data);
+    // console.log(data);
+    // return Object.values(data);
+    return (data);
 }
 
 // export async function onSuggSubmReq(sugg, cardId, token, userId) {
@@ -237,7 +270,7 @@ export async function getCardSuggestions(id) {
 export async function addSuggestion(token,cardId,suggestion) {
     // console.log(brand+'======'+token);
     const info = { suggestion,cardId };
-    console.log('tcf----'+token,cardId,suggestion);
+    // console.log('tcf----'+token,cardId,suggestion);
     // console.log(''+fo);
     // console.log('INFO---'+info);
 
@@ -258,20 +291,11 @@ export async function addSuggestion(token,cardId,suggestion) {
         return null;
     }
     const data = await res.json();
-    console.log('dataservice--'+data);
+    // console.log('dataservice--'+data);
     console.log(Object.values(data));
     // return Object.values(data);
     return data;
 }
-
-async function onSuggSubmit(e) {
-    e.preventDefault();
-    const user = JSON.parse(localStorage.getItem('user'));
-    const userId = user.userId;
-    const token = user.token;
-    // const res=await onSuggSubmReq(sugg,cardId,token,userId)
-}
-
 
 // || 2ND CATALOG
 
@@ -283,13 +307,10 @@ export async function getInfos(id) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
     if (res.status === 204) {
-        console.log('empty'); 
+        console.log('empty');
         return null;
     }
-    const data = await res.json();
-    // console.log('DATA=='+ Object.entries(data));
-    // console.log('data'+data);
-    // return Object.values(data);
+    const data = await res.json();  
     return data;
 }
 

@@ -17,8 +17,7 @@ export default function UserCards() {
     return (
         <section className='user published'>
             <h2 className='user-title'>Published</h2>
-            {/* <!-- LOADER show when fetching --> */}
-            {/* <Loader/> */}
+           
             <div className='user-article-wrapper'>
                 {cards &&
                     cards.map(({ brand, _createdOn, _id, _ownerId }) => (
