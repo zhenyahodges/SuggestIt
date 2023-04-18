@@ -17,7 +17,7 @@ export async function action({ request }) {
 }
 
 export default function Logout() {
-    const {  setIsLogged } = useLogged();
+    const { setIsLogged } = useLogged();
     const { setWhoIsLooking } = useWhoIsLooking();
     const navigation = useNavigation();
     const navigate = useNavigate();
@@ -29,7 +29,7 @@ export default function Logout() {
         setIsLogged(false);
         setWhoIsLooking('Guest');
         navigate('/');
-    };   
+    };
 
     const onStay = () => {
         return navigate(-1);
