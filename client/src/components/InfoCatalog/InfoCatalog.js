@@ -4,9 +4,9 @@ import { getInfos } from '../../utils/service';
 export async function loader() {
     const infos = await getInfos();
 
-    // if (infos) {   
-        return infos;
-    // }       
+    // if (infos) {
+    return infos;
+    // }
     //    return {};
 }
 
@@ -20,42 +20,45 @@ export default function InfosCatalog() {
 
             <div className='catalog-wrapper'>
                 {infos &&
-                    infos.map(({ title,web,text, _createdOn, _id, _ownerId }) => (
-                        <article
-                            key={_id}
-                            className='sugg-card details catalog-view-card'
-                            id={_id}
-                        >
-                            <header className='card-header'>
-                                <h5 className='brand'>{title}</h5>
-                            </header>
+                    infos.map(
+                        ({ title, web, text, _createdOn, _id, _ownerId }) => (
+                            <article
+                                key={_id}
+                                className='sugg-card details catalog-view-card'
+                                id={_id}
+                            >
+                                <header className='card-header'>
+                                    <h5 className='brand'>{title}</h5>
+                                </header>
 
-                            <main className='card-main catalog-view-card'>
-                               <p>{web}</p>
-                               <p>{text}</p>
-                            </main>
-                            <footer className='card-footer suggs-card foot'>
-                                <div className='card-footer-content'>
-                                    {/* <p className='card-footer-text'>
+                                <main className='card-main catalog-view-card'>
+                                    <p>{web}</p>
+                                    <p>{text}</p>
+                                </main>
+                                <footer className='card-footer suggs-card foot'>
+                                    <div className='card-footer-content'>
+                                        {/* <p className='card-footer-text'>
                                         Some text
                                     </p> */}
-                                    <div className='card-footer-links-wrapper'>
-                                        <Link
-                                            to={_id}
-                                            className='details-link'
-                                            disabled={
-                                                navigation.state === 'loading'
-                                            }
-                                        >
-                                            {navigation.state === 'loading'
-                                                ? 'Loading...'
-                                                : 'Details'}
-                                        </Link>
+                                        <div className='card-footer-links-wrapper'>
+                                            <Link
+                                                to={_id}
+                                                className='details-link'
+                                                disabled={
+                                                    navigation.state ===
+                                                    'loading'
+                                                }
+                                            >
+                                                {navigation.state === 'loading'
+                                                    ? 'Loading...'
+                                                    : 'Details'}
+                                            </Link>
+                                        </div>
                                     </div>
-                                </div>
-                            </footer>
-                        </article>
-                    ))}
+                                </footer>
+                            </article>
+                        )
+                    )}
             </div>
         </section>
     );
