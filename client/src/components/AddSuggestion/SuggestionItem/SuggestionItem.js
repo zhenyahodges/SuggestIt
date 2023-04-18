@@ -1,13 +1,10 @@
-export default function SuggestionItem(){
+export default function SuggestionItem() {
     <li className='sugg-item'>
         <div className='sugg-item-wrapper'>
-            
-            <p id="suggestion" className='sugg-text'>
+            <p id='suggestion' className='sugg-text'>
                 {/* <span className='author-nickname'>Me</span> */}
                 {/* {suggestion}                */}
-
                 {/*  EDIT & DELETE (BTNS )IF OWNER & NOT TIMED OUT */}
-
                 {/* {(isAuthorized && !isOwner) && <span className='user-sug-list'>
                     <a href='/' className='edit-user-sugged link'>Edit</a>
                     <a href='/' className='delete-user-sugged link'>Delete</a>
@@ -16,9 +13,11 @@ export default function SuggestionItem(){
             </p>
 
             <p className='sugg-ranking'>
-                <span className="sm-ital">Votes:</span>
+                <span className='sm-ital'>Votes:</span>
                 {/* LIKES */}
-                <span id="likes" className='rank'>15</span>
+                <span id='likes' className='rank'>
+                    15
+                </span>
 
                 {/*  LIKE DISABLED FOR GUESTS & OWNERS */}
                 {/*  ===!? LIKE LIMITED voting!?=== */}
@@ -29,4 +28,4 @@ export default function SuggestionItem(){
             </p>
         </div>
     </li>;
-};
+}
