@@ -33,7 +33,6 @@ export default function CardItem() {
     const navigate = useNavigate();
     const { res, suggestions } = useLoaderData();
     // console.log('result==>' + suggestions);
-    const [timedOut,setTimedOut]=useState(false)
 
     const [suggs, setSuggs] = useState([]);
     // console.log('sugg=='+Object.entries(suggs[0]));
@@ -83,10 +82,6 @@ export default function CardItem() {
 
     const minutes = 100000;
     const timePassed = new Date() - new Date(createdOn) > minutes;
-
-    if(timePassed){
-        setTimeout(timePassed);
-    }
 
     // let allSuggsLike;
     // async function allSuggsLikesGet(suggestionId, token) {
@@ -273,7 +268,7 @@ export default function CardItem() {
                                     {/* <p className="countdown-text">Poll ended</p> */}
 
                                     {/* EDIT/DELETE VISIBLE FOR OWNER IF NOT TIMED OUT */}
-                                    {isAuthorized && isOwner && !timedOut && (
+                                    {isAuthorized && isOwner && !timePassed && (
                                         <>
                                             <Link
                                                 to={`/cards/${cardId}/edit`}
