@@ -25,8 +25,6 @@ export async function loader({ request, params }) {
     }
 
     redirect(request.url);
-    // console.log('path---'+pathname);
-    // -----------------
 
     return user;
 }

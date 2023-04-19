@@ -238,8 +238,7 @@ export async function getOneSuggestions(suggestionId, token) {
 
     const url = `${baseUrl}/data/suggestions?where=${searchQuery}&load=${relationQuery}`;
     const res = await fetch(url, {
-    
-    // const res = await fetch(`${baseUrl}/suggestions/${id}}`, {
+        // const res = await fetch(`${baseUrl}/suggestions/${id}}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -257,10 +256,15 @@ export async function getOneSuggestions(suggestionId, token) {
     return data;
 }
 
-export async function onEditSuggestion(token, cardId,suggestion, suggestionId) {
-    const info = { suggestion,cardId };
+export async function onEditSuggestion(
+    token,
+    cardId,
+    suggestion,
+    suggestionId
+) {
+    const info = { suggestion, cardId };
 
-    const res = await fetch(`${baseUrl}/data/suggestions/${suggestionId}`, {       
+    const res = await fetch(`${baseUrl}/data/suggestions/${suggestionId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -302,7 +306,7 @@ export async function getCardSuggestions(cardId) {
 
 export async function addSuggestion(token, cardId, suggestion) {
     const info = { suggestion, cardId };
- 
+
     const res = await fetch(`${baseUrl}/data/suggestions`, {
         method: 'post',
         headers: {
@@ -324,8 +328,8 @@ export async function addSuggestion(token, cardId, suggestion) {
     return data;
 }
 
-export async function postLikes(suggestionId,token){
-    const info= {suggestionId};
+export async function postLikes(suggestionId, token) {
+    const info = { suggestionId };
     // console.log('suggidpost--'+suggestionId);
     const res = await fetch(`${baseUrl}/data/likes`, {
         method: 'POST',
@@ -348,13 +352,12 @@ export async function postLikes(suggestionId,token){
     // console.log(Object.values(data));
     // return Object.values(data);
     return data;
-
 }
 
-export async function getLikes(suggestionId,token){
+export async function getLikes(suggestionId, token) {
     const searchQuery = encodeURIComponent(`cardId="${suggestionId}"`);
     const relationQuery = encodeURIComponent('author=_ownerId:users');
-console.log('HERE');
+    console.log('HERE');
     const url = `${baseUrl}/data/suggestions?where=${searchQuery}&load=${relationQuery}count`;
     const res = await fetch(url, {
         method: 'GET',

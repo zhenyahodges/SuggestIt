@@ -1,5 +1,5 @@
 import { Link, useLoaderData, useNavigation } from 'react-router-dom';
-import { getCards, getUserCards } from '../../utils/service';
+import {  getUserCards } from '../../utils/service';
 import { requireAuth } from '../../utils/requireAuth';
 
 export async function loader({ request }) {
@@ -8,8 +8,6 @@ export async function loader({ request }) {
     return cards;
 }
 
-// return comments;
-
 export default function UserCards() {
     const cards = useLoaderData();
     const navigation = useNavigation();
@@ -17,11 +15,10 @@ export default function UserCards() {
     return (
         <section className='user published'>
             <h2 className='user-title'>Published</h2>
-           
+
             <div className='user-article-wrapper'>
                 {cards &&
                     cards.map(({ brand, _createdOn, _id, _ownerId }) => (
-                        // TODO:!!! Hide overflow if necess!!!from Details?! or SHOW ONLY FIRST N SUGGS
                         <article
                             key={_id}
                             className='sugg-card catalog private'
@@ -32,7 +29,6 @@ export default function UserCards() {
                             </header>
 
                             <main className='card-main'>
-                             
                                 <ul className='sugg-list'>
                                     {/* TODO: MAP SUGGESTIONS */}
                                     {/* {suggestions && suggestions.map((s) => <SuggestionItem id={s._id} key={s._id} {...s} />)} */}
