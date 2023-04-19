@@ -67,7 +67,6 @@ export async function logoutUser(token) {
         // localStorage.setItem({});
         localStorage.clear();
         // redirect('/');
-
         // return (window.location.href = '/');
         return {};
     }
@@ -314,8 +313,8 @@ export async function addSuggestion(token, cardId, suggestion) {
     return data;
 }
 
-export async function postLikes(suggestionId, token) {
-    const info = { suggestionId };
+export async function postLikes(suggestionId, token,userId) {
+    const info = { suggestionId,userId };
     // console.log('suggidpost--'+suggestionId);
     const res = await fetch(`${baseUrl}/data/likes`, {
         method: 'POST',
@@ -349,6 +348,26 @@ export async function getLikes(suggestionId, token) {
         method: 'GET',
     });
     // console.log('getres=='+res);
+    if (!res.ok) {
+        throw new Error(`${res.status} - ${res.statusText}`);
+    }
+    if (res.status === 204) {
+        console.log('empty');
+        return null;
+    }
+    const data = await res.json();
+    console.log(data);
+    // return Object.values(data);
+    return data;
+}
+
+export async function getAllLikes(cardId,token){
+    const searchQuery = encodeURIComponent(`cardId="${cardId}"`);
+    const relationQuery = encodeURIComponent('author=_ownerId:users');
+    const url=`${baseUrl}/data/suggestions?where=${searchQuery}&load=${relationQuery}`;
+    const res=await fetch(url,{
+        metod: 'GET',
+    });
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }

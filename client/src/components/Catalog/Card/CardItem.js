@@ -5,10 +5,13 @@ import {
     useNavigation,
 } from 'react-router-dom';
 import {
+    // getAllLikes,
     getCardSuggestions,
     getCards,
+    // getLikes,
     onDeleteCard,
     onDeleteSuggestion,
+    // postLikes,
 } from '../../../utils/service';
 import { useEffect, useState } from 'react';
 import { EmailShareButton } from 'react-share';
@@ -45,10 +48,6 @@ export default function CardItem() {
         suggestions && setSuggs(suggestions);
     }, [setSuggs, suggestions]);
 
-    // useEffect(()=>{
-    //     // fetch
-    // },[setLikes]);
-
     const user = JSON.parse(localStorage.getItem('user'));
 
     let userId;
@@ -84,27 +83,30 @@ export default function CardItem() {
     const minutes = 100000;
     const timePassed = new Date() - new Date(createdOn) > minutes;
 
-    // useEffect(() => {
-    //     likes && setLikesSugg(likes);
-    // }, [setLikesSugg, likes]);
+    // let allSuggsLike;
+    // async function allSuggsLikesGet(suggestionId, token) {
+    //     allSuggsLike = await getAllLikes(suggestionId, token);
+    //     console.log('LIKESRES--' + res);
+    //     return res;
+    // }
+    // allSuggsLike.map(async (sugg) => {
+    //     const likes = await getLikes(sugg._id);
+    //     return likes.length;
+    // });
 
-    // async function getAll(suggestionId,token){
-    //     const res=await getLikes(suggestionId,token);
-    //     console.log('LIKESRES--'+res);
+    // async function increase(suggestionId, token, userId) {
+    //     console.log('sid--' + suggestionId, 'tok--' + token);
+    //     //     console.log(suggestionId,token,userId);
+    //     const res = await getLikes(suggestionId);
+    //     await postLikes(suggestionId, token, userId);
+    //     console.log('reslikesall--' + res);
+    //     const rank = res.length;
+    //     return rank;
     // }
 
-    //     async function increase(suggestionId,token){
-    //         console.log('sid--'+suggestionId,'tok--'+token);
-    //     //     console.log(suggestionId,token);
-    //         await postLikes(suggestionId,token);
-
-    //     //     const res=await getLikes(suggestionId);
-    //     setLikesSugg(prevCount=>prevCount+1);
-    //  }
-
-    //   async function decrease(){
-    //     setLikesSugg(prevCount=>prevCount-1);
-    //  }
+    // async function decrease() {
+    //     // setLikesSugg(prevCount=>prevCount-1);
+    // }
 
     return (
         <section className='details-view container'>
@@ -183,7 +185,7 @@ export default function CardItem() {
 
                                                         <p className='sugg-ranking'>
                                                             <span className='rank'>
-                                                                {/* {sugg.rank} */}
+                                                                {/* {rank && rank={Like(_id)}} */}
                                                                 15
                                                                 {/* {likesSugg.length} */}
                                                             </span>
@@ -192,7 +194,13 @@ export default function CardItem() {
                                                             <!--===!? LIKE LIMITED voting!?=== --> */}
                                                             <button
                                                                 className='sugg-like-link'
-                                                                // onClick={()=>increase(_id,token)}
+                                                                // onClick={() =>
+                                                                //     increase(
+                                                                //         _id,
+                                                                //         token,
+                                                                //         userId
+                                                                //     )
+                                                                // }
                                                             >
                                                                 {/* if voted down=>vote up */}
                                                                 <i className='like fa-solid fa-circle-up'></i>

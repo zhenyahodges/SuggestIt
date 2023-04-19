@@ -30,10 +30,10 @@ Guests & Logged Users can view the Catalog with feedback cards.
 Guests & Logged Users can view the Details of feedback cards.
 
 Logged users, NOT owners can:
-* (Vote for a suggestion.)
 * Add a new suggestion.
 * Edit suggestion * *if NOT timed out (1min time limit)*
 * Delete suggestion * *if NOT timed out (1min time limit)*
+* (Vote for a suggestion.)
 
 Logged users, owners can:
 * Edit a card they created. * *if NOT timed out (2min time limit)*
@@ -72,6 +72,15 @@ Logged users can:
 #
 ## **Validations & Error Handling**
 
+### **Error elements**
+* Error elements applied to route paths.
+
+### **Fetch requests**
+* Error handling implemented
+
+### **Loading & Submitting:**
+* Buttons show when data is loading or submitting.
+
 ### **Inputs: Register**
 
 ### Names
@@ -102,12 +111,6 @@ The email address must not have any spaces, tabs, or other special characters.
 
 ### **Not Found**
 * If the page is not found, returns 404 page Not Found, with link back to the home page.
-
-### **Fetch requests**
-* Error handling implemented
-
-### **Loading & Submitting:**
-* Buttons show when data is loading or submitting.
 #
 ### **To run**
 
