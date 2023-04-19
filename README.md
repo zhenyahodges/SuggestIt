@@ -36,8 +36,8 @@ Logged users, NOT owners can:
 * (Vote for a suggestion.)
 
 Logged users, owners can:
-* Edit a card they created. * *if NOT timed out (2min time limit)*
-* Delete a card they created. * *if NOT timed out (2min time limit)*
+* Edit a card they created. * *if NOT timed out (1min time limit)*
+* Delete a card they created. * *if NOT timed out (1min time limit)*
 * Print card
 * Email card
 
