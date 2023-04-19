@@ -1,8 +1,6 @@
 import { redirect } from 'react-router-dom';
 
-   
-    export async function requireAuth() {
-
+export async function requireAuth() {
     let isLogged = false;
     let result = {
         isLogged,
@@ -13,14 +11,12 @@ import { redirect } from 'react-router-dom';
     if (user) {
         result.isLogged = true;
         result.userId = user.userId;
-        result.token=user.token;   
+        result.token = user.token;
     } else {
-        result.isLogged = false;      
+        result.isLogged = false;
 
-        throw redirect(
-            '/login?message=You must log in first.'
-        );
+        throw redirect('/login?message=You must log in first.');
     }
 
-   return result;
+    return result;
 }
