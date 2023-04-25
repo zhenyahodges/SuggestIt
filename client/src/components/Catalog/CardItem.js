@@ -12,32 +12,42 @@ import {
     onDeleteCard,
     onDeleteSuggestion,
     // postLikes,
-} from '../../../utils/service';
+} from '../../utils/service';
 import { useEffect, useState } from 'react';
 import { EmailShareButton } from 'react-share';
+import SuggestionDetail from './Suggestion/SuggestionDetail';
 
 let cardId;
 
 export async function loader({ params }) {
     cardId = params.cardId;
+    // console.log('cardId'+cardId);
     const res = await getCards(cardId);
     const suggestions = await getCardSuggestions(cardId);
     // console.log('suggs=='+suggestions);
-    const result = { res, suggestions };
+    const result = {
+        res,
+        suggestions,
+    };
     // console.log('result==>'+result);
     return result;
 }
 
 export default function CardItem() {
-    const navigation = useNavigation();
+     const navigation = useNavigation();
     const navigate = useNavigate();
-    const { res, suggestions } = useLoaderData();
+    const {
+        res,
+        suggestions,
+    } = useLoaderData();
+    // console.log('result==>' + res);
     // console.log('result==>' + suggestions);
 
     const [suggs, setSuggs] = useState([]);
     // console.log('sugg=='+Object.entries(suggs[0]));
     // const [likesSugg, setLikesSugg] = useState([]);
     // const [voters,setVoters]=useState([]);
+
     const ownerId = res._ownerId;
     const cardId = res._id;
     const brand = res.brand;
@@ -122,104 +132,7 @@ export default function CardItem() {
                             <ul className='sugg-list'>
                                 {/* SUGGESTIONS */}
                                 {suggs &&
-                                    suggs.map(
-                                        ({
-                                            _ownerId,
-                                            suggestion,
-                                            likes,
-                                            _cardId,
-                                            _createdOn,
-                                            _updatedOn,
-                                            _id,
-                                        }) => {
-                                            return (
-                                                <li
-                                                    className='sugg-item'
-                                                    key={_id}
-                                                    id={_id}
-                                                >
-                                                    <div className='sugg-item-wrapper'>
-                                                        <p className='sugg-text'>
-                                                            {suggestion}
-
-                                                            {/* <!--IF OWNER & NOT TIMED OUT --> */}
-                                                            {_ownerId ===
-                                                                userId &&
-                                                                !(
-                                                                    new Date() -
-                                                                        new Date(
-                                                                            _createdOn
-                                                                        ) >
-                                                                    100000
-                                                                ) && (
-                                                                    <span className='user-sug-list'>
-                                                                        <Link
-                                                                            to={`/suggestions/${_id}`}
-                                                                            className='edit-user-sugged link'
-                                                                        >
-                                                                            Edit
-                                                                        </Link>
-                                                                        <Link
-                                                                            onClick={() => {
-                                                                                if (
-                                                                                    window.confirm(
-                                                                                        'Are you sure you want to delete?'
-                                                                                    )
-                                                                                ) {
-                                                                                    onDeleteSuggestion(
-                                                                                        _id,
-                                                                                        token
-                                                                                    );
-                                                                                    navigate(
-                                                                                        `/cards/${cardId}`
-                                                                                    );
-                                                                                }
-                                                                            }}
-                                                                            className='delete-user-sugged link'
-                                                                        >
-                                                                            Delete
-                                                                        </Link>
-                                                                    </span>
-                                                                )}
-                                                        </p>
-
-                                                        <p className='sugg-ranking'>
-                                                            <span className='rank'>
-                                                                {/* {rank && rank={Like(_id)}} */}
-                                                                15
-                                                                {/* {likesSugg.length} */}
-                                                            </span>
-
-                                                            {/* <!-- LIKE DISABLED FOR GUESTS & OWNERS -->
-                                                            <!--===!? LIKE LIMITED voting!?=== --> */}
-                                                            <button
-                                                                className='sugg-like-link'
-                                                                // onClick={() =>
-                                                                //     increase(
-                                                                //         _id,
-                                                                //         token,
-                                                                //         userId
-                                                                //     )
-                                                                // }
-                                                            >
-                                                                {/* if voted down=>vote up */}
-                                                                <i className='like fa-solid fa-circle-up'></i>
-                                                                {/* if voted up=>vote down */}
-                                                                {/* <i className='fa-solid fa-circle-down'></i> */}
-                                                            </button>
-                                                            <button
-                                                                className='sugg-like-link'
-                                                                //    onClick={()=>decrease(_id,token)}
-                                                            >
-                                                                <i className='fa-solid fa-circle-down'></i>
-                                                            </button>
-                                                        </p>
-                                                    </div>
-                                                </li>
-                                            );
-                                            // {/* <!-- li end--> */}}
-                                        }
-                                    )}
+                                    suggs.map(s=> <SuggestionDetail key={s._id} {...s}/> )}
                             </ul>
                         </main>
 
@@ -252,6 +165,7 @@ export default function CardItem() {
                                             >
                                                 Print
                                             </Link>
+                                            
                                             <EmailShareButton>
                                                 <span className='print details'>
                                                     Email

@@ -104,7 +104,7 @@ export default function Register() {
                         minLength='3'
                         maxLength='64'
                         autoComplete='email'
-                        pattern='[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[.]{1}[a-zA-Z]{2,}$'
+                        pattern='^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
                         required
                     />
                 </div>

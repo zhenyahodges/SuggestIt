@@ -25,9 +25,11 @@ import Catalog, { loader as cardsLoader } from './components/Catalog/Catalog';
 import CardItem, {
     loader as cardLoader,
     // action as likeAction
-} from './components/Catalog/Card/CardItem';
+} from './components/Catalog/CardItem';
 
-import AddSuggestion, {action as suggestAction,} from './components/AddSuggestion/SuggestionItem/AddSuggestion';
+import AddSuggestion, {
+    action as suggestAction,
+} from './components/Catalog/Suggestion/AddSuggestion';
 
 import ProfileLayout, {
     loader as userLoader,
@@ -35,7 +37,9 @@ import ProfileLayout, {
 import UserCards, {
     loader as userCardsLoader,
 } from './components/Profile/UserCards';
-import UserSuggs, {loader as useSuggLoader} from './components/Profile/UserSuggs';
+import UserSuggs, {
+    loader as useSuggLoader,
+} from './components/Profile/UserSuggs';
 import CreateCard, {
     action as createCardAction,
 } from './components/Profile/CreateCard';
@@ -64,8 +68,10 @@ import CreateInfo, {
 import UserInfos, {
     loader as userInfosLoader,
 } from './components/Profile/UserInfos';
-import EditSuggestion, { loader as editSuggLoader,
-action as editSuggAction} from './components/AddSuggestion/SuggestionItem/EditSuggestion';
+import EditSuggestion, {
+    loader as editSuggLoader,
+    action as editSuggAction,
+} from './components/Catalog/Suggestion/EditSuggestion';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -87,6 +93,8 @@ const router = createBrowserRouter(
                 path='cards/:cardId'
                 element={<CardItem />}
                 loader={cardLoader}
+                id='cardItem'
+
                 // action={likeAction}
                 errorElement={<NotFound />}
             />
@@ -103,7 +111,7 @@ const router = createBrowserRouter(
                 loader={async ({ request }) => await requireAuth(request)}
                 action={suggestAction}
             />
-             <Route
+            <Route
                 path='suggestions/:suggestionId'
                 element={<EditSuggestion />}
                 loader={editSuggLoader}
@@ -177,7 +185,7 @@ const router = createBrowserRouter(
                     loader={async ({ request }) => await requireAuth(request)}
                     action={createCardAction}
                     errorElement={<NotFound />}
-                />                
+                />
                 <Route index element={<UserInfos />} loader={userInfosLoader} />
                 <Route
                     path='createinfo'

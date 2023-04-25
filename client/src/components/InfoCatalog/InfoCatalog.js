@@ -6,8 +6,9 @@ export async function loader() {
 
     // if (infos) {
     return infos;
-    // }
+    // }else{
     //    return {};
+    // }
 }
 
 export default function InfosCatalog() {
@@ -59,6 +60,9 @@ export default function InfosCatalog() {
                             </article>
                         )
                     )}
+
+{infos.length === 0 && <h3 style={{marginLeft:'44%'}}>No articles yet</h3>}
+
             </div>
         </section>
     );
