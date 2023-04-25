@@ -40,11 +40,7 @@ export default function CardItem() {
         res,
         suggestions,
     } = useLoaderData();
-    // console.log('result==>' + res);
-    // console.log('result==>' + suggestions);
 
-    const [suggs, setSuggs] = useState([]);
-    // console.log('sugg=='+Object.entries(suggs[0]));
     // const [likesSugg, setLikesSugg] = useState([]);
     // const [voters,setVoters]=useState([]);
 
@@ -53,10 +49,6 @@ export default function CardItem() {
     const brand = res.brand;
     const createdOn = res._createdOn;
     const updatedOn = res._updatedOn;
-
-    useEffect(() => {
-        suggestions && setSuggs(suggestions);
-    }, [setSuggs, suggestions]);
 
     const user = JSON.parse(localStorage.getItem('user'));
 
@@ -131,8 +123,8 @@ export default function CardItem() {
                         <main className='card-main'>
                             <ul className='sugg-list'>
                                 {/* SUGGESTIONS */}
-                                {suggs &&
-                                    suggs.map(s=> <SuggestionDetail key={s._id} {...s}/> )}
+                                {suggestions &&
+                                    suggestions.map(s=> <SuggestionDetail key={s._id} {...s}/> )}
                             </ul>
                         </main>
 

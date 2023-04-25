@@ -11,7 +11,7 @@ export async function loader({ request }) {
 export default function UserSuggs() {
     const suggestions = useLoaderData();
     const owner=suggestions._ownerId;
-    console.log('OWNER--'+owner);
+    // console.log('OWNER--'+owner);
        
     return (
         //   {/* <!-- || USER-OWNER SUGGESTIONS --> */}

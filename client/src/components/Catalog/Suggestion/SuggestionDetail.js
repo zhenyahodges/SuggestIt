@@ -1,51 +1,43 @@
-import { Link, useNavigate, useOutletContext, useRouteLoaderData } from "react-router-dom";
-import { onDeleteSuggestion } from "../../../utils/service";
+import {
+    Link,
+    useNavigate,
+    useOutletContext,
+    useRouteLoaderData,
+} from 'react-router-dom';
+import { onDeleteSuggestion } from '../../../utils/service';
 
-export default function SuggestionDetail({ _ownerId,
-    suggestion,
-    likes,
-    _cardId,
-    _createdOn,
-    _updatedOn,
-    _id,}) {
+export default function SuggestionDetail(props) {
+    const { res, suggestions } = useRouteLoaderData('cardItem');
 
-        const {res,suggestions}= useRouteLoaderData('cardItem');
-        // console.log(Object.entries(suggestons));
-     
-        // const ownerId = res._ownerId;
-        console.log(_ownerId);
-        // const cardId = res._id;
-        // const brand = res.brand;
-        // const createdOn = res._createdOn;
-        // const updatedOn = res._updatedOn;
+    const ownerId = props._ownerId;
+    const suggestion = props.suggestion;
+     const likes=props.likes;
+    const cardId = props._cardId;
+    const createdOn = props._createdOn;
+    const updatedOn = props._updatedOn;
+    const id = props._id;
 
-        const user= useOutletContext();
-        // console.log('user--'+Object.entries(user));
-        const userId=user.userId;
-        const token = user.token;
-        const navigate=useNavigate();
-        console.log(userId);
+    // console.log(likes);  
+
+    const user = useOutletContext();
+    // console.log('user--'+Object.entries(user));
+    const userId = user.userId;
+    const token = user.token;
+    const navigate = useNavigate();
+    // console.log(userId);
 
     return (
-        <li
-            className='sugg-item'          
-        >
+        <li className='sugg-item'>
             <div className='sugg-item-wrapper'>
                 <p className='sugg-text'>
                     {suggestion}
 
                     {/* <!--IF OWNER & NOT TIMED OUT --> */}
-                    {_ownerId === userId &&
-                        !(
-                            new Date() -
-                                new Date(
-                                    _createdOn
-                                ) >
-                            100000
-                        ) && (
+                    {ownerId === userId &&
+                        !(new Date() - new Date(createdOn) > 100000) && (
                             <span className='user-sug-list'>
                                 <Link
-                                    to={`/suggestions/${_id}`}
+                                    to={`/suggestions/${id}`}
                                     className='edit-user-sugged link'
                                 >
                                     Edit
@@ -57,13 +49,8 @@ export default function SuggestionDetail({ _ownerId,
                                                 'Are you sure you want to delete?'
                                             )
                                         ) {
-                                            onDeleteSuggestion(
-                                                _id,
-                                                token
-                                            );
-                                            navigate(
-                                                `/cards/${_cardId}`
-                                            );
+                                            onDeleteSuggestion(id, token);
+                                            navigate(`/cards/${cardId}`);
                                         }
                                     }}
                                     className='delete-user-sugged link'
@@ -77,7 +64,7 @@ export default function SuggestionDetail({ _ownerId,
                 <p className='sugg-ranking'>
                     <span className='rank'>
                         {/* {rank && rank={Like(_id)}} */}
-                        15
+                        {likes && likes.length}
                         {/* {likesSugg.length} */}
                     </span>
 
