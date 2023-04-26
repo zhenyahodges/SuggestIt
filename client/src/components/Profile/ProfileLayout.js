@@ -8,12 +8,13 @@ import {
 } from 'react-router-dom';
 import { requireAuth } from '../../utils/requireAuth';
 import { getUserInfo } from '../../utils/service';
+import ProfileUser from './ProfileUser';
 
 export async function loader({ request, params }) {
     const { userId, token } = await requireAuth(request);
     const res = await getUserInfo(token);
     const { fname, lname, email } = res;
-    const user = { fname, lname, email, userId };
+    const user = { fname, lname, email, userId, token };
     const pathname = new URL(request.url).searchParams.get('message');
 
     if (!userId) {
@@ -45,61 +46,7 @@ export default function ProfileLayout() {
 
             <div className='profile-wrapper'>
                 <div className='profile-form-wrap'>
-                    <Form method='get' id='prof-form' className='prof form'>
-                        <div className='user-details'>
-                            <div className='wrap fname'>
-                                <label
-                                    htmlFor='prof-fname'
-                                    className='prof lbl fname'
-                                >
-                                    First Name
-                                </label>
-                                <input
-                                    type='text'
-                                    className='prof entry fname'
-                                    name='prof-fname'
-                                    id='prof-fname'
-                                    value={user.fname}
-                                    readOnly
-                                    disabled
-                                />
-                            </div>
-                            <div className='wrap prof-lname'>
-                                <label
-                                    htmlFor='prof-lname'
-                                    className='prof lbl lname'
-                                >
-                                    Last Name
-                                </label>
-                                <input
-                                    type='text'
-                                    className='prof entry lname'
-                                    name='prof-lname'
-                                    id='prof-lname'
-                                    value={user.lname}
-                                    readOnly
-                                    disabled
-                                />
-                            </div>
-                            <div className='wrap email'>
-                                <label
-                                    htmlFor='prof-email'
-                                    className='prof lbl email'
-                                >
-                                    Email
-                                </label>
-                                <input
-                                    type='email'
-                                    className='prof entry email'
-                                    name='prof-email'
-                                    id='prof-email'
-                                    value={user.email}
-                                    readOnly
-                                    disabled
-                                />
-                            </div>
-                        </div>
-                    </Form>
+                    <ProfileUser props={user} />
 
                     <nav className='prof-nav'>
                         <NavLink
@@ -113,7 +60,7 @@ export default function ProfileLayout() {
                         >
                             {navigation.state === 'loading'
                                 ? 'Loading...'
-                                : 'Published'}
+                                : 'Published Cards'}
                         </NavLink>
                         <NavLink
                             to='suggested'
@@ -127,9 +74,9 @@ export default function ProfileLayout() {
                                 ? 'Loading...'
                                 : 'Suggested'}
                         </NavLink>
-                        {/* <NavLink
-                            to=''
-                            className='btn dark show suggested'
+                        <NavLink
+                            to='userInfos'
+                            className='btn dark show pub infos'
                             style={({ isActive }) =>
                                 isActive ? activeStyles : null
                             }
@@ -138,7 +85,7 @@ export default function ProfileLayout() {
                             {navigation.state === 'loading'
                                 ? 'Loading...'
                                 : 'Published Infos'}
-                        </NavLink> */}
+                        </NavLink>
                         <NavLink
                             to='create'
                             className='btn light show create'
@@ -167,7 +114,7 @@ export default function ProfileLayout() {
                 </div>
 
                 <section className='user-profile-cards-wrapper'>
-                    <Outlet context={{ user }} />
+                    <Outlet context={user} />
                 </section>
             </div>
         </section>

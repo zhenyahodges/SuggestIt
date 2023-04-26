@@ -186,7 +186,12 @@ const router = createBrowserRouter(
                     action={createCardAction}
                     errorElement={<NotFound />}
                 />
-                <Route index element={<UserInfos />} loader={userInfosLoader} />
+                <Route 
+                path='userInfos'
+                 element={<UserInfos />}
+                 loader={userInfosLoader} 
+                 errorElement={<NotFound />}
+                 />
                 <Route
                     path='createinfo'
                     element={<CreateInfo />}

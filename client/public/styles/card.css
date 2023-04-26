@@ -24,8 +24,9 @@
   .card-footer {
       background: linear-gradient(0deg, rgba(19, 41, 48, 1) 0%, rgba(46, 101, 119, 1) 73%, rgba(91, 200, 235, 1) 100%);
   }
-  .details-header h5{
-    padding: 21px 0;
+
+  .details-header h5 {
+      padding: 21px 0;
   }
 
   .card-header {
@@ -38,7 +39,7 @@
   .brand {
       font-size: 1.2rem;
       margin: 0;
-      padding:5px 0;
+      padding: 5px 0;
       color: var(--clr-light)
   }
 
@@ -88,6 +89,16 @@
       font-weight: 600;
   }
 
+  .user-sugged-list>.sugg-item {
+      display: flex;
+      flex-flow: row wrap;
+      flex: 1 0 100%;
+  }
+  .user-sugged-list>.sugg-item>.sugg-item-wrapper {
+      flex: 1 0 100%;
+  }
+
+
 
   /* *** Card Footer */
   .card-footer {
@@ -125,13 +136,13 @@
   /* LINKS */
   .add-sugg-link,
   .vote-sugg-link,
-  .details-link{
+  .details-link {
       color: var(--clr-highlight);
   }
 
   .add-sugg-link:hover,
   /* .vote-sugg-link:hover, */
-  .details-link:hover{
+  .details-link:hover {
       color: var(--clr-light);
   }
 

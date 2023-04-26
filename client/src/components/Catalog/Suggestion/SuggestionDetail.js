@@ -7,7 +7,9 @@ import {
 import { onDeleteSuggestion } from '../../../utils/service';
 
 export default function SuggestionDetail(props) {
-    const { res, suggestions } = useRouteLoaderData('cardItem');
+    // const { res, suggestions } = useRouteLoaderData('cardItem');
+    const navigate = useNavigate();
+    const user = useOutletContext();
 
     const ownerId = props._ownerId;
     const suggestion = props.suggestion;
@@ -19,12 +21,11 @@ export default function SuggestionDetail(props) {
 
     // console.log(likes);  
 
-    const user = useOutletContext();
     // console.log('user--'+Object.entries(user));
     const userId = user.userId;
     const token = user.token;
-    const navigate = useNavigate();
-    // console.log(userId);
+    console.log(userId);
+    console.log(token);
 
     return (
         <li className='sugg-item'>
@@ -64,7 +65,7 @@ export default function SuggestionDetail(props) {
                 <p className='sugg-ranking'>
                     <span className='rank'>
                         {/* {rank && rank={Like(_id)}} */}
-                        {likes && likes.length}
+                        {/* {likes && likes.length} */}
                         {/* {likesSugg.length} */}
                     </span>
 

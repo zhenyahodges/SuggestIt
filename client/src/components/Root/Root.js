@@ -18,7 +18,10 @@ export default function Root() {
     // const [user,setUser]=useState([]);
     const user= useLoaderData();
     // setUser(res);
-    const userId=user.userId;
+    let userId;
+    if(user){        
+      userId=user.userId;
+    }
     // console.log(userId);
 
     return (
