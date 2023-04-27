@@ -145,13 +145,3 @@
   .details-link:hover {
       color: var(--clr-light);
   }
-
-  /* GUESTS-DONT DISPLAY LINK */
-  /* OWNERS-DONT DISPLAY LINK */
-  /*===? LIMIT LIKES!? ====*/
-  /* .sugg-like-link {
-      display: none;
-  } */
-
-
-  /* ===***Card END */

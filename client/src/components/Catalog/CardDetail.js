@@ -10,7 +10,6 @@ import {
     getCards,
     // getLikes,
     onDeleteCard,
-    onDeleteSuggestion,
     // postLikes,
 } from '../../utils/service';
 import { useEffect, useState } from 'react';
@@ -21,6 +20,7 @@ let cardId;
 
 export async function loader({ params }) {
     cardId = params.cardId;
+    console.log('CARDID--'+cardId);
     const res = await getCards(cardId);
     const suggestions = await getCardSuggestions(cardId);
     const result = {
@@ -31,12 +31,9 @@ export async function loader({ params }) {
 }
 
 export default function CardDetail() {
-     const navigation = useNavigation();
+    const navigation = useNavigation();
     const navigate = useNavigate();
-    const {
-        res,
-        suggestions,
-    } = useLoaderData();
+    const { res, suggestions } = useLoaderData();
 
     // const [likesSugg, setLikesSugg] = useState([]);
     // const [voters,setVoters]=useState([]);
@@ -111,100 +108,95 @@ export default function CardDetail() {
         <section className='details-view container'>
             <h2>Details</h2>
             {
-                <>
-                    <article className='sugg-card details detailed-card'>
-                        <header className='card-header details-header'>
-                            <h5 className='brand'>{brand}</h5>
-                        </header>
+                <article className='sugg-card details detailed-card'>
+                    <header className='card-header details-header'>
+                        <h5 className='brand'>{brand}</h5>
+                    </header>
 
-                        <main className='card-main'>
-                            <ul className='sugg-list'>
-                                {/* SUGGESTIONS */}
-                                {suggestions &&
-                                    suggestions.map(s=> <SuggestionDetail key={s._id} {...s}/> )}
-                            </ul>
-                        </main>
+                    <main className='card-main'>
+                        <ul className='sugg-list'>
+                            {/* SUGGESTIONS */}
+                            {suggestions &&
+                                suggestions.map((s) => (
+                                    <SuggestionDetail key={s._id} {...s} />
+                                ))}
+                        </ul>
+                    </main>
 
-                        <footer className='card-footer sugg-card foot'>
-                            <div className='card-footer-content'>
-                                {/* <p className='card-footer-owner'>Owner</p> */}
-                                <p className='card-footer-text'>
-                                    Thank you for your contributions!
-                                </p>
+                    <footer className='card-footer sugg-card foot'>
+                        <div className='card-footer-content'>
+                            <p className='card-footer-text'>
+                                Thank you for your contributions!
+                            </p>
 
-                                <div className='card-footer-links-wrapper'>
-                                    {/* ADD-SUGGESTION LINK: visible for LOGGED (NOT OWNERS?) */}
-                                    {isAuthorized && !isOwner && (
-                                        // <Link>ddSuggestion onsuggubmit={onsuggubmit}/>
+                            <div className='card-footer-links-wrapper'>
+                                {/* ADD-SUGGESTION LINK: visible for LOGGED (NOT OWNERS?) */}
+                                {isAuthorized && !isOwner && (
+                                    <Link
+                                        to={`/cards/${cardId}/suggest`}
+                                        className='add-sugg-link'
+                                    >
+                                        Suggest
+                                    </Link>
+                                )}
+
+                                {/*------- EMAIL&P PRINT */}
+                                {isAuthorized && isOwner && (
+                                    <>
                                         <Link
-                                            to={`/cards/${cardId}/suggest`}
-                                            className='add-sugg-link'
+                                            to='/'
+                                            className='print details'
+                                            onClick={onPrint}
                                         >
-                                            Suggest
+                                            Print
                                         </Link>
-                                    )}
 
-                                    {/*------- EMAIL&P PRINT */}
-                                    {isAuthorized && isOwner && (
-                                        <>
-                                            <Link
-                                                to='/'
-                                                className='print details'
-                                                onClick={onPrint}
-                                            >
-                                                Print
-                                            </Link>
-                                            
-                                            <EmailShareButton>
-                                                <span className='print details'>
-                                                    Email
-                                                </span>
-                                            </EmailShareButton>
-                                        </>
-                                    )}
+                                        <EmailShareButton>
+                                            <span className='print details'>
+                                                Email
+                                            </span>
+                                        </EmailShareButton>
+                                    </>
+                                )}
 
-                                    {/*------- LATER  */}
-                                    {/*  VISIBLE FOR LOGGED OWNER ONLY */}
-                                    {/* <p className="countdown-text"><span className="count-end">20</span> days left</p> */}
+                                {/*  VISIBLE FOR LOGGED OWNER ONLY */}
+                                {/* <p className="countdown-text"><span className="count-end">20</span> days left</p> */}
 
-                                    {/* if POLL ENDED  */}
-                                    {/* <p className="countdown-text">Poll ended</p> */}
+                                {/* if POLL ENDED  */}
+                                {/* <p className="countdown-text">Poll ended</p> */}
 
-                                    {/* EDIT/DELETE VISIBLE FOR OWNER IF NOT TIMED OUT */}
-                                    {isAuthorized && isOwner && !timePassed && (
-                                        <>
-                                            <Link
-                                                to={`/cards/${cardId}/edit`}
-                                                className='btn-sm card-details edit-card'
-                                                disabled={
-                                                    navigation.state ===
-                                                    'loading'
-                                                }
-                                            >
-                                                {navigation.state === 'loading'
-                                                    ? 'Loading...'
-                                                    : 'Edit'}
-                                            </Link>
-                                            <button
-                                                to='/'
-                                                className='btn-sm card-details delete-card'
-                                                onClick={onDelete}
-                                                disabled={
-                                                    navigation.state ===
-                                                    'loading'
-                                                }
-                                            >
-                                                {navigation.state === 'loading'
-                                                    ? ':Loading...'
-                                                    : 'Delete'}
-                                            </button>
-                                        </>
-                                    )}
-                                </div>
+                                {/* EDIT/DELETE VISIBLE FOR OWNER IF NOT TIMED OUT */}
+                                {isAuthorized && isOwner && !timePassed && (
+                                    <>
+                                        <Link
+                                            to={`/cards/${cardId}/edit`}
+                                            className='btn-sm card-details edit-card'
+                                            disabled={
+                                                navigation.state === 'loading'
+                                            }
+                                        >
+                                            {navigation.state === 'loading'
+                                                ? 'Loading...'
+                                                : 'Edit'}
+                                        </Link>
+                                        <button
+                                            to='/'
+                                            className='btn-sm card-details delete-card'
+                                            onClick={onDelete}
+                                            disabled={
+                                                navigation.state === 'loading'
+                                            }
+                                        >
+                                            {navigation.state === 'loading'
+                                                ? ':Loading...'
+                                                : 'Delete'}
+                                        </button>
+                                    </>
+                                )}
                             </div>
-                        </footer>
-                    </article>
-                </>
+                        </div>
+                    </footer>
+                </article>
             }
         </section>
     );

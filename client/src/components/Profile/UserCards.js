@@ -1,6 +1,7 @@
 import { Link, useLoaderData, useNavigation } from 'react-router-dom';
 import {  getUserCards } from '../../utils/service';
 import { requireAuth } from '../../utils/requireAuth';
+import CatalogItem from '../Catalog/CatalogItem/CatalogItem';
 
 export async function loader({ request }) {
     const { userId, token } = await requireAuth(request);
@@ -10,7 +11,8 @@ export async function loader({ request }) {
 
 export default function UserCards() {
     const cards = useLoaderData();
-    const navigation = useNavigation();
+    console.log(cards[0]._id);
+    // const navigation = useNavigation();
 
     return (
         <section className='user published'>
@@ -18,56 +20,9 @@ export default function UserCards() {
 
             <div className='user-article-wrapper'>
                 {cards &&
-                    cards.map(({ brand, _createdOn, _id, _ownerId }) => (
-                        <article
-                            key={_id}
-                            className='sugg-card catalog private'
-                            id={_id}
-                        >
-                            <header className='card-header'>
-                                <h5 className='brand'>{brand}</h5>
-                            </header>
-
-                            <main className='card-main'>
-                                <ul className='sugg-list'>
-                                    {/* TODO: MAP SUGGESTIONS */}
-                                    {/* {suggestions && suggestions.map((s) => <SuggestionItem id={s._id} key={s._id} {...s} />)} */}
-                                    {/* {_id.suggestions.map(s=>(<SuggestionItem key={s._id} {...s}/>))}   */}
-
-                                    {/* {card.suggestions &&
-             Object.values(card.suggestions).map((x) => (
-                <li key={x._id} className='sugg-item'>
-                     <div className='sugg-item-wrapper'>
-                       <p className='sugg-text'>
-                         <span className='author-nickname'>
-                              {x.userName}
-                        </span> */}
-                                    {/* SUGGESTION */}
-                                    {/* {x.suggestion} */}
-                                </ul>
-                            </main>
-                            <footer className='card-footer suggs-card foot'>
-                                <div className='card-footer-content'>
-                                    <p className='card-footer-text'>
-                                        Thank you for your contributions!
-                                    </p>
-                                    <div className='card-footer-links-wrapper'>
-                                        <Link
-                                            to={`/cards/${_id}`}
-                                            className='details-link'
-                                            disabled={
-                                                navigation.state === 'loading'
-                                            }
-                                        >
-                                            {navigation.state === 'loading'
-                                                ? ':Loading...'
-                                                : 'Details'}
-                                        </Link>
-                                    </div>
-                                </div>
-                            </footer>
-                        </article>
-                    ))}
+                    cards.map((c) => 
+                        <CatalogItem key={c._id} {...c}/>)
+                }
             </div>
         </section>
     );

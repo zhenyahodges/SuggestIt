@@ -94,7 +94,6 @@ const router = createBrowserRouter(
                 element={<CardDetail />}
                 loader={cardLoader}
                 id='cardItem'
-
                 // action={likeAction}
                 errorElement={<NotFound />}
             />

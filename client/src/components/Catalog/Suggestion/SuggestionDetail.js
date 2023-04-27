@@ -24,8 +24,8 @@ export default function SuggestionDetail(props) {
     // console.log('user--'+Object.entries(user));
     const userId = user.userId;
     const token = user.token;
-    console.log(userId);
-    console.log(token);
+    // console.log(userId);
+    // console.log(token);
 
     return (
         <li className='sugg-item'>
