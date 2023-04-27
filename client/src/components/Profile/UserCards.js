@@ -1,5 +1,5 @@
-import { Link, useLoaderData, useNavigation } from 'react-router-dom';
-import {  getUserCards } from '../../utils/service';
+import { useLoaderData } from 'react-router-dom';
+import { getUserCards } from '../../utils/service';
 import { requireAuth } from '../../utils/requireAuth';
 import CatalogItem from '../Catalog/CatalogItem/CatalogItem';
 
@@ -12,17 +12,13 @@ export async function loader({ request }) {
 export default function UserCards() {
     const cards = useLoaderData();
     console.log(cards[0]._id);
-    // const navigation = useNavigation();
 
     return (
         <section className='user published'>
             <h2 className='user-title'>Published</h2>
 
             <div className='user-article-wrapper'>
-                {cards &&
-                    cards.map((c) => 
-                        <CatalogItem key={c._id} {...c}/>)
-                }
+                {cards && cards.map((c) => <CatalogItem key={c._id} {...c} />)}
             </div>
         </section>
     );
