@@ -1,19 +1,14 @@
-import { useLoaderData, useNavigation } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
 import { getCards } from '../../utils/service';
 import CatalogItem from './CatalogItem/CatalogItem';
 
 export async function loader() {
     const cards = await getCards();
-    // if (cards) {
     return cards;
-    // }
-    // return null;
 }
 
 export default function Catalog() {
     const cards = useLoaderData();
-    // console.log(Object.entries(cards));
-    const navigation = useNavigation();
 
     return (
         <section className='catalog window'>

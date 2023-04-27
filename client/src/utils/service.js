@@ -386,12 +386,13 @@ export async function getAllLikes(cardId,token){
 export async function getInfos(id) {
     const url = id ? `${baseUrl}/data/infos/${id}` : `${baseUrl}/data/infos`;
     const res = await fetch(url);
-    // console.log('RESGETINFOS=='+res);
-    if (!res.ok) {
+    // console.log('RESGETINFOS=='+(res));
+
+if(!res.ok){    
         throw new Error(`${res.status} - ${res.statusText}`);
     }
     if (res.status === 204) {
-        console.log('empty');
+        // console.log('empty');
         return null;
     }
     const data = await res.json();

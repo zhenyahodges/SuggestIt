@@ -1,68 +1,25 @@
-import { Link, useLoaderData, useNavigation } from 'react-router-dom';
+import { useLoaderData} from 'react-router-dom';
 import { getInfos } from '../../utils/service';
+import InfoItem from './InfoItem/InfoItem';
 
 export async function loader() {
     const infos = await getInfos();
-
-    // if (infos) {
     return infos;
-    // }else{
-    //    return {};
-    // }
 }
 
 export default function InfosCatalog() {
     const infos = useLoaderData();
-    const navigation = useNavigation();
 
     return (
         <section className='catalog window'>
             <h2 className='catalog title'>Infos Catalog</h2>
 
             <div className='catalog-wrapper'>
-                {infos &&
-                    infos.map(
-                        ({ title, web, text, _createdOn, _id, _ownerId }) => (
-                            <article
-                                key={_id}
-                                className='sugg-card details catalog-view-card'
-                                id={_id}
-                            >
-                                <header className='card-header'>
-                                    <h5 className='brand'>{title}</h5>
-                                </header>
+                {infos && infos.map((i) => <InfoItem key={i._id} {...i} />)}
 
-                                <main className='card-main catalog-view-card'>
-                                    <p>{web}</p>
-                                    <p>{text}</p>
-                                </main>
-                                <footer className='card-footer suggs-card foot'>
-                                    <div className='card-footer-content'>
-                                        {/* <p className='card-footer-text'>
-                                        Some text
-                                    </p> */}
-                                        <div className='card-footer-links-wrapper'>
-                                            <Link
-                                                to={_id}
-                                                className='details-link'
-                                                disabled={
-                                                    navigation.state ===
-                                                    'loading'
-                                                }
-                                            >
-                                                {navigation.state === 'loading'
-                                                    ? 'Loading...'
-                                                    : 'Details'}
-                                            </Link>
-                                        </div>
-                                    </div>
-                                </footer>
-                            </article>
-                        )
-                    )}
-
-{infos.length === 0 && <h3 style={{marginLeft:'44%'}}>No articles yet</h3>}
-
+                {infos.length === 0 && (
+                    <h3 style={{ marginLeft: '44%' }}>No articles yet</h3>
+                )}
             </div>
         </section>
     );

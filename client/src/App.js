@@ -56,7 +56,7 @@ import InfoCatalog, {
 } from './components/InfoCatalog/InfoCatalog';
 import InfoItem, {
     loader as infoLoader,
-} from './components/InfoCatalog/Info/InfoItem';
+} from './components/InfoCatalog/InfoDetail/InfoDetail';
 import EditInfoItem, {
     loader as editInfoLoader,
     action as editInfoAction,

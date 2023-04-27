@@ -14,7 +14,7 @@ export async function loader({ request, params }) {
     return res;
 }
 
-export default function InfoItem() {
+export default function InfoDetail() {
     const navigation = useNavigation();
     const navigate = useNavigate();
     const res = useLoaderData();
