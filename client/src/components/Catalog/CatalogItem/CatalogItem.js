@@ -29,7 +29,8 @@ export default function CatalogItem({ brand, _createdOn, _id, _ownerId }) {
 
     return (
         <article
-            // key={id}
+            key={_id}
+            id={_id}
             className='sugg-card details catalog-view-card'
         >
             <header className='card-header'>

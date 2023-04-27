@@ -8,8 +8,7 @@ import { getInfos, onDeleteInfo } from '../../../utils/service';
 import { EmailShareButton } from 'react-share';
 
 let token;
-export async function loader({ request, params }) {
-    // const cardId = params.infoId;
+export async function loader({ params }) {
     const res = await getInfos(params.infoId);
     return res;
 }
@@ -24,10 +23,6 @@ export default function InfoDetail() {
     const title = res.title;
     const web = res.web;
     const text = res.text;
-    // const createdOn = res._createdOn;
-    // const updatedOn = res._updatedOn;
-
-    //  console.log( ownerId+'ownerId'+cardId,title,web,text,createdOn,updatedOn);
 
     const user = JSON.parse(localStorage.getItem('user'));
 
@@ -35,7 +30,6 @@ export default function InfoDetail() {
 
     if (user) {
         ({ token, userId } = user);
-        //  console.log('USER=='+userId+'==TOKEN=='+token);
     }
 
     let isOwner = false;
@@ -66,7 +60,6 @@ export default function InfoDetail() {
         <section className='details-view container'>
             <h2>Details</h2>
             {
-                // TODO:!!! Hide overflow!!!from Details?! or SHOW ONLY FIRST N sugg
                 <>
                     <article className='sugg-card details detailed-card'>
                         <header className='card-header details-header'>
@@ -80,9 +73,7 @@ export default function InfoDetail() {
 
                         <footer className='card-footer sugg-card foot'>
                             <div className='card-footer-content'>
-                                {/* <p className='card-footer-owner'>Owner</p> */}
                                 <div className='card-footer-links-wrapper'>
-                                    {/*------- LATER  */}
                                     <Link
                                         to='/'
                                         className='print details'
@@ -96,20 +87,11 @@ export default function InfoDetail() {
                                         </span>
                                     </EmailShareButton>
 
-                                    {/*------- LATER  */}
-                                    {/*  VISIBLE FOR LOGGED OWNER ONLY */}
-                                    {/* <p className="countdown-text"><span className="count-end">20</span> days left</p> */}
-
-                                    {/* if POLL ENDED  */}
-                                    {/* <p className="countdown-text">Poll ended</p> */}
-
-                                    {/*  VISIBLE FOR OWNER IF NOT TIMED OUT */}
                                     {isAuthorized && isOwner && (
                                         <>
                                             <Link
                                                 to={`/infos/${infoId}/edit`}
                                                 className='btn-sm card-details edit-card'
-                                                // onClick={onEditCard}
                                                 disabled={
                                                     navigation.state ===
                                                     'loading'

@@ -399,7 +399,7 @@ if(!res.ok){
     return data;
 }
 
-export async function createNewInfo(token, title, web, text, userId) {
+export async function createNewInfo(token, title, web, text) {
     const creds = { title, web, text };
     const res = await fetch(`${baseUrl}/data/infos`, {
         method: 'post',

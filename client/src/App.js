@@ -22,10 +22,10 @@ import Logout, {
     loader as logoutLoader,
 } from './components/Logout/Logout';
 import Catalog, { loader as cardsLoader } from './components/Catalog/Catalog';
-import CardItem, {
+import CardDetail, {
     loader as cardLoader,
     // action as likeAction
-} from './components/Catalog/CardItem';
+} from './components/Catalog/CardDetail';
 
 import AddSuggestion, {
     action as suggestAction,
@@ -54,7 +54,7 @@ import { LoggedProvider } from './context/LoggedContext';
 import InfoCatalog, {
     loader as infosLoader,
 } from './components/InfoCatalog/InfoCatalog';
-import InfoItem, {
+import InfoDetail, {
     loader as infoLoader,
 } from './components/InfoCatalog/InfoDetail/InfoDetail';
 import EditInfoItem, {
@@ -91,7 +91,7 @@ const router = createBrowserRouter(
 
             <Route
                 path='cards/:cardId'
-                element={<CardItem />}
+                element={<CardDetail />}
                 loader={cardLoader}
                 id='cardItem'
 
@@ -128,7 +128,7 @@ const router = createBrowserRouter(
 
             <Route
                 path='infos/:infoId'
-                element={<InfoItem />}
+                element={<InfoDetail />}
                 loader={infoLoader}
                 errorElement={<NotFound />}
             />

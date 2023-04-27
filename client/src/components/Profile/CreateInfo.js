@@ -13,7 +13,7 @@ export async function action({ request }) {
 
         try {
             if (token) {
-                await createNewInfo(token, title, web, text, userId);
+                await createNewInfo(token, title, web, text);
                 return redirect('/infos');
             } else {
                 redirect('login');

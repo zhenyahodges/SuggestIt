@@ -21,19 +21,16 @@ let cardId;
 
 export async function loader({ params }) {
     cardId = params.cardId;
-    // console.log('cardId'+cardId);
     const res = await getCards(cardId);
     const suggestions = await getCardSuggestions(cardId);
-    // console.log('suggs=='+suggestions);
     const result = {
         res,
         suggestions,
     };
-    // console.log('result==>'+result);
     return result;
 }
 
-export default function CardItem() {
+export default function CardDetail() {
      const navigation = useNavigation();
     const navigate = useNavigate();
     const {

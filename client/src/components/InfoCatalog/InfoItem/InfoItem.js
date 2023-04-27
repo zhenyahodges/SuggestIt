@@ -4,11 +4,10 @@ export default function InfoItem({
     title,
     web,
     text,
-    _createdOn,
     _id,
-    _ownerId,
 }) {
     const navigation = useNavigation();
+
     return (
         <article
             key={_id}
