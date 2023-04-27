@@ -59,7 +59,7 @@ export default function SuggestionDetail(props) {
 
                     {/* <!--IF OWNER & NOT TIMED OUT --> */}
                     {ownerId === userId &&
-                        !(new Date() - new Date(createdOn) > 60000) && (
+                        (!(new Date() - new Date(createdOn) > 60000)) && (
                             <span className='user-sug-list'>
                                 <Link
                                     to={`/suggestions/${id}`}
@@ -95,7 +95,7 @@ export default function SuggestionDetail(props) {
 
                     {/* <!-- LIKE DISABLED FOR GUESTS & OWNERS -->
                                 <!--===!? LIKE LIMITED voting!?=== --> */}
-                    <button
+                    <span
                         className='sugg-like-link'
                         // onClick={() =>
                         //     increase(
@@ -109,13 +109,7 @@ export default function SuggestionDetail(props) {
                         <i className='like fa-solid fa-circle-up'></i>
                         {/* if voted up=>vote down */}
                         {/* <i className='fa-solid fa-circle-down'></i> */}
-                    </button>
-                    <button
-                        className='sugg-like-link'
-                        //    onClick={()=>decrease(_id,token)}
-                    >
-                        <i className='fa-solid fa-circle-down'></i>
-                    </button>
+                    </span>                
                 </p>
             </div>
         </li>

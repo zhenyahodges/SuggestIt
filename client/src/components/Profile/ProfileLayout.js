@@ -60,7 +60,7 @@ export default function ProfileLayout() {
                         >
                             {navigation.state === 'loading'
                                 ? 'Loading...'
-                                : 'Published Cards'}
+                                : 'User Cards'}
                         </NavLink>
                         <NavLink
                             to='suggested'
@@ -84,7 +84,7 @@ export default function ProfileLayout() {
                         >
                             {navigation.state === 'loading'
                                 ? 'Loading...'
-                                : 'Published Infos'}
+                                : 'User Infos'}
                         </NavLink>
                         <NavLink
                             to='create'
@@ -96,7 +96,7 @@ export default function ProfileLayout() {
                         >
                             {navigation.state === 'loading'
                                 ? 'Loading...'
-                                : 'Create'}
+                                : 'Create Card'}
                         </NavLink>
                         <NavLink
                             to='createinfo'
