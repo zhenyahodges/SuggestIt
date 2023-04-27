@@ -1,9 +1,9 @@
 import { Form, redirect, useNavigation } from 'react-router-dom';
-import { requireAuth } from '../../../utils/requireAuth';
-import { addSuggestion } from '../../../utils/service';
+import { requireAuth } from '../../../../utils/requireAuth';
+import { addSuggestion } from '../../../../utils/service';
 
 export async function action({ request, params }) {
-    const cardId=params.cardId;
+    const cardId = params.cardId;
     if (window.confirm('Are you sure you want to submit?')) {
         const { token } = await requireAuth();
         const cardId = params.cardId;
@@ -22,7 +22,7 @@ export async function action({ request, params }) {
             return err.message;
         }
         return token;
-    }else{
+    } else {
         return redirect(`/cards/${cardId}`);
     }
 }

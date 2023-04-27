@@ -1,7 +1,7 @@
 import { useLoaderData } from 'react-router-dom';
-import { getUserCards } from '../../utils/service';
-import { requireAuth } from '../../utils/requireAuth';
-import CatalogItem from '../Catalog/CatalogItem/CatalogItem';
+import { getUserCards } from '../../../utils/service';
+import { requireAuth } from '../../../utils/requireAuth';
+import CatalogItem from '../../Catalog/CatalogItem/CatalogItem';
 
 export async function loader({ request }) {
     const { userId, token } = await requireAuth(request);

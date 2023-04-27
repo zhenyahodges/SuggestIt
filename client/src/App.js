@@ -25,30 +25,30 @@ import Catalog, { loader as cardsLoader } from './components/Catalog/Catalog';
 import CardDetail, {
     loader as cardLoader,
     // action as likeAction
-} from './components/Catalog/CardDetail';
+} from './components/Catalog/CatalogItem/CardDetail/CardDetail';
 
 import AddSuggestion, {
     action as suggestAction,
-} from './components/Catalog/Suggestion/AddSuggestion';
+} from './components/Catalog/CatalogItem/SuggestionItem/AddSuggestion';
 
 import ProfileLayout, {
     loader as userLoader,
 } from './components/Profile/ProfileLayout';
 import UserCards, {
     loader as userCardsLoader,
-} from './components/Profile/UserCards';
+} from './components/Profile/UserCards/UserCards';
 import UserSuggs, {
     loader as useSuggLoader,
-} from './components/Profile/UserSuggs';
+} from './components/Profile/UserSuggs/UserSuggs';
 import CreateCard, {
     action as createCardAction,
-} from './components/Profile/CreateCard';
+} from './components/Profile/CreateCard/CreateCard';
 import { CurrentUserProvider } from './context/CurrentUserContext';
 
 import EditCardItem, {
     loader as editCardLoader,
     action as editCardAction,
-} from './components/Profile/EditCardItem';
+} from './components/Catalog/CatalogItem/EditCardItem/EditCardItem';
 import { LoggedProvider } from './context/LoggedContext';
 // INFOS
 import InfoCatalog, {
@@ -56,22 +56,22 @@ import InfoCatalog, {
 } from './components/InfoCatalog/InfoCatalog';
 import InfoDetail, {
     loader as infoLoader,
-} from './components/InfoCatalog/InfoDetail/InfoDetail';
+} from './components/InfoCatalog/InfoItem/InfoDetail/InfoDetail';
 import EditInfoItem, {
     loader as editInfoLoader,
     action as editInfoAction,
-} from './components/Profile/EditInfoItem';
+} from './components/InfoCatalog/InfoItem/EditInfoItem/EditInfoItem';
 import CreateInfo, {
     action as createInfoAction,
-} from './components/Profile/CreateInfo';
+} from './components/Profile/CreateInfo/CreateInfo';
 
 import UserInfos, {
     loader as userInfosLoader,
-} from './components/Profile/UserInfos';
+} from './components/Profile/UserInfos/UserInfos';
 import EditSuggestion, {
     loader as editSuggLoader,
     action as editSuggAction,
-} from './components/Catalog/Suggestion/EditSuggestion';
+} from './components/Catalog/CatalogItem/SuggestionItem/EditSuggestion';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -185,12 +185,12 @@ const router = createBrowserRouter(
                     action={createCardAction}
                     errorElement={<NotFound />}
                 />
-                <Route 
-                path='userInfos'
-                 element={<UserInfos />}
-                 loader={userInfosLoader} 
-                 errorElement={<NotFound />}
-                 />
+                <Route
+                    path='userInfos'
+                    element={<UserInfos />}
+                    loader={userInfosLoader}
+                    errorElement={<NotFound />}
+                />
                 <Route
                     path='createinfo'
                     element={<CreateInfo />}

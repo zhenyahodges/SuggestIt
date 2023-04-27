@@ -11,16 +11,16 @@ import {
     // getLikes,
     onDeleteCard,
     // postLikes,
-} from '../../utils/service';
-import { useEffect, useState } from 'react';
+} from '../../../../utils/service';
+import { useEffect, useRef, useState } from 'react';
 import { EmailShareButton } from 'react-share';
-import SuggestionDetail from './Suggestion/SuggestionDetail';
+import SuggestionDetail from '../SuggestionItem/SuggestionDetail';
 
 let cardId;
 
 export async function loader({ params }) {
     cardId = params.cardId;
-    console.log('CARDID--'+cardId);
+    // console.log('CARDID--'+cardId);
     const res = await getCards(cardId);
     const suggestions = await getCardSuggestions(cardId);
     const result = {
@@ -51,22 +51,17 @@ export default function CardDetail() {
     if (user) {
         ({ token, userId } = user);
     }
+    const minute = 60000;
+    const timePassed = new Date() - new Date(createdOn) > minute;
 
-    let isOwner = false;
-    let isAuthorized = false;
-
-    if (token) {
-        isAuthorized = true;
-    }
-    if (ownerId === userId) {
-        isOwner = true;
-    }
+    const isAuthorized = Boolean(token);
+    const isOwner = ownerId === userId;
+    const canEditDeleteCard = ownerId === userId && !timePassed;
 
     const onDelete = async () => {
         if (window.confirm('Are you sure you want to delete?')) {
             await onDeleteCard(cardId, token);
-
-            navigate(`/users/${userId}`);
+            navigate(-1);
         }
     };
 
@@ -75,34 +70,6 @@ export default function CardDetail() {
         window.print();
         return false;
     }
-
-    const minutes = 100000;
-    const timePassed = new Date() - new Date(createdOn) > minutes;
-
-    // let allSuggsLike;
-    // async function allSuggsLikesGet(suggestionId, token) {
-    //     allSuggsLike = await getAllLikes(suggestionId, token);
-    //     console.log('LIKESRES--' + res);
-    //     return res;
-    // }
-    // allSuggsLike.map(async (sugg) => {
-    //     const likes = await getLikes(sugg._id);
-    //     return likes.length;
-    // });
-
-    // async function increase(suggestionId, token, userId) {
-    //     console.log('sid--' + suggestionId, 'tok--' + token);
-    //     //     console.log(suggestionId,token,userId);
-    //     const res = await getLikes(suggestionId);
-    //     await postLikes(suggestionId, token, userId);
-    //     console.log('reslikesall--' + res);
-    //     const rank = res.length;
-    //     return rank;
-    // }
-
-    // async function decrease() {
-    //     // setLikesSugg(prevCount=>prevCount-1);
-    // }
 
     return (
         <section className='details-view container'>
@@ -165,8 +132,8 @@ export default function CardDetail() {
                                 {/* if POLL ENDED  */}
                                 {/* <p className="countdown-text">Poll ended</p> */}
 
-                                {/* EDIT/DELETE VISIBLE FOR OWNER IF NOT TIMED OUT */}
-                                {isAuthorized && isOwner && !timePassed && (
+                                {/* EDIT/DELETE CARD VISIBLE FOR OWNER IF NOT TIMED OUT */}
+                                {isAuthorized && canEditDeleteCard && (
                                     <>
                                         <Link
                                             to={`/cards/${cardId}/edit`}

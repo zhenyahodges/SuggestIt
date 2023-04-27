@@ -1,6 +1,6 @@
 import { Form, redirect, useLoaderData, useNavigation } from 'react-router-dom';
-import { requireAuth } from '../../../utils/requireAuth';
-import { getOneSuggestions, onEditSuggestion } from '../../../utils/service';
+import { requireAuth } from '../../../../utils/requireAuth';
+import { getOneSuggestions, onEditSuggestion } from '../../../../utils/service';
 
 let cardIds;
 
@@ -12,7 +12,7 @@ export async function loader({ request, params }) {
 }
 
 export async function action({ request, params }) {
-     if (window.confirm('Are you sure you want to submit?')) {
+    if (window.confirm('Are you sure you want to submit?')) {
         const { token } = await requireAuth();
         const formData = await request.formData();
         const suggestion = formData.get('suggestion');
@@ -22,14 +22,14 @@ export async function action({ request, params }) {
         try {
             if (token) {
                 await onEditSuggestion(token, cardId, suggestion, suggestionId);
-                return redirect( `/cards/${cardId}`);
+                return redirect(`/cards/${cardId}`);
             } else {
                 redirect('login');
             }
         } catch (err) {
             return err.message;
         }
-    }else{
+    } else {
         return redirect(`/cards/${cardIds}`);
     }
 }

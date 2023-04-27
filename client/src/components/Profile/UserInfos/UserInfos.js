@@ -1,6 +1,6 @@
 import { Link, useLoaderData, useNavigation } from 'react-router-dom';
-import { getUserInfos } from '../../utils/service';
-import { requireAuth } from '../../utils/requireAuth';
+import { getUserInfos } from '../../../utils/service';
+import { requireAuth } from '../../../utils/requireAuth';
 
 export async function loader({ request }) {
     const { userId, token } = await requireAuth(request);
