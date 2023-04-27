@@ -11,7 +11,6 @@ export async function loader({ request }) {
 
 export default function UserCards() {
     const cards = useLoaderData();
-    console.log(cards[0]._id);
 
     return (
         <section className='user published'>

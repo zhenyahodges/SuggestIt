@@ -30,12 +30,12 @@ html {
 }
 
 /* icons ---*/
-.like.fa-solid {
+.fa-solid {
     padding-left: 5px;
     color: var(--clr-bgr);
 }
 
-.like.fa-solid:hover {
+.fa-solid:hover {
     color: var(--clr-highlight)
 }
 

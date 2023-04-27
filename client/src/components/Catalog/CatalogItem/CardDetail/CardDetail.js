@@ -44,6 +44,8 @@ export default function CardDetail() {
     const createdOn = res._createdOn;
     const updatedOn = res._updatedOn;
 
+    console.log('cardoowner--'+ownerId);
+
     const user = JSON.parse(localStorage.getItem('user'));
 
     let userId;

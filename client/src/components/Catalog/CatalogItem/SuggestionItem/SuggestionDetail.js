@@ -4,11 +4,13 @@ import {
     useOutletContext,
     useRouteLoaderData,
 } from 'react-router-dom';
-import { onDeleteSuggestion } from '../../../../utils/service';
+import { onDeleteSuggestion, postLikes } from '../../../../utils/service';
+import { useState } from 'react';
 
 export default function SuggestionDetail(props) {
     const navigate = useNavigate();
     const user = useOutletContext();
+    const [hasLiked, setHasLiked] = useState(false);
 
     const ownerId = props._ownerId;
     const suggestion = props.suggestion;
@@ -17,14 +19,29 @@ export default function SuggestionDetail(props) {
     const createdOn = props._createdOn;
     const updatedOn = props._updatedOn;
     const id = props._id;
+    const author = props.author._id;
 
     // console.log(likes);
 
-    // console.log('user--'+Object.entries(user));
-    const userId = user.userId;
-    const token = user.token;
-    // console.log(userId);
-    // console.log(token);
+    let userId;
+    let token;
+    if (user) {
+        userId = user.userId;
+        token = user.token;
+    }
+
+    // console.log('suggdetail-userid--' + userId);
+    // console.log('suggdetail-tokn--' + token);
+
+    const canLike = userId && author !== userId;
+
+    async function onLike() {
+        // console.log('click');
+        const res = await postLikes(id, token, userId);
+        // remove hasliked?
+        !hasLiked && setHasLiked(true);
+        
+    }
 
     // let allSuggsLike;
     // async function allSuggsLikesGet(suggestionId, token) {
@@ -57,9 +74,9 @@ export default function SuggestionDetail(props) {
                 <p className='sugg-text'>
                     {suggestion}
 
-                    {/* <!--IF OWNER & NOT TIMED OUT --> */}
+                    {/* <!-EDIT/DELETE SUGG-IF OWNER & NOT TIMED OUT --> */}
                     {ownerId === userId &&
-                        (!(new Date() - new Date(createdOn) > 60000)) && (
+                        !(new Date() - new Date(createdOn) > 60000) && (
                             <span className='user-sug-list'>
                                 <Link
                                     to={`/suggestions/${id}`}
@@ -87,29 +104,28 @@ export default function SuggestionDetail(props) {
                 </p>
 
                 <p className='sugg-ranking'>
-                    <span className='rank'>
-                        {/* {rank && rank={Like(_id)}} */}
-                        {/* {likes && likes.length} */}
-                        {/* {likesSugg.length} */}
-                    </span>
+                    <span className='rank'>{likes && likes.length}</span>
 
                     {/* <!-- LIKE DISABLED FOR GUESTS & OWNERS -->
                                 <!--===!? LIKE LIMITED voting!?=== --> */}
-                    <span
-                        className='sugg-like-link'
-                        // onClick={() =>
-                        //     increase(
-                        //         _id,
-                        //         token,
-                        //         userId
-                        //     )
-                        // }
-                    >
-                        {/* if voted down=>vote up */}
-                        <i className='like fa-solid fa-circle-up'></i>
-                        {/* if voted up=>vote down */}
-                        {/* <i className='fa-solid fa-circle-down'></i> */}
-                    </span>                
+
+                    {canLike && !hasLiked && (
+                        <span
+                            className='sugg-like-link'
+                            onClick={() => onLike()}
+                            // onClick={() => increase( _id,token, userId)}
+                        >
+                            <i className='like fa-solid fa-circle-up'></i>
+                        </span>
+                    )}
+                    {canLike && hasLiked && (
+                        <span
+                            className='sugg-like-link'
+                            onClick={() => onLike()}
+                        >
+                            <i className='fa-solid fa-circle-down'></i>
+                        </span>
+                    )}
                 </p>
             </div>
         </li>
