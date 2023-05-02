@@ -63,14 +63,9 @@ export async function logoutUser(token) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
     if (res.status === 204) {
-        // localStorage.removeItem('user');
-        // localStorage.setItem({});
         localStorage.clear();
-        // redirect('/');
-        // return (window.location.href = '/');
         return {};
     }
-    // return redirect((window.location.href = '/'));
     return res;
 }
 
@@ -138,7 +133,7 @@ export async function getUserSuggestions(userId, token) {
     return data;
 }
 
-export async function createNewCard(token, brand, userId) {
+export async function createNewCard(token, brand) {
     const creds = { brand };
     const res = await fetch(`${baseUrl}/data/cards`, {
         method: 'post',
@@ -285,8 +280,6 @@ export async function getCardSuggestions(cardId) {
         return null;
     }
     const data = await res.json();
-    // console.log(data);
-    // return Object.values(data);
     return data;
 }
 
@@ -309,13 +302,11 @@ export async function addSuggestion(token, cardId, suggestion) {
         return null;
     }
     const data = await res.json();
-    // return Object.values(data);
     return data;
 }
 
 export async function postLike(suggestionId, token, userId) {
     const info = { suggestionId, userId };
-    // console.log('suggidpost--'+suggestionId);
     const res = await fetch(`${baseUrl}/data/likes`, {
         method: 'POST',
         headers: {
@@ -324,7 +315,6 @@ export async function postLike(suggestionId, token, userId) {
         },
         body: JSON.stringify(info),
     });
-    // console.log('res--'+res);
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
@@ -333,9 +323,6 @@ export async function postLike(suggestionId, token, userId) {
         return null;
     }
     const data = await res.json();
-    // console.log('dataservice--'+data);
-    // console.log(Object.values(data));
-    // return Object.values(data);
     return data;
 }
 
@@ -379,7 +366,6 @@ export async function deleteLike(likeId, token) {
         return null;
     }
     const data = await res.json();
-    // console.log('success?');
     return data;
 }
 
@@ -398,23 +384,18 @@ export async function getSuggestionLikes(suggestionId) {
         return null;
     }
     const data = await res.json();
-    console.log('sugglikessss---' + data);
-    // return Object.values(data);
     return data;
 }
 
 // || 2ND CATALOG
-
 export async function getInfos(id) {
     const url = id ? `${baseUrl}/data/infos/${id}` : `${baseUrl}/data/infos`;
     const res = await fetch(url);
-    // console.log('RESGETINFOS=='+(res));
 
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
     if (res.status === 204) {
-        // console.log('empty');
         return null;
     }
     const data = await res.json();
