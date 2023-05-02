@@ -2,26 +2,29 @@ import {
     Link,
     useNavigate,
     useOutletContext,
-    useRouteLoaderData,
+    // useRouteLoaderData,
 } from 'react-router-dom';
-import { onDeleteSuggestion, postLikes } from '../../../../utils/service';
-import { useState } from 'react';
+import {
+    deleteLike,
+    onDeleteSuggestion,
+    postLike,
+} from '../../../../utils/service';
+import { useEffect, useState } from 'react';
+import SuggLikesItem from './SuggLikesItem';
 
 export default function SuggestionDetail(props) {
     const navigate = useNavigate();
     const user = useOutletContext();
-    const [hasLiked, setHasLiked] = useState(false);
+
 
     const ownerId = props._ownerId;
     const suggestion = props.suggestion;
-    const likes = props.likes;
+    // const likes = props.likes;
     const cardId = props._cardId;
     const createdOn = props._createdOn;
-    const updatedOn = props._updatedOn;
+    // const updatedOn = props._updatedOn;
     const id = props._id;
     const author = props.author._id;
-
-    // console.log(likes);
 
     let userId;
     let token;
@@ -29,44 +32,10 @@ export default function SuggestionDetail(props) {
         userId = user.userId;
         token = user.token;
     }
+    const infos={
+        userId,token,ownerId,id,author
+    };
 
-    // console.log('suggdetail-userid--' + userId);
-    // console.log('suggdetail-tokn--' + token);
-
-    const canLike = userId && author !== userId;
-
-    async function onLike() {
-        // console.log('click');
-        const res = await postLikes(id, token, userId);
-        // remove hasliked?
-        !hasLiked && setHasLiked(true);
-        
-    }
-
-    // let allSuggsLike;
-    // async function allSuggsLikesGet(suggestionId, token) {
-    //     allSuggsLike = await getAllLikes(suggestionId, token);
-    //     console.log('LIKESRES--' + res);
-    //     return res;
-    // }
-    // allSuggsLike.map(async (sugg) => {
-    //     const likes = await getLikes(sugg._id);
-    //     return likes.length;
-    // });
-
-    // async function increase(suggestionId, token, userId) {
-    //     console.log('sid--' + suggestionId, 'tok--' + token);
-    //     //     console.log(suggestionId,token,userId);
-    //     const res = await getLikes(suggestionId);
-    //     await postLikes(suggestionId, token, userId);
-    //     console.log('reslikesall--' + res);
-    //     const rank = res.length;
-    //     return rank;
-    // }
-
-    // async function decrease() {
-    //     // setLikesSugg(prevCount=>prevCount-1);
-    // }
 
     return (
         <li className='sugg-item'>
@@ -75,7 +44,8 @@ export default function SuggestionDetail(props) {
                     {suggestion}
 
                     {/* <!-EDIT/DELETE SUGG-IF OWNER & NOT TIMED OUT --> */}
-                    {ownerId === userId &&
+                    {user &&
+                        ownerId === userId &&
                         !(new Date() - new Date(createdOn) > 60000) && (
                             <span className='user-sug-list'>
                                 <Link
@@ -103,30 +73,7 @@ export default function SuggestionDetail(props) {
                         )}
                 </p>
 
-                <p className='sugg-ranking'>
-                    <span className='rank'>{likes && likes.length}</span>
-
-                    {/* <!-- LIKE DISABLED FOR GUESTS & OWNERS -->
-                                <!--===!? LIKE LIMITED voting!?=== --> */}
-
-                    {canLike && !hasLiked && (
-                        <span
-                            className='sugg-like-link'
-                            onClick={() => onLike()}
-                            // onClick={() => increase( _id,token, userId)}
-                        >
-                            <i className='like fa-solid fa-circle-up'></i>
-                        </span>
-                    )}
-                    {canLike && hasLiked && (
-                        <span
-                            className='sugg-like-link'
-                            onClick={() => onLike()}
-                        >
-                            <i className='fa-solid fa-circle-down'></i>
-                        </span>
-                    )}
-                </p>
+               <SuggLikesItem {...infos}/>
             </div>
         </li>
     );

@@ -42,6 +42,7 @@ export default function AddSuggestion() {
                     name='suggestion'
                     rows='4'
                     cols='50'
+                    minLength='5'
                     maxLength='150'
                     placeholder='Type your suggestion here'
                     required

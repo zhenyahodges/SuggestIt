@@ -12,7 +12,7 @@ export async function loader({ request }) {
 
 export default function UserSuggs() {
     const suggestions = useLoaderData();
-    // console.log(suggestions);
+    console.log(suggestions);
 
     return (
         //   {/* <!-- || USER-OWNER SUGGESTIONS --> */}

@@ -313,8 +313,8 @@ export async function addSuggestion(token, cardId, suggestion) {
     return data;
 }
 
-export async function postLikes(suggestionId, token,userId) {
-    const info = { suggestionId,userId };
+export async function postLike(suggestionId, token, userId) {
+    const info = { suggestionId, userId };
     // console.log('suggidpost--'+suggestionId);
     const res = await fetch(`${baseUrl}/data/likes`, {
         method: 'POST',
@@ -339,33 +339,79 @@ export async function postLikes(suggestionId, token,userId) {
     return data;
 }
 
-export async function getLikes(suggestionId, token) {
-    const searchQuery = encodeURIComponent(`cardId="${suggestionId}"`);
-    const relationQuery = encodeURIComponent('author=_ownerId:users');
-    console.log('HERE');
-    const url = `${baseUrl}/data/suggestions?where=${searchQuery}&load=${relationQuery}count`;
+export async function getOneLike(suggId, userId) {
+    const searchQuery = encodeURIComponent(`suggestionId="${suggId}"`);
+    const url = `http://localhost:3030/data/likes?where=${searchQuery}`;
     const res = await fetch(url, {
         method: 'GET',
     });
-    // console.log('getres=='+res);
+
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
     if (res.status === 204) {
-        console.log('empty');
+        console.log(res.status);
         return null;
     }
     const data = await res.json();
-    console.log(data);
-    // return Object.values(data);
+    let likeId;
+    if (data) {
+        const result = data.find((item) => item.userId === userId);
+        likeId = result._id;
+    }
+
+    return likeId;
+}
+
+export async function deleteLike(likeId, token) {
+    const res = await fetch(`${baseUrl}/data/likes/${likeId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': token,
+        },
+    });
+    if (!res.ok) {
+        throw new Error(`${res.status} - ${res.statusText}`);
+    }
+    if (res.status === 204) {
+        console.log(res.status);
+        return null;
+    }
+    const data = await res.json();
+    console.log('success?');
     return data;
 }
 
-export async function getAllLikes(cardId,token){
-    const searchQuery = encodeURIComponent(`cardId="${cardId}"`);
+// export async function getSuggLikesCount(suggestionId) {
+//     const searchQuery = encodeURIComponent(`suggestionId="${suggestionId}"`);
+//     // const relationQuery = encodeURIComponent('author=_ownerId:users');
+//     console.log('HERE');
+//     const url = `${baseUrl}/data/likes?where=${searchQuery}&count`;
+//     const res = await fetch(url, {
+//         method: 'GET',
+//     });
+//     if (res.status===404){
+//         console.log('0 - no likes');
+//         return null;
+//     }else if(!res.ok) {
+//         throw new Error(`${res.status} - ${res.statusText}`);
+//     }
+
+//     if (res.status === 204) {
+//         console.log('empty');
+//         return null;
+//     }
+//     const data = await res.json();
+//     console.log('SUGGESTIONCOUNT'+data);
+//     return data;
+// }
+
+export async function getSuggestionLikes(suggestionId) {
+    const searchQuery = encodeURIComponent(`suggestionId="${suggestionId}"`);
     const relationQuery = encodeURIComponent('author=_ownerId:users');
-    const url=`${baseUrl}/data/suggestions?where=${searchQuery}&load=${relationQuery}`;
-    const res=await fetch(url,{
+    const url = `${baseUrl}/data/likes?where=${searchQuery}&load=${relationQuery}`;
+    const res = await fetch(url, {
         metod: 'GET',
     });
     if (!res.ok) {
@@ -376,7 +422,7 @@ export async function getAllLikes(cardId,token){
         return null;
     }
     const data = await res.json();
-    console.log(data);
+    console.log('sugglikessss---' + data);
     // return Object.values(data);
     return data;
 }
@@ -388,7 +434,7 @@ export async function getInfos(id) {
     const res = await fetch(url);
     // console.log('RESGETINFOS=='+(res));
 
-if(!res.ok){    
+    if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
     if (res.status === 204) {
