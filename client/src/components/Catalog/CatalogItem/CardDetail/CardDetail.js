@@ -5,22 +5,17 @@ import {
     useNavigation,
 } from 'react-router-dom';
 import {
-    // getAllLikes,
     getCardSuggestions,
     getCards,
-    // getLikes,
     onDeleteCard,
-    // postLikes,
 } from '../../../../utils/service';
-import { useEffect, useRef, useState } from 'react';
 import { EmailShareButton } from 'react-share';
 import SuggestionDetail from '../SuggestionItem/SuggestionDetail';
 
 let cardId;
 
 export async function loader({ params }) {
-    cardId = params.cardId;
-    // console.log('CARDID--'+cardId);
+    cardId = params.cardId;  
     const res = await getCards(cardId);
     const suggestions = await getCardSuggestions(cardId);
     const result = {
@@ -35,16 +30,13 @@ export default function CardDetail() {
     const navigate = useNavigate();
     const { res, suggestions } = useLoaderData();
 
-    // const [likesSugg, setLikesSugg] = useState([]);
-    // const [voters,setVoters]=useState([]);
-
     const ownerId = res._ownerId;
     const cardId = res._id;
     const brand = res.brand;
     const createdOn = res._createdOn;
     const updatedOn = res._updatedOn;
 
-    console.log('cardoowner--'+ownerId);
+    console.log('cardoowner--' + ownerId);
 
     const user = JSON.parse(localStorage.getItem('user'));
 

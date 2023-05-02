@@ -86,7 +86,7 @@ export default function SuggLikesItem({ userId, token, ownerId, id, author }) {
 
     async function onDislike() {
         const likeId = await getOneLike(suggId, userId);
-         await deleteLike(likeId, token);
+        await deleteLike(likeId, token);
 
         setCount(count - 1);
         setHasLiked(false);

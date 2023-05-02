@@ -379,33 +379,9 @@ export async function deleteLike(likeId, token) {
         return null;
     }
     const data = await res.json();
-    console.log('success?');
+    // console.log('success?');
     return data;
 }
-
-// export async function getSuggLikesCount(suggestionId) {
-//     const searchQuery = encodeURIComponent(`suggestionId="${suggestionId}"`);
-//     // const relationQuery = encodeURIComponent('author=_ownerId:users');
-//     console.log('HERE');
-//     const url = `${baseUrl}/data/likes?where=${searchQuery}&count`;
-//     const res = await fetch(url, {
-//         method: 'GET',
-//     });
-//     if (res.status===404){
-//         console.log('0 - no likes');
-//         return null;
-//     }else if(!res.ok) {
-//         throw new Error(`${res.status} - ${res.statusText}`);
-//     }
-
-//     if (res.status === 204) {
-//         console.log('empty');
-//         return null;
-//     }
-//     const data = await res.json();
-//     console.log('SUGGESTIONCOUNT'+data);
-//     return data;
-// }
 
 export async function getSuggestionLikes(suggestionId) {
     const searchQuery = encodeURIComponent(`suggestionId="${suggestionId}"`);

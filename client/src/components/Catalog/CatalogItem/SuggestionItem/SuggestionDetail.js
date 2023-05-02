@@ -5,17 +5,15 @@ import {
     // useRouteLoaderData,
 } from 'react-router-dom';
 import {
-    deleteLike,
+
     onDeleteSuggestion,
-    postLike,
+    
 } from '../../../../utils/service';
-import { useEffect, useState } from 'react';
 import SuggLikesItem from './SuggLikesItem';
 
 export default function SuggestionDetail(props) {
     const navigate = useNavigate();
     const user = useOutletContext();
-
 
     const ownerId = props._ownerId;
     const suggestion = props.suggestion;
@@ -24,7 +22,11 @@ export default function SuggestionDetail(props) {
     const createdOn = props._createdOn;
     // const updatedOn = props._updatedOn;
     const id = props._id;
-    const author = props.author._id;
+    let author;
+    if( props.author){
+        console.log('author--'+props.author);
+        author=props.author._id;
+    };
 
     let userId;
     let token;

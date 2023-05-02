@@ -39,6 +39,10 @@ html {
     color: var(--clr-highlight)
 }
 
+.user.suggested .sugg-like-link{
+    display: none;
+}
+
 /*--- icons end */
 
 /* INPUTS VALID/INVALID */
