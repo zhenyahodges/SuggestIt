@@ -41,7 +41,7 @@ export default function CreateCardForm(){
                 required
             />
         </div> */}
-        {/* <div className="wrap card-timeout">
+        <div className="wrap card-timeout">
           <label
               htmlFor="card-timeout"
               className="lbl card-timeout"
@@ -52,12 +52,12 @@ export default function CreateCardForm(){
               className="card-timeout"
               name="card-timeout"
               id="card-timeout"
-              min="2023-04-13"
-            //   max="2023-06-20"
-            //   value="2023-03-01"
+            //   min="2023-05-13"
+            //   max={}
+              defaultValue={Date}
               required
           />
-      </div> */}
+      </div>
 
         <button
             className='create btn dark subm'

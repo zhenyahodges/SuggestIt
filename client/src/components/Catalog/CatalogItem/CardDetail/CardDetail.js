@@ -121,7 +121,7 @@ export default function CardDetail() {
                                 )}
 
                                 {/*  VISIBLE FOR LOGGED OWNER ONLY */}
-                                {/* <p className="countdown-text"><span className="count-end">20</span> days left</p> */}
+                                <p className="countdown-text"><span className="count-end">20</span> days left</p>
 
                                 {/* if POLL ENDED  */}
                                 {/* <p className="countdown-text">Poll ended</p> */}

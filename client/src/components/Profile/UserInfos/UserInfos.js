@@ -8,8 +8,6 @@ export async function loader({ request }) {
     return infos;
 }
 
-// return comments;
-
 export default function UserInfos() {
     const infos = useLoaderData();
     const navigation = useNavigation();
@@ -17,12 +15,10 @@ export default function UserInfos() {
     return (
         <section className='user published'>
             <h2 className='user-title'>Published</h2>
-            {/* <!-- LOADER show when fetching --> */}
-            {/* <Loader/> */}
+
             <div className='user-article-wrapper'>
                 {infos &&
                     infos.map(({ title, text, _createdOn, _id, _ownerId }) => (
-                        // TODO:!!! Hide overflow if necess!!!from Details?! or SHOW ONLY FIRST N SUGGS
                         <article
                             key={_id}
                             className='sugg-card catalog private'
