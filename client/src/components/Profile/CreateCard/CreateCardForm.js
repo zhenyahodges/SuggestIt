@@ -2,6 +2,11 @@ import { Form, useNavigation } from 'react-router-dom';
 
 export default function CreateCardForm() {
     const navigation = useNavigation();
+    // const today = new Date();
+    // const maxDate = new Date();
+    // maxDate.setDate(today.getDate() + 90);
+    // console.log(maxDate);
+   
     return (
         <Form method='post' id='create-card-form' className='create-card form'>
             <div className='wrap card-title'>
@@ -20,6 +25,7 @@ export default function CreateCardForm() {
                     required
                 />
             </div>
+            
             {/* LATER--CODE */}
             {/* <div className='wrap card-code'>
             <label htmlFor='card-code' className='lbl card-code'>
@@ -37,7 +43,7 @@ export default function CreateCardForm() {
                 required
             />
         </div> */}
-            <div className='wrap card-timeout'>
+            {/* <div className='wrap card-timeout'>
                 <label htmlFor='card-timeout' className='lbl card-timeout'>
                     End Date
                 </label>
@@ -46,12 +52,12 @@ export default function CreateCardForm() {
                     className='card-timeout'
                     name='card-timeout'
                     id='card-timeout'
-                    //   min="2023-05-13"
-                    //   max={}
+                      min={(new Date().toISOString().slice(0, 10))}
+                    max={maxDate.toISOString().slice(0, 10)}
                     defaultValue={Date}
                     required
                 />
-            </div>
+            </div> */}
 
             <button
                 className='create btn dark subm'

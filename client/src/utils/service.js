@@ -9,13 +9,15 @@ export async function getCards(id) {
     const url = id ? `${baseUrl}/data/cards/${id}` : `${baseUrl}/data/cards`;
     const res = await fetch(url);
 
-    if (!res.ok) {
+    if (res.status === 404) {
+        return [];
+    } else if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
-    if (res.status === 204) {
-        console.log('empty');
-        return null;
-    }
+    // if (res.status === 204) {
+    //     console.log('empty');
+    //     return null;
+    // }
     const data = await res.json();
     return data;
 }
@@ -392,12 +394,14 @@ export async function getInfos(id) {
     const url = id ? `${baseUrl}/data/infos/${id}` : `${baseUrl}/data/infos`;
     const res = await fetch(url);
 
-    if (!res.ok) {
+    if (res.status === 404) {
+        return [];
+    } else if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
-    if (res.status === 204) {
-        return null;
-    }
+    // if (res.status === 204) {
+    //     return null;
+    // }
     const data = await res.json();
     return data;
 }
