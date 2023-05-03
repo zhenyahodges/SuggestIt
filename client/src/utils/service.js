@@ -13,11 +13,7 @@ export async function getCards(id) {
         return [];
     } else if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
-    }
-    // if (res.status === 204) {
-    //     console.log('empty');
-    //     return null;
-    // }
+    } 
     const data = await res.json();
     return data;
 }
