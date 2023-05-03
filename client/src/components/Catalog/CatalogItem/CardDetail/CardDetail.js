@@ -11,11 +11,12 @@ import {
 } from '../../../../utils/service';
 import { EmailShareButton } from 'react-share';
 import SuggestionDetail from '../SuggestionItem/SuggestionDetail';
+import { useEffect, useState } from 'react';
 
 let cardId;
 
 export async function loader({ params }) {
-    cardId = params.cardId;  
+    cardId = params.cardId;
     const res = await getCards(cardId);
     const suggestions = await getCardSuggestions(cardId);
     const result = {
@@ -35,8 +36,21 @@ export default function CardDetail() {
     const brand = res.brand;
     const createdOn = res._createdOn;
     const updatedOn = res._updatedOn;
+    const [isTimedOut, setIsTimedOut] = useState(false);
+    // const [isExpired,setIsExpired]=useState(false);
 
-    console.log('cardoowner--' + ownerId);
+    useEffect(() => {
+        const timer = setInterval(() => {
+            const timePassed = new Date() - new Date(createdOn) > 60000;
+
+            if (timePassed) {
+                setIsTimedOut(true);
+                clearInterval(timer);
+            } else {
+                setIsTimedOut(false);
+            }
+        }, 10);
+    }, [createdOn]);
 
     const user = JSON.parse(localStorage.getItem('user'));
 
@@ -45,12 +59,10 @@ export default function CardDetail() {
     if (user) {
         ({ token, userId } = user);
     }
-    const minute = 60000;
-    const timePassed = new Date() - new Date(createdOn) > minute;
 
     const isAuthorized = Boolean(token);
     const isOwner = ownerId === userId;
-    const canEditDeleteCard = ownerId === userId && !timePassed;
+    const canEditDeleteCard = ownerId === userId && !isTimedOut;
 
     const onDelete = async () => {
         if (window.confirm('Are you sure you want to delete?')) {
@@ -121,7 +133,10 @@ export default function CardDetail() {
                                 )}
 
                                 {/*  VISIBLE FOR LOGGED OWNER ONLY */}
-                                <p className="countdown-text"><span className="count-end">20</span> days left</p>
+                                {/* <p className='countdown-text'>
+                                    <span className='count-end'>20</span> days
+                                    left
+                                </p> */}
 
                                 {/* if POLL ENDED  */}
                                 {/* <p className="countdown-text">Poll ended</p> */}
