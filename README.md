@@ -37,7 +37,7 @@ Logged users, NOT owners can:
 * Add a new suggestion.
 * Edit suggestion * *if NOT timed out (1min time limit)*
 * Delete suggestion * *if NOT timed out (1min time limit)*
-* (Vote for a suggestion.)
+* Vote for a suggestion they are NOT the owner of.
 
 Logged users, owners can:
 * Edit a card they created. * *if NOT timed out (1min time limit)*
@@ -68,9 +68,11 @@ Guests cannot edit or delete a card.
 ### <span style="color:#c2e2ee">**Profile**</span>
 Logged users can:
 * View their details
-* View the feedback cards they created, edit & delete them.
-* View a list of the suggestions they made, edit & delete them.
+* View the feedback cards they created, edit & delete them.  * *if NOT timed out (1min time limit)*
+* View the info cards they created, edit & delete them.
+* View a list of the suggestions they made, edit & delete them. * *if NOT timed out (1min time limit)*
 * Create new feedback cards
+* Create new info cards
 
 
 #
@@ -91,6 +93,7 @@ Logged users can:
 * Names should be between 3 and 64  characters.
 
 ### Email
+* Regex pattern implemented for data validation
 * The email address must start with one or more letters, numbers, dots, underscores, percent signs, plus signs, or hyphens before the "@" symbol.
 The "@" symbol must be followed by one or more letters, numbers, dots, or hyphens before the domain extension.
 The domain extension must consist of at least two letters.
@@ -111,7 +114,8 @@ The email address must not have any spaces, tabs, or other special characters.
 
 ####  **Info cards**:
 * Text Input: 30 characters
-* Textarea: Max length 150 characters.
+* Website: should contain website address, regex pattern implemented for data validation
+* Textarea: Max length 300 characters.
 
 ### **Not Found**
 * If the page is not found, returns 404 page Not Found, with link back to the home page.

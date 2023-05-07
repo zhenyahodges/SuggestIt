@@ -12,6 +12,7 @@ import { useWhoIsLooking } from '../../context/CurrentUserContext';
 import { useEffect } from 'react';
 
 export async function loader({ request }) {
+    
     return new URL(request.url).searchParams.get('message');
 }
 
