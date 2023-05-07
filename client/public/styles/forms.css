@@ -29,12 +29,6 @@ form button {
     align-items: center;
 }
 
-
-/*|| ADD SUGGESTION || */
-
-/* if logged in */
-/* if not-register */
-
 /* |**POLL-CODE FORM */
 .poll-code.form-wrapper {
     display: none;
@@ -100,13 +94,11 @@ form button {
 
 /* ***|| REGISTER */
 .register.form-wrapper {
-    /* display: none; */
     min-height: 50vh;
 }
 
 /* ***|| LOGIN */
 .login.form-wrapper {
-    /* display: none; */
     min-height: 40vh;
 }
 
