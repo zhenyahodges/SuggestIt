@@ -26,13 +26,11 @@
 }
 
 /* CATALOG CARDS */
-  /* === ***Card START */
-  
-  .catalog-wrapper > .sugg-card {
-      max-width: 40%;
-  }
- 
-   /* *** Card Main */
-   .catalog-wrapper > .sugg-card.details > .card-main {
-          min-height: 72%;
-   }
+.catalog-wrapper>.sugg-card {
+    max-width: 40%;
+}
+
+/* *** Card Main */
+.catalog-wrapper>.sugg-card.details>.card-main {
+    min-height: 72%;
+}
