@@ -80,6 +80,11 @@
     /* height: 100vh; */
 }
 
+.prof-nav{
+    display: flex;
+    flex-flow: row wrap;
+}
+
 /*|| PUBLISHED */
 .user.published {
     /* display: none; */
