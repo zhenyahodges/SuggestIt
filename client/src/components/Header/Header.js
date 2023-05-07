@@ -12,7 +12,7 @@ export const Header = (props) => {
 
     useEffect(() => {
         whoIsLooking !== 'Guest' && setIsLogged(true);
-    }, []);
+    }, [setIsLogged, whoIsLooking]);
 
     const activeStyles = {
         backgroundColor: '#F79234',
