@@ -18,7 +18,7 @@ export const CurrentUserProvider = ({ children }) => {
         } else {
             setWhoIsLooking('Guest');
         }
-    }, [setWhoIsLooking]);
+    }, [setWhoIsLooking, userData]);
 
     const contextValues = {
         whoIsLooking,

@@ -38,13 +38,13 @@ export default function EditSuggestion() {
     const navigation = useNavigation();
     const res = useLoaderData();
     const {
-        _ownerId,
+        // _ownerId,
         suggestion,
         cardId,
-        _createdOn,
-        _updatedOn,
-        _id,
-        author,
+        // _createdOn,
+        // _updatedOn,
+        // _id,
+        // author,
     } = res[0];
 
     cardIds = cardId;
