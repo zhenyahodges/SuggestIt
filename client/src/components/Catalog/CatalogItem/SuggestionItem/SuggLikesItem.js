@@ -10,7 +10,6 @@ export default function SuggLikesItem({ userId, token, ownerId, id, author }) {
     // GET SUGGLIKE COUNT
     useEffect(() => {
         const searchQuery = encodeURIComponent(`suggestionId="${suggId}"`);
-        // console.log('HERE2');
         const url = `http://localhost:3030/data/likes?where=${searchQuery}&count`;
         fetch(url, {
             method: 'GET',
@@ -33,7 +32,7 @@ export default function SuggLikesItem({ userId, token, ownerId, id, author }) {
             .catch((err) => {
                 console.log(`Error: ${err.message}`);
             });
-    }, [id, setCount]);
+    }, [id, setCount, suggId]);
 
     useEffect(() => {
         const searchQuery = encodeURIComponent(`suggestionId="${suggId}"`);
@@ -60,7 +59,6 @@ export default function SuggLikesItem({ userId, token, ownerId, id, author }) {
             .then((data) => {
                 if (data) {
                     const result = data.find((item) => item.userId === userId);
-                    // console.log('result=='+Object.entries(result));
                     if (result !== undefined && result !== null) {
                         return setHasLiked(true);
                     } else {
@@ -93,7 +91,6 @@ export default function SuggLikesItem({ userId, token, ownerId, id, author }) {
     }
 
     return (
-        // null
         <p className='sugg-ranking'>
             <span className='rank'>{count}</span>
 
