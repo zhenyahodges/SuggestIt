@@ -1,5 +1,3 @@
-import { Link, redirect } from 'react-router-dom';
-// console.log(process.env.NODE_ENV);
 const baseUrl = 
 'http://localhost:3030';
 // process.env.NODE_ENV === 'development'

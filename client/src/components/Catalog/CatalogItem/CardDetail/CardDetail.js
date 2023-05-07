@@ -35,7 +35,7 @@ export default function CardDetail() {
     const cardId = res._id;
     const brand = res.brand;
     const createdOn = res._createdOn;
-    const updatedOn = res._updatedOn;
+    // const updatedOn = res._updatedOn;
     const [isTimedOut, setIsTimedOut] = useState(false);
     // const [isExpired,setIsExpired]=useState(false);
 

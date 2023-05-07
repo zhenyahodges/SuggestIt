@@ -1,7 +1,6 @@
 import { Outlet, useLoaderData } from 'react-router-dom';
 import { Header } from '../Header/Header';
 import { Footer } from '../Footer/Footer';
-import { useState } from 'react';
 
 export async function loader() {
     const user = JSON.parse(localStorage.getItem('user'));
