@@ -14,7 +14,7 @@ export default function UserInfos() {
 
     return (
         <section className='user published'>
-            <h2 className='user-title'>Published</h2>
+            <h2 className='user-title'>Published Infos</h2>
 
             <div className='user-article-wrapper'>
                 {infos &&
@@ -50,6 +50,8 @@ export default function UserInfos() {
                             </footer>
                         </article>
                     ))}
+                {!infos && <h3>No items yet</h3>}
+
             </div>
         </section>
     );

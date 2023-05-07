@@ -1,16 +1,17 @@
 import { Link, redirect } from 'react-router-dom';
-
-const baseUrl = 'http://localhost:3030';
-// process.env.NODE_ENV === 'development'
-// ? 'http://localhost:3030'
-// : 'https: //localhost:3031';
+// console.log(process.env.NODE_ENV);
+const baseUrl = 
+// 'http://localhost:3030';
+process.env.NODE_ENV === 'development'
+? 'http://localhost:3030'
+: 'https://localhost:3031';
 
 export async function getCards(id) {
     const url = id ? `${baseUrl}/data/cards/${id}` : `${baseUrl}/data/cards`;
     const res = await fetch(url);
 
     if (res.status === 404) {
-        return [];
+        return null;
     } else if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     } 
@@ -28,7 +29,6 @@ export async function loginUser(creds) {
         throw new Error('Email or password invalid. Please try again.');
     }
     if (res.statusCode === 204) {
-        console.log('empty');
         return {};
     }
     const data = await res.json();
@@ -76,11 +76,12 @@ export async function getUserInfo(token) {
         },
     });
 
-    if (!res.ok) {
+     if (res.status === 404) {
+        return [];
+    } else if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
     if (res.status === 204) {
-        console.log(res.status);
         return null;
     }
 
@@ -103,7 +104,7 @@ export async function getUserCards(userId, token) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
     if (res.status === 204) {
-        console.log('empty');
+        // console.log('empty');
         return null;
     }
     const data = await res.json();
@@ -124,7 +125,6 @@ export async function getUserSuggestions(userId, token) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
     if (res.status === 204) {
-        console.log('empty');
         return null;
     }
     const data = await res.json();
@@ -145,7 +145,6 @@ export async function createNewCard(token, brand) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
     if (res.status === 204) {
-        console.log(res.status);
         return null;
     }
     const data = await res.json();
@@ -186,7 +185,6 @@ export async function onDeleteCard(id, token) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
     if (res.statusCode === 204) {
-        console.log('empty');
         return {};
     }
     const data = await res.json();
@@ -206,7 +204,6 @@ export async function onDeleteSuggestion(id, token) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
     if (res.statusCode === 204) {
-        console.log('empty');
         return {};
     }
     const data = await res.json();
@@ -229,7 +226,6 @@ export async function getOneSuggestions(suggestionId, token) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
     if (res.status === 204) {
-        console.log('empty');
         return null;
     }
     const data = await res.json();
@@ -274,7 +270,6 @@ export async function getCardSuggestions(cardId) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
     if (res.status === 204) {
-        console.log('empty');
         return null;
     }
     const data = await res.json();
@@ -296,7 +291,6 @@ export async function addSuggestion(token, cardId, suggestion) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
     if (res.status === 204) {
-        console.log(res.status);
         return null;
     }
     const data = await res.json();
@@ -317,7 +311,6 @@ export async function postLike(suggestionId, token, userId) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
     if (res.status === 204) {
-        console.log(res.status);
         return null;
     }
     const data = await res.json();
@@ -360,7 +353,6 @@ export async function deleteLike(likeId, token) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
     if (res.status === 204) {
-        console.log(res.status);
         return null;
     }
     const data = await res.json();
@@ -378,7 +370,6 @@ export async function getSuggestionLikes(suggestionId) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
     if (res.status === 204) {
-        console.log('empty');
         return null;
     }
     const data = await res.json();
@@ -395,9 +386,6 @@ export async function getInfos(id) {
     } else if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
-    // if (res.status === 204) {
-    //     return null;
-    // }
     const data = await res.json();
     return data;
 }
@@ -416,7 +404,6 @@ export async function createNewInfo(token, title, web, text) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
     if (res.status === 204) {
-        console.log(res.status);
         return null;
     }
     const data = await res.json();
@@ -453,13 +440,13 @@ export async function getUserInfos(userId, token) {
             'X-Authorization': token,
         },
     });
+    if(res.status===404){
+        return null;
+    }else 
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
-    if (res.status === 204) {
-        console.log('empty');
-        return null;
-    }
+  
     const data = await res.json();
     return data;
 }
@@ -477,7 +464,6 @@ export async function onDeleteInfo(infoId, token) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
     if (res.statusCode === 204) {
-        console.log('empty');
         return {};
     }
     const data = await res.json();

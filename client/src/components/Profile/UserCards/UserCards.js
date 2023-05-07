@@ -14,10 +14,12 @@ export default function UserCards() {
 
     return (
         <section className='user published'>
-            <h2 className='user-title'>Published</h2>
+            <h2 className='user-title'>Published Cards</h2>
 
             <div className='user-article-wrapper'>
-                {cards && cards.map((c) => <CatalogItem key={c._id} {...c} />)}
+                {cards.length>0&& cards.map((c) => <CatalogItem key={c._id} {...c} />)}
+                {cards.length===0 && <h3>No items yet</h3>}
+
             </div>
         </section>
     );

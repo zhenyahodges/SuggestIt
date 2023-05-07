@@ -4,14 +4,11 @@ import InfoItem from './InfoItem/InfoItem';
 
 export async function loader() {
     const infos = await getInfos();
-    console.log(infos);
-
     return infos;
 }
 
 export default function InfosCatalog() {
     const infos = useLoaderData();
-    console.log(infos);
 
     return (
         <section className='catalog window'>
