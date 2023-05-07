@@ -47,9 +47,7 @@ export default function AddSuggestion() {
                     placeholder='Type your suggestion here'
                     required
                 ></textarea>
-                {/* <span className='add sugg author' id='add-sugg-author'>
-                    Me
-                </span> */}
+               
                 <button
                     className='add-sugg btn dark subm'
                     form='add-form'
