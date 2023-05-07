@@ -1,8 +1,4 @@
 /* ***Section WELCOME */
-.welcome.window{
-    /* display: none; */
-}
-
 .main-title {
     font-size: 1.5rem;
     font-weight: 800;
@@ -35,12 +31,3 @@
 .welcome .vote-sugg-link{
     display: none;
 }
-
-/* .sugg-card.details .sugg-text {
-    text-align: left;
-}
-
-.sugg-card.details .sugg-ranking {
-    text-align: right;
-} */
-
