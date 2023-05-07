@@ -1,6 +1,10 @@
 # Suggest<span style="color:#F79234">**It**</span>
 ## **Project Assignment: SPA with ReactJs**
 
+Deployed here: [https://suggestit-a18f3.web.app](https://suggestit-a18f3.web.app/)
+
+**The server should be started locally for it to work properly, as it's not been deployed yet.**
+
 
 This is a ReactJS project assignment for completing [SoftUni](https://softuni.bg/)
 ReactJS Course. Details of the assignment are available [here](https://github.com/zhenyahodges/SoftUni-Courses/blob/main/Front_End/REACT/REACT-PROJECT/ReactJS-Project-Assignment.docx).
