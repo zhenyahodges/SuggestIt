@@ -8,7 +8,6 @@
 }
 
 .btn.highlight {
-    /* color: var(--clr-bgr); */
     color: var(--clr-light);
     text-shadow: 1px 1px 1px #132930;
     background-color: var(--clr-highlight);
@@ -20,7 +19,6 @@
     text-shadow: 1px 1px 1px #4a5b60;
 }
 
-
 .btn.light {
     color: var(--clr-bgr);
     background-color: var(--clr-light);
@@ -31,7 +29,7 @@
 }
 
 /* active button while open */
-.selected{
+.selected {
     background-color: var(--clr-highlight);
 }
 
@@ -45,24 +43,18 @@
     color: var(--clr-highlight);
 }
 
-.btn:disabled{
+.btn:disabled {
     background-color: var(--clr-mid);
 }
 
-/* styling active/focused buttons */
-.spec:focus{
-    /* color: var(--clr-bgr);
-background-color: var(--clr-highlight); */
-/* font-weight: 600; */
-background: linear-gradient(0deg, rgba(19, 41, 48, 1) 0%, rgba(46, 101, 119, 1) 73%, rgba(91, 200, 235, 1) 100%);
-color: var(--clr-light);
+.spec:focus {
+    background: linear-gradient(0deg, rgba(19, 41, 48, 1) 0%, rgba(46, 101, 119, 1) 73%, rgba(91, 200, 235, 1) 100%);
+    color: var(--clr-light);
 }
 
-.btn-sm{ 
+.btn-sm {
     background-color: transparent;
-    border:none;    
+    border: none;
 }
-
-
 
 /* buttons end */
