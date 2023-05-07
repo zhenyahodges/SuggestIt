@@ -14,9 +14,10 @@
     font-weight: 800;
 }
 
-.logout.log.btn{
+.logout.log.btn {
     width: 5rem;
 }
-.logout.log.btn:active{
+
+.logout.log.btn:active {
     color: white;
 }
