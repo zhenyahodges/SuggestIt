@@ -1,10 +1,10 @@
 import { Link, redirect } from 'react-router-dom';
 // console.log(process.env.NODE_ENV);
 const baseUrl = 
-// 'http://localhost:3030';
-process.env.NODE_ENV === 'development'
-? 'http://localhost:3030'
-: 'https://localhost:3031';
+'http://localhost:3030';
+// process.env.NODE_ENV === 'development'
+// ? 'http://localhost:3030'
+// : 'https://localhost:3031';
 
 export async function getCards(id) {
     const url = id ? `${baseUrl}/data/cards/${id}` : `${baseUrl}/data/cards`;
