@@ -1,14 +1,5 @@
-import {
-    Link,
-    useNavigate,
-    useOutletContext,
-    // useRouteLoaderData,
-} from 'react-router-dom';
-import {
-
-    onDeleteSuggestion,
-    
-} from '../../../../utils/service';
+import { Link, useNavigate, useOutletContext } from 'react-router-dom';
+import { onDeleteSuggestion } from '../../../../utils/service';
 import SuggLikesItem from './SuggLikesItem';
 
 export default function SuggestionDetail(props) {
@@ -23,10 +14,10 @@ export default function SuggestionDetail(props) {
     // const updatedOn = props._updatedOn;
     const id = props._id;
     let author;
-    if( props.author){
-        console.log('author--'+props.author);
-        author=props.author._id;
-    };
+    if (props.author) {
+        console.log('author--' + props.author);
+        author = props.author._id;
+    }
 
     let userId;
     let token;
@@ -34,10 +25,13 @@ export default function SuggestionDetail(props) {
         userId = user.userId;
         token = user.token;
     }
-    const infos={
-        userId,token,ownerId,id,author
+    const infos = {
+        userId,
+        token,
+        ownerId,
+        id,
+        author,
     };
-
 
     return (
         <li className='sugg-item'>
@@ -75,7 +69,7 @@ export default function SuggestionDetail(props) {
                         )}
                 </p>
 
-               <SuggLikesItem {...infos}/>
+                <SuggLikesItem {...infos} />
             </div>
         </li>
     );
