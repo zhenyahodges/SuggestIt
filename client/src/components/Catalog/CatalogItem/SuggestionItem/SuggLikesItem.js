@@ -16,14 +16,12 @@ export default function SuggLikesItem({ userId, token, ownerId, id, author }) {
         })
             .then((res) => {
                 if (res.status === 404) {
-                    console.log('0 - no likes');
                     return [];
                 } else if (!res.ok) {
                     throw new Error(`${res.status} - ${res.statusText}`);
                 }
 
                 if (res.status === 204) {
-                    console.log('empty');
                     return null;
                 }
                 return res.json();
@@ -42,7 +40,6 @@ export default function SuggLikesItem({ userId, token, ownerId, id, author }) {
         })
             .then((res) => {
                 if (res.status === 404) {
-                    console.log('0 - no likes');
                     setHasLiked(false);
                     return null;
                 } else if (!res.ok) {
@@ -50,7 +47,6 @@ export default function SuggLikesItem({ userId, token, ownerId, id, author }) {
                 }
 
                 if (res.status === 204) {
-                    console.log('empty');
                     setHasLiked(false);
                     return null;
                 }

@@ -102,7 +102,6 @@ export async function getUserCards(userId, token) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
     if (res.status === 204) {
-        // console.log('empty');
         return null;
     }
     const data = await res.json();
@@ -326,7 +325,6 @@ export async function getOneLike(suggId, userId) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
     if (res.status === 204) {
-        console.log(res.status);
         return null;
     }
     const data = await res.json();

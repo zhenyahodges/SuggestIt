@@ -1,10 +1,14 @@
 import { Link, useNavigate, useOutletContext } from 'react-router-dom';
 import { onDeleteSuggestion } from '../../../../utils/service';
 import SuggLikesItem from './SuggLikesItem';
+import { useEffect, useState } from 'react';
+
 
 export default function SuggestionDetail(props) {
     const navigate = useNavigate();
     const user = useOutletContext();
+    const [isTimedOut, setIsTimedOut] = useState(false);
+
 
     const ownerId = props._ownerId;
     const suggestion = props.suggestion;
@@ -13,9 +17,22 @@ export default function SuggestionDetail(props) {
     const createdOn = props._createdOn;
     // const updatedOn = props._updatedOn;
     const id = props._id;
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            const timePassed = new Date() - new Date(createdOn) > 60000;
+
+            if (timePassed) {
+                setIsTimedOut(true);
+                clearInterval(timer);
+            } else {
+                setIsTimedOut(false);
+            }
+        }, 10);
+    }, [createdOn]);
+
     let author;
     if (props.author) {
-        console.log('author--' + props.author);
         author = props.author._id;
     }
 
@@ -25,6 +42,10 @@ export default function SuggestionDetail(props) {
         userId = user.userId;
         token = user.token;
     }
+
+    const isAuthorized = Boolean(token);
+    const canEditDeleteSugg = ownerId === userId && !isTimedOut;
+
     const infos = {
         userId,
         token,
@@ -40,9 +61,7 @@ export default function SuggestionDetail(props) {
                     {suggestion}
 
                     {/* <!-EDIT/DELETE SUGG-IF OWNER & NOT TIMED OUT --> */}
-                    {user &&
-                        ownerId === userId &&
-                        !(new Date() - new Date(createdOn) > 60000) && (
+                    {isAuthorized && canEditDeleteSugg && (
                             <span className='user-sug-list'>
                                 <Link
                                     to={`/suggestions/${id}`}
