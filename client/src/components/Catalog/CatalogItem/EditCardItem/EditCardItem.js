@@ -13,7 +13,7 @@ export async function action({ request, params }) {
     const { token } = await requireAuth();
     const cardId = params.cardId;
 
-    if (window.confirm('Are you sure you want to submit?')) {    
+    if (window.confirm('Are you sure you want to submit?')) {
         const formData = await request.formData();
         const brand = formData.get('brand');
 
@@ -27,14 +27,14 @@ export async function action({ request, params }) {
         } catch (err) {
             return err.message;
         }
-    }else{
+    } else {
         return redirect(`/cards/${cardId}`);
     }
 }
 
-export default function EditCardItem() {  
+export default function EditCardItem() {
     const res = useLoaderData();
-      const brand = res.brand;
+    const brand = res.brand;
 
     return (
         <section className='user create edit'>
