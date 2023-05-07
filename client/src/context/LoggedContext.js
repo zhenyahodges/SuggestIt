@@ -8,10 +8,8 @@ export function useLogged() {
 
 export const LoggedProvider = ({ children }) => {
     const [isLogged, setIsLogged] = useState(false);
-    // const count = useRef(0);
 
     useEffect(() => {
-        // count.current = count.current + 1;
         const userData = JSON.parse(localStorage.getItem('user'));
         if (userData) {
             userData.userId ? setIsLogged(true) : setIsLogged(false);
