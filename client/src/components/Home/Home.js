@@ -12,18 +12,18 @@ export default function Home() {
             <Welcome />
 
             {/* <!-- SAMPLE  --> */}
-            <section className='sample content'>
+            {/* <section className='sample content'>
                 <h4 className='samples-title'>Sample</h4>
 
                 <div className='samples wrapper'>                  
                     <Sample />                    
                 </div>
-            </section>
+            </section> */}
 
             <div className='more'>
                 <button
                     onClick={() => navigate('cards')}
-                    className='btn dark catalog'
+                    className='btn highlight catalog'
                     id='catalog-btn'
                     disabled={navigation.state === 'loading'}
                 >
