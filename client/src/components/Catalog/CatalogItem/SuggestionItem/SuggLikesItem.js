@@ -64,12 +64,10 @@ export default function SuggLikesItem({ userId, token, ownerId, id, author,cardI
             });
     }, [suggId, userId]);
 
-    // const canLike = userId && (author !== userId) && (userId!==ownerId);
     let canLike=false;
     if(token && (author !== userId) &&(userId!==cardOwner)){
         canLike = true;
     }
-    // console.log('CANLIKE'+canLike);
 
     async function onLike() {
         await postLike(suggId, token, userId);
