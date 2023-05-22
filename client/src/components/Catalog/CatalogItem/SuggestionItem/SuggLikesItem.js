@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
 import { deleteLike, getOneLike, postLike } from '../../../../utils/service';
+import { useRouteLoaderData } from 'react-router-dom';
 
-export default function SuggLikesItem({ userId, token, ownerId, id, author }) {
+export default function SuggLikesItem({ userId, token, ownerId, id, author,cardId }) {
     const suggId = id;
-
+   
     const [hasLiked, setHasLiked] = useState(false);
     const [count, setCount] = useState(0);
+    const card=useRouteLoaderData('cardItem');
+   const cardOwner=card.res._ownerId;
 
     // GET SUGGLIKE COUNT
     useEffect(() => {
@@ -19,11 +22,7 @@ export default function SuggLikesItem({ userId, token, ownerId, id, author }) {
                     return [];
                 } else if (!res.ok) {
                     throw new Error(`${res.status} - ${res.statusText}`);
-                }
-
-                if (res.status === 204) {
-                    return null;
-                }
+                }                
                 return res.json();
             })
             .then((result) => setCount(result))
@@ -45,11 +44,6 @@ export default function SuggLikesItem({ userId, token, ownerId, id, author }) {
                 } else if (!res.ok) {
                     throw new Error(`${res.status} - ${res.statusText}`);
                 }
-
-                if (res.status === 204) {
-                    setHasLiked(false);
-                    return null;
-                }
                 return res.json();
             })
             .then((data) => {
@@ -70,7 +64,12 @@ export default function SuggLikesItem({ userId, token, ownerId, id, author }) {
             });
     }, [suggId, userId]);
 
-    const canLike = userId && author !== userId;
+    // const canLike = userId && (author !== userId) && (userId!==ownerId);
+    let canLike=false;
+    if(token && (author !== userId) &&(userId!==cardOwner)){
+        canLike = true;
+    }
+    // console.log('CANLIKE'+canLike);
 
     async function onLike() {
         await postLike(suggId, token, userId);
@@ -88,7 +87,7 @@ export default function SuggLikesItem({ userId, token, ownerId, id, author }) {
 
     return (
         <p className='sugg-ranking'>
-            <span className='rank'>{count}</span>
+            <span className='rank'>{count? count:0}</span>
 
             {/* LIKE DISABLED FOR GUESTS & OWNERS  */}
             {canLike && !hasLiked && (

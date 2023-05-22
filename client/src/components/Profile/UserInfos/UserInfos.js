@@ -1,4 +1,4 @@
-import { Link, useLoaderData, useNavigation } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
 import { getUserInfos } from '../../../utils/service';
 import { requireAuth } from '../../../utils/requireAuth';
 import InfoItem from '../../InfoCatalog/InfoItem/InfoItem';
@@ -11,7 +11,6 @@ export async function loader({ request }) {
 
 export default function UserInfos() {
     const infos = useLoaderData();
-    const navigation = useNavigation();
 
     return (
         <section className='user published'>
@@ -20,42 +19,8 @@ export default function UserInfos() {
             <div className='user-article-wrapper'>
                 {infos?
                 infos.map((i) =><InfoItem key={i._id} {...i}/>)
-                : <h3>No items yet</h3>
-                    // infos.map(({ title, text, _createdOn, _id, _ownerId }) => (
-                    //     <article
-                    //         key={_id}
-                    //         className='sugg-card catalog private'
-                    //         id={_id}
-                    //     >
-                    //         <header className='card-header'>
-                    //             <h5 className='brand'>{title}</h5>
-                    //         </header>
-
-                    //         <main className='card-main'>
-                    //             <p>{text}</p>
-                    //         </main>
-                    //         <footer className='card-footer suggs-card foot'>
-                    //             <div className='card-footer-content'>                                  
-                    //                 <div className='card-footer-links-wrapper'>
-                    //                     <Link
-                    //                         to={`/infos/${_id}`}
-                    //                         className='details-link'
-                    //                         disabled={
-                    //                             navigation.state === 'loading'
-                    //                         }
-                    //                     >
-                    //                         {navigation.state === 'loading'
-                    //                             ? ':Loading...'
-                    //                             : 'Details'}
-                    //                     </Link>
-                    //                 </div>
-                    //             </div>
-                    //         </footer>
-                    //     </article>
-                    // ))
+                : <h3>No items yet</h3>                  
                 }
-                {/* // {!infos && <h3>No items yet</h3>} */}
-
             </div>
         </section>
     );

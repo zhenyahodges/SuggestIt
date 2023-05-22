@@ -9,7 +9,7 @@ export async function getCards(id) {
     const res = await fetch(url);
 
     if (res.status === 404) {
-        return [];
+        return null;
     } else if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     } 
@@ -26,9 +26,9 @@ export async function loginUser(creds) {
     if (!res.ok) {
         throw new Error('Email or password invalid. Please try again.');
     }
-    if (res.statusCode === 204) {
-        return {};
-    }
+    // if (res.statusCode === 204) {
+    //     return {};
+    // }
     const data = await res.json();
     return data;
 }
@@ -79,9 +79,9 @@ export async function getUserInfo(token) {
     } else if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
-    if (res.status === 204) {
-        return null;
-    }
+    // if (res.status === 204) {
+    //     return null;
+    // }
 
     const data = await res.json();
 
@@ -139,9 +139,9 @@ export async function createNewCard(token, brand) {
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
-    if (res.status === 204) {
-        return null;
-    }
+    // if (res.status === 204) {
+    //     return null;
+    // }
     const data = await res.json();
     return data;
 }
@@ -160,9 +160,9 @@ export async function editCard(token, brand, cardId) {
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
-    if (res.status === 204) {
-        return null;
-    }
+    // if (res.status === 204) {
+    //     return null;
+    // }
     const data = await res.json();
     return data;
 }
@@ -179,9 +179,9 @@ export async function onDeleteCard(id, token) {
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
-    if (res.statusCode === 204) {
-        return {};
-    }
+    // if (res.statusCode === 204) {
+    //     return {};
+    // }
     const data = await res.json();
     return data;
 }
@@ -198,9 +198,9 @@ export async function onDeleteSuggestion(id, token) {
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
-    if (res.statusCode === 204) {
-        return {};
-    }
+    // if (res.statusCode === 204) {
+    //     return {};
+    // }
     const data = await res.json();
     return data;
 }
@@ -220,9 +220,9 @@ export async function getOneSuggestions(suggestionId, token) {
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
-    if (res.status === 204) {
-        return null;
-    }
+    // if (res.status === 204) {
+    //     return null;
+    // }
     const data = await res.json();
     return data;
 }
@@ -246,9 +246,9 @@ export async function onEditSuggestion(
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
-    if (res.status === 204) {
-        return null;
-    }
+    // if (res.status === 204) {
+    //     return null;
+    // }
     const data = await res.json();
     return data;
 }
@@ -262,14 +262,11 @@ export async function getCardSuggestions(cardId) {
         method: 'GET',
     });
     if (res.status === 404) {
-        return [];
+        return null;
     } else if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
    
-    // if (res.status === 204) {
-    //     return null;
-    // }
     const data = await res.json();
     return data;
 }
@@ -308,9 +305,9 @@ export async function postLike(suggestionId, token, userId) {
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
-    if (res.status === 204) {
-        return null;
-    }
+    // if (res.status === 204) {
+    //     return null;
+    // }
     const data = await res.json();
     return data;
 }
@@ -325,9 +322,9 @@ export async function getOneLike(suggId, userId) {
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
-    if (res.status === 204) {
-        return null;
-    }
+    // if (res.status === 204) {
+    //     return null;
+    // }
     const data = await res.json();
     let likeId;
     if (data) {
@@ -349,9 +346,9 @@ export async function deleteLike(likeId, token) {
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
-    if (res.status === 204) {
-        return null;
-    }
+    // if (res.status === 204) {
+    //     return null;
+    // }
     const data = await res.json();
     return data;
 }
@@ -366,9 +363,9 @@ export async function getSuggestionLikes(suggestionId) {
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
-    if (res.status === 204) {
-        return null;
-    }
+    // if (res.status === 204) {
+    //     return null;
+    // }
     const data = await res.json();
     return data;
 }
@@ -379,7 +376,7 @@ export async function getInfos(id) {
     const res = await fetch(url);
 
     if (res.status === 404) {
-        return [];
+        return null;
     } else if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
@@ -400,9 +397,9 @@ export async function createNewInfo(token, title, web, text) {
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
-    if (res.status === 204) {
-        return null;
-    }
+    // if (res.status === 204) {
+    //     return null;
+    // }
     const data = await res.json();
     return data;
 }
@@ -420,9 +417,9 @@ export async function editInfo(token, title, web, text, infoId) {
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
-    if (res.status === 204) {
-        return null;
-    }
+    // if (res.status === 204) {
+    //     return null;
+    // }
     const data = await res.json();
     return data;
 }
@@ -460,9 +457,9 @@ export async function onDeleteInfo(infoId, token) {
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
-    if (res.statusCode === 204) {
-        return {};
-    }
+    // if (res.statusCode === 204) {
+    //     return {};
+    // }
     const data = await res.json();
     return data;
 }

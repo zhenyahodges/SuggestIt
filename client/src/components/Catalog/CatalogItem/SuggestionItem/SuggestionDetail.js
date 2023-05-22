@@ -9,15 +9,15 @@ export default function SuggestionDetail(props) {
     const user = useOutletContext();
     const [isTimedOut, setIsTimedOut] = useState(false);
 
-
     const ownerId = props._ownerId;
     const suggestion = props.suggestion;
     // const likes = props.likes;
-    const cardId = props._cardId;
+    const cardId = props.cardId;
     const createdOn = props._createdOn;
     // const updatedOn = props._updatedOn;
     const id = props._id;
 
+    // owner of suggestion can edit/delete it within 1min period only.
     useEffect(() => {
         const timer = setInterval(() => {
             const timePassed = new Date() - new Date(createdOn) > 60000;
@@ -52,6 +52,7 @@ export default function SuggestionDetail(props) {
         ownerId,
         id,
         author,
+        cardId,
     };
 
     return (

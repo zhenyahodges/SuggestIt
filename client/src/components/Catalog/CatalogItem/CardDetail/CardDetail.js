@@ -13,10 +13,10 @@ import { EmailShareButton } from 'react-share';
 import SuggestionDetail from '../SuggestionItem/SuggestionDetail';
 import { useEffect, useState } from 'react';
 
-let cardId;
+// let cardId;
 
 export async function loader({ params }) {
-    cardId = params.cardId;
+   const cardId = params.cardId;
     const res = await getCards(cardId);
     const suggestions = await getCardSuggestions(cardId);
     const result = {
@@ -39,6 +39,7 @@ export default function CardDetail() {
     const [isTimedOut, setIsTimedOut] = useState(false);
     // const [isExpired,setIsExpired]=useState(false);
 
+    // owner can edit/delete card only within 1min period
     useEffect(() => {
         const timer = setInterval(() => {
             const timePassed = new Date() - new Date(createdOn) > 60000;
@@ -91,7 +92,7 @@ export default function CardDetail() {
                             {/* SUGGESTIONS */}
                             {suggestions &&
                                 suggestions.map((s) => (
-                                    <SuggestionDetail key={s._id} {...s} />
+                                    <SuggestionDetail key={s._id} {...s}/>
                                 ))}
                         </ul>
                     </main>

@@ -21,16 +21,33 @@ import Logout, {
     action as logoutAction,
     loader as logoutLoader,
 } from './components/Logout/Logout';
+import { CurrentUserProvider } from './context/CurrentUserContext';
+
+// **CATALOG**
 import Catalog, { loader as cardsLoader } from './components/Catalog/Catalog';
 import CardDetail, {
     loader as cardLoader,
     // action as likeAction
 } from './components/Catalog/CatalogItem/CardDetail/CardDetail';
 
+// SUGGESTION ADD/EDIT
 import AddSuggestion, {
     action as suggestAction,
 } from './components/Catalog/CatalogItem/SuggestionItem/AddSuggestion';
+import EditSuggestion, {
+    loader as editSuggLoader,
+    action as editSuggAction,
+} from './components/Catalog/CatalogItem/SuggestionItem/EditSuggestion';
 
+// **INFOCATALOG**
+import InfoCatalog, {
+    loader as infosLoader,
+} from './components/InfoCatalog/InfoCatalog';
+import InfoDetail, {
+    loader as infoLoader,
+} from './components/InfoCatalog/InfoItem/InfoDetail/InfoDetail';
+
+// **PROFILE**
 import ProfileLayout, {
     loader as userLoader,
 } from './components/Profile/ProfileLayout';
@@ -40,23 +57,22 @@ import UserCards, {
 import UserSuggs, {
     loader as useSuggLoader,
 } from './components/Profile/UserSuggs/UserSuggs';
+
+import UserInfos, {
+    loader as userInfosLoader,
+} from './components/Profile/UserInfos/UserInfos';
+
+// CARD CREATE/EDIT
 import CreateCard, {
     action as createCardAction,
 } from './components/Profile/CreateCard/CreateCard';
-import { CurrentUserProvider } from './context/CurrentUserContext';
-
 import EditCardItem, {
     loader as editCardLoader,
     action as editCardAction,
 } from './components/Catalog/CatalogItem/EditCardItem/EditCardItem';
 import { LoggedProvider } from './context/LoggedContext';
-// INFOS
-import InfoCatalog, {
-    loader as infosLoader,
-} from './components/InfoCatalog/InfoCatalog';
-import InfoDetail, {
-    loader as infoLoader,
-} from './components/InfoCatalog/InfoItem/InfoDetail/InfoDetail';
+
+// INFO CREATE/EDIT
 import EditInfoItem, {
     loader as editInfoLoader,
     action as editInfoAction,
@@ -64,14 +80,6 @@ import EditInfoItem, {
 import CreateInfo, {
     action as createInfoAction,
 } from './components/Profile/CreateInfo/CreateInfo';
-
-import UserInfos, {
-    loader as userInfosLoader,
-} from './components/Profile/UserInfos/UserInfos';
-import EditSuggestion, {
-    loader as editSuggLoader,
-    action as editSuggAction,
-} from './components/Catalog/CatalogItem/SuggestionItem/EditSuggestion';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
