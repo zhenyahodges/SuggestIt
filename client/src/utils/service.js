@@ -9,7 +9,7 @@ export async function getCards(id) {
     const res = await fetch(url);
 
     if (res.status === 404) {
-        return null;
+        return [];
     } else if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     } 
@@ -98,11 +98,10 @@ export async function getUserCards(userId, token) {
             'X-Authorization': token,
         },
     });
-    if (!res.ok) {
-        throw new Error(`${res.status} - ${res.statusText}`);
-    }
-    if (res.status === 204) {
+    if (res.status === 404) {
         return null;
+    } else if (!res.ok) {
+        throw new Error(`${res.status} - ${res.statusText}`);
     }
     const data = await res.json();
     return data;
@@ -118,11 +117,10 @@ export async function getUserSuggestions(userId, token) {
             'X-Authorization': token,
         },
     });
-    if (!res.ok) {
-        throw new Error(`${res.status} - ${res.statusText}`);
-    }
-    if (res.status === 204) {
+    if (res.status === 404) {
         return null;
+    } else if (!res.ok) {
+        throw new Error(`${res.status} - ${res.statusText}`);
     }
     const data = await res.json();
     return data;
@@ -263,12 +261,15 @@ export async function getCardSuggestions(cardId) {
     const res = await fetch(url, {
         method: 'GET',
     });
-    if (!res.ok) {
+    if (res.status === 404) {
+        return [];
+    } else if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
-    if (res.status === 204) {
-        return null;
-    }
+   
+    // if (res.status === 204) {
+    //     return null;
+    // }
     const data = await res.json();
     return data;
 }

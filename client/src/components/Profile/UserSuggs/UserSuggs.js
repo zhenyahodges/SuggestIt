@@ -19,11 +19,13 @@ export default function UserSuggs() {
 
             <div className='user-sugged-wrapper'>
                 <ul className='user-sugged-list'>
-                    {suggestions.length>0 &&
+                    {suggestions ? (
                         suggestions.map((s) => (
                             <SuggestionDetail key={s._id} {...s} />
-                        ))}
-                        {suggestions.length===0 && <h3>No items yet</h3>}
+                        ))
+                    ) : (
+                        <h3>No items yet</h3>
+                    )}
                 </ul>
             </div>
         </section>
