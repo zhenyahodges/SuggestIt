@@ -18,7 +18,6 @@ export default function SuggLikesItem({ userId, token, ownerId, id, author,cardI
         })
             .then((res) => {
                 if (res.status === 404) {
-                    // return [];
                     return null;
                 } else if (!res.ok) {
                     throw new Error(`${res.status} - ${res.statusText}`);
@@ -29,9 +28,6 @@ export default function SuggLikesItem({ userId, token, ownerId, id, author,cardI
             .catch((err) => {
                 console.log(`Error: ${err.message}`);
             });
-        // const result=getLikesCount(suggId);
-        // console.log('RESULT=='+Object.keys(result));
-        // setCount(result);
     }, [id, setCount, suggId]);
 
     useEffect(() => {
