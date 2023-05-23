@@ -12,7 +12,7 @@
 }
 
 .sugg-card.details .card-header {
-    min-height: 10%;
+    min-height: 13%;
 }
 
 .sugg-card.details .card-footer {
@@ -20,7 +20,7 @@
 }
 
 .sugg-card.details .card-main {
-    min-height: 83%;
+    min-height: 80%;
     padding: 1.5rem;
 }
 
@@ -46,3 +46,7 @@
     font-size: smaller;
     font-weight: 200;
 }
+
+/* .sugg-card.details.detailed-card{
+    min-height: 90vh;
+} */

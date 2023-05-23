@@ -1,14 +1,17 @@
 import { useEffect, useState } from 'react';
-import { deleteLike, getOneLike, postLike } from '../../../../utils/service';
+import { deleteLike, getOneLike, postLike } from '../../../../utils/likesService';
 import { useRouteLoaderData } from 'react-router-dom';
+import { getCards } from '../../../../utils/service';
 
 export default function SuggLikesItem({ userId, token, ownerId, id, author,cardId }) {
     const suggId = id;
    
     const [hasLiked, setHasLiked] = useState(false);
     const [count, setCount] = useState(0);
-    const card=useRouteLoaderData('cardItem');
-   const cardOwner=card.res._ownerId;
+    const [cardOwner,setCardOwner] = useState('');
+    
+//    const cardOwner=card.res._ownerId;
+ 
 
     // GET SUGGLIKE COUNT
     useEffect(() => {
@@ -19,7 +22,8 @@ export default function SuggLikesItem({ userId, token, ownerId, id, author,cardI
         })
             .then((res) => {
                 if (res.status === 404) {
-                    return [];
+                    // return [];
+                    return null;
                 } else if (!res.ok) {
                     throw new Error(`${res.status} - ${res.statusText}`);
                 }                
@@ -29,6 +33,9 @@ export default function SuggLikesItem({ userId, token, ownerId, id, author,cardI
             .catch((err) => {
                 console.log(`Error: ${err.message}`);
             });
+        // const result=getLikesCount(suggId);
+        // console.log('RESULT=='+Object.keys(result));
+        // setCount(result);
     }, [id, setCount, suggId]);
 
     useEffect(() => {
@@ -64,6 +71,16 @@ export default function SuggLikesItem({ userId, token, ownerId, id, author,cardI
             });
     }, [suggId, userId]);
 
+    useEffect(()=>{
+        async function fetchCardOwner(){
+            const res=await getCards(cardId);         
+            setCardOwner(res._ownerId);
+        }
+        fetchCardOwner();
+        
+    },[cardId]);
+
+ 
     let canLike=false;
     if(token && (author !== userId) &&(userId!==cardOwner)){
         canLike = true;
