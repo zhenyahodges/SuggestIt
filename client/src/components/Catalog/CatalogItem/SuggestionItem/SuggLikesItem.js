@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { deleteLike, getOneLike, postLike } from '../../../../utils/likesService';
-import { useRouteLoaderData } from 'react-router-dom';
 import { getCards } from '../../../../utils/service';
 
 export default function SuggLikesItem({ userId, token, ownerId, id, author,cardId }) {
@@ -10,9 +9,6 @@ export default function SuggLikesItem({ userId, token, ownerId, id, author,cardI
     const [count, setCount] = useState(0);
     const [cardOwner,setCardOwner] = useState('');
     
-//    const cardOwner=card.res._ownerId;
- 
-
     // GET SUGGLIKE COUNT
     useEffect(() => {
         const searchQuery = encodeURIComponent(`suggestionId="${suggId}"`);
