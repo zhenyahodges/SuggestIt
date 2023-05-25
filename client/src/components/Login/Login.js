@@ -6,7 +6,7 @@ import {
     useLoaderData,
     useNavigation,
 } from 'react-router-dom';
-import { loginUser } from '../../utils/service';
+import { loginUser } from '../../utils/authService';
 import { useLogged } from '../../context/LoggedContext';
 import { useWhoIsLooking } from '../../context/CurrentUserContext';
 import { useEffect } from 'react';

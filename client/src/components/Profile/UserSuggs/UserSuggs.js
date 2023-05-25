@@ -1,6 +1,6 @@
 import { useLoaderData } from 'react-router-dom';
 import { requireAuth } from '../../../utils/requireAuth';
-import { getUserSuggestions } from '../../../utils/service';
+import { getUserSuggestions } from '../../../utils/suggestionService';
 import SuggestionDetail from '../../Catalog/CatalogItem/SuggestionItem/SuggestionDetail';
 
 export async function loader({ request }) {

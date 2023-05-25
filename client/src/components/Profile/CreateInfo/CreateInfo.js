@@ -1,5 +1,5 @@
 import {  redirect} from 'react-router-dom';
-import { createNewInfo } from '../../../utils/service';
+import { createNewInfo } from '../../../utils/infoCatalogService';
 import { requireAuth } from '../../../utils/requireAuth';
 import CreateInfoForm from './CreateInfoForm';
 

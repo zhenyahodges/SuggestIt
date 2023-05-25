@@ -1,6 +1,6 @@
 import { Form, redirect, useNavigation } from 'react-router-dom';
 import { requireAuth } from '../../../../utils/requireAuth';
-import { addSuggestion } from '../../../../utils/service';
+import { addSuggestion } from '../../../../utils/suggestionService';
 
 export async function action({ request, params }) {
     const cardId = params.cardId;

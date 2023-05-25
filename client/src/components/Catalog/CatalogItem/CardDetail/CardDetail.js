@@ -5,13 +5,13 @@ import {
     useNavigation,
 } from 'react-router-dom';
 import {
-    getCardSuggestions,
     getCards,
     onDeleteCard,
-} from '../../../../utils/service';
+} from '../../../../utils/cardService';
 import { EmailShareButton } from 'react-share';
 import SuggestionDetail from '../SuggestionItem/SuggestionDetail';
 import { useEffect, useState } from 'react';
+import { getCardSuggestions } from '../../../../utils/suggestionService';
 
 // let cardId;
 

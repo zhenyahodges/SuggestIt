@@ -1,5 +1,5 @@
 import { useLoaderData } from 'react-router-dom';
-import { getCards } from '../../utils/service';
+import { getCards } from '../../utils/cardService';
 import CatalogItem from './CatalogItem/CatalogItem';
 
 export async function loader() {

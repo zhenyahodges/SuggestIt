@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { deleteLike, getOneLike, postLike } from '../../../../utils/likesService';
-import { getCards } from '../../../../utils/service';
+import { deleteLike, getOneLike, getSuggestionLikesCount, postLike } from '../../../../utils/likesService';
+import { getCards } from '../../../../utils/cardService';
 
 export default function SuggLikesItem({ userId, token, ownerId, id, author,cardId }) {
     const suggId = id;
@@ -11,23 +11,11 @@ export default function SuggLikesItem({ userId, token, ownerId, id, author,cardI
     
     // GET SUGGLIKE COUNT
     useEffect(() => {
-        const searchQuery = encodeURIComponent(`suggestionId="${suggId}"`);
-        const url = `http://localhost:3030/data/likes?where=${searchQuery}&count`;
-        fetch(url, {
-            method: 'GET',
-        })
-            .then((res) => {
-                if (res.status === 404) {
-                    return null;
-                } else if (!res.ok) {
-                    throw new Error(`${res.status} - ${res.statusText}`);
-                }                
-                return res.json();
-            })
-            .then((result) => setCount(result))
-            .catch((err) => {
-                console.log(`Error: ${err.message}`);
-            });
+        async function fetchSuggestionsCount(){
+            const res=await getSuggestionLikesCount(suggId);
+            setCount(res);
+        }
+        fetchSuggestionsCount();     
     }, [id, setCount, suggId]);
 
     useEffect(() => {

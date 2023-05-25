@@ -1,5 +1,5 @@
 import { useLoaderData } from 'react-router-dom';
-import { getUserCards } from '../../../utils/service';
+import { getUserCards } from '../../../utils/cardService';
 import { requireAuth } from '../../../utils/requireAuth';
 import CatalogItem from '../../Catalog/CatalogItem/CatalogItem';
 

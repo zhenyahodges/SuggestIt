@@ -53,16 +53,17 @@ export async function deleteLike(likeId, token) {
     return data;
 }
 
-export async function getSuggestionLikes(suggestionId) {
+export async function getSuggestionLikesCount(suggestionId) {
     const searchQuery = encodeURIComponent(`suggestionId="${suggestionId}"`);
-    const relationQuery = encodeURIComponent('author=_ownerId:users');
-    const url = `${baseUrl}?where=${searchQuery}&load=${relationQuery}`;
+    const url = `${baseUrl}?where=${searchQuery}&count`;
     const res = await fetch(url, {
         metod: 'GET',
     });
-    if (!res.ok) {
+    if (res.status === 404) {
+        return null;
+    } else if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
-    }
+    }     
     const data = await res.json();
     return data;
 }

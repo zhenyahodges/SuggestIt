@@ -1,5 +1,5 @@
 import { redirect, useLoaderData } from 'react-router-dom';
-import { editCard, getCards } from '../../../../utils/service';
+import { editCard, getCards } from '../../../../utils/cardService';
 import { requireAuth } from '../../../../utils/requireAuth';
 import EditCardItemForm from './EditCardItemForm';
 

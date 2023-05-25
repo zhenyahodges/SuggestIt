@@ -1,5 +1,5 @@
 import { Form, redirect, useNavigate, useNavigation } from 'react-router-dom';
-import { logoutUser } from '../../utils/service';
+import { logoutUser } from '../../utils/authService';
 import { requireAuth } from '../../utils/requireAuth';
 import { useWhoIsLooking } from '../../context/CurrentUserContext';
 import { useLogged } from '../../context/LoggedContext';

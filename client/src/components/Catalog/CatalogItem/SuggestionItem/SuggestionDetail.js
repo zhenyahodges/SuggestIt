@@ -1,5 +1,5 @@
 import { Link, useNavigate, useOutletContext } from 'react-router-dom';
-import { onDeleteSuggestion } from '../../../../utils/service';
+import { onDeleteSuggestion } from '../../../../utils/suggestionService';
 import SuggLikesItem from './SuggLikesItem';
 import { useEffect, useState } from 'react';
 

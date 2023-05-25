@@ -1,5 +1,5 @@
 import { useLoaderData } from 'react-router-dom';
-import { getUserInfos } from '../../../utils/service';
+import { getUserInfos } from '../../../utils/infoCatalogService';
 import { requireAuth } from '../../../utils/requireAuth';
 import InfoItem from '../../InfoCatalog/InfoItem/InfoItem';
 

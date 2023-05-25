@@ -1,7 +1,7 @@
 import { redirect } from 'react-router-dom';
 import { requireAuth } from '../../../utils/requireAuth';
 import CreateCardForm from './CreateCardForm';
-import { createNewCard } from '../../../utils/service';
+import { createNewCard } from '../../../utils/cardService';
 
 export async function action({ request }) {
     const { userId, token } = await requireAuth();
