@@ -33,15 +33,15 @@ Guests & Logged Users can view the Catalog with feedback cards.
 ### <span style="color:#c2e2ee">**Card Details**</span>
 Guests & Logged Users can view the Details of feedback cards.
 
-Logged users, NOT owners can:
+Logged users, NOT card owners can:
 * Add a new suggestion.
-* Edit suggestion * *if NOT timed out (1min time limit)*
-* Delete suggestion * *if NOT timed out (1min time limit)*
-* Vote for a suggestion they are NOT the owner of.
+* Edit suggestion <span style="color:#F79234">* *if NOT timed out (1min time limit)*</span>
+* Delete suggestion <span style="color:#F79234">* *if NOT timed out (1min time limit)*</span>
+* Vote for a suggestion they are NOT the owner of the suggestion.
 
-Logged users, owners can:
-* Edit a card they created. * *if NOT timed out (1min time limit)*
-* Delete a card they created. * *if NOT timed out (1min time limit)*
+Logged users, card owners can:
+* Edit a card they created. <span style="color:#F79234">* *if NOT timed out (1min time limit)*</span>
+* Delete a card they created. <span style="color:#F79234">* *if NOT timed out (1min time limit)*</span>
 * Print card
 * Email card
 
