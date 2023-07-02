@@ -16,6 +16,7 @@ export async function getUserSuggestions(userId, token) {
     } else if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
+    
     const data = await res.json();
     return data;
 }
