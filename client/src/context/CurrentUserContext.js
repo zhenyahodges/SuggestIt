@@ -13,8 +13,9 @@ export const CurrentUserProvider = ({ children }) => {
 
     useEffect(() => {
         if (userData) {
-            let email = userData.email;
-            email ? setWhoIsLooking(email) : setWhoIsLooking('Guest');
+            // let email = userData.email;
+            // email ? setWhoIsLooking(email) : setWhoIsLooking('Guest');
+            setWhoIsLooking(userData.email);
         } else {
             setWhoIsLooking('Guest');
         }

@@ -56,6 +56,7 @@ export async function createNewCard(token, brand) {
 
 export async function editCard(token, brand, cardId) {
     const info = { brand };
+    console.log(info);
 
     const res = await fetch(`${baseUrl}/${cardId}`, {
         method: 'PUT',
@@ -70,6 +71,7 @@ export async function editCard(token, brand, cardId) {
     }
     
     const data = await res.json();
+    console.log('data=='+Object.entries(data));
     return data;
 }
 

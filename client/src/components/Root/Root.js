@@ -4,9 +4,8 @@ import { Footer } from '../Footer/Footer';
 
 export async function loader() {
     const user = JSON.parse(localStorage.getItem('user'));
-    // let userId;
+
     if (user) {
-        // return (userId = user.userId);
         return user;
     } else {
         return null;
@@ -14,10 +13,11 @@ export async function loader() {
 }
 
 export default function Root() {
-    const user= useLoaderData();
+    const user = useLoaderData();
+
     let userId;
-    if(user){        
-      userId=user.userId;
+    if (user) {
+        userId = user.userId;
     }
 
     return (
@@ -25,7 +25,7 @@ export default function Root() {
             <Header props={userId} />
             <main className='page main'>
                 <section className='page main container'>
-                    <Outlet context={user}/>
+                    <Outlet context={user} />
                 </section>
             </main>
             <Footer />

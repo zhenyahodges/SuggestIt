@@ -1,18 +1,19 @@
 import { NavLink, useNavigation } from 'react-router-dom';
 import { useWhoIsLooking } from '../../context/CurrentUserContext';
-import { useLogged } from '../../context/LoggedContext';
-import { useEffect } from 'react';
+// import { useLogged } from '../../context/LoggedContext';
+// import { useEffect } from 'react';
 
 export const Header = (props) => {
     const navigation = useNavigation();
     const { whoIsLooking } = useWhoIsLooking();
-    const { isLogged, setIsLogged } = useLogged();
+    // const { isLogged, setIsLogged } = useLogged();
     const currUserId = Object.values(props);
     const userId = currUserId[0];
+    const guest = whoIsLooking === 'Guest';
 
-    useEffect(() => {
-        whoIsLooking !== 'Guest' && setIsLogged(true);
-    }, [setIsLogged, whoIsLooking]);
+    // useEffect(() => {
+    //     whoIsLooking !== 'Guest' && setIsLogged(true);
+    // }, [setIsLogged, whoIsLooking]);
 
     const activeStyles = {
         backgroundColor: '#F79234',
@@ -72,7 +73,7 @@ export const Header = (props) => {
                                 : 'Infos Catalog'}
                         </NavLink>
 
-                        {!isLogged && (
+                        {guest && (
                             <NavLink
                                 to='login'
                                 className='nav header list links log'
@@ -88,7 +89,7 @@ export const Header = (props) => {
                             </NavLink>
                         )}
 
-                        {isLogged && (
+                        {!guest && (
                             <NavLink
                                 to='logout'
                                 className='nav header list links logout'
@@ -104,7 +105,7 @@ export const Header = (props) => {
                             </NavLink>
                         )}
 
-                        {!isLogged && (
+                        {guest && (
                             <NavLink
                                 to='register'
                                 className='nav header list links reg'
@@ -119,7 +120,7 @@ export const Header = (props) => {
                                     : 'Register'}
                             </NavLink>
                         )}
-                        {isLogged && (
+                        {!guest && (
                             <NavLink
                                 to={`users/${userId}`}
                                 className='nav header list links prof'

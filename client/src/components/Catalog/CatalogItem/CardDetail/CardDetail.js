@@ -68,7 +68,7 @@ export default function CardDetail() {
     const onDelete = async () => {
         if (window.confirm('Are you sure you want to delete?')) {
             await onDeleteCard(cardId, token);
-            navigate(-1);
+            navigate('/cards');
         }
     };
 
