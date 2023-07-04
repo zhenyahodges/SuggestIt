@@ -49,7 +49,7 @@ export async function editInfo(token, title, web, text, infoId) {
     return data;
 }
 
-export async function getUserInfos(userId, token) {
+export async function getUserInfos(userId, token) {    
     const uri = `${baseUrl}?where=_ownerId LIKE "${userId}"`;
     const encoded = encodeURI(uri);
     const res = await fetch(encoded, {
@@ -59,14 +59,14 @@ export async function getUserInfos(userId, token) {
             'X-Authorization': token,
         },
     });
-    if(res.status===404){
+    if(res.status===404){        
         return null;
-    }else 
+    }
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
   
-    const data = await res.json();
+    const data = await res.json();   
     return data;
 }
 

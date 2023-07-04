@@ -1,29 +1,25 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 
 export const CurrentUserContext = createContext();
 
-export function useWhoIsLooking() {
-    return useContext(CurrentUserContext);
-}
-
 export const CurrentUserProvider = ({ children }) => {
-    const [whoIsLooking, setWhoIsLooking] = useState('Guest');
+    const [currentUser, setCurrentUser] = useState('Guest');
 
     const userData = JSON.parse(localStorage.getItem('user'));
 
     useEffect(() => {
         if (userData) {
             // let email = userData.email;
-            // email ? setWhoIsLooking(email) : setWhoIsLooking('Guest');
-            setWhoIsLooking(userData.email);
+            // email ? setCurrentUser(email) : setCurrentUser('Guest');
+            setCurrentUser(userData.email);
         } else {
-            setWhoIsLooking('Guest');
+            setCurrentUser('Guest');
         }
-    }, [setWhoIsLooking, userData]);
+    }, [setCurrentUser, userData]);
 
     const contextValues = {
-        whoIsLooking,
-        setWhoIsLooking,
+        currentUser,
+        setCurrentUser,
     };
 
     return (

@@ -1,19 +1,21 @@
 import { NavLink, useNavigation } from 'react-router-dom';
-import { useWhoIsLooking } from '../../context/CurrentUserContext';
+import { useCurrentUser } from '../../hooks/useCurrentUser';
+
 // import { useLogged } from '../../context/LoggedContext';
 // import { useEffect } from 'react';
 
 export const Header = (props) => {
     const navigation = useNavigation();
-    const { whoIsLooking } = useWhoIsLooking();
+    const { currentUser } = useCurrentUser();
+    // console.log(currentUser);
     // const { isLogged, setIsLogged } = useLogged();
     const currUserId = Object.values(props);
     const userId = currUserId[0];
-    const guest = whoIsLooking === 'Guest';
+    const guest = currentUser === 'Guest';
 
     // useEffect(() => {
-    //     whoIsLooking !== 'Guest' && setIsLogged(true);
-    // }, [setIsLogged, whoIsLooking]);
+    //     currentUser !== 'Guest' && setIsLogged(true);
+    // }, [setIsLogged, currentUser);
 
     const activeStyles = {
         backgroundColor: '#F79234',
@@ -141,7 +143,7 @@ export const Header = (props) => {
                 </nav>
                 <div className='whos-lookin-wrapper'>
                     <p className='whos-lookin' id='whos-lookin'>
-                        {whoIsLooking}
+                        {currentUser}
                     </p>
                 </div>
             </section>

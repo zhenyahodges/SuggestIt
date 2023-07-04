@@ -12,14 +12,13 @@ export async function loader({ request }) {
 export default function UserSuggs() {
     const suggestions = useLoaderData();
 
-    return (
-        //   {/* <!-- || USER-OWNER SUGGESTIONS --> */}
+    return (      
         <section className='user suggested'>
             <h2 className='user-title'>User Suggestions</h2>
 
             <div className='user-sugged-wrapper'>
                 <ul className='user-sugged-list'>
-                    {suggestions ? (
+                    {(suggestions && suggestions.length!==0 )? (
                         suggestions.map((s) => (
                             <SuggestionDetail key={s._id} {...s} />
                         ))

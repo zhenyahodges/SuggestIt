@@ -17,7 +17,7 @@ export default function UserCards() {
             <h2 className='user-title'>Published Cards</h2>
 
             <div className='user-article-wrapper'>
-                {cards ? (
+                {(cards && cards.length!==0) ? (
                     cards.map((c) => <CatalogItem key={c._id} {...c} />)
                 ) : (
                     <h3>No items yet</h3>

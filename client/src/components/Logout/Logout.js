@@ -1,8 +1,8 @@
 import { Form, redirect, useNavigate, useNavigation } from 'react-router-dom';
 import { logoutUser } from '../../utils/authService';
 import { requireAuth } from '../../utils/requireAuth';
-import { useWhoIsLooking } from '../../context/CurrentUserContext';
-import { useLogged } from '../../context/LoggedContext';
+import { useLogged } from '../../hooks/useLogged';
+import { useCurrentUser } from '../../hooks/useCurrentUser';
 
 export async function loader({ request }) {
     await requireAuth(request);
@@ -18,7 +18,7 @@ export async function action({ request }) {
 
 export default function Logout() {
     const { setIsLogged } = useLogged();
-    const { setWhoIsLooking } = useWhoIsLooking();
+    const { setCurrentUser } = useCurrentUser();
     const navigation = useNavigation();
     const navigate = useNavigate();
 
@@ -27,7 +27,7 @@ export default function Logout() {
         await logoutUser(token);
         localStorage.clear();
         setIsLogged(false);
-        setWhoIsLooking('Guest');
+        setCurrentUser('Guest');
         navigate('/');
     };
 

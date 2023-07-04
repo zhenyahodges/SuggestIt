@@ -7,11 +7,14 @@ import {
     useNavigation,
 } from 'react-router-dom';
 import { loginUser } from '../../utils/authService';
-import { useLogged } from '../../context/LoggedContext';
-import { useWhoIsLooking } from '../../context/CurrentUserContext';
 import { useEffect } from 'react';
+import { useLogged } from '../../hooks/useLogged';
+import { useCurrentUser } from '../../hooks/useCurrentUser';
+import { requireAuth } from '../../utils/requireAuth';
 
-export async function loader({ request }) {    
+export async function loader({ request }) {
+    // const isAuth = await requireAuth(request);
+    // console.log('isAuth??' + isAuth);
     return new URL(request.url).searchParams.get('message');
 }
 
@@ -45,19 +48,19 @@ export async function action({ request }) {
 
 export default function Login() {
     const { setIsLogged } = useLogged();
-    const { whoIsLooking, setWhoIsLooking } = useWhoIsLooking();
+    const { currentUser, setCurrentUser } = useCurrentUser();
     const userData = JSON.parse(localStorage.getItem('user'));
 
     useEffect(() => {
         if (userData) {
             userData.userId ? setIsLogged(true) : setIsLogged(false);
             userData.email
-                ? setWhoIsLooking(userData.email)
+                ? setCurrentUser(userData.email)
                 : setIsLogged('Guest');
         } else {
             setIsLogged(false);
         }
-    }, [setIsLogged, userData, whoIsLooking, setWhoIsLooking]);
+    }, [setIsLogged, userData, currentUser, setCurrentUser]);
 
     const navigation = useNavigation();
     const message = useLoaderData();

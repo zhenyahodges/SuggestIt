@@ -16,7 +16,7 @@ export default function Catalog() {
             <h2 className='catalog title'>Catalog</h2>
 
             <div className='catalog-wrapper'>
-                {cards.length !== 0 ? (
+                {(cards && cards.length !== 0) ? (
                     cards.map((c) => <CatalogItem key={c._id} {...c} />)
                 ) : (
                     <h3 style={{ marginLeft: '44%' }}>No articles yet</h3>

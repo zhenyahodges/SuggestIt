@@ -13,11 +13,13 @@ export async function getUserSuggestions(userId, token) {
     });
     if (res.status === 404) {
         return null;
-    } else if (!res.ok) {
+    }
+    if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
     
     const data = await res.json();
+    console.log('DATA'+Object.entries(data));
     return data;
 }
 

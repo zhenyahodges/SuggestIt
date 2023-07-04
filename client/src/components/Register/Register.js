@@ -1,8 +1,8 @@
 import { Form, Link, redirect, useNavigation } from 'react-router-dom';
 import { registerUser } from '../../utils/authService';
-import { useLogged } from '../../context/LoggedContext';
-import { useWhoIsLooking } from '../../context/CurrentUserContext';
 import { useEffect } from 'react';
+import { useLogged } from '../../hooks/useLogged';
+import { useCurrentUser } from '../../hooks/useCurrentUser';
 
 export async function action({ request }) {
     const formData = await request.formData();
@@ -37,19 +37,19 @@ export async function action({ request }) {
 
 export default function Register() {
     const { setIsLogged } = useLogged();
-    const { whoIsLooking, setWhoIsLooking } = useWhoIsLooking();
+    const { currentUser, setCurrentUser } = useCurrentUser();
     const userData = JSON.parse(localStorage.getItem('user'));
 
     useEffect(() => {
         if (userData) {
             userData.userId ? setIsLogged(true) : setIsLogged(false);
             userData.email
-                ? setWhoIsLooking(userData.email)
+                ? setCurrentUser(userData.email)
                 : setIsLogged('Guest');
         } else {
             setIsLogged(false);
         }
-    }, [setIsLogged, userData, whoIsLooking, setWhoIsLooking]);
+    }, [setIsLogged, userData, currentUser, setCurrentUser]);
     const navigation = useNavigation();
 
     return (

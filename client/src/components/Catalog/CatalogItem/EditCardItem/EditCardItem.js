@@ -16,7 +16,6 @@ export async function action({ request, params }) {
     if (window.confirm('Are you sure you want to submit?')) {
         const formData = await request.formData();
         const brand = formData.get('brand');
-        console.log(brand);
 
         try {
             if (token) {
