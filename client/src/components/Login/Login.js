@@ -10,10 +10,10 @@ import { loginUser } from '../../utils/authService';
 import { useEffect } from 'react';
 import { useLogged } from '../../hooks/useLogged';
 import { useCurrentUser } from '../../hooks/useCurrentUser';
-import { requireAuth } from '../../utils/requireAuth';
+// import { noAuth } from '../../utils/requireAuth';
 
 export async function loader({ request }) {
-    // const isAuth = await requireAuth(request);
+    // await noAuth(request);
     // console.log('isAuth??' + isAuth);
     return new URL(request.url).searchParams.get('message');
 }
@@ -63,6 +63,7 @@ export default function Login() {
     }, [setIsLogged, userData, currentUser, setCurrentUser]);
 
     const navigation = useNavigation();
+
     const message = useLoaderData();
     const errorMessage = useActionData();
 
@@ -70,7 +71,7 @@ export default function Login() {
         <section className='login form-wrapper'>
             <h2>Login</h2>
             {message && <h3 style={{ color: 'red' }}>{message}</h3>}
-            {errorMessage && <h3 style={{ color: 'red' }}>{errorMessage}</h3>}
+            {/* {errorMessage && <h3 style={{ color: 'red' }}>{errorMessage}</h3>} */}
             <Form method='post' id='log-form' className='login form'>
                 <div className='wrap email'>
                     <label htmlFor='email' className='log lbl email'>
@@ -85,7 +86,7 @@ export default function Login() {
                         maxLength='64'
                         autoComplete='email'
                         autoFocus
-                        pattern='^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+                        pattern='^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$'
                         required
                     />
                 </div>

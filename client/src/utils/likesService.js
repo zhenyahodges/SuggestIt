@@ -61,7 +61,8 @@ export async function getSuggestionLikesCount(suggestionId) {
     });
     if (res.status === 404) {
         return null;
-    } else if (!res.ok) {
+    }
+    if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }     
     const data = await res.json();

@@ -1,5 +1,4 @@
-const baseUrl = 
-'http://localhost:3030/data/cards';
+const baseUrl = 'http://localhost:3030/data/cards';
 // process.env.NODE_ENV === 'development'
 // ? 'http://localhost:3030'
 // : 'https://localhost:3031';
@@ -7,14 +6,17 @@ const baseUrl =
 export async function getCards(id) {
     const url = id ? `${baseUrl}/${id}` : `${baseUrl}`;
     const res = await fetch(url);
-
+// let data
     if (res.status === 404) {
-        return null;
-    } else if (!res.ok) {
+        // data=[];
+        // console.log(data);
+        return [];
+    }else if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
-    } 
+    }else{
     const data = await res.json();
     return data;
+    }
 }
 
 export async function getUserCards(userId, token) {
@@ -29,7 +31,8 @@ export async function getUserCards(userId, token) {
     });
     if (res.status === 404) {
         return null;
-    } else if (!res.ok) {
+    }
+    if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
     const data = await res.json();
@@ -49,14 +52,14 @@ export async function createNewCard(token, brand) {
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
- 
+
     const data = await res.json();
     return data;
 }
 
 export async function editCard(token, brand, cardId) {
     const info = { brand };
-    console.log(info);
+    // console.log(info);
 
     const res = await fetch(`${baseUrl}/${cardId}`, {
         method: 'PUT',
@@ -69,9 +72,9 @@ export async function editCard(token, brand, cardId) {
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
-    
+
     const data = await res.json();
-    console.log('data=='+Object.entries(data));
+    // console.log('data=='+Object.entries(data));
     return data;
 }
 
@@ -87,16 +90,7 @@ export async function onDeleteCard(id, token) {
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
-  
+
     const data = await res.json();
     return data;
 }
-
-
-
-
-
-
-
-
-

@@ -1,13 +1,22 @@
-import { useNavigate, useNavigation } from 'react-router-dom';
+import {
+    // useActionData,
+    // useLoaderData,
+    useNavigate,
+    useNavigation,
+} from 'react-router-dom';
 import Welcome from './Welcome/Welcome';
 
 export default function Home() {
     const navigate = useNavigate();
     const navigation = useNavigation();
 
+    // const message = useLoaderData();
+    // const errorMessage = useActionData();
+
     return (
         <section className='welcome window'>
             {/*  <!-- WELCOME --> */}
+
             <Welcome />
 
             {/* <!-- SAMPLE  --> */}

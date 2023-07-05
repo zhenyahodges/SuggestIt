@@ -1,21 +1,46 @@
 import { useEffect, useState } from 'react';
-import { deleteLike, getOneLike, getSuggestionLikesCount, postLike } from '../../../../utils/likesService';
+import {
+    deleteLike,
+    getOneLike,
+    getSuggestionLikesCount,
+    postLike,
+} from '../../../../utils/likesService';
 import { getCards } from '../../../../utils/cardService';
 
-export default function SuggLikesItem({ userId, token, ownerId, id, author,cardId }) {
+export default function SuggLikesItem({
+    userId,
+    token,
+    ownerId,
+    id,
+    author,
+    cardId,
+}) {
     const suggId = id;
-   
+    const [cardOwner, setCardOwner] = useState('');
+
     const [hasLiked, setHasLiked] = useState(false);
     const [count, setCount] = useState(0);
-    const [cardOwner,setCardOwner] = useState('');
-    
+
+    useEffect(() => {
+        async function fetchCardOwner() {
+            const res = await getCards(cardId);
+            setCardOwner(res._ownerId);
+        }
+        fetchCardOwner();
+    }, [cardId]);
+
+    let canLike = false;
+    if (token && author !== userId && userId !== cardOwner) {
+        canLike = true;
+    }
+
     // GET SUGGLIKE COUNT
     useEffect(() => {
-        async function fetchSuggestionsCount(){
-            const res=await getSuggestionLikesCount(suggId);
+        async function fetchSuggestionsCount() {
+            const res = await getSuggestionLikesCount(suggId);
             setCount(res);
         }
-        fetchSuggestionsCount();     
+        fetchSuggestionsCount();
     }, [id, setCount, suggId]);
 
     useEffect(() => {
@@ -27,8 +52,10 @@ export default function SuggLikesItem({ userId, token, ownerId, id, author,cardI
             .then((res) => {
                 if (res.status === 404) {
                     setHasLiked(false);
+
                     return null;
-                } else if (!res.ok) {
+                }
+                if (!res.ok) {
                     throw new Error(`${res.status} - ${res.statusText}`);
                 }
                 return res.json();
@@ -48,23 +75,9 @@ export default function SuggLikesItem({ userId, token, ownerId, id, author,cardI
             })
             .catch((err) => {
                 console.log(`Error: ${err.message}`);
+                return null;
             });
     }, [suggId, userId]);
-
-    useEffect(()=>{
-        async function fetchCardOwner(){
-            const res=await getCards(cardId);         
-            setCardOwner(res._ownerId);
-        }
-        fetchCardOwner();
-        
-    },[cardId]);
-
- 
-    let canLike=false;
-    if(token && (author !== userId) &&(userId!==cardOwner)){
-        canLike = true;
-    }
 
     async function onLike() {
         await postLike(suggId, token, userId);
@@ -82,7 +95,7 @@ export default function SuggLikesItem({ userId, token, ownerId, id, author,cardI
 
     return (
         <p className='sugg-ranking'>
-            <span className='rank'>{count? count:0}</span>
+            <span className='rank'>{count ? count : 0}</span>
 
             {/* LIKE DISABLED FOR GUESTS & OWNERS  */}
             {canLike && !hasLiked && (

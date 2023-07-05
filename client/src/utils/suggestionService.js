@@ -19,7 +19,6 @@ export async function getUserSuggestions(userId, token) {
     }
     
     const data = await res.json();
-    console.log('DATA'+Object.entries(data));
     return data;
 }
 
