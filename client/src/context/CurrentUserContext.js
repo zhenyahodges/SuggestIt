@@ -6,6 +6,7 @@ export const CurrentUserProvider = ({ children }) => {
     const [currentUser, setCurrentUser] = useState('Guest');
 
     const userData = JSON.parse(localStorage.getItem('user'));
+    console.log(userData);
 
     useEffect(() => {
         if (userData) {
