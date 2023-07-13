@@ -3,6 +3,7 @@ import { requireAuth } from '../../../../utils/requireAuth';
 import { addSuggestion } from '../../../../services/suggestionService';
 
 export async function action({ request, params }) {
+    await requireAuth();
     const cardId = params.cardId;
     if (window.confirm('Are you sure you want to submit?')) {
         const { token } = await requireAuth();
@@ -12,16 +13,17 @@ export async function action({ request, params }) {
         const suggestion = formData.get('suggestion');
 
         try {
-            if (token) {
+            // if (token) {
                 await addSuggestion(token, cardId, suggestion);
                 return redirect(`/cards/${cardId}`);
-            } else {
-                redirect('login');
-            }
+            // } 
+            // else {
+            //     return redirect('/login?message=You must log in first.');
+            // }
         } catch (err) {
             return err.message;
         }
-        return token;
+        // return token;
     } else {
         return redirect(`/cards/${cardId}`);
     }

@@ -9,11 +9,14 @@ import { EmailShareButton } from 'react-share';
 import SuggestionDetail from '../SuggestionItem/SuggestionDetail';
 import { useEffect, useState } from 'react';
 import { getCardSuggestions } from '../../../../services/suggestionService';
+import { requireAuth } from '../../../../utils/requireAuth';
 
 // let cardId;
 
-export async function loader({ params }) {
+export async function loader({ params }) {    
     const cardId = params.cardId;
+    console.log('params'+params);
+
     const res = await getCards(cardId);
     const suggestions = await getCardSuggestions(cardId);
     const result = {

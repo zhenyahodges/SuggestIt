@@ -9,7 +9,7 @@ import { requireAuth } from '../../utils/requireAuth';
 import { getUserInfo } from '../../services/authService';
 import ProfileUser from './ProfileUser';
 
-export async function loader({ request, params }) {
+export async function loader({ request }) {      
     const { userId, token } = await requireAuth(request);
     const res = await getUserInfo(token);
     const { fname, lname, email } = res;

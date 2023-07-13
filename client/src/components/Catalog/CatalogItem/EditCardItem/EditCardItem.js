@@ -21,9 +21,10 @@ export async function action({ request, params }) {
             if (token) {
                 await editCard(token, brand, cardId);
                 return redirect(`/cards/${cardId}`);
-            } else {
-                redirect('login');
+            }else{
+                return redirect('/login?message=You must log in first.')
             }
+                       
         } catch (err) {
             return err.message;
         }

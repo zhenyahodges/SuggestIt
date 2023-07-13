@@ -58,6 +58,7 @@ export default function Register() {
             setCurrentUser(userData.email);
         }
     }, [userData, currentUser, setCurrentUser]);
+    
     const navigation = useNavigation();
     const errorMessage = useActionData();
 

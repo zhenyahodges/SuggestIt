@@ -14,7 +14,7 @@ export async function requireAuth() {
         result.token = user.token;
     } else {
         result.isLogged = false;
-
+     
         throw redirect('/login?message=You must log in first.');
     }
 
