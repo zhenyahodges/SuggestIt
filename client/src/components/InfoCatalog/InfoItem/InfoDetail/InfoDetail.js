@@ -4,7 +4,10 @@ import {
     useNavigate,
     useNavigation,
 } from 'react-router-dom';
-import { getInfos, onDeleteInfo } from '../../../../utils/infoCatalogService';
+import {
+    getInfos,
+    onDeleteInfo,
+} from '../../../../services/infoCatalogService';
 import { EmailShareButton } from 'react-share';
 
 export async function loader({ params }) {

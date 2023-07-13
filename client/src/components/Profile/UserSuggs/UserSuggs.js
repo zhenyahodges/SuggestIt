@@ -1,6 +1,6 @@
 import { useLoaderData } from 'react-router-dom';
 import { requireAuth } from '../../../utils/requireAuth';
-import { getUserSuggestions } from '../../../utils/suggestionService';
+import { getUserSuggestions } from '../../../services/suggestionService';
 import SuggestionDetail from '../../Catalog/CatalogItem/SuggestionItem/SuggestionDetail';
 
 export async function loader({ request }) {
@@ -12,13 +12,13 @@ export async function loader({ request }) {
 export default function UserSuggs() {
     const suggestions = useLoaderData();
 
-    return (      
+    return (
         <section className='user suggested'>
             <h2 className='user-title'>User Suggestions</h2>
 
             <div className='user-sugged-wrapper'>
                 <ul className='user-sugged-list'>
-                    {(suggestions && suggestions.length!==0 )? (
+                    {suggestions && suggestions.length !== 0 ? (
                         suggestions.map((s) => (
                             <SuggestionDetail key={s._id} {...s} />
                         ))

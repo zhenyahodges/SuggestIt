@@ -1,5 +1,5 @@
 import { Form, redirect, useNavigate, useNavigation } from 'react-router-dom';
-import { logoutUser } from '../../utils/authService';
+import { logoutUser } from '../../services/authService';
 import { requireAuth } from '../../utils/requireAuth';
 import { useLogged } from '../../hooks/useLogged';
 import { useCurrentUser } from '../../hooks/useCurrentUser';

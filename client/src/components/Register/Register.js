@@ -5,10 +5,16 @@ import {
     useActionData,
     useNavigation,
 } from 'react-router-dom';
-import { registerUser } from '../../utils/authService';
-import { useEffect } from 'react';
-import { useLogged } from '../../hooks/useLogged';
-import { useCurrentUser } from '../../hooks/useCurrentUser';
+import { registerUser } from '../../services/authService';
+import { isAlreadyLogged } from '../../utils/isAlreadyLogged';
+
+export async function loader() {
+    const res = await isAlreadyLogged();
+    if (res) {
+        return redirect(`/${res.userId}`);
+    }
+    return null;
+}
 
 export async function action({ request }) {
     const formData = await request.formData();
@@ -34,36 +40,20 @@ export async function action({ request }) {
                 token,
             };
             localStorage.setItem('user', JSON.stringify(user));
+            return redirect(`/users/${data._id}`);
         }
-        return redirect(`/users/${data._id}`);
     } catch (err) {
         return err.message;
     }
 }
 
 export default function Register() {
-    const { setIsLogged } = useLogged();
-    const { currentUser, setCurrentUser } = useCurrentUser();
-    const userData = JSON.parse(localStorage.getItem('user'));
-
-    useEffect(() => {
-        if (userData) {
-            userData.userId ? setIsLogged(true) : setIsLogged(false);
-            userData.email
-                ? setCurrentUser(userData.email)
-                : setIsLogged('Guest');
-        } else {
-            setIsLogged(false);
-        }
-    }, [setIsLogged, userData, currentUser, setCurrentUser]);
-
     const navigation = useNavigation();
     const errorMessage = useActionData();
 
     return (
         <section className='register form-wrapper'>
             <h2>Register</h2>
-            
             {errorMessage && <h3 style={{ color: 'red' }}>{errorMessage}</h3>}
 
             <Form

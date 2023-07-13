@@ -4,8 +4,8 @@ import {
     getOneLike,
     getSuggestionLikesCount,
     postLike,
-} from '../../../../utils/likesService';
-import { getCards } from '../../../../utils/cardService';
+} from '../../../../services/likesService';
+import { getCards } from '../../../../services/cardService';
 
 export default function SuggLikesItem({
     userId,

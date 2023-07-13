@@ -1,5 +1,5 @@
 import { useLoaderData } from 'react-router-dom';
-import { getCards } from '../../utils/cardService';
+import { getCards } from '../../services/cardService';
 import CatalogItem from './CatalogItem/CatalogItem';
 
 export async function loader() {
@@ -16,7 +16,7 @@ export default function Catalog() {
             <h2 className='catalog title'>Catalog</h2>
 
             <div className='catalog-wrapper'>
-                {(cards && cards.length !== 0) ? (
+                {cards && cards.length !== 0 ? (
                     cards.map((c) => <CatalogItem key={c._id} {...c} />)
                 ) : (
                     <h3 style={{ marginLeft: '44%' }}>No articles yet</h3>

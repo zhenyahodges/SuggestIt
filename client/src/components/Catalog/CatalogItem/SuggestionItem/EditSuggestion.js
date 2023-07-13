@@ -1,6 +1,9 @@
 import { Form, redirect, useLoaderData, useNavigation } from 'react-router-dom';
 import { requireAuth } from '../../../../utils/requireAuth';
-import { getOneSuggestions, onEditSuggestion } from '../../../../utils/suggestionService';
+import {
+    getOneSuggestions,
+    onEditSuggestion,
+} from '../../../../services/suggestionService';
 
 let cardIds;
 

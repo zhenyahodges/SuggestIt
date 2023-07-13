@@ -1,6 +1,6 @@
 import { Form, redirect, useNavigation } from 'react-router-dom';
 import { requireAuth } from '../../../../utils/requireAuth';
-import { addSuggestion } from '../../../../utils/suggestionService';
+import { addSuggestion } from '../../../../services/suggestionService';
 
 export async function action({ request, params }) {
     const cardId = params.cardId;
@@ -47,7 +47,7 @@ export default function AddSuggestion() {
                     placeholder='Type your suggestion here'
                     required
                 ></textarea>
-               
+
                 <button
                     className='add-sugg btn dark subm'
                     form='add-form'

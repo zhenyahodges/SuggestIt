@@ -1,5 +1,5 @@
-import {  redirect, useLoaderData } from 'react-router-dom';
-import { editInfo, getInfos } from '../../../../utils/infoCatalogService';
+import { redirect, useLoaderData } from 'react-router-dom';
+import { editInfo, getInfos } from '../../../../services/infoCatalogService';
 import { requireAuth } from '../../../../utils/requireAuth';
 import EditInfoForm from './EditInfoForm';
 

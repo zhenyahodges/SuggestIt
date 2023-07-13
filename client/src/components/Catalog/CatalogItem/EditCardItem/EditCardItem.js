@@ -1,11 +1,11 @@
 import { redirect, useLoaderData } from 'react-router-dom';
-import { editCard, getCards } from '../../../../utils/cardService';
+import { editCard, getCards } from '../../../../services/cardService';
 import { requireAuth } from '../../../../utils/requireAuth';
 import EditCardItemForm from './EditCardItemForm';
 
 export async function loader({ request, params }) {
     await requireAuth(request);
-    const res = await getCards(params.cardId); 
+    const res = await getCards(params.cardId);
     return res;
 }
 

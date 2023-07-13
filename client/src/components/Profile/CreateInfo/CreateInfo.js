@@ -1,10 +1,10 @@
-import {  redirect} from 'react-router-dom';
-import { createNewInfo } from '../../../utils/infoCatalogService';
+import { redirect } from 'react-router-dom';
+import { createNewInfo } from '../../../services/infoCatalogService';
 import { requireAuth } from '../../../utils/requireAuth';
 import CreateInfoForm from './CreateInfoForm';
 
 export async function action({ request }) {
-    const { userId, token } = await requireAuth();   
+    const { userId, token } = await requireAuth();
     if (window.confirm('Are you sure you want to submit?')) {
         const formData = await request.formData();
         const title = formData.get('title');
@@ -20,7 +20,7 @@ export async function action({ request }) {
         } catch (err) {
             return err.message;
         }
-    }else{
+    } else {
         return redirect(`/users/${userId}/createInfo`);
     }
 }

@@ -6,15 +6,12 @@ import {
     useLoaderData,
     useNavigation,
 } from 'react-router-dom';
-import { loginUser } from '../../utils/authService';
+import { loginUser } from '../../services/authService';
 import { useEffect } from 'react';
 import { useLogged } from '../../hooks/useLogged';
 import { useCurrentUser } from '../../hooks/useCurrentUser';
-// import { noAuth } from '../../utils/requireAuth';
 
 export async function loader({ request }) {
-    // await noAuth(request);
-    // console.log('isAuth??' + isAuth);
     return new URL(request.url).searchParams.get('message');
 }
 

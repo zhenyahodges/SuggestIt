@@ -1,7 +1,7 @@
 import { redirect } from 'react-router-dom';
 import { requireAuth } from '../../../utils/requireAuth';
 import CreateCardForm from './CreateCardForm';
-import { createNewCard } from '../../../utils/cardService';
+import { createNewCard } from '../../../services/cardService';
 
 export async function action({ request }) {
     const { userId, token } = await requireAuth();
@@ -19,18 +19,17 @@ export async function action({ request }) {
         } catch (err) {
             return err.message;
         }
-    }else{
+    } else {
         return redirect(`/users/${userId}/create`);
     }
 }
 
 export default function CreateCard() {
-
     return (
         <section className='user create'>
             <h2 className='user-title'>Create</h2>
             <div className='user-create-wrapper'>
-            <CreateCardForm/>
+                <CreateCardForm />
             </div>
         </section>
     );

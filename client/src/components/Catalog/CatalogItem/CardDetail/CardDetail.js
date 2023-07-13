@@ -4,19 +4,16 @@ import {
     useNavigate,
     useNavigation,
 } from 'react-router-dom';
-import {
-    getCards,
-    onDeleteCard,
-} from '../../../../utils/cardService';
+import { getCards, onDeleteCard } from '../../../../services/cardService';
 import { EmailShareButton } from 'react-share';
 import SuggestionDetail from '../SuggestionItem/SuggestionDetail';
 import { useEffect, useState } from 'react';
-import { getCardSuggestions } from '../../../../utils/suggestionService';
+import { getCardSuggestions } from '../../../../services/suggestionService';
 
 // let cardId;
 
 export async function loader({ params }) {
-   const cardId = params.cardId;
+    const cardId = params.cardId;
     const res = await getCards(cardId);
     const suggestions = await getCardSuggestions(cardId);
     const result = {
@@ -90,9 +87,10 @@ export default function CardDetail() {
                     <main className='card-main'>
                         <ul className='sugg-list'>
                             {/* SUGGESTIONS */}
-                            {(suggestions && suggestions.length!==0) &&
+                            {suggestions &&
+                                suggestions.length !== 0 &&
                                 suggestions.map((s) => (
-                                    <SuggestionDetail key={s._id} {...s}/>
+                                    <SuggestionDetail key={s._id} {...s} />
                                 ))}
                         </ul>
                     </main>
@@ -143,22 +141,22 @@ export default function CardDetail() {
                                 {/* <p className="countdown-text">Poll ended</p> */}
 
                                 {/* EDIT/DELETE CARD VISIBLE FOR OWNER IF NOT TIMED OUT */}
-                                {isAuthorized &&  (
+                                {isAuthorized && (
                                     <>
-                                    {canEditCard &&(
-                                        <Link
-                                            to={`/cards/${cardId}/edit`}
-                                            className='btn-sm card-details edit-card'
-                                            disabled={
-                                                navigation.state === 'loading'
-                                            }
-                                        >
-                                            
-                                            {navigation.state === 'loading'
-                                                ? 'Loading...'
-                                                : 'Edit'}
-                                        </Link>
-                                )}
+                                        {canEditCard && (
+                                            <Link
+                                                to={`/cards/${cardId}/edit`}
+                                                className='btn-sm card-details edit-card'
+                                                disabled={
+                                                    navigation.state ===
+                                                    'loading'
+                                                }
+                                            >
+                                                {navigation.state === 'loading'
+                                                    ? 'Loading...'
+                                                    : 'Edit'}
+                                            </Link>
+                                        )}
                                         <button
                                             to='/'
                                             className='btn-sm card-details delete-card'

@@ -4,7 +4,7 @@ import {
     createRoutesFromElements,
     RouterProvider,
 } from 'react-router-dom';
-import { requireAuth } from './utils/requireAuth';
+import { doNotRequireAuth, requireAuth } from './utils/requireAuth';
 
 import Root, { loader as rootLoader } from './components/Root/Root';
 import Home from './components/Home/Home';
@@ -15,6 +15,7 @@ import Login, {
     loader as loginLoader,
 } from './components/Login/Login';
 import Register, {
+    loader as registerLoader,
     action as registerAction,
 } from './components/Register/Register';
 import Logout, {
@@ -146,7 +147,7 @@ const router = createBrowserRouter(
                 action={editInfoAction}
                 errorElement={<NotFound />}
             />
-
+            {/* AUTH */}
             <Route
                 path='login'
                 element={<Login />}
@@ -168,6 +169,7 @@ const router = createBrowserRouter(
             <Route
                 path='register'
                 element={<Register />}
+                loader={registerLoader}
                 action={registerAction}
                 errorElement={<NotFound />}
             />
@@ -188,7 +190,7 @@ const router = createBrowserRouter(
                     <Route
                         path='suggested'
                         element={<UserSuggs />}
-                        loader={useSuggLoader}                        
+                        loader={useSuggLoader}
                     />
                     <Route
                         path='create'
@@ -196,12 +198,12 @@ const router = createBrowserRouter(
                         loader={async ({ request }) =>
                             await requireAuth(request)
                         }
-                        action={createCardAction}                   
+                        action={createCardAction}
                     />
                     <Route
                         path='userInfos'
                         element={<UserInfos />}
-                        loader={userInfosLoader}                    
+                        loader={userInfosLoader}
                     />
                     <Route
                         path='createinfo'
@@ -209,7 +211,7 @@ const router = createBrowserRouter(
                         loader={async ({ request }) =>
                             await requireAuth(request)
                         }
-                        action={createInfoAction}                       
+                        action={createInfoAction}
                     />
                 </Route>
             </Route>
