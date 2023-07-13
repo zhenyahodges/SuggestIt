@@ -2,10 +2,16 @@ import { redirect, useLoaderData } from 'react-router-dom';
 import { editInfo, getInfos } from '../../../../services/infoCatalogService';
 import { requireAuth } from '../../../../utils/requireAuth';
 import EditInfoForm from './EditInfoForm';
+import { requireOwnerRights } from '../../../../utils/requireOwnerRights';
 
 export async function loader({ request, params }) {
     await requireAuth(request);
     const res = await getInfos(Object.values(params));
+    const infoCardId = params.infoId;
+    
+    const cat = 'info';
+    await requireOwnerRights(infoCardId, cat);
+
     return res;
 }
 

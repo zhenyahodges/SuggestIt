@@ -8,8 +8,9 @@ export async function loader({ request, params }) {
     await requireAuth(request);
     const cardId = params.cardId;
 
-    await requireOwnerRights(cardId);
-
+    const cat='card';
+    await requireOwnerRights(cardId,cat);
+    
     const res = await getCards(cardId);    
     return res;
 }
