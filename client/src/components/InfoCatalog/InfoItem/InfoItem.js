@@ -26,7 +26,7 @@ export default function InfoItem({
                 <div className='card-footer-content'>
                     <div className='card-footer-links-wrapper'>
                         <Link
-                            to={_id}
+                            to={`/infos/${_id}`}
                             className='details-link'
                             disabled={navigation.state === 'loading'}
                         >

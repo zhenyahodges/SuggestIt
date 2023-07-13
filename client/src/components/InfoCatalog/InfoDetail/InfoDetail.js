@@ -7,8 +7,10 @@ import {
 import { getInfos, onDeleteInfo } from '../../../../utils/infoCatalogService';
 import { EmailShareButton } from 'react-share';
 
-export async function loader({ params }) {
-    const res = await getInfos(params.infoId);
+export async function loader({ req,params }) {
+    console.log('params'+params);
+    console.log('req'+req);
+    const res = await getInfos(params._Id);
     return res;
 }
 

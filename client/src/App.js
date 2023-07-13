@@ -4,12 +4,13 @@ import {
     createRoutesFromElements,
     RouterProvider,
 } from 'react-router-dom';
-import { doNotRequireAuth, requireAuth } from './utils/requireAuth';
+import { requireAuth } from './utils/requireAuth';
 
 import Root, { loader as rootLoader } from './components/Root/Root';
 import Home from './components/Home/Home';
 import { NotFound } from './components/NotFound/NotFound';
 
+// **AUTH**
 import Login, {
     action as loginAction,
     loader as loginLoader,
@@ -126,7 +127,7 @@ const router = createBrowserRouter(
                 action={editSuggAction}
                 errorElement={<NotFound />}
             />
-            {/* infos catalog */}
+            {/* INFOS CATALOG */}
             <Route
                 path='infos'
                 element={<InfoCatalog />}
