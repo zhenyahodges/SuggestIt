@@ -12,18 +12,21 @@ import { useLogged } from '../../hooks/useLogged';
 import { useCurrentUser } from '../../hooks/useCurrentUser';
 import { isAlreadyLogged } from '../../utils/isAlreadyLogged';
 
-export async function loader() {
+export async function loader({ request }) {
     const res = await isAlreadyLogged();
     if (res) {
         return redirect(`/${res.userId}`);
     }
-    return null;
+    const message = new URL(request.url).searchParams.get('message');
+    return message;
 }
 
-export async function action({ request }) {
+export async function action({ request, params }) {
     const formData = await request.formData();
     const email = formData.get('email');
     const password = formData.get('pass');
+
+    console.log(params);
 
     let pathname = new URL(request.url).searchParams.get('redirectTo') || '.';
 

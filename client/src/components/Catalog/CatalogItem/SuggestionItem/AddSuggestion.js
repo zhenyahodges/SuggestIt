@@ -13,17 +13,11 @@ export async function action({ request, params }) {
         const suggestion = formData.get('suggestion');
 
         try {
-            // if (token) {
-                await addSuggestion(token, cardId, suggestion);
-                return redirect(`/cards/${cardId}`);
-            // } 
-            // else {
-            //     return redirect('/login?message=You must log in first.');
-            // }
+            await addSuggestion(token, cardId, suggestion);
+            return redirect(`/cards/${cardId}`);
         } catch (err) {
             return err.message;
         }
-        // return token;
     } else {
         return redirect(`/cards/${cardId}`);
     }
