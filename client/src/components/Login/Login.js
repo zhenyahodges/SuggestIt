@@ -71,7 +71,7 @@ export default function Login() {
         <section className='login form-wrapper'>
             <h2>Login</h2>
             {message && <h3 style={{ color: 'red' }}>{message}</h3>}
-            {/* {errorMessage && <h3 style={{ color: 'red' }}>{errorMessage}</h3>} */}
+            {errorMessage && <h3 style={{ color: 'red' }}>{errorMessage}</h3>}
             <Form method='post' id='log-form' className='login form'>
                 <div className='wrap email'>
                     <label htmlFor='email' className='log lbl email'>
