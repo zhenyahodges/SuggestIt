@@ -7,6 +7,8 @@ import {
 } from 'react-router-dom';
 import { registerUser } from '../../services/authService';
 import { isAlreadyLogged } from '../../utils/isAlreadyLogged';
+import { useCurrentUser } from '../../hooks/useCurrentUser';
+import { useEffect } from 'react';
 
 export async function loader() {
     const res = await isAlreadyLogged();
@@ -48,6 +50,14 @@ export async function action({ request }) {
 }
 
 export default function Register() {
+    const { currentUser, setCurrentUser } = useCurrentUser();
+    const userData = JSON.parse(localStorage.getItem('user'));
+
+    useEffect(() => {
+        if (userData) {
+            setCurrentUser(userData.email);
+        }
+    }, [userData, currentUser, setCurrentUser]);
     const navigation = useNavigation();
     const errorMessage = useActionData();
 
@@ -139,18 +149,7 @@ export default function Register() {
                         autoComplete='new-password'
                         required
                     />
-                </div>
-
-                {/* <input 
-                type="checkbox" 
-                id="isAccept" 
-                checked={formData.isAccept}
-                onChange={handleChange}
-                name="isAccept"
-            />
-            <label htmlhtmlFor="isAccept">By ticking this you agree 
-            to our <a className="terms">Terms and Contitions</>
-            </label> */}
+                </div>        
 
                 <button
                     className='btn dark subm'

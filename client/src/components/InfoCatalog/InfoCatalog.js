@@ -16,7 +16,7 @@ export default function InfosCatalog() {
             <h2 className='catalog title'>Infos Catalog</h2>
 
             <div className='catalog-wrapper'>
-                {infos && infos.length !== 0 ? (
+                {infos?.length ? (
                     infos.map((i) => <InfoItem key={i._id} {...i} />)
                 ) : (
                     <h3 style={{ marginLeft: '44%' }}>No articles yet</h3>

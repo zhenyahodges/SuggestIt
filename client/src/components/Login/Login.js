@@ -10,9 +10,14 @@ import { loginUser } from '../../services/authService';
 import { useEffect } from 'react';
 import { useLogged } from '../../hooks/useLogged';
 import { useCurrentUser } from '../../hooks/useCurrentUser';
+import { isAlreadyLogged } from '../../utils/isAlreadyLogged';
 
-export async function loader({ request }) {
-    return new URL(request.url).searchParams.get('message');
+export async function loader() {
+    const res = await isAlreadyLogged();
+    if (res) {
+        return redirect(`/${res.userId}`);
+    }
+    return null;
 }
 
 export async function action({ request }) {
