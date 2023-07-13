@@ -9,14 +9,13 @@ import { EmailShareButton } from 'react-share';
 import SuggestionDetail from '../SuggestionItem/SuggestionDetail';
 import { useEffect, useState } from 'react';
 import { getCardSuggestions } from '../../../../services/suggestionService';
-import { requireAuth } from '../../../../utils/requireAuth';
+import { useCurrentUser } from '../../../../hooks/useCurrentUser';
 
-// let cardId;
 
 export async function loader({ request, params }) {
-    const user = await requireAuth();
     const cardId = params.cardId;
     const res = await getCards(cardId);
+    const user = JSON.parse(localStorage.getItem('user'));
 
     const suggestions = await getCardSuggestions(cardId);
     const message = new URL(request.url).searchParams.get('message');
@@ -33,7 +32,7 @@ export default function CardDetail() {
     const navigation = useNavigation();
     const navigate = useNavigate();
     const { res, suggestions, message, user } = useLoaderData();
-
+    const { currentUser } = useCurrentUser();
     const ownerId = res._ownerId;
     const cardId = res._id;
     const brand = res.brand;
@@ -56,12 +55,20 @@ export default function CardDetail() {
         }, 10);
     }, [createdOn]);
 
-    const userId = user.userId;
-    const token = user.token;
-    
-    const isAuthorized = token;
-    const isOwner = ownerId === userId;
-    const canEditCard = ownerId === userId && !isTimedOut;
+    let userId;
+    let token;
+
+    let isAuthorized = false;
+    let isOwner = false;
+    let canEditCard = false;
+
+    if (currentUser !== 'Guest') {
+        userId = user.userId;
+        token = user.token;
+        isAuthorized = token;
+        isOwner = ownerId === userId;
+        canEditCard = ownerId === userId && !isTimedOut;
+    }
 
     const onDelete = async () => {
         if (window.confirm('Are you sure you want to delete?')) {
