@@ -8,7 +8,7 @@ export async function loader({ request, params }) {
     await requireAuth(request);
     const res = await getInfos(Object.values(params));
     const infoCardId = params.infoId;
-    
+
     const cat = 'info';
     await requireOwnerRights(infoCardId, cat);
 

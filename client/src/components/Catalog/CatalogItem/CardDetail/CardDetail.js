@@ -11,7 +11,6 @@ import { useEffect, useState } from 'react';
 import { getCardSuggestions } from '../../../../services/suggestionService';
 import { useCurrentUser } from '../../../../hooks/useCurrentUser';
 
-
 export async function loader({ request, params }) {
     const cardId = params.cardId;
     const res = await getCards(cardId);
