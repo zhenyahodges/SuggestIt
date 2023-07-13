@@ -179,33 +179,39 @@ const router = createBrowserRouter(
                 loader={userLoader}
                 errorElement={<NotFound />}
             >
-                <Route index element={<UserCards />} loader={userCardsLoader} />
-                <Route
-                    path='suggested'
-                    element={<UserSuggs />}
-                    loader={useSuggLoader}
-                    errorElement={<NotFound />}
-                />
-                <Route
-                    path='create'
-                    element={<CreateCard />}
-                    loader={async ({ request }) => await requireAuth(request)}
-                    action={createCardAction}
-                    errorElement={<NotFound />}
-                />
-                <Route
-                    path='userInfos'
-                    element={<UserInfos />}
-                    loader={userInfosLoader}
-                    errorElement={<NotFound />}
-                />
-                <Route
-                    path='createinfo'
-                    element={<CreateInfo />}
-                    loader={async ({ request }) => await requireAuth(request)}
-                    action={createInfoAction}
-                    errorElement={<NotFound />}
-                />
+                <Route errorElement={<NotFound />}>
+                    <Route
+                        index
+                        element={<UserCards />}
+                        loader={userCardsLoader}
+                    />
+                    <Route
+                        path='suggested'
+                        element={<UserSuggs />}
+                        loader={useSuggLoader}                        
+                    />
+                    <Route
+                        path='create'
+                        element={<CreateCard />}
+                        loader={async ({ request }) =>
+                            await requireAuth(request)
+                        }
+                        action={createCardAction}                   
+                    />
+                    <Route
+                        path='userInfos'
+                        element={<UserInfos />}
+                        loader={userInfosLoader}                    
+                    />
+                    <Route
+                        path='createinfo'
+                        element={<CreateInfo />}
+                        loader={async ({ request }) =>
+                            await requireAuth(request)
+                        }
+                        action={createInfoAction}                       
+                    />
+                </Route>
             </Route>
             <Route path='*' element={<NotFound />} />
         </Route>
