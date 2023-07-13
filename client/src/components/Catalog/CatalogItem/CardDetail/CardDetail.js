@@ -13,15 +13,17 @@ import { requireAuth } from '../../../../utils/requireAuth';
 
 // let cardId;
 
-export async function loader({ params }) {    
+export async function loader({request, params }) {    
+    await requireAuth();
     const cardId = params.cardId;
-    console.log('params'+params);
-
-    const res = await getCards(cardId);
+   const res = await getCards(cardId);
+   
     const suggestions = await getCardSuggestions(cardId);
+    const message = new URL(request.url).searchParams.get('message');
     const result = {
         res,
         suggestions,
+        message
     };
     return result;
 }
@@ -29,7 +31,7 @@ export async function loader({ params }) {
 export default function CardDetail() {
     const navigation = useNavigation();
     const navigate = useNavigate();
-    const { res, suggestions } = useLoaderData();
+    const { res, suggestions,message } = useLoaderData();
 
     const ownerId = res._ownerId;
     const cardId = res._id;
@@ -81,6 +83,8 @@ export default function CardDetail() {
     return (
         <section className='details-view container'>
             <h2>Details</h2>
+            {message && <h3 style={{ color: 'red' }}>{message}</h3>}
+
             {
                 <article className='sugg-card details detailed-card'>
                     <header className='card-header details-header'>

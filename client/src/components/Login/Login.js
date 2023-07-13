@@ -26,8 +26,6 @@ export async function action({ request, params }) {
     const email = formData.get('email');
     const password = formData.get('pass');
 
-    console.log(params);
-
     let pathname = new URL(request.url).searchParams.get('redirectTo') || '.';
 
     try {
