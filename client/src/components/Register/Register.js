@@ -1,4 +1,10 @@
-import { Form, Link, redirect, useActionData, useNavigation } from 'react-router-dom';
+import {
+    Form,
+    Link,
+    redirect,
+    useActionData,
+    useNavigation,
+} from 'react-router-dom';
 import { registerUser } from '../../utils/authService';
 import { useEffect } from 'react';
 import { useLogged } from '../../hooks/useLogged';
@@ -13,7 +19,7 @@ export async function action({ request }) {
     const repass = formData.get('repass');
 
     if (password !== repass) {
-        const errorMessage='Passwords do not match';
+        const errorMessage = 'Passwords do not match';
         return errorMessage;
     }
 
@@ -50,14 +56,16 @@ export default function Register() {
             setIsLogged(false);
         }
     }, [setIsLogged, userData, currentUser, setCurrentUser]);
-   
+
     const navigation = useNavigation();
     const errorMessage = useActionData();
-   
+
     return (
         <section className='register form-wrapper'>
             <h2>Register</h2>
+            
             {errorMessage && <h3 style={{ color: 'red' }}>{errorMessage}</h3>}
+
             <Form
                 action='/register'
                 method='post'
