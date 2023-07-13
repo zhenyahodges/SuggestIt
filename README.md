@@ -41,7 +41,7 @@ Logged users, NOT card owners can:
 
 Logged users, card owners can:
 * Edit a card they created. <span style="color:#F79234">* *if NOT timed out (1min time limit)*</span>
-* Delete a card they created. <span style="color:#F79234">* *if NOT timed out (1min time limit)*</span>
+* Delete a card they created.
 * Print card
 * Email card
 

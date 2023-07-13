@@ -63,7 +63,7 @@ export default function CardDetail() {
 
     const isAuthorized = Boolean(token);
     const isOwner = ownerId === userId;
-    const canEditDeleteCard = ownerId === userId && !isTimedOut;
+    const canEditCard = ownerId === userId && !isTimedOut;
 
     const onDelete = async () => {
         if (window.confirm('Are you sure you want to delete?')) {
@@ -143,8 +143,9 @@ export default function CardDetail() {
                                 {/* <p className="countdown-text">Poll ended</p> */}
 
                                 {/* EDIT/DELETE CARD VISIBLE FOR OWNER IF NOT TIMED OUT */}
-                                {isAuthorized && canEditDeleteCard && (
+                                {isAuthorized &&  (
                                     <>
+                                    {canEditCard &&(
                                         <Link
                                             to={`/cards/${cardId}/edit`}
                                             className='btn-sm card-details edit-card'
@@ -152,10 +153,12 @@ export default function CardDetail() {
                                                 navigation.state === 'loading'
                                             }
                                         >
+                                            
                                             {navigation.state === 'loading'
                                                 ? 'Loading...'
                                                 : 'Edit'}
                                         </Link>
+                                )}
                                         <button
                                             to='/'
                                             className='btn-sm card-details delete-card'
