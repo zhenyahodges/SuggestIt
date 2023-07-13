@@ -34,6 +34,7 @@ import CardDetail, {
 
 // SUGGESTION ADD/EDIT
 import AddSuggestion, {
+    loader as addSuggLoader,
     action as suggestAction,
 } from './components/Catalog/CatalogItem/SuggestionItem/AddSuggestion';
 import EditSuggestion, {
@@ -117,7 +118,7 @@ const router = createBrowserRouter(
             <Route
                 path='cards/:cardId/suggest'
                 element={<AddSuggestion />}
-                loader={async ({ request }) => await requireAuth(request)}
+                loader={addSuggLoader}
                 action={suggestAction}
             />
             <Route
