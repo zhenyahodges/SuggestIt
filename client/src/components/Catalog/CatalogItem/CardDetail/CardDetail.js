@@ -13,17 +13,18 @@ import { requireAuth } from '../../../../utils/requireAuth';
 
 // let cardId;
 
-export async function loader({request, params }) {    
-    await requireAuth();
+export async function loader({ request, params }) {
+    const user = await requireAuth();
     const cardId = params.cardId;
-   const res = await getCards(cardId);
-   
+    const res = await getCards(cardId);
+
     const suggestions = await getCardSuggestions(cardId);
     const message = new URL(request.url).searchParams.get('message');
     const result = {
         res,
         suggestions,
-        message
+        message,
+        user,
     };
     return result;
 }
@@ -31,7 +32,7 @@ export async function loader({request, params }) {
 export default function CardDetail() {
     const navigation = useNavigation();
     const navigate = useNavigate();
-    const { res, suggestions,message } = useLoaderData();
+    const { res, suggestions, message, user } = useLoaderData();
 
     const ownerId = res._ownerId;
     const cardId = res._id;
@@ -55,15 +56,10 @@ export default function CardDetail() {
         }, 10);
     }, [createdOn]);
 
-    const user = JSON.parse(localStorage.getItem('user'));
-
-    let userId;
-    let token;
-    if (user) {
-        ({ token, userId } = user);
-    }
-
-    const isAuthorized = Boolean(token);
+    const userId = user.userId;
+    const token = user.token;
+    
+    const isAuthorized = token;
     const isOwner = ownerId === userId;
     const canEditCard = ownerId === userId && !isTimedOut;
 
@@ -94,8 +90,7 @@ export default function CardDetail() {
                     <main className='card-main'>
                         <ul className='sugg-list'>
                             {/* SUGGESTIONS */}
-                            {suggestions &&
-                                suggestions.length !== 0 &&
+                            {suggestions?.length !== 0 &&
                                 suggestions.map((s) => (
                                     <SuggestionDetail key={s._id} {...s} />
                                 ))}
@@ -148,7 +143,7 @@ export default function CardDetail() {
                                 {/* <p className="countdown-text">Poll ended</p> */}
 
                                 {/* EDIT/DELETE CARD VISIBLE FOR OWNER IF NOT TIMED OUT */}
-                                {isAuthorized && (
+                                {isAuthorized && isOwner && (
                                     <>
                                         {canEditCard && (
                                             <Link

@@ -6,16 +6,11 @@ import { requireOwnerRights } from '../../../../utils/requireOwnerRights';
 
 export async function loader({ request, params }) {
     await requireAuth(request);
-    // TODO await requireOwnerRights()
-    // const user = JSON.parse(localStorage.getItem('user'));
     const cardId = params.cardId;
-    console.log(params.cardId);
-   let result= await requireOwnerRights(cardId);
-   if(result){
-    console.log('HERE-'+result);
-   }
-    const res = await getCards(cardId);   
-    console.log('RES-'+res);
+
+    await requireOwnerRights(cardId);
+
+    const res = await getCards(cardId);    
     return res;
 }
 
