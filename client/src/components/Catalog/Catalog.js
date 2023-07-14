@@ -4,7 +4,6 @@ import CatalogItem from './CatalogItem/CatalogItem';
 
 export async function loader() {
     const cards = await getCards();
-
     return cards;
 }
 

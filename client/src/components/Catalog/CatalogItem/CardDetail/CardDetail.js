@@ -92,7 +92,7 @@ export default function CardDetail() {
                     <main className='card-main'>
                         <ul className='sugg-list'>
                             {/* SUGGESTIONS */}
-                            {suggestions?.length !== 0 &&
+                            {suggestions && suggestions.length !== 0 &&
                                 suggestions.map((s) => (
                                     <SuggestionDetail key={s._id} {...s} />
                                 ))}
