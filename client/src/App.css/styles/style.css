@@ -119,6 +119,13 @@ html {
 }
 
 /* header nav */
+.header-nav-containter{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: flex-end;
+    padding-right: 40px;
+}
+
 .nav.header {
     color: var(--clr-light);
     padding: 0.5rem 0.7rem;
@@ -138,10 +145,9 @@ html {
 }
 
 /* whos lookin */
-.whos-lookin-wrapper {
-    position: absolute;
-    top: 70%;
-    left: 91%;
+.whos-lookin-wrapper { 
+    padding-right: 40px;  
+    padding-bottom: 0.2rem;  
     font-style: italic;
     font-size: smaller;
     color: var(--clr-highlight);

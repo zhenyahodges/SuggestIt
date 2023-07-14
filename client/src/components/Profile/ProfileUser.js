@@ -20,7 +20,7 @@ export default function ProfileUser(user) {
                         disabled
                     />
                 </div>
-                <div className='wrap prof-lname'>
+                <div className='wrap lname'>
                     <label htmlFor='prof-lname' className='prof lbl lname'>
                         Last Name
                     </label>
