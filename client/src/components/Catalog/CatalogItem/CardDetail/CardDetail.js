@@ -3,6 +3,7 @@ import {
     useLoaderData,
     useNavigate,
     useNavigation,
+    useOutletContext,
 } from 'react-router-dom';
 import { getCards, onDeleteCard } from '../../../../services/cardService';
 import SuggestionDetail from '../SuggestionItem/SuggestionDetail';
@@ -15,7 +16,7 @@ import EmailBtn from '../../../Buttons/EmailBtn/EmailBtn';
 export async function loader({ request, params }) {
     const cardId = params.cardId;
     const res = await getCards(cardId);
-    const user = JSON.parse(localStorage.getItem('user'));
+    // const user = JSON.parse(localStorage.getItem('user'));
 
     const suggestions = await getCardSuggestions(cardId);
     const message = new URL(request.url).searchParams.get('message');
@@ -23,7 +24,7 @@ export async function loader({ request, params }) {
         res,
         suggestions,
         message,
-        user,
+        // user,
     };
     return result;
 }
@@ -31,8 +32,11 @@ export async function loader({ request, params }) {
 export default function CardDetail() {
     const navigation = useNavigation();
     const navigate = useNavigate();
-    const { res, suggestions, message, user } = useLoaderData();
+    const { res, suggestions, message } = useLoaderData();
     const { currentUser } = useCurrentUser();
+    const { email, userId, token } = useOutletContext();
+
+    // console.log('DATA=='+email,userId,token)
 
     const ownerId = res._ownerId;
     const cardId = res._id;
@@ -56,19 +60,20 @@ export default function CardDetail() {
         }, 10);
     }, [createdOn]);
 
-    let userId;
-    let token;
+    // let userId;
+    // let token;
 
     let isAuthorized = false;
     let isOwner = false;
     let canEditCard = false;
 
-    if (currentUser !== 'Guest') {
-        userId = user.userId;
-        token = user.token;
-        isAuthorized = token;
+    if (token) {
+        // userId = user.userId;
+        // token = user.token;
+        isAuthorized = true;
         isOwner = ownerId === userId;
         canEditCard = ownerId === userId && !isTimedOut;
+        console.log('DATA==' + isAuthorized, isOwner, canEditCard,token);
     }
 
     const onDelete = async () => {
@@ -92,7 +97,8 @@ export default function CardDetail() {
                     <main className='card-main'>
                         <ul className='sugg-list'>
                             {/* SUGGESTIONS */}
-                            {suggestions && suggestions.length !== 0 &&
+                            {suggestions &&
+                                suggestions.length !== 0 &&
                                 suggestions.map((s) => (
                                     <SuggestionDetail key={s._id} {...s} />
                                 ))}
