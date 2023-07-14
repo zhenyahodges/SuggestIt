@@ -8,7 +8,8 @@ import {
     getInfos,
     onDeleteInfo,
 } from '../../../../services/infoCatalogService';
-import { EmailShareButton } from 'react-share';
+import PrintButton from '../../../Buttons/PrintButton/PrintButton';
+import EmailBtn from '../../../Buttons/EmailBtn/EmailBtn';
 
 export async function loader({ params }) {
     const res = await getInfos(params.infoId);
@@ -44,12 +45,6 @@ export default function InfoDetail() {
         }
     };
 
-    function onPrint(e) {
-        e.preventDefault();
-        window.print();
-        return false;
-    }
-
     return (
         //  DETAILS vis for all
         <section className='details-view container'>
@@ -68,16 +63,8 @@ export default function InfoDetail() {
                     <footer className='card-footer sugg-card foot'>
                         <div className='card-footer-content'>
                             <div className='card-footer-links-wrapper'>
-                                <Link
-                                    to='/'
-                                    className='print details'
-                                    onClick={onPrint}
-                                >
-                                    Print
-                                </Link>
-                                <EmailShareButton>
-                                    <span className='print details'>Email</span>
-                                </EmailShareButton>
+                                <PrintButton />
+                                <EmailBtn />
 
                                 {isAuthorized && isOwner && (
                                     <>
@@ -92,6 +79,7 @@ export default function InfoDetail() {
                                                 ? 'Loading...'
                                                 : 'Edit'}
                                         </Link>
+
                                         <button
                                             to='/'
                                             className='btn-sm card-details delete-card'

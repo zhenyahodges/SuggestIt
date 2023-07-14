@@ -5,11 +5,12 @@ import {
     useNavigation,
 } from 'react-router-dom';
 import { getCards, onDeleteCard } from '../../../../services/cardService';
-import { EmailShareButton } from 'react-share';
 import SuggestionDetail from '../SuggestionItem/SuggestionDetail';
 import { useEffect, useState } from 'react';
 import { getCardSuggestions } from '../../../../services/suggestionService';
 import { useCurrentUser } from '../../../../hooks/useCurrentUser';
+import PrintButton from '../../../Buttons/PrintButton/PrintButton';
+import EmailBtn from '../../../Buttons/EmailBtn/EmailBtn';
 
 export async function loader({ request, params }) {
     const cardId = params.cardId;
@@ -32,6 +33,7 @@ export default function CardDetail() {
     const navigate = useNavigate();
     const { res, suggestions, message, user } = useLoaderData();
     const { currentUser } = useCurrentUser();
+
     const ownerId = res._ownerId;
     const cardId = res._id;
     const brand = res.brand;
@@ -40,7 +42,7 @@ export default function CardDetail() {
     const [isTimedOut, setIsTimedOut] = useState(false);
     // const [isExpired,setIsExpired]=useState(false);
 
-    // owner can edit/delete card only within 1min period
+    // owner can edit card only within 1min period
     useEffect(() => {
         const timer = setInterval(() => {
             const timePassed = new Date() - new Date(createdOn) > 60000;
@@ -75,12 +77,6 @@ export default function CardDetail() {
             navigate('/cards');
         }
     };
-
-    function onPrint(e) {
-        e.preventDefault();
-        window.print();
-        return false;
-    }
 
     return (
         <section className='details-view container'>
@@ -123,19 +119,8 @@ export default function CardDetail() {
                                 {/*------- EMAIL&P PRINT */}
                                 {isAuthorized && isOwner && (
                                     <>
-                                        <Link
-                                            to='/'
-                                            className='print details'
-                                            onClick={onPrint}
-                                        >
-                                            Print
-                                        </Link>
-
-                                        <EmailShareButton>
-                                            <span className='print details'>
-                                                Email
-                                            </span>
-                                        </EmailShareButton>
+                                        <PrintButton />
+                                        <EmailBtn />
                                     </>
                                 )}
 

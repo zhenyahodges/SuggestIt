@@ -1,11 +1,11 @@
 import { Form, redirect, useNavigation } from 'react-router-dom';
 import { requireAuth } from '../../../../utils/requireAuth';
 import { addSuggestion } from '../../../../services/suggestionService';
-import { ownerRightsNotNeeded } from '../../../../utils/ownerRightsNotNeeded';
+import { doNotRequireOwnerRights } from '../../../../utils/doNotRequireOwnerRights';
 
 export async function loader({ request, params }) {
     await requireAuth(request);
-    await ownerRightsNotNeeded(params.cardId);
+    await doNotRequireOwnerRights(params.cardId);
     return null;
 }
 

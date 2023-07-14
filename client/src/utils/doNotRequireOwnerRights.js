@@ -1,7 +1,7 @@
 import { redirect } from 'react-router-dom';
 import { getCards } from '../services/cardService';
 
-export async function ownerRightsNotNeeded(cardId) {
+export async function doNotRequireOwnerRights(cardId) {
     const res = await getCards(cardId);
     const user = JSON.parse(localStorage.getItem('user'));
 
