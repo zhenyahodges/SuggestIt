@@ -15,9 +15,6 @@ export default function Welcome() {
                     ranks them by popularity
                 </p>
             </div>
-            {/* {<button onClick={()=>navigate('login')} className='btn highlight login' id='login-btn'>
-                    Login
-                </button>} */}
         </section>
     );
 }

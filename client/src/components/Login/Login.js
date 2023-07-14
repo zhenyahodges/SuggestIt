@@ -69,8 +69,7 @@ export default function Login() {
 
     const message = useLoaderData();
     const errorMessage = useActionData();
-    // console.log(message);
-    // console.log(errorMessage);
+
 
     return (
         <section className='login form-wrapper'>
