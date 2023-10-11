@@ -7,7 +7,7 @@ ReactJS Course. Details of the assignment are available [here](https://github.co
 
 Deployed at: [https://suggestit-a18f3.web.app](https://suggestit-a18f3.web.app/)
 
-**The server should be started locally for it to work properly, as it's not been deployed yet.**
+**To ensure proper functionality, the [server](https://suggestit-a18f3.web.app#initServer) must be initiated locally since it has not been deployed yet.**
 
  ### **Built with:**
 
@@ -127,7 +127,7 @@ In the project directory, you can run:
 #### `cd client`
 #### `npm start`
 \
-Start the server:
+<a name="initServer"></a>To initiate the server:
 #### `cd server`
 #### `node server.js`
 
