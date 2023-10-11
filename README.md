@@ -14,10 +14,10 @@ Deployed at: [https://suggestit-a18f3.web.app](https://suggestit-a18f3.web.app/)
  ReactJS, React Router, React Router DOM
 ### **Router:**
 
- * createBrowserRouter  with v6.4 data APIs like loader and actions
+ * [createBrowserRouter](https://reactrouter.com/en/main/routers/create-browser-router)  with v6.4 data APIs like loader and actions
 #
 ## **About**
-Suggest<span style="color:#F79234">**It**</span> is a web application which provides a simple interface for receiving feedback and suggestions for improvements for companies.
+Suggest<span style="color:#F79234">**It**</span> is a web application which provides a simple interface for receiving feedback and suggestions for improvements for companies and organisations. Users can vote for the suggestions they like the most. Companies can quickly see which suggestions are most popular.
 #
 
 ### <span style="color:#c2e2ee">**Welcome**</span>
@@ -127,7 +127,7 @@ In the project directory, you can run:
 #### `cd client`
 #### `npm start`
 \
-<a name="initServer"></a>To initiate the server:
+<a name="initServer"></a>To initiate the **server**:
 #### `cd server`
 #### `node server.js`
 
