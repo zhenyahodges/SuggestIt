@@ -36,8 +36,7 @@ export default function EditInfoForm(props){
                 id='web'
                 placeholder='Enter title'
                 minLength='3'
-                maxLength='30'
-                pattern=''
+                maxLength='30'                
                 defaultValue={props.web}
                 required
             />
