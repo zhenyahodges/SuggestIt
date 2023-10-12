@@ -9,8 +9,6 @@ export default function Home() {
         <section className='welcome window'>
             <Welcome />
 
-            {/* <!-- SAMPLE  --> */}
-
             <div className='more'>
                 <button
                     onClick={() => navigate('cards')}
@@ -18,7 +16,7 @@ export default function Home() {
                     id='catalog-btn'
                     disabled={navigation.state === 'loading'}
                 >
-                    {navigation.state === 'loading' ? ':Loading...' : 'Catalog'}
+                    {navigation.state === 'loading' ? 'Loading...' : 'Catalog'}
                 </button>
             </div>
         </section>
