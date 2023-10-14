@@ -9,12 +9,13 @@
     display: none;
 }
 
-.catalog .card-main {
+.misted,
+.sugg-card.catalog-view-card {
     position: relative;
     overflow: hidden;
 }
 
-.catalog .card-main::after {
+.misted::after {
     content: "";
     width: 100%;
     height: 100%;
@@ -27,7 +28,7 @@
 
 /* CATALOG CARDS */
 .catalog-wrapper>.sugg-card,
-.user-article-wrapper> .sugg-card {
+.user-article-wrapper>.sugg-card {
     max-width: 40%;
 }
 
