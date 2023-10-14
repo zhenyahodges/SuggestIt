@@ -43,16 +43,17 @@
       color: var(--clr-light)
   }
 
-  /* *** Card Main */
+  /* *** Card Main */   
   .card-main {
       padding: 1rem;
       min-height: 70%;
+      flex-flow: column wrap;
+      overflow-y: scroll;
   }
 
   .sugg.list {
       display: flex;
-      flex-flow: column wrap;
-      overflow: hidden;
+     
   }
 
   .sugg-item-wrapper {
