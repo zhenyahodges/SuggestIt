@@ -127,7 +127,7 @@ html {
 
 .nav.header {
     color: var(--clr-light);
-    padding: 0.5rem 0.7rem;
+    padding: 0.2rem 0.7rem;
     font-size: 0.9rem;
     font-weight: 600;
 }
@@ -144,8 +144,7 @@ html {
 }
 
 /* whos lookin */
-.whos-lookin-wrapper { 
-    padding-right: 40px;  
+.whos-lookin-wrapper {  
     padding-bottom: 0.2rem;  
     font-style: italic;
     font-size: smaller;

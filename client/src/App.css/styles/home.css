@@ -2,7 +2,6 @@
 .main-title {
     font-size: 1.5rem;
     font-weight: 800;
-    padding: 1rem 0;
 }
 
 .main-subtitle {
@@ -11,8 +10,7 @@
 
 .sub-wrapper {
     width: 80%;
-    margin: 0 auto;
-    padding: 1rem 0;
+    margin: 0 auto; 
 }
 
 /* || SAMPLES SECTION */
