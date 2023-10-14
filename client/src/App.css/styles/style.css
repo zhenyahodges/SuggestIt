@@ -146,13 +146,10 @@ html {
 /* whos lookin */
 .whos-lookin-wrapper {  
     padding-bottom: 0.2rem;  
+    padding-left: 1rem;
     font-style: italic;
     font-size: smaller;
     color: var(--clr-highlight);
-}
-
-.whos-lookin.logged-user {
-    display: none;
 }
 
 /*** || MAIN ***/

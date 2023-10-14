@@ -131,13 +131,14 @@ export default function Header({ props }) {
                             )}
                             {/* <!-- <a to="/about" className="nav header list links">About</a> --> */}
                             {/* <!-- <a to="/contact" className="nav header list links">Contact</a> --> */}
+                            <span
+                                className='whos-lookin-wrapper whos-lookin'
+                                id='whos-lookin'
+                            >
+                                {currentUser}
+                            </span>
                         </ul>
                     </nav>
-                    <div className='whos-lookin-wrapper'>
-                        <p className='whos-lookin' id='whos-lookin'>
-                            {currentUser}
-                        </p>
-                    </div>
                 </div>
             </section>
         </header>

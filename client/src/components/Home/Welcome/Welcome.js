@@ -1,8 +1,7 @@
 export default function Welcome() {
     return (
         <section className='welcome-headings'>
-            <h2 className='main-title'>
-                {/* <!-- Ultimate Feedback --> */}
+            <h2 className='main-title'>                
                 Suggestions for Continuous Improvements
             </h2>
             <div className='sub-wrapper'>
