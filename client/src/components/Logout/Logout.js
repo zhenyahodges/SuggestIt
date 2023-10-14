@@ -10,22 +10,22 @@ export async function loader({ request }) {
 }
 
 export async function action({ request }) {
-    const pathname = new URL(request.url).searchParams.get('redirectTo') || '/cards';
+    const pathname =
+        new URL(request.url).searchParams.get('redirectTo') || '/cards';
     return redirect(pathname);
 }
 
 export default function Logout() {
     const { setIsLogged } = useLogged();
-    const { setCurrentUser } = useCurrentUser();
-    const { currentToken } = useCurrentUser();  
-    const token=currentToken;
+    const { setCurrentUser, currentToken } = useCurrentUser();
+    const token = currentToken;
 
     const navigation = useNavigation();
     const navigate = useNavigate();
 
-    const onLogout = async () => {            
+    const onLogout = async () => {
         await logoutUser(token);
-        localStorage.clear();   
+        localStorage.clear();
         setIsLogged(false);
         setCurrentUser('Guest');
         navigate('/');

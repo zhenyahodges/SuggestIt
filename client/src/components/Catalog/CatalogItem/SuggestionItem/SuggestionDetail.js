@@ -6,15 +6,14 @@ import { useCurrentUser } from '../../../../hooks/useCurrentUser';
 
 export default function SuggestionDetail(props) {
     const navigate = useNavigate();
+    const [isTimedOut, setIsTimedOut] = useState(false);
 
     // use Context info
-    const { currentToken } = useCurrentUser();
-    const { currentUserId } = useCurrentUser();    
+    const { currentToken,currentUserId } = useCurrentUser();      
     const token=currentToken;
     const userId=currentUserId;
 
-    const [isTimedOut, setIsTimedOut] = useState(false);
-
+    // use props info
     const ownerId = props._ownerId;
     const suggestion = props.suggestion;
     // const likes = props.likes;

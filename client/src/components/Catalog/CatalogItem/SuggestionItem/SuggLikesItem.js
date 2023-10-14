@@ -44,7 +44,7 @@ export default function SuggLikesItem({
         fetchSuggestionsCount();
     }, [id, setCount, suggId]);
 
-    // IF LOGGED USER HAS LIKED suggestion or not OR NOT
+    // IF LOGGED USER HAS LIKED SUGGESTION OR NOT
     useEffect(() => {
         const searchQuery = encodeURIComponent(`suggestionId="${suggId}"`);
         const url = `http://localhost:3030/data/likes?where=${searchQuery}`;

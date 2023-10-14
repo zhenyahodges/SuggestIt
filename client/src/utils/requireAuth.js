@@ -1,6 +1,6 @@
 import { redirect } from 'react-router-dom';
 
-export async function requireAuth() {
+export async function requireAuth() {   
     const user = JSON.parse(localStorage.getItem('user'));
 
     let isLogged = false;

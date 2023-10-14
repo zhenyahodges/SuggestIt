@@ -66,10 +66,8 @@ export default function Login() {
     }, [setIsLogged, userData, currentUser, setCurrentUser]);
 
     const navigation = useNavigation();
-
     const message = useLoaderData();
     const errorMessage = useActionData();
-
 
     return (
         <section className='login form-wrapper'>

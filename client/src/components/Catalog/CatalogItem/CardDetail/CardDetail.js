@@ -31,11 +31,8 @@ export async function loader({ request, params }) {
 export default function CardDetail() {
     const navigation = useNavigation();
     const navigate = useNavigate();
-    const { res, suggestions, message } = useLoaderData();
-    
-    const { currentUser } = useCurrentUser();
-    const { currentToken } = useCurrentUser();
-    const { currentUserId } = useCurrentUser();    
+    const { res, suggestions, message } = useLoaderData();    
+    const { currentUser, currentToken, currentUserId } = useCurrentUser();   
     const token=currentToken;
     const userId=currentUserId;
 
