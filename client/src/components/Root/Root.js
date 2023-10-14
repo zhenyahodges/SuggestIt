@@ -25,7 +25,7 @@ export default function Root() {
             <Header props={userId} />
             <main className='page main'>
                 <section className='page main container'>
-                    <Outlet context={user} />
+                    <Outlet />
                 </section>
             </main>
             <Footer />

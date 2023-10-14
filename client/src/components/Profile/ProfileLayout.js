@@ -9,7 +9,7 @@ import { requireAuth } from '../../utils/requireAuth';
 import { getUserInfo } from '../../services/authService';
 import ProfileUser from './ProfileUser';
 
-export async function loader({ request }) {      
+export async function loader({ request }) {
     const { userId, token } = await requireAuth(request);
     const res = await getUserInfo(token);
     const { fname, lname, email } = res;
@@ -31,11 +31,11 @@ export async function loader({ request }) {
 }
 
 export default function ProfileLayout() {
-    const {user, urlMessage} = useLoaderData();
+    const { user, urlMessage } = useLoaderData();
     const navigation = useNavigation();
 
-    const message=urlMessage;
-   
+    const message = urlMessage;
+
     const activeStyles = {
         backgroundColor: '#F79234',
         color: '#132930',
@@ -116,7 +116,7 @@ export default function ProfileLayout() {
                 </div>
 
                 <section className='user-profile-cards-wrapper'>
-                    <Outlet context={user} />
+                    <Outlet />
                 </section>
             </div>
         </section>
