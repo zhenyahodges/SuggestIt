@@ -16,11 +16,12 @@ export default function SuggLikesItem({
     cardId,
 }) {
     const suggId = id;
-    const [cardOwner, setCardOwner] = useState('');
 
+    const [cardOwner, setCardOwner] = useState('');
     const [hasLiked, setHasLiked] = useState(false);
     const [count, setCount] = useState(0);
 
+    // get card owner id
     useEffect(() => {
         async function fetchCardOwner() {
             const res = await getCards(cardId);
@@ -43,6 +44,7 @@ export default function SuggLikesItem({
         fetchSuggestionsCount();
     }, [id, setCount, suggId]);
 
+    // IF LOGGED USER HAS LIKED suggestion or not OR NOT
     useEffect(() => {
         const searchQuery = encodeURIComponent(`suggestionId="${suggId}"`);
         const url = `http://localhost:3030/data/likes?where=${searchQuery}`;
@@ -52,7 +54,6 @@ export default function SuggLikesItem({
             .then((res) => {
                 if (res.status === 404) {
                     setHasLiked(false);
-
                     return null;
                 }
                 if (!res.ok) {

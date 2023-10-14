@@ -7,8 +7,8 @@ export const LoggedProvider = ({ children }) => {
 
     useEffect(() => {
         const userData = JSON.parse(localStorage.getItem('user'));
-        if (userData) {
-            userData.userId ? setIsLogged(true) : setIsLogged(false);            
+        if (userData) {                     
+            userData.token ? setIsLogged(true) : setIsLogged(false); 
         } else {
             setIsLogged(false);
         }
@@ -17,7 +17,7 @@ export const LoggedProvider = ({ children }) => {
     const contextValues = {
         isLogged,
         setIsLogged,
-    };
+    }; 
 
     return (
         <>

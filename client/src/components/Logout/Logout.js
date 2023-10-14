@@ -8,24 +8,24 @@ export async function loader({ request }) {
     await requireAuth(request);
     return new URL(request.url).searchParams.get('message');
 }
-let pathname;
 
 export async function action({ request }) {
-    pathname = new URL(request.url).searchParams.get('redirectTo') || '/cards';
-
+    const pathname = new URL(request.url).searchParams.get('redirectTo') || '/cards';
     return redirect(pathname);
 }
 
 export default function Logout() {
     const { setIsLogged } = useLogged();
     const { setCurrentUser } = useCurrentUser();
+    const { currentToken } = useCurrentUser();  
+    const token=currentToken;
+
     const navigation = useNavigation();
     const navigate = useNavigate();
 
-    const onLogout = async () => {
-        const { token } = JSON.parse(localStorage.getItem('user'));
+    const onLogout = async () => {            
         await logoutUser(token);
-        localStorage.clear();
+        localStorage.clear();   
         setIsLogged(false);
         setCurrentUser('Guest');
         navigate('/');

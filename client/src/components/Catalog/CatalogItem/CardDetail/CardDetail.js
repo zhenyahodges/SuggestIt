@@ -31,8 +31,13 @@ export async function loader({ request, params }) {
 export default function CardDetail() {
     const navigation = useNavigation();
     const navigate = useNavigate();
-    const { res, suggestions, message, user } = useLoaderData();
+    const { res, suggestions, message } = useLoaderData();
+    
     const { currentUser } = useCurrentUser();
+    const { currentToken } = useCurrentUser();
+    const { currentUserId } = useCurrentUser();    
+    const token=currentToken;
+    const userId=currentUserId;
 
     const ownerId = res._ownerId;
     const cardId = res._id;
@@ -56,16 +61,11 @@ export default function CardDetail() {
         }, 10);
     }, [createdOn]);
 
-    let userId;
-    let token;
-
     let isAuthorized = false;
     let isOwner = false;
     let canEditCard = false;
 
-    if (currentUser !== 'Guest') {
-        userId = user.userId;
-        token = user.token;
+    if (currentUser !== 'Guest') {    
         isAuthorized = token;
         isOwner = ownerId === userId;
         canEditCard = ownerId === userId && !isTimedOut;

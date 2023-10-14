@@ -1,11 +1,18 @@
-import { Link, useNavigate, useOutletContext } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { onDeleteSuggestion } from '../../../../services/suggestionService';
 import SuggLikesItem from './SuggLikesItem';
 import { useEffect, useState } from 'react';
+import { useCurrentUser } from '../../../../hooks/useCurrentUser';
 
 export default function SuggestionDetail(props) {
     const navigate = useNavigate();
-    const user = useOutletContext();
+
+    // use Context info
+    const { currentToken } = useCurrentUser();
+    const { currentUserId } = useCurrentUser();    
+    const token=currentToken;
+    const userId=currentUserId;
+
     const [isTimedOut, setIsTimedOut] = useState(false);
 
     const ownerId = props._ownerId;
@@ -16,31 +23,24 @@ export default function SuggestionDetail(props) {
     // const updatedOn = props._updatedOn;
     const id = props._id;
 
-    // owner of suggestion can edit/delete it within 1min period only.
-    useEffect(() => {
-        const timer = setInterval(() => {
-            const timePassed = new Date() - new Date(createdOn) > 60000;
-
-            if (timePassed) {
-                setIsTimedOut(true);
-                clearInterval(timer);
-            } else {
-                setIsTimedOut(false);
-            }
-        }, 10);
-    }, [createdOn]);
-
     let author;
     if (props.author) {
         author = props.author._id;
     }
 
-    let userId;
-    let token;
-    if (user) {
-        userId = user.userId;
-        token = user.token;
-    }
+    // owner of suggestion can edit/delete it within 1min period only and only if logged in.
+    useEffect(() => {
+        const timer = setInterval(() => {
+            const timePassed = new Date() - new Date(createdOn) > 60000;
+
+            if (timePassed || !token) {
+                setIsTimedOut(true);
+                clearInterval(timer);
+            } else if(!timePassed && token) {
+                setIsTimedOut(false);
+            }
+        }, 10);
+    }, [createdOn, token]);
 
     const isAuthorized = Boolean(token);
     const canEditDeleteSugg = ownerId === userId && !isTimedOut;
