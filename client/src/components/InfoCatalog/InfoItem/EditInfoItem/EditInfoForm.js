@@ -34,7 +34,8 @@ export default function EditInfoForm(props){
                 className='card-name'
                 name='web'
                 id='web'
-                placeholder='Enter title'
+                pattern='(/^((https?|ftp|smtp):\/\/)?(www.)[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$/)'
+                placeholder='www.example.com'
                 minLength='3'
                 maxLength='30'                
                 defaultValue={props.web}
@@ -53,7 +54,7 @@ export default function EditInfoForm(props){
                 rows='4'
                 cols='50'
                 maxLength='300'
-                // placeholder='Type your text here'
+                placeholder='Type your text here'
                 defaultValue={props.text}
                 required
             ></textarea>

@@ -115,7 +115,7 @@ The email address must not have any spaces, tabs, or other special characters.
 ####  **Info cards**:
 * Text Input: 30 characters
 * Website: should contain website address, regex pattern implemented for data validation
-* Textarea: Max length 300 characters.
+* Textarea: Max length 30 characters.
 
 ### **Not Found**
 * If the page is not found, returns 404 page Not Found, with link back to the home page.

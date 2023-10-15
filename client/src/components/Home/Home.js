@@ -22,7 +22,7 @@ export default function Home() {
                 {firstCard?.length ? (
                     firstCard.map((c) => <CatalogItem key={c._id} {...c} />)
                 ) : (
-                    <Sample/>
+                    <Sample />
                 )}
             </div>
 

@@ -5,17 +5,15 @@ const baseUrl = 'http://localhost:3030/data/cards';
 
 export async function getCards(id) {
     const url = id ? `${baseUrl}/${id}` : `${baseUrl}`;
-    const res = await fetch(url);
-// let data
+    const res = await fetch(url,{ mode: 'cors'});
+
     if (res.status === 404) {
-        // data=[];
-        // console.log(data);
         return [];
-    }else if (!res.ok) {
+    } else if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
-    }else{
-    const data = await res.json();
-    return data;
+    } else {
+        const data = await res.json();
+        return data;
     }
 }
 
