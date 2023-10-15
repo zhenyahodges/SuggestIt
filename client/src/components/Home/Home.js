@@ -2,6 +2,7 @@ import { useLoaderData, useNavigate, useNavigation } from 'react-router-dom';
 import Welcome from './Welcome/Welcome';
 import { getCards } from '../../services/cardService';
 import CatalogItem from '../Catalog/CatalogItem/CatalogItem';
+import Sample from './Sample/Sample';
 
 export async function loader() {
     const cards = await getCards();
@@ -21,7 +22,7 @@ export default function Home() {
                 {firstCard?.length ? (
                     firstCard.map((c) => <CatalogItem key={c._id} {...c} />)
                 ) : (
-                    <h3 style={{ marginLeft: '44%' }}>No articles yet</h3>
+                    <Sample/>
                 )}
             </div>
 
