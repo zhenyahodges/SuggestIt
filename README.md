@@ -29,7 +29,7 @@ Suggest<span style="color:#F79234">**It**</span> is a web application which prov
 ### <span style="color:#c2e2ee">**Demo**</span>
 <br>
 
-<video width="620" style="display:block;text-align:centre;" autoplay>
+<video width="620" style="display:block;text-align:centre;" controls>
   <source src="./readme-res/suggestit-demo.mp4" type="video/mp4">
   <p>
     Your browser doesn't support HTML video. Here is a
