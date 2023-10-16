@@ -36,6 +36,9 @@ Suggest<span style="color:#F79234">**It**</span> is a web application which prov
     <a href="./readme-res/suggestit-demo.mp4">link to the video</a> instead.
   </p>
 </video>
+<br>
+
+[![Video](./readme-res/SuggestIt-Welcome-View.png)](./readme-res/suggestit-demo.mp4)
 
 #
 ### <span style="color:#c2e2ee">Catalog</span>
