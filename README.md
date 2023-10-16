@@ -29,7 +29,9 @@ Suggest<span style="color:#F79234">**It**</span> is a web application which prov
 ### <span style="color:#c2e2ee">**Demo**</span>
 <br>
 
+[<img src="./readme-res/SuggestIt-Welcome-View.png" width="720px">](https://clipchamp.com/watch/0lA5uwDeek1 "SuggestIt Demo")
 
+![SuggestIt demo](./readme-res/suggestit-demo-video-s.mp4)
 #
 ### <span style="color:#c2e2ee">Catalog</span>
 
