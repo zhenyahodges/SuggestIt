@@ -37,7 +37,7 @@ Logged users, NOT card owners can:
 * Add a new suggestion.
 * Edit suggestion <span style="color:#F79234">* *if NOT timed out (1min time limit)*</span>
 * Delete suggestion <span style="color:#F79234">* *if NOT timed out (1min time limit)*</span>
-* Vote for a suggestion they are NOT the owner of the suggestion.
+* Vote for a suggestion if they are NOT the owner of the suggestion.
 
 Logged users, card owners can:
 * Edit a card they created. <span style="color:#F79234">* *if NOT timed out (1min time limit)*</span>
@@ -45,25 +45,24 @@ Logged users, card owners can:
 * Print card
 * Email card
 
-Guests cannot edit or delete a card, vote for or add a suggestion.
+Guests can view card but cannot edit or delete it,or vote for or add a suggestion.
 #
 ### <span style="color:#c2e2ee">**Info Catalog**</span>
-Additional Info Catalog.
+Additional Info Catalog with optional information for the companies.
 #
 ### <span style="color:#c2e2ee">**Info Card Details**</span>
 Guests & Logged Users can view the Details of info cards.
 
-Logged users, NOT owners can:
-* Print card
-* Email card
-
-Logged users, owners can:
+Logged users, OWNERS can:
 * Edit a card they created.
 * Delete a card they created.
 * Print card
 * Email card
 
-Guests cannot edit or delete a card.
+Guests & Logged users NOT owners can:
+* View card
+* Print card
+* Email card
 #
 ### <span style="color:#c2e2ee">**Profile**</span>
 Logged users can:
@@ -87,7 +86,7 @@ Logged users can:
 ### **Loading & Submitting:**
 * Buttons show when data is loading or submitting.
 
-### **Inputs: Register**
+### **Inputs: *Register***
 
 ### Names
 * Names should be between 3 and 64  characters.
@@ -103,19 +102,19 @@ The email address must not have any spaces, tabs, or other special characters.
 * Min 6 characters
 * Must match with repeat password when registering. If no match is found, it alerts: *Passwords do not match*
 
-### **Inputs:  Login**
+### **Inputs: *Login***
 * Email validation and password as above.
 * If not found returns: <span style="color:red">*'Email or password invalid. Please try again.'*</span>
 
-### **Inputs:  Create**
+### **Inputs:  *Create***
 #### **Suggestions**:
-* Brand: 30 characters
-* Textarea: Max length 150 characters.
+* Brand: Min length 3 characters- max length 30 characters
+* Suggestion: Min length 5 characters- max length 150 characters.
 
 ####  **Info cards**:
-* Text Input: 30 characters
-* Website: should contain website address, regex pattern implemented for data validation
-* Textarea: Max length 30 characters.
+* Brand: Min length 3 characters- max length 30 characters
+* Website address: should contain website address, regex pattern implemented for data validation
+* Textarea: Max length 300 characters.
 
 ### **Not Found**
 * If the page is not found, returns 404 page Not Found, with link back to the home page.
