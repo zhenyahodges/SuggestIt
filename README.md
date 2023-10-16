@@ -23,22 +23,9 @@ ReactJS, React Router, React Router DOM
 
 Suggest<span style="color:#F79234">**It**</span> is a web application which provides a simple interface for receiving feedback and suggestions for improvements for companies and organisations. Users can vote for the suggestions they like the most. Companies can quickly see which suggestions are most popular.
 
-#
-
-### <span style="color:#c2e2ee">**Welcome**</span>
-
-<br>
-
-![Welcome View](./readme-res/SuggestIt-Welcome-View.png 'Welcome View')
-
-#
-
 ### <span style="color:#c2e2ee">**Demo**</span>
-<br>
-
 
 https://github.com/zhenyahodges/SuggestIt/assets/114656373/17df9816-9e42-4cf2-a03b-1d53127b7e06
-
 
 #
 
