@@ -36,7 +36,6 @@ Suggest<span style="color:#F79234">**It**</span> is a web application which prov
 ### <span style="color:#c2e2ee">**Demo**</span>
 <br>
 
-https://github.com/zhenyahodges/SuggestIt/assets/114656373/617f2bb0-df0e-4793-84b0-5166b6479a09
 #
 
 ### <span style="color:#c2e2ee">Catalog</span>
