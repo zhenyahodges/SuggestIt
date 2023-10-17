@@ -1,3 +1,8 @@
+![GitHub](https://img.shields.io/github/license/zhenyahodges/SuggestIt)
+![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/t/zhenyahodges/SuggestIt)
+
+
+
 # Suggest<span style="color:#F79234">**It**</span>
 
 ## **Project Assignment: SPA with ReactJS**
