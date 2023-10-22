@@ -13,7 +13,7 @@ export default function Home() {
     const navigate = useNavigate();
     const navigation = useNavigation();
     const cards = useLoaderData();
-    const firstCard = cards.slice(0, 1);
+    const firstCard = cards.slice(0, 2);
 
     return (
         <section className='welcome window'>
