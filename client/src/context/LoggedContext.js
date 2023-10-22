@@ -1,23 +1,25 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext,useState } from 'react';
 
 export const LoggedContext = createContext();
 
 export const LoggedProvider = ({ children }) => {
-    const [isLogged, setIsLogged] = useState(false);
-
-    useEffect(() => {
+    const [isLogged, setIsLogged] = useState(() => {
         const userData = JSON.parse(localStorage.getItem('user'));
-        if (userData) {                     
-            userData.token ? setIsLogged(true) : setIsLogged(false); 
-        } else {
-            setIsLogged(false);
-        }
-    }, [setIsLogged]);
+        if (userData) {
+            if (userData.token) {
+                return true;
+            } else {
+                return false;
+            }
+        } 
+
+        return false;
+    });
 
     const contextValues = {
         isLogged,
         setIsLogged,
-    }; 
+    };
 
     return (
         <>
