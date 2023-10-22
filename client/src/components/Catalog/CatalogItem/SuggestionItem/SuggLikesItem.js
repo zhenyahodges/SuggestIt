@@ -6,7 +6,6 @@ import {
     postLike,
 } from '../../../../services/likesService';
 import { getCards } from '../../../../services/cardService';
-
 export default function SuggLikesItem({
     userId,
     token,
@@ -15,70 +14,65 @@ export default function SuggLikesItem({
     author,
     cardId,
 }) {
+
     const suggId = id;
 
-    const [cardOwner, setCardOwner] = useState('');
-    const [hasLiked, setHasLiked] = useState(false);
-    const [count, setCount] = useState(0);
-
-    // get card owner id
-    useEffect(() => {
+    // GET CARD OWNER
+    const [cardOwner, setCardOwner] = useState(()=>{
         async function fetchCardOwner() {
             const res = await getCards(cardId);
             setCardOwner(res._ownerId);
         }
         fetchCardOwner();
-    }, [cardId]);
 
-    let canLike = false;
-    if (token && author !== userId && userId !== cardOwner) {
-        canLike = true;
-    }
+    });
+
+    // IF LOGGED USER HAS LIKED SUGGESTION OR NOT
+    const [hasLiked, setHasLiked] = useState(()=>{
+        const searchQuery = encodeURIComponent(`suggestionId="${suggId}"`);
+            const url = `http://localhost:3030/data/likes?where=${searchQuery}`;
+            fetch(url, {
+                method: 'GET',
+            })
+                .then((res) => {
+                    if (res.status === 404) {
+                        return setHasLiked(false);
+                    }
+                    if (!res.ok) {
+                        throw new Error(`${res.status} - ${res.statusText}`);
+                    }
+                    return res.json();
+                })
+                .then((data) => {
+                    if (data) {
+                        const result = data.find((item) => item.userId === userId);
+                        if (result !== undefined && result !== null) {
+                            return setHasLiked(true);
+                        } else {
+                            return setHasLiked(false);
+                        }
+                    } else {
+                        return setHasLiked(false);
+                    }
+                })
+                .catch((err) => {
+                    return console.log(`Error: ${err.message}`);
+                });
+    });    
 
     // GET SUGGLIKE COUNT
-    useEffect(() => {
+    const [count, setCount] = useState(()=>{
         async function fetchSuggestionsCount() {
             const res = await getSuggestionLikesCount(suggId);
             setCount(res);
         }
         fetchSuggestionsCount();
-    }, [id, setCount, suggId]);
+    });
 
-    // IF LOGGED USER HAS LIKED SUGGESTION OR NOT
-    useEffect(() => {
-        const searchQuery = encodeURIComponent(`suggestionId="${suggId}"`);
-        const url = `http://localhost:3030/data/likes?where=${searchQuery}`;
-        fetch(url, {
-            method: 'GET',
-        })
-            .then((res) => {
-                if (res.status === 404) {
-                    setHasLiked(false);
-                    return null;
-                }
-                if (!res.ok) {
-                    throw new Error(`${res.status} - ${res.statusText}`);
-                }
-                return res.json();
-            })
-            .then((data) => {
-                if (data) {
-                    const result = data.find((item) => item.userId === userId);
-                    if (result !== undefined && result !== null) {
-                        return setHasLiked(true);
-                    } else {
-                        setHasLiked(false);
-                        return null;
-                    }
-                } else {
-                    return setHasLiked(false);
-                }
-            })
-            .catch((err) => {
-                console.log(`Error: ${err.message}`);
-                return null;
-            });
-    }, [suggId, userId]);
+    let canLike = false;
+    if (token && author !== userId && userId !== cardOwner) {
+        canLike = true;
+    }
 
     async function onLike() {
         await postLike(suggId, token, userId);
