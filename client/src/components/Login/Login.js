@@ -8,7 +8,6 @@ import {
 } from 'react-router-dom';
 import { loginUser } from '../../services/authService';
 import { useEffect } from 'react';
-import { useLogged } from '../../hooks/useLogged';
 import { useCurrentUser } from '../../hooks/useCurrentUser';
 import { isAlreadyLogged } from '../../utils/isAlreadyLogged';
 
@@ -50,8 +49,7 @@ export async function action({ request, params }) {
 }
 
 export default function Login() {
-    const { setIsLogged } = useLogged();
-    const { currentUser, setCurrentUser } = useCurrentUser();
+    const { setIsLogged, currentUser, setCurrentUser } = useCurrentUser();
     const userData = JSON.parse(localStorage.getItem('user'));
 
     useEffect(() => {

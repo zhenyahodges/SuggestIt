@@ -1,7 +1,6 @@
 import { Form, redirect, useNavigate, useNavigation } from 'react-router-dom';
 import { logoutUser } from '../../services/authService';
 import { requireAuth } from '../../utils/requireAuth';
-import { useLogged } from '../../hooks/useLogged';
 import { useCurrentUser } from '../../hooks/useCurrentUser';
 
 export async function loader({ request }) {
@@ -16,8 +15,7 @@ export async function action({ request }) {
 }
 
 export default function Logout() {
-    const { setIsLogged } = useLogged();
-    const { setCurrentUser, currentToken } = useCurrentUser();
+    const {setIsLogged, setCurrentUser, currentToken } = useCurrentUser();
     const token = currentToken;
 
     const navigation = useNavigation();

@@ -73,7 +73,6 @@ import EditCardItem, {
     loader as editCardLoader,
     action as editCardAction,
 } from './components/Catalog/CatalogItem/EditCardItem/EditCardItem';
-import { LoggedProvider } from './context/LoggedContext';
 
 // INFO CREATE/EDIT
 import EditInfoItem, {
@@ -228,9 +227,7 @@ const router = createBrowserRouter(
 function App() {
     return (
         <CurrentUserProvider>
-            <LoggedProvider>
                 <RouterProvider router={router} />
-            </LoggedProvider>
         </CurrentUserProvider>
     );
 }
