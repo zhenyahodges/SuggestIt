@@ -7,7 +7,7 @@ import {
 import { requireAuth } from './utils/requireAuth';
 
 import Root, { loader as rootLoader } from './components/Root/Root';
-import Home, {loader as homeCardsLoader} from './components/Home/Home';
+import Home, { loader as homeCardsLoader } from './components/Home/Home';
 import { NotFound } from './components/NotFound/NotFound';
 
 // **AUTH**
@@ -91,9 +91,10 @@ const router = createBrowserRouter(
             loader={rootLoader}
             errorElement={<NotFound />}
         >
-            <Route index 
-            element={<Home />} 
-            loader={homeCardsLoader}
+            <Route
+                index
+                element={<Home />}
+                loader={homeCardsLoader}
                 errorElement={<NotFound />}
             />
             <Route
@@ -227,7 +228,7 @@ const router = createBrowserRouter(
 function App() {
     return (
         <CurrentUserProvider>
-                <RouterProvider router={router} />
+            <RouterProvider router={router} />
         </CurrentUserProvider>
     );
 }
