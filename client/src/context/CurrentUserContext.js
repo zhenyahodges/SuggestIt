@@ -7,14 +7,12 @@ export const CurrentUserProvider = ({ children }) => {
     const userData = JSON.parse(localStorage.getItem('user'));
     const[currentUserId,setCurrentUserId] = useState('');
     const[currentToken,setCurrentToken] = useState('');
-    const [isLogged, setIsLogged]=useState(false);
 
     useEffect(() => {
         if (userData) {
             setCurrentUser(userData.email);
             setCurrentUserId(userData.userId);
             setCurrentToken(userData.token);
-            setIsLogged(true);
         } else {
             setCurrentUser('Guest');
             setCurrentToken('');
@@ -26,11 +24,9 @@ export const CurrentUserProvider = ({ children }) => {
         currentUser,
         currentUserId,
         currentToken,
-        isLogged,
         setCurrentUser,
         setCurrentToken,
-        setCurrentUserId,
-        setIsLogged
+        setCurrentUserId
     };
 
     return (

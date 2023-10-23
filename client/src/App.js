@@ -24,6 +24,7 @@ import Logout, {
     loader as logoutLoader,
 } from './components/Logout/Logout';
 import { CurrentUserProvider } from './context/CurrentUserContext';
+import { LoggedProvider } from './context/LoggedContext';
 
 // **CATALOG**
 import Catalog, { loader as cardsLoader } from './components/Catalog/Catalog';
@@ -73,6 +74,7 @@ import EditCardItem, {
     loader as editCardLoader,
     action as editCardAction,
 } from './components/Catalog/CatalogItem/EditCardItem/EditCardItem';
+
 
 // INFO CREATE/EDIT
 import EditInfoItem, {
@@ -228,7 +230,9 @@ const router = createBrowserRouter(
 function App() {
     return (
         <CurrentUserProvider>
-            <RouterProvider router={router} />
+            <LoggedProvider>
+                <RouterProvider router={router} />
+            </LoggedProvider>
         </CurrentUserProvider>
     );
 }
