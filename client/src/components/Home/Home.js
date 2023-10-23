@@ -13,13 +13,13 @@ export default function Home() {
     const navigate = useNavigate();
     const navigation = useNavigation();
     const cards = useLoaderData();
-    const firstCard = cards.slice(0, 2);
-
+    const firstCard = cards.length>0? cards.slice(0, 2) : [];
+   
     return (
         <section className='welcome window'>
             <Welcome />
             <div className='catalog-wrapper'>
-                {firstCard?.length ? (
+                {firstCard.length>0 ? (
                     firstCard.map((c) => <CatalogItem key={c._id} {...c} />)
                 ) : (
                     <Sample />
