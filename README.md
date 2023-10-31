@@ -12,7 +12,7 @@ ReactJS Course. Details of the assignment are available [here](https://github.co
 
 Deployed at: [https://suggestit-a18f3.web.app](https://suggestit-a18f3.web.app/)
 
-**To ensure proper functionality, the [server](https://github.com/zhenyahodges/SuggestIt#server) must be [initiated](https://github.com/zhenyahodges/SuggestIt#initServer) locally since it has not been deployed yet.**
+**Please note: To ensure proper functionality, the [server](https://github.com/zhenyahodges/SuggestIt#server) must be [initiated](https://github.com/zhenyahodges/SuggestIt#initServer) locally since it has not been deployed yet.**
 
 ### **Built with:**
 
