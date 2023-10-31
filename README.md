@@ -12,7 +12,7 @@ ReactJS Course. Details of the assignment are available [here](https://github.co
 
 Deployed at: [https://suggestit-a18f3.web.app](https://suggestit-a18f3.web.app/)
 
-**To ensure proper functionality, the server must be [initiated](https://github.com/zhenyahodges/SuggestIt#initServer) locally since it has not been deployed yet.**
+**To ensure proper functionality, the [server](https://github.com/zhenyahodges/SuggestIt#server) must be [initiated](https://github.com/zhenyahodges/SuggestIt#initServer) locally since it has not been deployed yet.**
 
 ### **Built with:**
 
@@ -22,6 +22,8 @@ ReactJS, React Router, React Router DOM
 
 -   [createBrowserRouter](https://reactrouter.com/en/main/routers/create-browser-router) with v6.4 data APIs like loader and actions
 
+### **<a name="server"></a>Server:**
+Server used: [SoftUni Practice Server](https://github.com/softuni-practice-server/softuni-practice-server)
 #
 
 ## **About**
