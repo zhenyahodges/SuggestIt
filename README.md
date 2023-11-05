@@ -7,13 +7,14 @@
 <!-- ![SuggestIt SPA ReactJS Application Home Page](./readme-res/SuggestIt-Home-Page.png) -->
 
 <p>
+<a href="https://suggestit-a18f3.web.app">
   <img src="./readme-res/SuggestIt-Home-Page.png" width="800" title="SuggestIt SPA ReactJS Application Home Page" alt="SuggestIt SPA ReactJS Application Home Page">
 </p>
 
 This is a ReactJS project assignment for completing [SoftUni](https://softuni.bg/)
 ReactJS Course. Details of the assignment are available [here](https://github.com/zhenyahodges/SoftUni-Courses/blob/main/Front_End/REACT/REACT-PROJECT/ReactJS-Project-Assignment.docx).
 
-Deployed at: [https://suggestit-a18f3.web.app](https://suggestit-a18f3.web.app/)
+Deployed [here](https://suggestit-a18f3.web.app/).
 
 **Please note: To ensure proper functionality, the [server](https://github.com/zhenyahodges/SuggestIt#server) must be [initiated](https://github.com/zhenyahodges/SuggestIt#initServer) locally since it has not been deployed yet.**
 
@@ -28,6 +29,7 @@ ReactJS, React Router, React Router DOM
 ### **<a name="server"></a>Server:**
 
 Server used: [SoftUni Practice Server](https://github.com/softuni-practice-server/softuni-practice-server)
+[To initiate it](https://github.com/zhenyahodges/SuggestIt#initServer)
 
 #
 
