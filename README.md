@@ -1,13 +1,14 @@
 ![GitHub](https://img.shields.io/github/license/zhenyahodges/SuggestIt)
 
-
-
-
-
-
 # Suggest<span style="color:#F79234">**It**</span>
 
 ## **Project Assignment: SPA with ReactJS**
+
+<!-- ![SuggestIt SPA ReactJS Application Home Page](./readme-res/SuggestIt-Home-Page.png) -->
+
+<p>
+  <img src="./readme-res/SuggestIt-Home-Page.png" width="800" title="SuggestIt SPA ReactJS Application Home Page" alt="SuggestIt SPA ReactJS Application Home Page">
+</p>
 
 This is a ReactJS project assignment for completing [SoftUni](https://softuni.bg/)
 ReactJS Course. Details of the assignment are available [here](https://github.com/zhenyahodges/SoftUni-Courses/blob/main/Front_End/REACT/REACT-PROJECT/ReactJS-Project-Assignment.docx).
@@ -25,7 +26,9 @@ ReactJS, React Router, React Router DOM
 -   [createBrowserRouter](https://reactrouter.com/en/main/routers/create-browser-router) with v6.4 data APIs like loader and actions
 
 ### **<a name="server"></a>Server:**
+
 Server used: [SoftUni Practice Server](https://github.com/softuni-practice-server/softuni-practice-server)
+
 #
 
 ## **About**
