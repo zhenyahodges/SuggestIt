@@ -1,5 +1,8 @@
 ![GitHub](https://img.shields.io/github/license/zhenyahodges/SuggestIt)
-![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/t/zhenyahodges/SuggestIt)
+![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/:interval/:user/https%3A%2F%2Fgithub.com%2Fzhenyahodges%2FSuggestIt)
+
+
+
 
 
 
