@@ -20,10 +20,12 @@
     --txt-shadow: 1px 1px 1px #132930;
     --clr-grad: #c2e2ee;
     --clr-err: rgb(194, 33, 33);
+    --clr-light-bgr: #f8f8f8;
 }
 
 html {
-    background: linear-gradient(119deg, rgba(19, 41, 48, 1) 0%, rgba(202, 235, 247, 1) 49%, rgba(247, 247, 247, 1) 100%);
+    /* background: linear-gradient(119deg, rgba(19, 41, 48, 1) 0%, rgba(202, 235, 247, 1) 49%, rgba(247, 247, 247, 1) 100%); */
+    background-color: var(--clr-light-bgr);
     font-family: "Mulish", "sans-serif";
     letter-spacing: 0.6px;
 }
@@ -57,7 +59,7 @@ html {
 
 .container {
     width: 100%;
-    max-width: 1300px;
+    /* max-width: 1300px; */
     margin: 0 auto;
     height: 100%;
     min-width: 379px;
@@ -118,7 +120,7 @@ html {
 }
 
 /* header nav */
-.header-nav-containter{
+.header-nav-containter {
     display: flex;
     flex-flow: column wrap;
     align-items: flex-end;
@@ -144,8 +146,8 @@ html {
 }
 
 /* whos lookin */
-.whos-lookin-wrapper {  
-    padding-bottom: 0.2rem;  
+.whos-lookin-wrapper {
+    padding-bottom: 0.2rem;
     padding-left: 1rem;
     font-style: italic;
     font-size: smaller;

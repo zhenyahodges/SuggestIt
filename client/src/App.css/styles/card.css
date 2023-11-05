@@ -15,11 +15,11 @@
       overflow: hidden;
       box-shadow: 5px 5px 17px 0px #688589;
       border-radius: 10px;
-      background-color: var(--clr-light);
+      /* background-color: var(--clr-light); */
+      background-color: var(--clr-light-bgr);
   }
 
   /* ***Card Header */
-
   .card-header,
   .card-footer {
       background: linear-gradient(0deg, rgba(19, 41, 48, 1) 0%, rgba(46, 101, 119, 1) 73%, rgba(91, 200, 235, 1) 100%);
@@ -43,7 +43,7 @@
       color: var(--clr-light)
   }
 
-  /* *** Card Main */   
+  /* *** Card Main */
   .card-main {
       padding: 1rem;
       min-height: 70%;
@@ -53,7 +53,7 @@
 
   .sugg.list {
       display: flex;
-     
+
   }
 
   .sugg-item-wrapper {
@@ -95,6 +95,7 @@
       flex-flow: row wrap;
       flex: 1 0 100%;
   }
+
   .user-sugged-list>.sugg-item>.sugg-item-wrapper {
       flex: 1 0 100%;
   }
