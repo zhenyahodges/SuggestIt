@@ -29,7 +29,6 @@ ReactJS, React Router, React Router DOM
 ### **<a name="server"></a>Server:**
 
 Server used: [SoftUni Practice Server](https://github.com/softuni-practice-server/softuni-practice-server)
-[To initiate it](https://github.com/zhenyahodges/SuggestIt#initServer)
 
 #
 
