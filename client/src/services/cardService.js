@@ -1,7 +1,4 @@
 const baseUrl = 'http://localhost:3030/data/cards';
-// process.env.NODE_ENV === 'development'
-// ? 'http://localhost:3030'
-// : 'https://localhost:3031';
 
 export async function getCards(id) {
     const url = id ? `${baseUrl}/${id}` : `${baseUrl}`;
