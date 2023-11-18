@@ -134,6 +134,7 @@ export default function Header({ props }) {
                             <span
                                 className='whos-lookin-wrapper whos-lookin'
                                 id='whos-lookin'
+                                data-testid='user'
                             >
                                 {currentUser}
                             </span>
