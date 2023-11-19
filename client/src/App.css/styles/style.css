@@ -21,11 +21,12 @@
     --clr-grad: #c2e2ee;
     --clr-err: rgb(194, 33, 33);
     --clr-light-bgr: #f8f8f8;
+    --clr-title-shadow: #c4c4c4;
 }
 
 html {
-    /* background: linear-gradient(119deg, rgba(19, 41, 48, 1) 0%, rgba(202, 235, 247, 1) 49%, rgba(247, 247, 247, 1) 100%); */
-    background-color: var(--clr-light-bgr);
+    background: linear-gradient(119deg, rgba(19, 41, 48, 1) 0%, rgba(202, 235, 247, 1) 49%, rgba(247, 247, 247, 1) 100%);
+    /* background-color: var(--clr-light-bgr); */
     font-family: "Mulish", "sans-serif";
     letter-spacing: 0.6px;
 }
