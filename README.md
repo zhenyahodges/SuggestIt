@@ -2,39 +2,30 @@
 
 # Suggest<span style="color:#F79234">**It**</span>
 
-## **Project Assignment: SPA with ReactJS**
-
-<!-- ![SuggestIt SPA ReactJS Application Home Page](./readme-res/SuggestIt-Home-Page.png) -->
-
-<p>
-<a href="https://suggestit-a18f3.web.app">
-  <img src="./readme-res/SuggestIt-Home-Page.png" width="800" title="SuggestIt SPA ReactJS Application Home Page" alt="SuggestIt SPA ReactJS Application Home Page">
-</p>
-
+**Project Assignment: SPA with ReactJS**:
 This is a ReactJS project assignment for completing [SoftUni](https://softuni.bg/)
 ReactJS Course. Details of the assignment are available [here](https://github.com/zhenyahodges/SoftUni-Courses/blob/main/Front_End/REACT/REACT-PROJECT/ReactJS-Project-Assignment.docx).
+
+### **Built with:**
+
+ReactJS, React Router, React Router DOM -   [createBrowserRouter](https://reactrouter.com/en/main/routers/create-browser-router) with v6.4 data APIs like loader and actions
+
+<!-- <p>
+<a href="https://suggestit-a18f3.web.app">
+  <img src="./readme-res/SuggestIt-Home-Page.png" width="800" title="SuggestIt SPA ReactJS Application Home Page" alt="SuggestIt SPA ReactJS Application Home Page">
+</p> -->
+
+## **About**
+
+Suggest<span style="color:#F79234">**It**</span> is a web application which provides a simple interface for receiving feedback and suggestions for improvements for companies and organisations. Users can vote for the suggestions they like the most. Companies can quickly see which suggestions are most popular.
 
 Deployed [here](https://suggestit-a18f3.web.app/).
 
 **Please note: To ensure proper functionality, the [server](https://github.com/zhenyahodges/SuggestIt#server) must be [initiated](https://github.com/zhenyahodges/SuggestIt#initServer) locally since it has not been deployed yet.**
 
-### **Built with:**
-
-ReactJS, React Router, React Router DOM
-
-### **Router:**
-
--   [createBrowserRouter](https://reactrouter.com/en/main/routers/create-browser-router) with v6.4 data APIs like loader and actions
-
 ### **<a name="server"></a>Server:**
 
 Server used: [SoftUni Practice Server](https://github.com/softuni-practice-server/softuni-practice-server)
-
-#
-
-## **About**
-
-Suggest<span style="color:#F79234">**It**</span> is a web application which provides a simple interface for receiving feedback and suggestions for improvements for companies and organisations. Users can vote for the suggestions they like the most. Companies can quickly see which suggestions are most popular.
 
 ### <span style="color:#c2e2ee">**Demo**</span>
 
@@ -165,9 +156,14 @@ Logged users can:
 
 #
 
+
+## **Tests**
+Reat Testing Library and Jest
+#
+
 ### **To run**
 
-In the project directory, you can run:
+In the project directory:
 
 #### `cd client`
 
@@ -181,7 +177,7 @@ In the project directory, you can run:
 #### `node server.js`
 
 \
-Runs the app in the development mode.\
+Runs the app in development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 #
