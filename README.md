@@ -3,7 +3,9 @@
 # Suggest<span style="color:#F79234">**It**</span>
 
 This is a SPA with ReactJS project assignment for completing [SoftUni](https://softuni.bg/)
-ReactJS Course. Details of the assignment are available [here](https://github.com/zhenyahodges/SoftUni-Courses/blob/main/Front_End/REACT/REACT-PROJECT/ReactJS-Project-Assignment.docx). Built with: ***ReactJS, React Router, React Router DOM -   [createBrowserRouter](https://reactrouter.com/en/main/routers/create-browser-router) with v6.4 data APIs like loader and actions***
+ReactJS Course. Details of the assignment are available [here](https://github.com/zhenyahodges/SoftUni-Courses/blob/main/Front_End/REACT/REACT-PROJECT/ReactJS-Project-Assignment.docx).
+
+Built with: ***ReactJS, React Router, React Router DOM -   [createBrowserRouter](https://reactrouter.com/en/main/routers/create-browser-router) with v6.4 data APIs like loader and actions***. Server used: [SoftUni Practice Server](https://github.com/softuni-practice-server/softuni-practice-server).
 
 <!-- <p>
 <a href="https://suggestit-a18f3.web.app">
@@ -14,12 +16,8 @@ ReactJS Course. Details of the assignment are available [here](https://github.co
 
 [Suggest<span style="color:#F79234">**It**</span>](https://suggestit-a18f3.web.app/) is a web application which provides a simple interface for receiving feedback and suggestions for improvements for companies and organisations. Users can vote for the suggestions they like the most. Companies can quickly see which suggestions are most popular.
 
-Deployed [here](https://suggestit-a18f3.web.app/). **Please note: To ensure proper functionality, the [server](https://github.com/zhenyahodges/SuggestIt#server) must be [initiated](https://github.com/zhenyahodges/SuggestIt#initServer) locally since it has not been deployed yet.**
-
-### **<a name="server"></a>Server**
-
-Server used: [SoftUni Practice Server](https://github.com/softuni-practice-server/softuni-practice-server)
-
+Deployed [here](https://suggestit-a18f3.web.app/). ***Please note:*** To ensure proper functionality, the **server** must be [initiated locally](https://github.com/zhenyahodges/SuggestIt#initServer) since it has not been deployed yet.
+#
 ### <span style="color:#c2e2ee">**Demo**</span>
 
 https://github.com/zhenyahodges/SuggestIt/assets/114656373/17df9816-9e42-4cf2-a03b-1d53127b7e06
