@@ -12,7 +12,7 @@ ReactJS Course. Details of the assignment are available [here](https://github.co
 
 ## **About**
 
-Suggest<span style="color:#F79234">**It**</span> is a web application which provides a simple interface for receiving feedback and suggestions for improvements for companies and organisations. Users can vote for the suggestions they like the most. Companies can quickly see which suggestions are most popular.
+[Suggest<span style="color:#F79234">**It**</span>](https://suggestit-a18f3.web.app/) is a web application which provides a simple interface for receiving feedback and suggestions for improvements for companies and organisations. Users can vote for the suggestions they like the most. Companies can quickly see which suggestions are most popular.
 
 Deployed [here](https://suggestit-a18f3.web.app/). **Please note: To ensure proper functionality, the [server](https://github.com/zhenyahodges/SuggestIt#server) must be [initiated](https://github.com/zhenyahodges/SuggestIt#initServer) locally since it has not been deployed yet.**
 
