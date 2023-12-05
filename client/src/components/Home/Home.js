@@ -14,6 +14,8 @@ export default function Home() {
     const navigation = useNavigation();
     const cards = useLoaderData();
     const firstCard = cards.length>0? cards.slice(0, 2) : [];
+    const isLoading = navigation.state === 'loading';
+
    
     return (
         <section className='welcome window'>
@@ -31,9 +33,9 @@ export default function Home() {
                     onClick={() => navigate('cards')}
                     className='btn highlight catalog'
                     id='catalog-btn'
-                    disabled={navigation.state === 'loading'}
+                    disabled={isLoading}
                 >
-                    {navigation.state === 'loading' ? 'Loading...' : 'Catalog'}
+                    {isLoading ? 'Loading...' : 'Catalog'}
                 </button>
             </div>
         </section>
