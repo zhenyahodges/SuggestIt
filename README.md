@@ -3,7 +3,7 @@
 # Suggest<span style="color:#F79234">**It**</span>
 
 This is a SPA with ReactJS project assignment for completing [SoftUni](https://softuni.bg/)
-ReactJS Course. Details of the assignment are available [here](https://github.com/zhenyahodges/SoftUni-Courses/blob/main/Front_End/REACT/REACT-PROJECT/ReactJS-Project-Assignment.docx). Built with ReactJS, React Router-   [createBrowserRouter](https://reactrouter.com/en/main/routers/create-browser-router) with v6.4 data APIs like loader and actions; HTML5 and CSS3. Server used: [SoftUni Practice Server](https://github.com/softuni-practice-server/softuni-practice-server).
+ReactJS Course. Details of the assignment are available [here](https://github.com/zhenyahodges/SoftUni-Courses/blob/main/Front_End/REACT/REACT-PROJECT/ReactJS-Project-Assignment.docx). Built with ReactJS, React Router DOM,  React Router-   [createBrowserRouter](https://reactrouter.com/en/main/routers/create-browser-router) with v6.4 data APIs like loader and actions; HTML5 and CSS3. Server used: [SoftUni Practice Server](https://github.com/softuni-practice-server/softuni-practice-server).
 
 <!-- <p>
 <a href="https://suggestit-a18f3.web.app">
