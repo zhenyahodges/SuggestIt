@@ -24,12 +24,13 @@ export default function Home() {
             <div className='catalog-wrapper'>
                 {error ? (
                     <>
-                        <h3 style={{ marginLeft: '40%',color:'red', textAlign:'center'}}>**Please run server locally**</h3>
+                        <h3 style={{ marginLeft: '40%',color:'red', textAlign:'center'}}>**Please run the server locally**</h3>
                         <Sample />
                     </>
                 ) : (
-                    firstCard.length > 0 &&
+                    firstCard.length > 0 ?
                     firstCard.map((c) => <CatalogItem key={c._id} {...c} />)
+                    :<Sample />
                 )}
             </div>
 
