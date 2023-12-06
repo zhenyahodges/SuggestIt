@@ -13,8 +13,7 @@ export async function getUserSuggestions(userId, token) {
 export async function onDeleteSuggestion(id, token) {
     return await makeRequest(baseUrl, `/${id}`, 'DELETE', null, {
         'X-Authorization': token,
-    });
-  
+    });  
 }
 
 export async function getOneSuggestions(suggestionId, token) {
@@ -24,9 +23,7 @@ export async function getOneSuggestions(suggestionId, token) {
     const url = `${baseUrl}?where=${searchQuery}&load=${relationQuery}`;
     return await makeRequest(url, '', 'GET', null, {
         'X-Authorization': token,
-    });
-
-    
+    });    
 }
 
 export async function onEditSuggestion(
@@ -37,10 +34,9 @@ export async function onEditSuggestion(
 ) {
     const info = { suggestion, cardId };
 
-    const data = await makeRequest(baseUrl, `/${suggestionId}`, 'PUT', info, {
+   return await makeRequest(baseUrl, `/${suggestionId}`, 'PUT', info, {
         'X-Authorization': token,
-    });
-    return data;
+    });    
 }
 
 export async function getCardSuggestions(cardId) {
