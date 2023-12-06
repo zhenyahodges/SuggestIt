@@ -5,17 +5,16 @@ const baseUrl = 'http://localhost:3030/data/suggestions';
 export async function getUserSuggestions(userId, token) {
     const uri = `${baseUrl}?where=_ownerId LIKE "${userId}"`;
     const encoded = encodeURI(uri);
-    const data = await makeRequest(encoded, '', 'GET', null, {
+    return await makeRequest(encoded, '', 'GET', null, {
         'X-Authorization': token,
-    });
-    return data;
+    }); 
 }
 
 export async function onDeleteSuggestion(id, token) {
-    const data = await makeRequest(baseUrl, `/${id}`, 'DELETE', null, {
+    return await makeRequest(baseUrl, `/${id}`, 'DELETE', null, {
         'X-Authorization': token,
     });
-    return data;
+  
 }
 
 export async function getOneSuggestions(suggestionId, token) {
@@ -23,11 +22,11 @@ export async function getOneSuggestions(suggestionId, token) {
     const relationQuery = encodeURIComponent('author=_ownerId:users');
 
     const url = `${baseUrl}?where=${searchQuery}&load=${relationQuery}`;
-    const data = await makeRequest(url, '', 'GET', null, {
+    return await makeRequest(url, '', 'GET', null, {
         'X-Authorization': token,
     });
 
-    return data;
+    
 }
 
 export async function onEditSuggestion(
