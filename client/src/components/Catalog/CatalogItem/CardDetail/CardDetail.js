@@ -4,7 +4,7 @@ import {
     useNavigate,
     useNavigation,
 } from 'react-router-dom';
-import { getCard, onDeleteCard } from '../../../../services/cardService';
+import { deleteCard, getCard } from '../../../../services/cardService';
 import SuggestionDetail from '../SuggestionItem/SuggestionDetail';
 import { useEffect, useState } from 'react';
 import { getCardSuggestions } from '../../../../services/suggestionService';
@@ -31,10 +31,10 @@ export async function loader({ request, params }) {
 export default function CardDetail() {
     const navigation = useNavigation();
     const navigate = useNavigate();
-    const { res, suggestions, message } = useLoaderData();    
-    const { currentUser, currentToken, currentUserId } = useCurrentUser();   
-    const token=currentToken;
-    const userId=currentUserId;
+    const { res, suggestions, message } = useLoaderData();
+    const { currentUser, currentToken, currentUserId } = useCurrentUser();
+    const token = currentToken;
+    const userId = currentUserId;
 
     const ownerId = res._ownerId;
     const cardId = res._id;
@@ -62,7 +62,7 @@ export default function CardDetail() {
     let isOwner = false;
     let canEditCard = false;
 
-    if (currentUser !== 'Guest') {    
+    if (currentUser !== 'Guest') {
         isAuthorized = token;
         isOwner = ownerId === userId;
         canEditCard = ownerId === userId && !isTimedOut;
@@ -70,7 +70,7 @@ export default function CardDetail() {
 
     const onDelete = async () => {
         if (window.confirm('Are you sure you want to delete?')) {
-            await onDeleteCard(cardId, token);
+            await deleteCard(cardId, token);
             navigate('/cards');
         }
     };
@@ -89,7 +89,8 @@ export default function CardDetail() {
                     <main className='card-main'>
                         <ul className='sugg-list'>
                             {/* SUGGESTIONS */}
-                            {suggestions && suggestions.length !== 0 &&
+                            {suggestions &&
+                                suggestions.length !== 0 &&
                                 suggestions.map((s) => (
                                     <SuggestionDetail key={s._id} {...s} />
                                 ))}

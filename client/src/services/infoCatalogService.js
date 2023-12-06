@@ -70,7 +70,7 @@ export async function getUserInfos(userId, token) {
     return data;
 }
 
-export async function onDeleteInfo(infoId, token) {
+export async function deleteInfo(infoId, token) {
     const res = await fetch(`${baseUrl}/${infoId}`, {
         method: 'delete',
         headers: {
