@@ -14,8 +14,8 @@ export async function makeRequest(baseUrl, endpoint, method, body, headers) {
     }
 
     if (
-        (baseUrl.includes('/data/cards') ||
-            baseUrl.includes('/data/infos') ||
+        (baseUrl.includes('http://localhost:3030/data/cards') ||
+            baseUrl.includes('http://localhost:3030/data/infos') ||
             baseUrl.includes('suggestions?where')) &&
         res.status === 404
     ) {
