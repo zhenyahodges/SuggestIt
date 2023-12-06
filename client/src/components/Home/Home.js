@@ -22,8 +22,11 @@ export default function Home() {
         <section className='welcome window'>
             <Welcome />
             <div className='catalog-wrapper'>
-                {error ? (                  
-                    <Sample />
+                {error ? (
+                    <>
+                        <h3 style={{ marginLeft: '40%',color:'red', textAlign:'center'}}>**Please run server locally**</h3>
+                        <Sample />
+                    </>
                 ) : (
                     firstCard.length > 0 &&
                     firstCard.map((c) => <CatalogItem key={c._id} {...c} />)
