@@ -6,10 +6,13 @@ import { requireOwnerRights } from '../../../../utils/requireOwnerRights';
 
 export async function loader({ request, params }) {
     await requireAuth(request);
+
     const infoCardId = params.infoId;
     const res = await getInfo(infoCardId);
+
     const cat = 'info';
     await requireOwnerRights(infoCardId, cat);
+    
     return res;
 }
 
@@ -21,6 +24,7 @@ export async function action({ request, params }) {
         const formData = await request.formData();
         const title = formData.get('title');
         const web = formData.get('web');
+        console.log(web);
         const text = formData.get('text');
 
         try {

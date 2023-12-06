@@ -11,6 +11,8 @@ import { getCardSuggestions } from '../../../../services/suggestionService';
 import { useCurrentUser } from '../../../../hooks/useCurrentUser';
 import PrintButton from '../../../Buttons/PrintButton/PrintButton';
 import EmailBtn from '../../../Buttons/EmailBtn/EmailBtn';
+import DeleteBtn from '../../../Buttons/DeleteBtn/DeleteBtn';
+import RenderLink from '../../../RenderLink/RenderLink';
 
 export async function loader({ request, params }) {
     const cardId = params.cardId;
@@ -68,7 +70,7 @@ export default function CardDetail() {
         canEditCard = ownerId === userId && !isTimedOut;
     }
 
-    const onDelete = async () => {
+     const onDelete = async () => {
         if (window.confirm('Are you sure you want to delete?')) {
             await deleteCard(cardId, token);
             navigate('/cards');
@@ -135,31 +137,17 @@ export default function CardDetail() {
                                 {isAuthorized && isOwner && (
                                     <>
                                         {canEditCard && (
-                                            <Link
+                                            <RenderLink
                                                 to={`/cards/${cardId}/edit`}
-                                                className='btn-sm card-details edit-card'
-                                                disabled={
-                                                    navigation.state ===
-                                                    'loading'
-                                                }
-                                            >
-                                                {navigation.state === 'loading'
-                                                    ? 'Loading...'
-                                                    : 'Edit'}
-                                            </Link>
+                                                classN={'btn-sm card-details edit-card'}
+                                                text={'Edit'}  
+                                           />
                                         )}
-                                        <button
-                                            to='/'
-                                            className='btn-sm card-details delete-card'
-                                            onClick={onDelete}
-                                            disabled={
-                                                navigation.state === 'loading'
-                                            }
-                                        >
-                                            {navigation.state === 'loading'
-                                                ? ':Loading...'
-                                                : 'Delete'}
-                                        </button>
+                                        <DeleteBtn
+                                            to={'/'}
+                                            onClick={onDelete}                                           
+                                            text={'Delete'}
+                                        />
                                     </>
                                 )}
                             </div>

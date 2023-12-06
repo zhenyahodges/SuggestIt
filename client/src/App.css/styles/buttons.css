@@ -56,5 +56,9 @@
     background-color: transparent;
     border: none;
 }
+.btn-sm.card-details.delete-card{
+    font-size: 18px;
+    letter-spacing: 0.6;
+}
 
 /* buttons end */

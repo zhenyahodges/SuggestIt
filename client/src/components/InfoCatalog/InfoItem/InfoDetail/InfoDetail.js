@@ -4,12 +4,11 @@ import {
     useNavigate,
     useNavigation,
 } from 'react-router-dom';
-import {
-    deleteInfo,
-    getInfo,      
-} from '../../../../services/infoCatalogService';
+import { deleteInfo, getInfo } from '../../../../services/infoCatalogService';
 import PrintButton from '../../../Buttons/PrintButton/PrintButton';
 import EmailBtn from '../../../Buttons/EmailBtn/EmailBtn';
+import DeleteBtn from '../../../Buttons/DeleteBtn/DeleteBtn';
+import RenderLink from '../../../RenderLink/RenderLink';
 
 export async function loader({ params }) {
     const res = await getInfo(params.infoId);
@@ -40,7 +39,7 @@ export default function InfoDetail() {
 
     const onDelete = async () => {
         if (window.confirm('Are you sure you want to submit?')) {
-            await deleteInfo(token,infoId);
+            await deleteInfo(token, infoId);
             navigate(-1);
         }
     };
@@ -68,30 +67,20 @@ export default function InfoDetail() {
 
                                 {isAuthorized && isOwner && (
                                     <>
-                                        <Link
+                                        <RenderLink
                                             to={`/infos/${infoId}/edit`}
-                                            className='btn-sm card-details edit-card'
-                                            disabled={
-                                                navigation.state === 'loading'
+                                            classN={
+                                                'btn-sm card-details edit-card'
                                             }
-                                        >
-                                            {navigation.state === 'loading'
-                                                ? 'Loading...'
-                                                : 'Edit'}
-                                        </Link>
+                                            text={'Edit'}
+                                        />
 
-                                        <button
-                                            to='/'
-                                            className='btn-sm card-details delete-card'
+                                        <DeleteBtn
+                                            to={'/'}
                                             onClick={onDelete}
-                                            disabled={
-                                                navigation.state === 'loading'
-                                            }
-                                        >
-                                            {navigation.state === 'loading'
-                                                ? ':Loading...'
-                                                : 'Delete'}
-                                        </button>
+                                            action={'Loading'}
+                                            text={'Delete'}
+                                        />
                                     </>
                                 )}
                             </div>
