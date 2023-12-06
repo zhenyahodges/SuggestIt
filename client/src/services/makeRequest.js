@@ -26,6 +26,10 @@ export async function makeRequest(baseUrl, endpoint, method, body, headers) {
     ) {
         return [];
     }
+    
+    if (endpoint==='/login' && !res.ok) {
+        throw new Error('Email or password invalid. Please try again.');
+    }
 
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
