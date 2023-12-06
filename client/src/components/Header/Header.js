@@ -4,10 +4,9 @@ import RenderNavLink from '../Buttons/RenderNavLink/RenderNavLink';
 
 export default function Header({ userId }) {
     const { currentUser } = useCurrentUser();
-    const isGuest = currentUser === 'Guest';  
-    const classText='nav header list links';
+    const isGuest = currentUser === 'Guest';
+    const classText = 'nav header list links';
 
-    
     const activeStyles = {
         backgroundColor: '#F79234',
         borderRadius: '5px',
@@ -16,21 +15,18 @@ export default function Header({ userId }) {
 
     const navLinksData = [
         {
-         
             to: '.',
             className: `${classText} home`,
             id: 'home',
             text: 'Home',
         },
         {
-       
             to: 'cards',
             className: `${classText} cat`,
             id: 'cat',
             text: 'Catalog',
         },
         {
-        
             to: 'infos',
             className: `${classText} cat`,
             id: 'info',
