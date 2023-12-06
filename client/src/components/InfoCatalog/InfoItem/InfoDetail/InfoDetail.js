@@ -1,9 +1,4 @@
-import {
-    Link,
-    useLoaderData,
-    useNavigate,
-    useNavigation,
-} from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import { deleteInfo, getInfo } from '../../../../services/infoCatalogService';
 import PrintButton from '../../../Buttons/PrintButton/PrintButton';
 import EmailBtn from '../../../Buttons/EmailBtn/EmailBtn';
@@ -16,7 +11,6 @@ export async function loader({ params }) {
 }
 
 export default function InfoDetail() {
-    const navigation = useNavigation();
     const navigate = useNavigate();
     const res = useLoaderData();
 

@@ -1,9 +1,4 @@
-import {
-    Link,
-    useLoaderData,
-    useNavigate,
-    useNavigation,
-} from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import { deleteCard, getCard } from '../../../../services/cardService';
 import SuggestionDetail from '../SuggestionItem/SuggestionDetail';
 import { useEffect, useState } from 'react';
@@ -31,7 +26,6 @@ export async function loader({ request, params }) {
 }
 
 export default function CardDetail() {
-    const navigation = useNavigation();
     const navigate = useNavigate();
     const { res, suggestions, message } = useLoaderData();
     const { currentUser, currentToken, currentUserId } = useCurrentUser();
@@ -70,7 +64,7 @@ export default function CardDetail() {
         canEditCard = ownerId === userId && !isTimedOut;
     }
 
-     const onDelete = async () => {
+    const onDelete = async () => {
         if (window.confirm('Are you sure you want to delete?')) {
             await deleteCard(cardId, token);
             navigate('/cards');
@@ -92,7 +86,7 @@ export default function CardDetail() {
                         <ul className='sugg-list'>
                             {/* SUGGESTIONS */}
                             {suggestions &&
-                                suggestions.length !== 0 &&
+                                // suggestions.length !== 0 &&
                                 suggestions.map((s) => (
                                     <SuggestionDetail key={s._id} {...s} />
                                 ))}
@@ -108,12 +102,11 @@ export default function CardDetail() {
                             <div className='card-footer-links-wrapper'>
                                 {/* ADD-SUGGESTION LINK: visible for LOGGED (NOT OWNERS?) */}
                                 {isAuthorized && !isOwner && (
-                                    <Link
+                                    <RenderLink
                                         to={`/cards/${cardId}/suggest`}
-                                        className='add-sugg-link'
-                                    >
-                                        Suggest
-                                    </Link>
+                                        classN={'add-sugg-link'}
+                                        text={'Suggest'}
+                                    />
                                 )}
 
                                 {/*------- EMAIL&P PRINT */}
@@ -139,13 +132,15 @@ export default function CardDetail() {
                                         {canEditCard && (
                                             <RenderLink
                                                 to={`/cards/${cardId}/edit`}
-                                                classN={'btn-sm card-details edit-card'}
-                                                text={'Edit'}  
-                                           />
+                                                classN={
+                                                    'btn-sm card-details edit-card'
+                                                }
+                                                text={'Edit'}
+                                            />
                                         )}
                                         <DeleteBtn
                                             to={'/'}
-                                            onClick={onDelete}                                           
+                                            onClick={onDelete}
                                             text={'Delete'}
                                         />
                                     </>

@@ -1,8 +1,7 @@
-import { Form, useNavigation } from 'react-router-dom';
+import { Form } from 'react-router-dom';
 import SubmitBtn from '../../Buttons/SubmitBtns/SubmitBtn';
 
-export default function CreateInfoForm() {
-    const navigation = useNavigation();
+export default function CreateInfoForm() {   
     return (
         <Form method='post' id='create-info-form' className='create-card form'>
             <div className='wrap card-title'>
@@ -48,7 +47,7 @@ export default function CreateInfoForm() {
                     name='text'
                     rows='4'
                     cols='50'
-                    maxLength='300'
+                    maxLength='300'                    
                     placeholder='Type your text here'
                     required
                 ></textarea>
