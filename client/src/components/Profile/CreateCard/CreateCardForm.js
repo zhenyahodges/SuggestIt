@@ -1,4 +1,5 @@
 import { Form, useNavigation } from 'react-router-dom';
+import SubmitBtn from '../../Buttons/SubmitBtns/SubmitBtn';
 
 export default function CreateCardForm() {
     const navigation = useNavigation();
@@ -6,7 +7,7 @@ export default function CreateCardForm() {
     // const maxDate = new Date();
     // maxDate.setDate(today.getDate() + 90);
     // console.log(maxDate);
-   
+
     return (
         <Form method='post' id='create-card-form' className='create-card form'>
             <div className='wrap card-title'>
@@ -25,7 +26,7 @@ export default function CreateCardForm() {
                     required
                 />
             </div>
-            
+
             {/* LATER--CODE */}
             {/* <div className='wrap card-code'>
             <label htmlFor='card-code' className='lbl card-code'>
@@ -58,17 +59,12 @@ export default function CreateCardForm() {
                     required
                 />
             </div> */}
-
-            <button
-                className='create btn dark subm'
-                form='create-card-form'
-                id='btn-create-form'
-                disabled={navigation.state === 'submitting'}
-            >
-                {navigation.state === 'submitting'
-                    ? 'Submitting ...'
-                    : 'Submit'}
-            </button>
+            <SubmitBtn
+                className='create'
+                form='create-card'
+                id='create'
+                text='Submit'
+            />
         </Form>
     );
 }

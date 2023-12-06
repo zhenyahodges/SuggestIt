@@ -33,8 +33,8 @@ export default function Header({ userId }) {
             text: 'Infos Catalog',
         },
         {
-            to: `${classText} login`,
-            className: 'log',
+            to: 'login',
+            className: `${classText} log`,
             id: 'log',
             text: 'Login',
             condition: isGuest,

@@ -30,7 +30,7 @@ export async function loader({ request }) {
 export default function ProfileLayout() {
     const { user, urlMessage } = useLoaderData();
     const navigation = useNavigation();
-const isLoading = navigation.state === 'loading';
+    const isLoading = navigation.state === 'loading';
     const message = urlMessage;
 
     const activeStyles = {
@@ -43,25 +43,25 @@ const isLoading = navigation.state === 'loading';
         {
             to: 'suggested',
             className: 'btn dark show suggested',
-            id: 'suggested',      
+            id: 'suggested',
             text: 'Suggested',
         },
         {
             to: 'userInfos',
             className: 'btn dark show infos',
-            id: 'userInfos',        
+            id: 'userInfos',
             text: 'User Infos',
         },
         {
             to: 'create',
             className: 'btn light show create',
-            id: 'create',       
+            id: 'create',
             text: 'Create Card',
         },
         {
             to: 'createinfo',
             className: 'btn light show create',
-            id: 'createinfo',        
+            id: 'createinfo',
             text: 'Post Info',
         },
     ];
@@ -85,22 +85,18 @@ const isLoading = navigation.state === 'loading';
                             }
                             disabled={isLoading}
                         >
-                            {isLoading
-                                ? 'Loading...'
-                                : 'User Cards'}
+                            {isLoading ? 'Loading...' : 'User Cards'}
                         </NavLink>
-                        {navLinksData.map(
-                            ({ to, className, id,  text }) => (
-                                <RenderNavLink
+                        {navLinksData.map(({ to, className, id, text }) => (
+                            <RenderNavLink
                                 key={id}
                                 to={to}
                                 classN={className}
                                 id={id}
                                 text={text}
                                 activeStyles={activeStyles}
-                                />
-                            )
-                        )}
+                            />
+                        ))}
                     </nav>
                 </div>
 
