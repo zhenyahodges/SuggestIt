@@ -5,15 +5,27 @@ import CatalogItem from '../Catalog/CatalogItem/CatalogItem';
 import Sample from './Sample/Sample';
 import NavButton from '../Buttons/NavButton/NavButton';
 
-export async function loader() {
-    const cards = await getAllCards();
-    return cards;
+export async function loader() {  
+    try {
+        const cards = await getAllCards();
+        return { cards, error: null };
+    } catch (error) {
+        return { cards: [], error: error.message };
+    }
 }
 
 export default function Home() {
-    const cards = useLoaderData();
+    const {cards,error} = useLoaderData();
     const firstCard = cards.length > 0 ? cards.slice(0, 2) : [];
 
+    if (error) {
+        return (
+            <section className='welcome window'>
+                <p>Error loading data: {error}</p>
+            </section>
+        );
+    }
+ 
     return (
         <section className='welcome window'>
             <Welcome />
