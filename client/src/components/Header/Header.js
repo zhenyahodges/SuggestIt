@@ -1,18 +1,12 @@
-import { NavLink, useNavigation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useCurrentUser } from '../../hooks/useCurrentUser';
+import RenderNavLink from '../Buttons/RenderNavLink/RenderNavLink';
 
 export default function Header({ props }) {
-    const navigation = useNavigation();
     const { currentUser } = useCurrentUser();
 
     const userId = props;
     const isGuest = currentUser === 'Guest';
-
-    const activeStyles = {
-        backgroundColor: '#F79234',
-        borderRadius: '5px',
-        textShadow: '1px 1px 1px #132930',
-    };
 
     return (
         <header className='page header'>
@@ -30,104 +24,58 @@ export default function Header({ props }) {
                 <div className='header-nav-containter'>
                     <nav className='nav header'>
                         <ul className='nav header list'>
-                            <NavLink
-                                to='.'
-                                className='nav header list links home'
-                                id='nav-head-home-link'
-                                disabled={navigation.state === 'loading'}
-                            >
-                                {navigation.state === 'loading'
-                                    ? 'Loading..'
-                                    : 'Home'}
-                            </NavLink>
-                            <NavLink
-                                to='cards'
-                                className='nav header list links cat'
-                                id='nav-head-cat-link'
-                                style={({ isActive }) =>
-                                    isActive ? activeStyles : null
-                                }
-                                disabled={navigation.state === 'loading'}
-                            >
-                                {navigation.state === 'loading'
-                                    ? 'Loading..'
-                                    : 'Catalog'}
-                            </NavLink>
-                            <NavLink
-                                to='infos'
-                                className='nav header list links cat'
-                                id='nav-head-info-link'
-                                style={({ isActive }) =>
-                                    isActive ? activeStyles : null
-                                }
-                                disabled={navigation.state === 'loading'}
-                            >
-                                {navigation.state === 'loading'
-                                    ? 'Loading..'
-                                    : 'Infos Catalog'}
-                            </NavLink>
+                            <RenderNavLink
+                                to={'.'}
+                                className={'home'}
+                                id={'home'}
+                                text={'Home'}
+                            />
+                            <RenderNavLink
+                                to={'cards'}
+                                className={'cat'}
+                                id={'cat'}
+                                text={'Catalog'}
+                            />
+                            <RenderNavLink
+                                to={'infos'}
+                                className={'cat'}
+                                id={'info'}
+                                text={'Infos Catalog'}
+                            />
 
                             {isGuest && (
-                                <NavLink
-                                    to='login'
-                                    className='nav header list links log'
-                                    id='nav-head-log-link'
-                                    style={({ isActive }) =>
-                                        isActive ? activeStyles : null
-                                    }
-                                    disabled={navigation.state === 'loading'}
-                                >
-                                    {navigation.state === 'loading'
-                                        ? 'Loading..'
-                                        : 'Login'}
-                                </NavLink>
+                                <RenderNavLink
+                                    to={'login'}
+                                    className={'log'}
+                                    id={'log'}
+                                    text={'Login'}
+                                />
                             )}
 
                             {!isGuest && (
-                                <NavLink
-                                    to='logout'
-                                    className='nav header list links logout'
-                                    id='nav-head-logout-link'
-                                    style={({ isActive }) =>
-                                        isActive ? activeStyles : null
-                                    }
-                                    disabled={navigation.state === 'loading'}
-                                >
-                                    {navigation.state === 'loading'
-                                        ? 'Loading..'
-                                        : 'Logout'}
-                                </NavLink>
+                                <RenderNavLink
+                                    to={'logout'}
+                                    className={'logout'}
+                                    id={'logout'}
+                                    text={'Logout'}
+                                />
                             )}
 
                             {isGuest && (
-                                <NavLink
-                                    to='register'
-                                    className='nav header list links reg'
-                                    id='nav-head-reg-link'
-                                    style={({ isActive }) =>
-                                        isActive ? activeStyles : null
-                                    }
-                                    disabled={navigation.state === 'loading'}
-                                >
-                                    {navigation.state === 'loading'
-                                        ? 'Loading..'
-                                        : 'Register'}
-                                </NavLink>
+                                <RenderNavLink
+                                    to={'register'}
+                                    className={'reg'}
+                                    id={'reg'}
+                                    text={'Register'}
+                                />
                             )}
                             {!isGuest && (
-                                <NavLink
+                                <RenderNavLink
                                     to={`users/${userId}`}
-                                    className='nav header list links prof'
-                                    id='nav-head-prof-link'
-                                    style={({ isActive }) =>
-                                        isActive ? activeStyles : null
-                                    }
-                                    disabled={navigation.state === 'loading'}
-                                >
-                                    {navigation.state === 'loading'
-                                        ? 'Loading..'
-                                        : 'Profile'}
-                                </NavLink>
+                                    className={'prof'}
+                                    id={'prof'}
+                                    text={'Profile'}
+                                />
                             )}
                             {/* <!-- <a to="/about" className="nav header list links">About</a> --> */}
                             {/* <!-- <a to="/contact" className="nav header list links">Contact</a> --> */}

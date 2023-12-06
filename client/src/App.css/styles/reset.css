@@ -53,7 +53,8 @@ picture {
 
 /* Inherit fonts for inputs and buttons */
 input,
-button,
+/* button, */
+.btn,
 textarea,
 select {
   font: inherit;
@@ -79,10 +80,12 @@ a {
   text-decoration: none;
 }
 
-button {
+/* button  */
+.btn{
   border: none
 }
 
-button:hover {
+/* button */
+.btn:hover {
   cursor: pointer;
 }
