@@ -10,19 +10,6 @@ export default function RenderNavLink({to, classN, id, text}) {
         textShadow: '1px 1px 1px #132930',
     };
 
-    if (isLoading) {
-        return (
-            <NavLink
-                to={to}
-                className={`nav header list links ${classN}`}
-                id={`nav-head-${id}-link`}
-                style={activeStyles}
-            >
-                Loading..
-            </NavLink>
-        );
-    }
-
     return (
         <NavLink
             to={to}
