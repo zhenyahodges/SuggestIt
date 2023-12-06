@@ -47,8 +47,7 @@ form button {
 /* if poll-code*/
 /* SUGGEST FORM */
 .add-sugg.form-wrapper {
-    /* display: none; */
-    min-height: 40vh;
+    min-height: 50vh;
 }
 
 .add-sugg.form {
