@@ -5,17 +5,9 @@ const baseUrl = 'http://localhost:3030';
 export async function getUserSuggestions(userId, token) {
     const uri = `${baseUrl}/data/suggestions?where=_ownerId LIKE "${userId}"`;
     const encoded = encodeURI(uri);
-    console.log(encoded);
     const data = await makeRequest(encoded, '', 'GET', null, {
         'X-Authorization': token,
     });
-    // if (res.status === 404) {
-    //     return null;
-    // }
-    // if (data) {
-    //     return data;
-    // }
-    // return [];
     return data;
 }
 
