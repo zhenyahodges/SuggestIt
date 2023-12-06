@@ -4,13 +4,13 @@ import {
     redirect,
     useActionData,
     useLoaderData,
-    useNavigation,
 } from 'react-router-dom';
 import { loginUser } from '../../services/authService';
 import { useEffect } from 'react';
 import { useLogged } from '../../hooks/useLogged';
 import { useCurrentUser } from '../../hooks/useCurrentUser';
 import { isAlreadyLogged } from '../../utils/isAlreadyLogged';
+import SubmitBtn from '../Buttons/SubmitBtns/SubmitBtn';
 
 export async function loader({ request }) {
     const res = await isAlreadyLogged();
@@ -65,7 +65,6 @@ export default function Login() {
         }
     }, [setIsLogged, userData, currentUser, setCurrentUser]);
 
-    const navigation = useNavigation();
     const message = useLoaderData();
     const errorMessage = useActionData();
 
@@ -108,14 +107,15 @@ export default function Login() {
                         required
                     />
                 </div>
-                <button
-                    className='log btn dark subm'
-                    form='log-form'
-                    id='btn-log-form'
-                    disabled={navigation.state === 'submitting'}
-                >
-                    {navigation.state === 'submitting' ? 'Logging...' : 'Login'}
-                </button>
+
+                <SubmitBtn
+                    className={'log'}
+                    form={'log'}
+                    id={'log'}
+                    action={'Logging'}
+                    text={'Login'}
+                />
+
                 <Link to='/register' className='login link'>
                     Don't have an account? Register
                 </Link>

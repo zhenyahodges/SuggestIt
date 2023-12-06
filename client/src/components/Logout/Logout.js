@@ -18,10 +18,13 @@ export async function action({ request }) {
 export default function Logout() {
     const { setIsLogged } = useLogged();
     const { setCurrentUser, currentToken } = useCurrentUser();
-    const token = currentToken;
-
     const navigation = useNavigation();
     const navigate = useNavigate();
+
+    const token = currentToken;
+
+    const isLoading = navigation.state === 'loading';
+    const isSubmitting = navigation.state === 'submitting';
 
     const onLogout = async () => {
         await logoutUser(token);
@@ -47,18 +50,15 @@ export default function Logout() {
                         Are you sure you want to logout?
                     </label>
                 </div>
-                <div className='logout-btn-container'>
+                <div className='logout-btn-container'>                    
                     <button
-                        method='get'
                         onClick={onLogout}
                         className='logout log btn dark subm'
                         form='logout-form'
                         id='btn-log-form'
-                        disabled={navigation.state === 'loading'}
+                        disabled={isLoading}
                     >
-                        {navigation.state === 'loading'
-                            ? 'Logging Out...'
-                            : 'Yes'}
+                        {isLoading ? 'Logging Out...' : 'Yes'}
                     </button>
                     <button
                         type='submit'
@@ -67,11 +67,9 @@ export default function Logout() {
                         form='log-form'
                         id='btn-log-form'
                         onClick={onStay}
-                        disabled={navigation.state === 'submitting'}
+                        disabled={isSubmitting}
                     >
-                        {navigation.state === 'submitting'
-                            ? 'Redirecting...'
-                            : 'No'}
+                        {isSubmitting ? 'Redirecting...' : 'No'}
                     </button>
                 </div>
             </Form>

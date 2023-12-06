@@ -3,12 +3,12 @@ import {
     Link,
     redirect,
     useActionData,
-    useNavigation,
 } from 'react-router-dom';
 import { registerUser } from '../../services/authService';
 import { isAlreadyLogged } from '../../utils/isAlreadyLogged';
 import { useCurrentUser } from '../../hooks/useCurrentUser';
 import { useEffect } from 'react';
+import SubmitBtn from '../Buttons/SubmitBtns/SubmitBtn';
 
 export async function loader() {
     const res = await isAlreadyLogged();
@@ -58,8 +58,7 @@ export default function Register() {
             setCurrentUser(userData.email);
         }
     }, [userData, currentUser, setCurrentUser]);
-    
-    const navigation = useNavigation();
+
     const errorMessage = useActionData();
 
     return (
@@ -150,18 +149,14 @@ export default function Register() {
                         autoComplete='new-password'
                         required
                     />
-                </div>        
-
-                <button
-                    className='btn dark subm'
-                    form='reg-form'
-                    id='btn-reg-form'
-                    disabled={navigation.state === 'submitting'}
-                >
-                    {navigation.state === 'submitting'
-                        ? 'Registering ...'
-                        : 'Register'}
-                </button>
+                </div>
+                <SubmitBtn
+                    className={''}
+                    form={'reg'}
+                    id={'reg'}
+                    action={'Registering'}
+                    text={'Register'}
+                />
 
                 <Link to='/login' className='login link'>
                     Already have an account? Login

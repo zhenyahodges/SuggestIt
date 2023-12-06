@@ -8,6 +8,7 @@ import {
 import { requireAuth } from '../../utils/requireAuth';
 import { getUserInfo } from '../../services/authService';
 import ProfileUser from './ProfileUser';
+import RenderNavLink from '../Buttons/RenderNavLink/RenderNavLink';
 
 export async function loader({ request }) {
     const { userId, token } = await requireAuth(request);
@@ -33,7 +34,7 @@ export async function loader({ request }) {
 export default function ProfileLayout() {
     const { user, urlMessage } = useLoaderData();
     const navigation = useNavigation();
-
+const isLoading = navigation.state === 'loading';
     const message = urlMessage;
 
     const activeStyles = {
@@ -41,6 +42,33 @@ export default function ProfileLayout() {
         color: '#132930',
         fontWeight: 'bold',
     };
+
+    const navLinksData = [
+        {
+            to: 'suggested',
+            className: 'btn dark show suggested',
+            id: 'suggested',      
+            text: 'Suggested',
+        },
+        {
+            to: 'userInfos',
+            className: 'btn dark show infos',
+            id: 'userInfos',        
+            text: 'User Infos',
+        },
+        {
+            to: 'create',
+            className: 'btn light show create',
+            id: 'create',       
+            text: 'Create Card',
+        },
+        {
+            to: 'createinfo',
+            className: 'btn light show create',
+            id: 'createinfo',        
+            text: 'Post Info',
+        },
+    ];
 
     return (
         <section className='profile window container'>
@@ -55,63 +83,28 @@ export default function ProfileLayout() {
                             to='.'
                             end
                             className='btn dark show published'
+                            id='profile'
                             style={({ isActive }) =>
                                 isActive ? activeStyles : null
                             }
-                            disabled={navigation.state === 'loading'}
+                            disabled={isLoading}
                         >
-                            {navigation.state === 'loading'
+                            {isLoading
                                 ? 'Loading...'
                                 : 'User Cards'}
                         </NavLink>
-                        <NavLink
-                            to='suggested'
-                            className='btn dark show suggested'
-                            style={({ isActive }) =>
-                                isActive ? activeStyles : null
-                            }
-                            disabled={navigation.state === 'loading'}
-                        >
-                            {navigation.state === 'loading'
-                                ? 'Loading...'
-                                : 'Suggested'}
-                        </NavLink>
-                        <NavLink
-                            to='userInfos'
-                            className='btn dark show pub infos'
-                            style={({ isActive }) =>
-                                isActive ? activeStyles : null
-                            }
-                            disabled={navigation.state === 'loading'}
-                        >
-                            {navigation.state === 'loading'
-                                ? 'Loading...'
-                                : 'User Infos'}
-                        </NavLink>
-                        <NavLink
-                            to='create'
-                            className='btn light show create'
-                            style={({ isActive }) =>
-                                isActive ? activeStyles : null
-                            }
-                            disabled={navigation.state === 'loading'}
-                        >
-                            {navigation.state === 'loading'
-                                ? 'Loading...'
-                                : 'Create Card'}
-                        </NavLink>
-                        <NavLink
-                            to='createinfo'
-                            className='btn light show create'
-                            style={({ isActive }) =>
-                                isActive ? activeStyles : null
-                            }
-                            disabled={navigation.state === 'loading'}
-                        >
-                            {navigation.state === 'loading'
-                                ? 'Loading...'
-                                : 'Post Info'}
-                        </NavLink>
+                        {navLinksData.map(
+                            ({ to, className, id,  text }) => (
+                                <RenderNavLink
+                                key={id}
+                                to={to}
+                                classN={className}
+                                id={id}
+                                text={text}
+                                activeStyles={activeStyles}
+                                />
+                            )
+                        )}
                     </nav>
                 </div>
 
