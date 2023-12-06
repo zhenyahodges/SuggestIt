@@ -1,8 +1,7 @@
-import { Form, useNavigation } from 'react-router-dom';
+import { Form } from 'react-router-dom';
 import SubmitBtn from '../../Buttons/SubmitBtns/SubmitBtn';
 
-export default function CreateCardForm() {
-    const navigation = useNavigation();
+export default function CreateCardForm() {   
     // const today = new Date();
     // const maxDate = new Date();
     // maxDate.setDate(today.getDate() + 90);
