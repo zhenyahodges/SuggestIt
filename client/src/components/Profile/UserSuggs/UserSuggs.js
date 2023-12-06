@@ -18,7 +18,7 @@ export default function UserSuggs() {
 
             <div className='user-sugged-wrapper'>
                 <ul className='user-sugged-list'>
-                    {suggestions && suggestions.length !== 0 ? (
+                    {suggestions && suggestions.length ? (
                         suggestions.map((s) => (
                             <SuggestionDetail key={s._id} {...s} />
                         ))
