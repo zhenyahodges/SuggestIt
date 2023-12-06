@@ -86,7 +86,7 @@ export default function CardDetail() {
                         <ul className='sugg-list'>
                             {/* SUGGESTIONS */}
                             {suggestions &&
-                                // suggestions.length !== 0 &&
+                                suggestions.length > 0 &&
                                 suggestions.map((s) => (
                                     <SuggestionDetail key={s._id} {...s} />
                                 ))}
