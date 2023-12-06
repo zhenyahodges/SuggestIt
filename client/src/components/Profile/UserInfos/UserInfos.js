@@ -16,14 +16,14 @@ export default function UserInfos() {
         <section className='user published'>
             <h2 className='user-title'>Published Infos</h2>
 
-            <div className='user-article-wrapper'>
-                {infos.map((i) => (
+            {/* <div className='user-article-wrapper'>
+                {(infos && infos.length>0) && infos.map((i) => (
                     <InfoItem key={i._id} {...i} />
                 ))}
-            </div>
+            </div> */}
 
             <div className='user-article-wrapper'>
-                {infos && infos?.length ? (
+                {infos?.length ? (
                     infos.map((i) => <InfoItem key={i._id} {...i} />)
                 ) : (
                     <h3>No items yet</h3>
