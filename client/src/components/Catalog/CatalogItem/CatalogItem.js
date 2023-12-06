@@ -30,8 +30,9 @@ export default function CatalogItem(props) {
             <main className='card-main misted'>
                 <ul className='sugg-list'>
                     {/* SUGGESTIONS */}
-                    {suggestions &&
-                        // suggestions.length !== 0 &&
+                    {
+                    (suggestions &&
+                        suggestions.length > 0) &&
                         suggestions.map((s) => (
                             <SuggestionDetail key={s._id} {...s} />
                         ))}
