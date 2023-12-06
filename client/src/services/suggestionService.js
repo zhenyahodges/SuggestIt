@@ -47,39 +47,15 @@ export async function onEditSuggestion(
 export async function getCardSuggestions(cardId) {
     const searchQuery = encodeURIComponent(`cardId="${cardId}"`);
     const relationQuery = encodeURIComponent('author=_ownerId:users');
-
     const url = `${baseUrl}?where=${searchQuery}&load=${relationQuery}`;
-    const res = await fetch(url, {
-        method: 'GET',
-    });
-    if (res.status === 404) {
-        // return null;
-        return [];
-    } else if (!res.ok) {
-        throw new Error(`${res.status} - ${res.statusText}`);
-    }
-
-    const data = await res.json();
+    const data = await makeRequest(url, '', 'GET', null, null);
     return data;
 }
 
 export async function addSuggestion(token, cardId, suggestion) {
     const info = { suggestion, cardId };
 
-    const res = await fetch(`${baseUrl}`, {
-        method: 'post',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-Authorization': token,
-        },
-        body: JSON.stringify(info),
+    return await makeRequest(baseUrl, '', 'POST', info, {
+        'X-Authorization': token,
     });
-    if (!res.ok) {
-        throw new Error(`${res.status} - ${res.statusText}`);
-    }
-    if (res.status === 204) {
-        return null;
-    }
-    const data = await res.json();
-    return data;
 }
