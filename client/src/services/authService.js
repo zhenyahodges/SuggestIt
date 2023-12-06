@@ -4,7 +4,10 @@ async function makeRequest(endpoint, method, body, headers) {
     const res = await fetch(`${baseUrl}${endpoint}`, {
         method,
         body: body ? JSON.stringify(body) : undefined,
-        headers,
+        headers:{
+            'Content-Type': 'application/json',
+            ...headers,
+        }
     });
 
     if (!res.ok) {
@@ -26,15 +29,13 @@ export async function registerUser(creds) {
 }
 
 export async function logoutUser(token) {
-    return makeRequest('/logout', 'get', null, {
-        'Content-Type': 'application/json',
+    return makeRequest('/logout', 'get', null, {        
         'X-Authorization': token,
     });
 }
 
 export async function getUserInfo(token) {
-    return makeRequest('/me', 'get', null, {
-        'Content-Type': 'application/json',
+    return makeRequest('/me', 'get', null, {        
         'X-Authorization': token,
     });
 }
