@@ -1,24 +1,21 @@
-const baseUrl = 
-'http://localhost:3030';
+import { makeRequest } from './makeRequest';
+
+const baseUrl = 'http://localhost:3030';
 
 export async function getUserSuggestions(userId, token) {
     const uri = `${baseUrl}/data/suggestions?where=_ownerId LIKE "${userId}"`;
     const encoded = encodeURI(uri);
-    const res = await fetch(encoded, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-Authorization': token,
-        },
+    console.log(encoded);
+    const data = await makeRequest(encoded, '', 'GET', null, {
+        'X-Authorization': token,
     });
-    if (res.status === 404) {
-        return null;
-    }
-    if (!res.ok) {
-        throw new Error(`${res.status} - ${res.statusText}`);
-    }
-    
-    const data = await res.json();
+    // if (res.status === 404) {
+    //     return null;
+    // }
+    // if (data) {
+    //     return data;
+    // }
+    // return [];
     return data;
 }
 
@@ -34,11 +31,10 @@ export async function onDeleteSuggestion(id, token) {
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
-   
+
     const data = await res.json();
     return data;
 }
-
 
 export async function getOneSuggestions(suggestionId, token) {
     const searchQuery = encodeURIComponent(`_id="${suggestionId}"`);
@@ -55,11 +51,10 @@ export async function getOneSuggestions(suggestionId, token) {
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
- 
+
     const data = await res.json();
     return data;
 }
-
 
 export async function onEditSuggestion(
     token,
@@ -80,11 +75,10 @@ export async function onEditSuggestion(
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
-  
+
     const data = await res.json();
     return data;
 }
-
 
 export async function getCardSuggestions(cardId) {
     const searchQuery = encodeURIComponent(`cardId="${cardId}"`);
@@ -94,13 +88,13 @@ export async function getCardSuggestions(cardId) {
     const res = await fetch(url, {
         method: 'GET',
     });
-    if (res.status === 404) {       
+    if (res.status === 404) {
         // return null;
         return [];
     } else if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }
-   
+
     const data = await res.json();
     return data;
 }
@@ -125,6 +119,3 @@ export async function addSuggestion(token, cardId, suggestion) {
     const data = await res.json();
     return data;
 }
-
-
-
