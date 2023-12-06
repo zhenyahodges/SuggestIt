@@ -1,87 +1,39 @@
-const baseUrl = 
-'http://localhost:3030/data/infos';
+import { makeRequest } from './makeRequest';
+
+const baseUrl = 'http://localhost:3030/data/infos';
 
 // || 2ND CATALOG
-export async function getInfos(id) {
-    const url = id ? `${baseUrl}/${id}` : `${baseUrl}`;
-    const res = await fetch(url);
+export async function getAllInfos() {
+    return makeRequest(baseUrl, '', 'GET');
+}
 
-    if (res.status === 404) {
-        return null;
-    } else if (!res.ok) {
-        throw new Error(`${res.status} - ${res.statusText}`);
-    }
-    const data = await res.json();
-    return data;
+export async function getInfo(id) {
+    return makeRequest(baseUrl, `/${id}`, 'GET');
 }
 
 export async function createNewInfo(token, title, web, text) {
-    const creds = { title, web, text };
-    const res = await fetch(`${baseUrl}`, {
-        method: 'post',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-Authorization': token,
-        },
-        body: JSON.stringify(creds),
+    const info = { title, web, text };
+    return makeRequest(baseUrl, '', 'POST', info, {
+        'X-Authorization': token,
     });
-    if (!res.ok) {
-        throw new Error(`${res.status} - ${res.statusText}`);
-    }
-    const data = await res.json();
-    return data;
 }
 
 export async function editInfo(token, title, web, text, infoId) {
     const info = { title, web, text };
-    const res = await fetch(`${baseUrl}/${infoId}`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-Authorization': token,
-        },
-        body: JSON.stringify(info),
+    return makeRequest(baseUrl, `/${infoId}`, 'PUT', info, {
+        'X-Authorization': token,
     });
-    if (!res.ok) {
-        throw new Error(`${res.status} - ${res.statusText}`);
-    }
-    const data = await res.json();
-    return data;
 }
 
-export async function getUserInfos(userId, token) {    
-    const uri = `${baseUrl}?where=_ownerId LIKE "${userId}"`;
-    const encoded = encodeURI(uri);
-    const res = await fetch(encoded, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-Authorization': token,
-        },
+export async function getUserInfos(userId, token) {
+    const encodedURI = encodeURI(`${baseUrl}?where=_ownerId LIKE "${userId}"`);
+    return makeRequest(encodedURI, '', 'GET', null, {
+        'X-Authorization': token,
     });
-    if(res.status===404){        
-        return null;
-    }
-    if (!res.ok) {
-        throw new Error(`${res.status} - ${res.statusText}`);
-    }
-  
-    const data = await res.json();   
-    return data;
 }
 
-export async function deleteInfo(infoId, token) {
-    const res = await fetch(`${baseUrl}/${infoId}`, {
-        method: 'delete',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-Authorization': token,
-        },
+export async function deleteInfo(token, infoId) {
+    return makeRequest(baseUrl, `/${infoId}`, 'DELETE', null, {
+        'X-Authorization': token,
     });
-
-    if (!res.ok) {
-        throw new Error(`${res.status} - ${res.statusText}`);
-    }
-    const data = await res.json();
-    return data;
 }

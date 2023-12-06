@@ -12,12 +12,21 @@ export async function makeRequest(baseUrl, endpoint, method, body, headers) {
         localStorage.clear();
         return {};
     }
+
     if (
         baseUrl.includes('http://localhost:3030/data/cards') &&
         res.status === 404
     ) {
         return [];
     }
+
+    if (
+        baseUrl.includes('http://localhost:3030/data/infos') &&
+        res.status === 404
+    ) {
+        return [];
+    }
+
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }

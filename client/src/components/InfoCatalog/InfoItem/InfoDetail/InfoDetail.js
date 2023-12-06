@@ -5,14 +5,14 @@ import {
     useNavigation,
 } from 'react-router-dom';
 import {
-    getInfos,
-    onDeleteInfo,
+    deleteInfo,
+    getInfo,      
 } from '../../../../services/infoCatalogService';
 import PrintButton from '../../../Buttons/PrintButton/PrintButton';
 import EmailBtn from '../../../Buttons/EmailBtn/EmailBtn';
 
 export async function loader({ params }) {
-    const res = await getInfos(params.infoId);
+    const res = await getInfo(params.infoId);
     return res;
 }
 
@@ -40,7 +40,7 @@ export default function InfoDetail() {
 
     const onDelete = async () => {
         if (window.confirm('Are you sure you want to submit?')) {
-            await onDeleteInfo(infoId, token);
+            await deleteInfo(token,infoId);
             navigate(-1);
         }
     };

@@ -1,10 +1,9 @@
 import { useLoaderData } from 'react-router-dom';
-import { getInfos } from '../../services/infoCatalogService';
+import { getAllInfos } from '../../services/infoCatalogService';
 import InfoItem from './InfoItem/InfoItem';
 
 export async function loader() {
-    const infos = await getInfos();
-
+    const infos = await getAllInfos();
     return infos;
 }
 
