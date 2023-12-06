@@ -37,6 +37,7 @@
     background-color: var(--clr-bgr);
     color: var(--clr-light);
     font-weight: 500;
+    margin: 10px;
 }
 
 .btn.dark:hover {
