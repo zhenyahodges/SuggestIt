@@ -17,11 +17,7 @@ export async function loader({ request }) {
     const user = { fname, lname, email, userId, token };
     const pathname = new URL(request.url).searchParams.get('message');
 
-    if (!userId) {
-        return redirect(pathname);
-    }
-
-    if (!token) {
+    if (!userId || !token) {
         return redirect(pathname);
     }
 
