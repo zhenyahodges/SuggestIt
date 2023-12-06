@@ -20,55 +20,19 @@ export async function getUserCards(userId, token) {
 }
 
 export async function createNewCard(token, brand) {
-    const creds = { brand };
-    const res = await fetch(`${baseUrl}`, {
-        method: 'post',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-Authorization': token,
-        },
-        body: JSON.stringify(creds),
-    });
-    if (!res.ok) {
-        throw new Error(`${res.status} - ${res.statusText}`);
-    }
-
-    const data = await res.json();
-    return data;
+    return makeRequest(baseUrl,'', 'POST', { brand }, {
+        'X-Authorization': token,
+      });
 }
 
-export async function editCard(token, brand, cardId) {
-    const info = { brand };
-
-    const res = await fetch(`${baseUrl}/${cardId}`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-Authorization': token,
-        },
-        body: JSON.stringify(info),
-    });
-    if (!res.ok) {
-        throw new Error(`${res.status} - ${res.statusText}`);
-    }
-
-    const data = await res.json();
-    return data;
+export async function editCard(token, brand, cardId) {   
+    return makeRequest(baseUrl,`/${cardId}`, 'PUT', { brand }, {
+        'X-Authorization': token,
+      });
 }
 
 export async function onDeleteCard(id, token) {
-    const res = await fetch(`${baseUrl}/${id}`, {
-        method: 'delete',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-Authorization': token,
-        },
-    });
-
-    if (!res.ok) {
-        throw new Error(`${res.status} - ${res.statusText}`);
-    }
-
-    const data = await res.json();
-    return data;
+    return makeRequest(baseUrl,`/${id}`, 'DELETE', null, {
+        'X-Authorization': token,
+      });  
 }
