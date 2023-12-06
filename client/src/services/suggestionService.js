@@ -94,8 +94,9 @@ export async function getCardSuggestions(cardId) {
     const res = await fetch(url, {
         method: 'GET',
     });
-    if (res.status === 404) {
-        return null;
+    if (res.status === 404) {       
+        // return null;
+        return [];
     } else if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
     }

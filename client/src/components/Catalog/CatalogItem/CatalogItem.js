@@ -12,7 +12,7 @@ export default function CatalogItem(props) {
     useEffect(() => {
         async function fetchData() {
             try {
-                const suggestions = await getCardSuggestions(id);
+                const suggestions = await getCardSuggestions(id);           
                 setSuggestions(suggestions);
             } catch (e) {
                 console.log(e);
@@ -31,7 +31,7 @@ export default function CatalogItem(props) {
                 <ul className='sugg-list'>
                     {/* SUGGESTIONS */}
                     {suggestions &&
-                        suggestions.length !== 0 &&
+                        // suggestions.length !== 0 &&
                         suggestions.map((s) => (
                             <SuggestionDetail key={s._id} {...s} />
                         ))}
