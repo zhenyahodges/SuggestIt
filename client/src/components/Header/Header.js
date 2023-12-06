@@ -38,14 +38,7 @@ export default function Header({ userId }) {
             id: 'log',
             text: 'Login',
             condition: isGuest,
-        },
-        {
-            to: 'logout',
-            className: `${classText} logout`,
-            id: 'logout',
-            text: 'Logout',
-            condition: !isGuest,
-        },
+        },    
         {
             to: 'register',
             className: `${classText} reg`,
@@ -58,6 +51,13 @@ export default function Header({ userId }) {
             className: `${classText} prof`,
             id: 'prof',
             text: 'Profile',
+            condition: !isGuest,
+        },
+        {
+            to: 'logout',
+            className: `${classText} logout`,
+            id: 'logout',
+            text: 'Logout',
             condition: !isGuest,
         },
     ];
