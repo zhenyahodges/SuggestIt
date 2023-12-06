@@ -1,37 +1,22 @@
+import { makeRequest } from './makeRequest';
+
 const baseUrl = 'http://localhost:3030/data/cards';
 
-export async function getCards(id) {
-    const url = id ? `${baseUrl}/${id}` : `${baseUrl}`;
-    const res = await fetch(url);
+// get all cards
+export async function getAllCards() {
+    return makeRequest(baseUrl, '', 'GET');
+}
 
-    if (res.status === 404) {
-        return [];
-    } else if (!res.ok) {
-        throw new Error(`${res.status} - ${res.statusText}`);
-    } else {
-        const data = await res.json();
-        return data;
-    }
+// get a specific card
+export async function getCard(id) {
+    return makeRequest(baseUrl, `/${id}`, 'GET');
 }
 
 export async function getUserCards(userId, token) {
-    const uri = `${baseUrl}?where=_ownerId LIKE "${userId}"`;
-    const encoded = encodeURI(uri);
-    const res = await fetch(encoded, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-Authorization': token,
-        },
-    });
-    if (res.status === 404) {
-        return null;
-    }
-    if (!res.ok) {
-        throw new Error(`${res.status} - ${res.statusText}`);
-    }
-    const data = await res.json();
-    return data;
+    const encodedURI = encodeURI(`${baseUrl}?where=_ownerId LIKE "${userId}"`);
+    return makeRequest(encodedURI,'', 'GET', null, {
+        'X-Authorization': token,
+      });   
 }
 
 export async function createNewCard(token, brand) {

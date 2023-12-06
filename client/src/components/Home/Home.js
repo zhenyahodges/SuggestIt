@@ -1,12 +1,12 @@
 import { useLoaderData } from 'react-router-dom';
 import Welcome from './Welcome/Welcome';
-import { getCards } from '../../services/cardService';
+import { getAllCards } from '../../services/cardService';
 import CatalogItem from '../Catalog/CatalogItem/CatalogItem';
 import Sample from './Sample/Sample';
 import NavButton from '../Buttons/NavButton/NavButton';
 
 export async function loader() {
-    const cards = await getCards();
+    const cards = await getAllCards();
     return cards;
 }
 

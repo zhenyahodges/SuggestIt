@@ -4,7 +4,7 @@ import {
     useNavigate,
     useNavigation,
 } from 'react-router-dom';
-import { getCards, onDeleteCard } from '../../../../services/cardService';
+import { getCard, onDeleteCard } from '../../../../services/cardService';
 import SuggestionDetail from '../SuggestionItem/SuggestionDetail';
 import { useEffect, useState } from 'react';
 import { getCardSuggestions } from '../../../../services/suggestionService';
@@ -14,7 +14,7 @@ import EmailBtn from '../../../Buttons/EmailBtn/EmailBtn';
 
 export async function loader({ request, params }) {
     const cardId = params.cardId;
-    const res = await getCards(cardId);
+    const res = await getCard(cardId);
     const user = JSON.parse(localStorage.getItem('user'));
 
     const suggestions = await getCardSuggestions(cardId);

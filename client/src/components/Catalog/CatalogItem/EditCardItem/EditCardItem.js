@@ -1,5 +1,5 @@
 import { redirect, useLoaderData } from 'react-router-dom';
-import { editCard, getCards } from '../../../../services/cardService';
+import { editCard, getCard } from '../../../../services/cardService';
 import { requireAuth } from '../../../../utils/requireAuth';
 import EditCardItemForm from './EditCardItemForm';
 import { requireOwnerRights } from '../../../../utils/requireOwnerRights';
@@ -11,7 +11,7 @@ export async function loader({ request, params }) {
     const cat='card';
     await requireOwnerRights(cardId,cat);
     
-    const res = await getCards(cardId);    
+    const res = await getCard(cardId);    
     return res;
 }
 

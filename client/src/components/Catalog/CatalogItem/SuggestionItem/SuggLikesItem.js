@@ -5,7 +5,7 @@ import {
     getSuggestionLikesCount,
     postLike,
 } from '../../../../services/likesService';
-import { getCards } from '../../../../services/cardService';
+import { getCard } from '../../../../services/cardService';
 
 export default function SuggLikesItem({
     userId,
@@ -24,7 +24,7 @@ export default function SuggLikesItem({
     // get card owner id
     useEffect(() => {
         async function fetchCardOwner() {
-            const res = await getCards(cardId);
+            const res = await getCard(cardId);
             setCardOwner(res._ownerId);
         }
         fetchCardOwner();

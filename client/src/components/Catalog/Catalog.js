@@ -1,9 +1,9 @@
 import { useLoaderData } from 'react-router-dom';
-import { getCards } from '../../services/cardService';
+import { getAllCards } from '../../services/cardService';
 import CatalogItem from './CatalogItem/CatalogItem';
 
 export async function loader() {
-    const cards = await getCards();
+    const cards = await getAllCards();
     return cards;
 }
 
