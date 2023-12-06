@@ -6,11 +6,8 @@ export async function postLike(suggestionId, token, userId) {
     const info = { suggestionId, userId };
     const data = await makeRequest(baseUrl, '', 'POST', info, {
         'X-Authorization': token,
-    });
-    if (data) {
-        return data;
-    }
-    return [];
+    }); 
+    return data;
 }
 
 export async function getOneLike(suggId, userId) {
