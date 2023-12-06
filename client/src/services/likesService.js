@@ -4,10 +4,9 @@ const baseUrl = 'http://localhost:3030/data/likes';
 
 export async function postLike(suggestionId, token, userId) {
     const info = { suggestionId, userId };
-    const data = await makeRequest(baseUrl, '', 'POST', info, {
+    return await makeRequest(baseUrl, '', 'POST', info, {
         'X-Authorization': token,
-    }); 
-    return data;
+    });
 }
 
 export async function getOneLike(suggId, userId) {
@@ -23,15 +22,13 @@ export async function getOneLike(suggId, userId) {
 }
 
 export async function deleteLike(likeId, token) {
-    const data = await makeRequest(baseUrl, `/${likeId}`, 'DELETE', null, {
+    return await makeRequest(baseUrl, `/${likeId}`, 'DELETE', null, {
         'X-Authorization': token,
     });
-    return data;
 }
 
 export async function getSuggestionLikesCount(suggestionId) {
     const searchQuery = encodeURIComponent(`suggestionId="${suggestionId}"`);
     const url = `${baseUrl}?where=${searchQuery}&count`;
-    const data = await makeRequest(url, '', 'GET', null);
-    return data;
+    return await makeRequest(url, '', 'GET', null);
 }
