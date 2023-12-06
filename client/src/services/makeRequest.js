@@ -14,20 +14,15 @@ export async function makeRequest(baseUrl, endpoint, method, body, headers) {
     }
 
     if (
-        baseUrl.includes('http://localhost:3030/data/cards') &&
+        (baseUrl.includes('http://localhost:3030/data/cards') ||
+            baseUrl.includes('http://localhost:3030/data/infos') ||
+            baseUrl.includes('suggestions?where')) &&
         res.status === 404
     ) {
         return [];
     }
 
-    if (
-        baseUrl.includes('http://localhost:3030/data/infos') &&
-        res.status === 404
-    ) {
-        return [];
-    }
-    
-    if (endpoint==='/login' && !res.ok) {
+    if (endpoint === '/login' && !res.ok) {
         throw new Error('Email or password invalid. Please try again.');
     }
 
