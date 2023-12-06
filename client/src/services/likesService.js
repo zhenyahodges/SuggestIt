@@ -32,6 +32,6 @@ export async function deleteLike(likeId, token) {
 export async function getSuggestionLikesCount(suggestionId) {
     const searchQuery = encodeURIComponent(`suggestionId="${suggestionId}"`);
     const url = `${baseUrl}?where=${searchQuery}&count`;
-    const data = await makeRequest(url,'', 'GET',null);
+    const data = await makeRequest(url, '', 'GET', null);
     return data;
 }
