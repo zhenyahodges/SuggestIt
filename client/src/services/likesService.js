@@ -1,41 +1,25 @@
-const baseUrl = 
-'http://localhost:3030/data/likes';
+import { makeRequest } from './makeRequest';
+
+const baseUrl = 'http://localhost:3030/data/likes';
 
 export async function postLike(suggestionId, token, userId) {
     const info = { suggestionId, userId };
-    const res = await fetch(`${baseUrl}`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-Authorization': token,
-        },
-        body: JSON.stringify(info),
+    const data = await makeRequest(baseUrl,'','POST', info, {
+        'X-Authorization': token,
     });
-    if (!res.ok) {
-        throw new Error(`${res.status} - ${res.statusText}`);
-    }
-    const data = await res.json();
     return data;
 }
 
 export async function getOneLike(suggId, userId) {
     const searchQuery = encodeURIComponent(`suggestionId="${suggId}"`);
     const url = `${baseUrl}?where=${searchQuery}`;
-    const res = await fetch(url, {
-        method: 'GET',
-    });
+    const data = await makeRequest(url,'', 'GET');
 
-    if (!res.ok) {
-        throw new Error(`${res.status} - ${res.statusText}`);
-    }
-    const data = await res.json();
-    let likeId;
     if (data) {
-        const result = data.find((item) => item.userId === userId);
-        likeId = result._id;
+      const likeId = data.find((item) => item.userId === userId)?._id;
+      return likeId;
     }
-
-    return likeId;
+    return null;
 }
 
 export async function deleteLike(likeId, token) {
@@ -64,7 +48,7 @@ export async function getSuggestionLikesCount(suggestionId) {
     }
     if (!res.ok) {
         throw new Error(`${res.status} - ${res.statusText}`);
-    }     
+    }
     const data = await res.json();
     return data;
 }
