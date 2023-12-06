@@ -38,19 +38,9 @@ export async function onEditSuggestion(
 ) {
     const info = { suggestion, cardId };
 
-    const res = await fetch(`${baseUrl}/${suggestionId}`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-Authorization': token,
-        },
-        body: JSON.stringify(info),
+    const data = await makeRequest(baseUrl, `/${suggestionId}`, 'PUT', info, {
+        'X-Authorization': token,
     });
-    if (!res.ok) {
-        throw new Error(`${res.status} - ${res.statusText}`);
-    }
-
-    const data = await res.json();
     return data;
 }
 
