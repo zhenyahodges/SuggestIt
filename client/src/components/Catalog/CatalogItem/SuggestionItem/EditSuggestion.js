@@ -15,11 +15,12 @@ export async function loader({ request, params }) {
 }
 
 export async function action({ request, params }) {
+    const suggestionId = params.suggestionId;
+
     if (window.confirm('Are you sure you want to submit?')) {
         const { token } = await requireAuth();
         const formData = await request.formData();
         const suggestion = formData.get('suggestion');
-        const suggestionId = params.suggestionId;
         const cardId = cardIds;
 
         try {
@@ -33,7 +34,8 @@ export async function action({ request, params }) {
             return err.message;
         }
     } else {
-        return redirect(`/cards/${cardIds}`);
+        return redirect(`/suggestions/${suggestionId}`);
+  
     }
 }
 
