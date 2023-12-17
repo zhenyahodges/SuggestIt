@@ -1,11 +1,13 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { 
+    // fireEvent,
+     render, screen } from '@testing-library/react';
 import Header from './Header';
 
 import React, { isValidElement } from 'react';
 import { RouterProvider, createMemoryRouter } from 'react-router-dom';
 import { CurrentUserProvider } from '../../context/CurrentUserContext';
 import { LoggedProvider } from '../../context/LoggedContext';
-import Catalog from '../Catalog/Catalog';
+// import Catalog from '../Catalog/Catalog';
 
 export function renderWithRouter(children, routes = []) {
     const options = isValidElement(children)
@@ -33,20 +35,27 @@ describe('Header', () => {
     });
     it('shows links', async () => {
         renderWithRouter(<Header />);
-        expect(screen.getAllByRole('link')).toHaveLength(6);
+        const links=screen.getAllByRole('link');
+        expect(links).toHaveLength(6);
+
+        links.forEach(l=>{
+            expect(l).toHaveAttribute('href');
+        });
     });
     it('shows current user', async () => {
         renderWithRouter(<Header />);
         expect(screen.getByTestId('user')).toBeTruthy();
     });
-    // it('shows Catalog when user clicks link', async () => {
-    //     // const user = userEvent.setup();
+
+    // it('navigates to Catalog when user clicks link', async () => {
+    // //     // const user = userEvent.setup();
 
     //     renderWithRouter(<Header />, [
     //        { path: 'catalog',
     //         element: <Catalog/>}
     //     ]);
     //     fireEvent.click(screen.getByText('Catalog'));
-    //     expect(screen.getByRole('heading', { level: 2 })).toHaveValue('Catalog'); 
+    //     expect(screen.getByRole('heading', { level: 2 })).toEqual('Catalog');
     // });
 });
+

@@ -12,7 +12,7 @@ export async function loader() {
 }
 
 export default function Catalog() {
-    const { cards, error } = useLoaderData();
+    const { cards, error } = useLoaderData() || {};
 
     return (
         <section className='catalog window'>
