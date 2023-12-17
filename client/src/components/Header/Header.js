@@ -3,7 +3,7 @@ import { useCurrentUser } from '../../hooks/useCurrentUser';
 import RenderNavLink from '../Buttons/RenderNavLink/RenderNavLink';
 
 export default function Header({ userId }) {
-    const { currentUser } = useCurrentUser();
+    const { currentUser } = useCurrentUser() || {};
     const isGuest = currentUser === 'Guest';
     const classText = 'nav header list links';
 
@@ -24,6 +24,7 @@ export default function Header({ userId }) {
             to: 'cards',
             className: `${classText} cat`,
             id: 'cat',
+            testId:'cat',
             text: 'Catalog',
         },
         {
@@ -97,7 +98,7 @@ export default function Header({ userId }) {
                             <span
                                 className='whos-lookin-wrapper whos-lookin'
                                 id='whos-lookin'
-                                data-testid='user'
+                                data-testid='user'                               
                             >
                                 {currentUser}
                             </span>

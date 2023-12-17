@@ -1,6 +1,6 @@
 import { 
-    // fireEvent,
-     render, screen } from '@testing-library/react';
+    fireEvent,
+     render, screen,userEvent } from '@testing-library/react';
 import Header from './Header';
 
 import React, { isValidElement } from 'react';
@@ -32,8 +32,11 @@ describe('Header', () => {
     it('renders Header', async () => {
         renderWithRouter(<Header />);
         expect(screen.getByText('Catalog')).toBeInTheDocument();
+        // Test if the logo is rendered
+    expect(screen.getByText('Suggest')).toBeInTheDocument();
     });
-    it('shows links', async () => {
+
+    it('renders header with navigation links for a guest user', async () => {
         renderWithRouter(<Header />);
         const links=screen.getAllByRole('link');
         expect(links).toHaveLength(6);
@@ -41,7 +44,12 @@ describe('Header', () => {
         links.forEach(l=>{
             expect(l).toHaveAttribute('href');
         });
+  
+     // Test if links for logged-in users are not rendered
+     expect(screen.queryByText(/Profile/i)).toBeNull();
+     expect(screen.queryByText(/Logout/i)).toBeNull();
     });
+    
     it('shows current user', async () => {
         renderWithRouter(<Header />);
         expect(screen.getByTestId('user')).toBeTruthy();
