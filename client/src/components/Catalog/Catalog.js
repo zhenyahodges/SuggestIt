@@ -20,21 +20,11 @@ export default function Catalog() {
 
             <div className='catalog-wrapper'>
                 {error ? (
-                    <h3
-                        style={{ marginLeft: '44%' }}
-                        className='no-articles-message'
-                    >
-                        No articles yet
-                    </h3>
+                    <h3 className='no-articles-message'>No articles yet</h3>
                 ) : cards?.length ? (
                     cards.map((c) => <CatalogItem key={c._id} {...c} />)
                 ) : (
-                    <h3
-                        style={{ marginLeft: '44%' }}
-                        className='no-articles-message'
-                    >
-                        No articles yet
-                    </h3>
+                    <h3 className='no-articles-message'>No articles yet</h3>
                 )}
             </div>
         </section>

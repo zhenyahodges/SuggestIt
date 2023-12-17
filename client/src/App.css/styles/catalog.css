@@ -2,11 +2,16 @@
 .catalog-wrapper {
     display: flex;
     flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
     margin: 0 auto;
 }
 
 .catalog .post-sugg.link {
     display: none;
+}
+.catalog.title{
+    text-align: center;
 }
 
 .misted,
