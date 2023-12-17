@@ -21,11 +21,14 @@ export default function Home() {
     return (
         <section className='welcome window'>
             <Welcome />
-            <div className='catalog-wrapper'>
+            <div className='catalog-wrapper '>
                 {error ? (
                     <>
-                        <h3 style={{ marginLeft: '40%',color:'red', textAlign:'center'}}>**Please run the server locally**</h3>
-                        <Sample />
+                        <h3 
+                        style={{ 
+                            margin: '0 auto',
+                            color:'red', textAlign:'center'}}
+                        >**Please run the server locally**</h3>                        
                     </>
                 ) : (
                     firstCard.length > 0 ?
