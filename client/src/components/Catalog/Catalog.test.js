@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import {  render, screen } from '@testing-library/react';
 import React, { isValidElement } from 'react';
 import { RouterProvider, createMemoryRouter } from 'react-router-dom';
 import { CurrentUserProvider } from '../../context/CurrentUserContext';
