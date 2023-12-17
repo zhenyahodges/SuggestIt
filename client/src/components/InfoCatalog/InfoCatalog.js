@@ -20,8 +20,7 @@ export default function InfosCatalog() {
 
             <div className='catalog-wrapper'>
                 {error ? (
-                    <h3
-                        style={{ marginLeft: '44%' }}
+                    <h3                       
                         className='no-articles-message'
                     >
                         No articles yet
@@ -29,8 +28,7 @@ export default function InfosCatalog() {
                 ) : infos?.length ? (
                     infos.map((i) => <InfoItem key={i._id} {...i} />)
                 ) : (
-                    <h3
-                        style={{ marginLeft: '44%' }}
+                    <h3                        
                         className='no-articles-message'
                     >
                         No articles yet
