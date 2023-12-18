@@ -27,7 +27,7 @@ export async function action({ request, params }) {
             return err.message;
         }
     } else {
-        return redirect(`/cards/${cardId}`);
+        return redirect(`/cards/${cardId}/suggest`);
     }
 }
 
