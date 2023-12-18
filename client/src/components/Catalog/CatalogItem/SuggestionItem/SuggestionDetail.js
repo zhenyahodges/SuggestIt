@@ -15,8 +15,7 @@ export default function SuggestionDetail(props) {
 
     // use props info
     const ownerId = props._ownerId;
-    const suggestion = props.suggestion;
-    // const likes = props.likes;
+    const suggestion = props.suggestion; 
     const cardId = props.cardId;
     const createdOn = props._createdOn;
     // const updatedOn = props._updatedOn;
@@ -31,14 +30,15 @@ export default function SuggestionDetail(props) {
     useEffect(() => {
         const timer = setInterval(() => {
             const timePassed = new Date() - new Date(createdOn) > 60000;
-
-            if (timePassed || !token) {
-                setIsTimedOut(true);
-                clearInterval(timer);
-            } else if(!timePassed && token) {
-                setIsTimedOut(false);
-            }
+            setIsTimedOut(timePassed || !token);
+            // if (timePassed || !token) {
+            //     setIsTimedOut(true);
+                // clearInterval(timer);
+            // } else if(!timePassed && token) {
+                // setIsTimedOut(false);
+            // }
         }, 10);
+        return () => clearInterval(timer);
     }, [createdOn, token]);
 
     const isAuthorized = Boolean(token);
