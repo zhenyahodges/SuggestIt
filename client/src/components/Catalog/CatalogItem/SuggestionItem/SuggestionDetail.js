@@ -30,13 +30,7 @@ export default function SuggestionDetail(props) {
     useEffect(() => {
         const timer = setInterval(() => {
             const timePassed = new Date() - new Date(createdOn) > 60000;
-            setIsTimedOut(timePassed || !token);
-            // if (timePassed || !token) {
-            //     setIsTimedOut(true);
-                // clearInterval(timer);
-            // } else if(!timePassed && token) {
-                // setIsTimedOut(false);
-            // }
+            setIsTimedOut(timePassed || !token);           
         }, 10);
         return () => clearInterval(timer);
     }, [createdOn, token]);
