@@ -61,13 +61,10 @@ export default function SuggLikesItem({
                 return res.json();
             })
             .then((data) => {
-                if (data) {
-                    const result = data.find((item) => item.userId === userId);
-                    if (result !== undefined && result !== null) {
-                        return setHasLiked(true);
-                    } else {
-                        return setHasLiked(false);
-                    }
+                const result = data.find((item) => item.userId === userId);
+
+                if (result) {
+                    return setHasLiked(true);
                 } else {
                     return setHasLiked(false);
                 }
@@ -108,7 +105,6 @@ export default function SuggLikesItem({
                     ></i>
                 </span>
             )}
-   
         </p>
     );
 }
