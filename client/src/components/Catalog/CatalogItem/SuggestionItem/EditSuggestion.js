@@ -28,14 +28,13 @@ export async function action({ request, params }) {
                 await onEditSuggestion(token, cardId, suggestion, suggestionId);
                 return redirect(`/cards/${cardId}`);
             } else {
-                redirect('login');
+                return redirect('login');
             }
         } catch (err) {
             return err.message;
         }
     } else {
-        return redirect(`/suggestions/${suggestionId}`);
-  
+        return redirect(`/suggestions/${suggestionId}`);  
     }
 }
 
