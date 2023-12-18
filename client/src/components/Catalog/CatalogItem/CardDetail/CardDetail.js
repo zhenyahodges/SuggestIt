@@ -45,13 +45,9 @@ export default function CardDetail() {
         const timer = setInterval(() => {
             const timePassed = new Date() - new Date(createdOn) > 60000;
 
-            if (timePassed) {
-                setIsTimedOut(true);
-                clearInterval(timer);
-            } else {
-                setIsTimedOut(false);
-            }
+            setIsTimedOut(timePassed);
         }, 10);
+        return () => clearInterval(timer);
     }, [createdOn]);
 
     let isAuthorized = false;
