@@ -73,8 +73,7 @@ export default function SuggLikesItem({
                 }
             })
             .catch((err) => {
-               return console.log(`Error: ${err.message}`);
-                
+                return console.log(`Error: ${err.message}`);
             });
     }, [suggId, userId]);
 
@@ -96,18 +95,20 @@ export default function SuggLikesItem({
         <p className='sugg-ranking'>
             <span className='rank'>{count ? count : 0}</span>
 
-            {/* LIKE DISABLED FOR GUESTS & OWNERS  */}
-            {canLike && !hasLiked && (
-                <span className='sugg-like-link' onClick={() => onLike()}>
-                    <i className='like fa-solid fa-circle-up'></i>
+            {/* LIKE or DISLIKE */}
+            {canLike && (
+                <span
+                    className='sugg-like-link'
+                    onClick={hasLiked ? onDislike : onLike}
+                >
+                    <i
+                        className={`fa-solid fa-circle-${
+                            hasLiked ? 'down' : 'up'
+                        }`}
+                    ></i>
                 </span>
             )}
-            {/* DISLIKE */}
-            {canLike && hasLiked && (
-                <span className='sugg-like-link' onClick={() => onDislike()}>
-                    <i className='fa-solid fa-circle-down'></i>
-                </span>
-            )}
+   
         </p>
     );
 }
