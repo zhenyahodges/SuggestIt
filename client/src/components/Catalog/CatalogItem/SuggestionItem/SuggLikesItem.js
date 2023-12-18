@@ -92,7 +92,7 @@ export default function SuggLikesItem({
         <p className='sugg-ranking'>
             <span className='rank'>{count ? count : 0}</span>
 
-            {/* LIKE or DISLIKE */}
+            {/* CANLIKE? AND LIKE or DISLIKE */}
             {canLike && (
                 <span
                     className='sugg-like-link'
