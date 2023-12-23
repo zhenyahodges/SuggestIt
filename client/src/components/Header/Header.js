@@ -2,8 +2,9 @@ import { NavLink } from 'react-router-dom';
 import { useCurrentUser } from '../../hooks/useCurrentUser';
 import RenderNavLink from '../Buttons/RenderNavLink/RenderNavLink';
 
-export default function Header({ userId }) {
-    const { currentUser } = useCurrentUser() || {};
+export default function Header() {
+    const { currentUser,currentUserId } = useCurrentUser() || {};
+
     const isGuest = currentUser === 'Guest';
     const classText = 'nav header list links';
 
@@ -48,7 +49,7 @@ export default function Header({ userId }) {
             condition: isGuest,
         },
         {
-            to: `users/${userId}`,
+            to: `users/${currentUserId}`,
             className: `${classText} prof`,
             id: 'prof',
             text: 'Profile',
