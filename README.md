@@ -3,7 +3,7 @@
 # Suggest<span style="color:#F79234">**It**</span>
 
 This is a SPA with ReactJS project assignment with full CRUD operations for completing [SoftUni](https://softuni.bg/)
-ReactJS Course. Details of the assignment are available [here](https://github.com/zhenyahodges/SoftUni-Courses/blob/main/Front_End/REACT/REACT-PROJECT/ReactJS-Project-Assignment.docx).
+ReactJS Course. Details of the assignment are available [here](https://github.com/zhenyahodges/SuggestIt/blob/main/readme-res/ReactJS-Project-Assignment.docx).
 
 ## *Built with:*
   ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) 
