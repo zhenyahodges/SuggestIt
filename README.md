@@ -153,18 +153,17 @@ React Testing Library and Jest
 ### **To run**
 
 In the project directory:
-
-#### `cd client`
-
-#### `npm start`
-
+```
+cd client
+npm start
+```
 \
 <a name="initServer"></a>To initiate the **server**:
 
-#### `cd server`
-
-#### `node server.js`
-
+```
+cd server
+node server.js
+```
 \
 Runs the app in development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
