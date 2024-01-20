@@ -2,8 +2,19 @@
 
 # Suggest<span style="color:#F79234">**It**</span>
 
-This is a SPA with ReactJS project assignment for completing [SoftUni](https://softuni.bg/)
-ReactJS Course. Details of the assignment are available [here](https://github.com/zhenyahodges/SoftUni-Courses/blob/main/Front_End/REACT/REACT-PROJECT/ReactJS-Project-Assignment.docx). Built with ReactJS, React Router DOM,  React Router-   [createBrowserRouter](https://reactrouter.com/en/main/routers/create-browser-router) with v6.4 data APIs like loader and actions; HTML5 and CSS3. Server used: [SoftUni Practice Server](https://github.com/softuni-practice-server/softuni-practice-server).
+This is a SPA with ReactJS project assignment with full CRUD operations for completing [SoftUni](https://softuni.bg/)
+ReactJS Course. Details of the assignment are available [here](https://github.com/zhenyahodges/SoftUni-Courses/blob/main/Front_End/REACT/REACT-PROJECT/ReactJS-Project-Assignment.docx).
+
+## *Built with:*
+  ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) 
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+[createBrowserRouter](https://reactrouter.com/en/main/routers/create-browser-router) with v6.4 data APIs like loader and actions
+
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+
+Server used: [SoftUni Practice Server](https://github.com/softuni-practice-server/softuni-practice-server).
 
 <!-- <p>
 <a href="https://suggestit-a18f3.web.app">
